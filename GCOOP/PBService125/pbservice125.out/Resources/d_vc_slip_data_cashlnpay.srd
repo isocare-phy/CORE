@@ -1,0 +1,117 @@
+$PBExportHeader$d_vc_slip_data_cashlnpay.srd
+release 12.5;
+datawindow(units=0 color=16777215 processing=0 print.canusedefaultprinter=yes print.margin.left=110 print.margin.right=110 print.margin.top=96 print.margin.bottom=96 )
+header(height=12 )
+detail(height=196 )
+summary(height=108 )
+footer(height=0 )
+table(column=(name=sliptypesign_flag dbname="SLUCFSLIPTYPE.SLIPTYPESIGN_FLAG" type=decimal(0) updatewhereclause=yes )
+column=(name=moneytype_group dbname="CMUCFMONEYTYPE.MONEYTYPE_GROUP" type=char(3) updatewhereclause=yes )
+column=(name=membgroup_control dbname="MBUCFMEMBGROUP.MEMBGROUP_CONTROL" type=char(14) updatewhereclause=yes )
+column=(name=payoutslip_no dbname="SLSLIPPAYOUT.PAYOUTSLIP_NO" type=char(10) updatewhereclause=yes )
+column=(name=member_no dbname="SLSLIPPAYOUT.MEMBER_NO" type=char(8) updatewhereclause=yes )
+column=(name=document_no dbname="SLSLIPPAYOUT.DOCUMENT_NO" type=char(15) updatewhereclause=yes )
+column=(name=sliptype_code dbname="SLSLIPPAYOUT.SLIPTYPE_CODE" type=char(3) updatewhereclause=yes )
+column=(name=slip_date dbname="SLSLIPPAYOUT.SLIP_DATE" type=datetime updatewhereclause=yes )
+column=(name=shrlontype_code dbname="SLSLIPPAYOUT.SHRLONTYPE_CODE" type=char(2) updatewhereclause=yes )
+column=(name=moneytype_code dbname="SLSLIPPAYOUT.MONEYTYPE_CODE" type=char(3) updatewhereclause=yes )
+column=(name=entry_id dbname="SLSLIPPAYOUT.ENTRY_ID" type=char(32) updatewhereclause=yes )
+column=(name=payout_amt dbname="SLSLIPPAYOUT.PAYOUT_AMT" type=decimal(2) updatewhereclause=yes )
+column=(name=tofrom_accid dbname="SLSLIPPAYOUT.TOFROM_ACCID" type=char(15) updatewhereclause=yes )
+column=(name=slipclear_no dbname="SLSLIPPAYOUT.SLIPCLEAR_NO" type=char(10) updatewhereclause=yes )
+column=(name=slslippayout_payoutclr_amt dbname="SLSLIPPAYOUT.PAYOUTCLR_AMT" type=decimal(2) updatewhereclause=yes )
+column=(name=interest_payamt dbname="SLSLIPPAYINDET.INTEREST_PAYAMT" type=decimal(2) updatewhereclause=yes )
+column=(name=item_payamt dbname="SLSLIPPAYINDET.ITEM_PAYAMT" type=decimal(2) updatewhereclause=yes )
+column=(name=slslippayin_slip_amt dbname="SLSLIPPAYIN.SLIP_AMT" type=decimal(2) updatewhereclause=yes )
+column=(name=slslippayindet_shrlontype_code dbname="SLSLIPPAYINDET.SHRLONTYPE_CODE" type=char(2) updatewhereclause=yes )
+column=(name=slipitemtype_code dbname="SLSLIPPAYINDET.SLIPITEMTYPE_CODE" type=char(3) updatewhereclause=yes )
+column=(name=principal_payamt dbname="SLSLIPPAYINDET.PRINCIPAL_PAYAMT" type=decimal(2) updatewhereclause=yes )
+column=(name=payoutnet_amt dbname="SLSLIPPAYOUT.PAYOUTNET_AMT" type=decimal(2) updatewhereclause=yes )
+column=(name=slslippayout_slip_status dbname="SLSLIPPAYOUT.SLIP_STATUS" type=decimal(0) updatewhereclause=yes )
+column=(name=coop_id dbname="SLSLIPPAYOUT.COOP_ID" type=char(6) updatewhereclause=yes )
+column=(name=loangroup_code dbname="LNLOANTYPE.LOANGROUP_CODE" type=char(2) updatewhereclause=yes )
+column=(name=membgroup_code dbname="MBMEMBMASTER.MEMBGROUP_CODE" type=char(14) updatewhereclause=yes )
+retrieve="  SELECT ~"SLUCFSLIPTYPE~".~"SLIPTYPESIGN_FLAG~",   
+         ~"CMUCFMONEYTYPE~".~"MONEYTYPE_GROUP~",   
+         ~"MBUCFMEMBGROUP~".~"MEMBGROUP_CONTROL~",   
+         ~"SLSLIPPAYOUT~".~"PAYOUTSLIP_NO~",   
+         ~"SLSLIPPAYOUT~".~"MEMBER_NO~",   
+         ~"SLSLIPPAYOUT~".~"DOCUMENT_NO~",   
+         ~"SLSLIPPAYOUT~".~"SLIPTYPE_CODE~",   
+         ~"SLSLIPPAYOUT~".~"SLIP_DATE~",   
+         ~"SLSLIPPAYOUT~".~"SHRLONTYPE_CODE~",   
+         ~"SLSLIPPAYOUT~".~"MONEYTYPE_CODE~",   
+         ~"SLSLIPPAYOUT~".~"ENTRY_ID~",   
+         ~"SLSLIPPAYOUT~".~"PAYOUT_AMT~",   
+         ~"SLSLIPPAYOUT~".~"TOFROM_ACCID~",   
+         ~"SLSLIPPAYOUT~".~"SLIPCLEAR_NO~",   
+         ~"SLSLIPPAYOUT~".~"PAYOUTCLR_AMT~",   
+         ~"SLSLIPPAYINDET~".~"INTEREST_PAYAMT~",
+		~"SLSLIPPAYINDET~".~"ITEM_PAYAMT~",   
+         ~"SLSLIPPAYIN~".~"SLIP_AMT~",   
+         ~"SLSLIPPAYINDET~".~"SHRLONTYPE_CODE~",   
+		 ~"SLSLIPPAYINDET~".~"SLIPITEMTYPE_CODE~",
+         ~"SLSLIPPAYINDET~".~"PRINCIPAL_PAYAMT~",   
+         ~"SLSLIPPAYOUT~".~"PAYOUTNET_AMT~",   
+         ~"SLSLIPPAYOUT~".~"SLIP_STATUS~",   
+         ~"SLSLIPPAYOUT~".~"COOP_ID~",   
+         ~"LNLOANTYPE~".~"LOANGROUP_CODE~",
+		~"MBMEMBMASTER~".~"MEMBGROUP_CODE~"
+    FROM ~"SLUCFSLIPTYPE~",   
+         ~"CMUCFMONEYTYPE~",   
+         ~"MBMEMBMASTER~",   
+         ~"MBUCFMEMBGROUP~",   
+         ~"SLSLIPPAYOUT~",   
+         ~"LNLOANTYPE~",   
+         ~"SLSLIPPAYIN~",   
+         ~"SLSLIPPAYINDET~"  
+   WHERE ( slslippayin.payinslip_no = slslippayindet.payinslip_no (+)) and  
+         ( slslippayout.slipclear_no = slslippayin.payinslip_no (+)) and  
+         ( ~"MBMEMBMASTER~".~"MEMBGROUP_CODE~" = ~"MBUCFMEMBGROUP~".~"MEMBGROUP_CODE~" ) and  
+         ( ~"SLSLIPPAYOUT~".~"MEMBER_NO~" = ~"MBMEMBMASTER~".~"MEMBER_NO~" ) and  
+         ( ~"SLSLIPPAYOUT~".~"SLIPTYPE_CODE~" = ~"SLUCFSLIPTYPE~".~"SLIPTYPE_CODE~" ) and  
+         ( ~"SLSLIPPAYOUT~".~"MONEYTYPE_CODE~" = ~"CMUCFMONEYTYPE~".~"MONEYTYPE_CODE~" ) and  
+         ( ~"SLSLIPPAYOUT~".~"SHRLONTYPE_CODE~" = ~"LNLOANTYPE~".~"LOANTYPE_CODE~" ) and  
+         ( ~"LNLOANTYPE~".~"COOP_ID~" = ~"SLSLIPPAYOUT~".~"COOP_ID~" ) and  
+         ( ~"SLSLIPPAYIN~".~"COOP_ID~" = ~"SLSLIPPAYINDET~".~"COOP_ID~"(+) ) and  
+         ( ~"SLSLIPPAYOUT~".~"SLIP_DATE~" = :as_vcdate ) AND  
+         (~"SLSLIPPAYOUT~".~"MEMCOOP_ID~" = :as_coopid ) AND  
+         ( ~"SLSLIPPAYOUT~".~"SLIP_STATUS~" = 1) AND  
+         ( ~"SLSLIPPAYOUT~".~"MONEYTYPE_CODE~" = 'CSH' ) AND  
+         (~"SLSLIPPAYOUT~".~"POSTTOVC_FLAG~" = 0 OR  
+         ~"SLSLIPPAYOUT~".~"POSTTOVC_FLAG~" is null)    AND
+		(~"SLSLIPPAYOUT~".~"SLIPTYPE_CODE~" <> 'SWD' )
+" sort="loangroup_code A shrlontype_code A payoutslip_no A tofrom_accid A moneytype_code A shrlontype_code A " arguments=(("as_vcdate",datetime), ("as_coopid",string))
+)
+compute(name=compute_1 band=detail x="37" y="4" height="72" width="242" color="0" format="[GENERAL]" expression="cumulativeSum( 1. for all )" alignment="2" border="2" font.face="MS Sans Serif" font.height="-8" font.charset="222" background.color="15780518" background.mode="2" )
+column(name=payoutslip_no band=detail x="325" y="4" height="72" width="283" id=4 color="0" border="0" alignment="0" format="[general]" font.face="MS Sans Serif" font.height="-8" font.charset="222" background.color="536870912" background.mode="1" edit.autoselect=no edit.focusrectangle=no )
+column(name=member_no band=detail x="626" y="4" height="72" width="270" id=5 color="0" border="0" alignment="2" format="[general]" font.face="MS Sans Serif" font.height="-8" font.charset="222" background.color="536870912" background.mode="1" edit.autoselect=no edit.focusrectangle=no )
+column(name=document_no band=detail x="923" y="4" height="72" width="270" id=6 color="0" border="0" alignment="0" format="[general]" font.face="MS Sans Serif" font.height="-8" font.charset="222" background.color="536870912" background.mode="1" edit.autoselect=no edit.focusrectangle=no )
+column(name=sliptype_code band=detail x="1289" y="4" height="72" width="270" id=7 color="0" border="0" alignment="0" format="[general]" font.face="MS Sans Serif" font.height="-8" font.charset="222" background.color="536870912" background.mode="1" edit.autoselect=no edit.focusrectangle=no )
+column(name=slip_date band=detail x="1705" y="4" height="72" width="270" id=8 color="0" border="0" alignment="0" format="[shortdate] [time]" font.face="MS Sans Serif" font.height="-8" font.charset="222" background.color="536870912" background.mode="1" edit.autoselect=no edit.focusrectangle=no )
+column(name=coop_id band=detail x="5294" y="0" height="52" width="210" id=24 color="0" border="0" alignment="0" format="[general]" font.face="MS Sans Serif" font.height="-8" font.charset="222" background.color="536870912" background.mode="1" edit.autoselect=no edit.focusrectangle=no )
+column(name=sliptypesign_flag band=detail x="5504" y="0" height="52" width="393" id=1 color="0" border="0" alignment="0" format="[general]" font.face="MS Sans Serif" font.height="-8" font.charset="222" background.color="536870912" background.mode="1" edit.autoselect=no edit.focusrectangle=no )
+column(name=payout_amt band=detail x="2011" y="12" height="80" width="421" id=12 color="0" border="0" alignment="1" format="#,##0.00" font.face="MS Sans Serif" font.height="-8" font.charset="222" background.color="12639424" background.mode="2" edit.autoselect=no edit.focusrectangle=no )
+column(name=tofrom_accid band=detail x="2450" y="12" height="80" width="407" id=13 color="0" border="0" alignment="1" format="[general]" font.face="MS Sans Serif" font.height="-8" font.charset="222" background.color="65535" background.mode="2" edit.autoselect=no edit.focusrectangle=no )
+column(name=slipclear_no band=detail x="2898" y="12" height="80" width="270" id=14 color="0" border="0" alignment="0" format="[general]" font.face="MS Sans Serif" font.height="-8" font.charset="222" background.color="536870912" background.mode="1" edit.autoselect=no edit.focusrectangle=no )
+column(name=principal_payamt band=detail x="3186" y="12" height="80" width="283" id=21 color="0" border="0" alignment="1" format="#,##0.00" font.face="MS Sans Serif" font.height="-8" font.charset="222" background.color="16776960" background.mode="2" edit.autoselect=no edit.focusrectangle=no )
+column(name=interest_payamt band=detail x="3493" y="12" height="80" width="270" id=16 color="0" border="0" alignment="1" format="#,##0.00" font.face="MS Sans Serif" font.height="-8" font.charset="222" background.color="65280" background.mode="2" edit.autoselect=no edit.focusrectangle=no )
+column(name=slslippayin_slip_amt band=detail x="3799" y="12" height="80" width="379" id=18 color="0" border="0" alignment="1" format="#,##0.00" font.face="MS Sans Serif" font.height="-8" font.charset="222" background.color="134217730" background.mode="2" edit.autoselect=no edit.focusrectangle=no )
+column(name=slslippayindet_shrlontype_code band=detail x="4425" y="12" height="80" width="55" id=19 color="0" border="0" alignment="0" format="[general]" font.face="MS Sans Serif" font.height="-8" font.charset="222" background.color="536870912" background.mode="1" edit.autoselect=no edit.focusrectangle=no )
+column(name=payoutnet_amt band=detail x="4526" y="12" height="80" width="379" id=22 color="0" border="0" alignment="1" format="#,##0.00" font.face="MS Sans Serif" font.height="-8" font.charset="222" background.color="65280" background.mode="2" edit.autoselect=no edit.focusrectangle=no )
+column(name=slslippayout_slip_status band=detail x="4969" y="12" height="80" width="178" id=23 color="0" border="0" alignment="0" format="[general]" font.face="MS Sans Serif" font.height="-8" font.charset="222" background.color="536870912" background.mode="1" edit.autoselect=no edit.focusrectangle=no )
+column(name=moneytype_group band=detail x="663" y="92" height="80" width="283" id=2 color="0" border="0" alignment="2" format="[general]" font.face="MS Sans Serif" font.height="-8" font.charset="222" background.color="33548243" background.mode="2" )
+column(name=membgroup_control band=detail x="1001" y="92" height="80" width="279" id=3 color="0" border="0" alignment="2" format="[general]" font.face="MS Sans Serif" font.height="-8" font.charset="222" background.color="65280" background.mode="2" edit.autoselect=no edit.focusrectangle=no )
+column(name=entry_id band=detail x="1353" y="92" height="80" width="270" id=11 color="0" border="0" alignment="2" format="[general]" font.face="MS Sans Serif" font.height="-8" font.charset="222" background.color="536870912" background.mode="1" edit.autoselect=no edit.focusrectangle=no )
+column(name=shrlontype_code band=detail x="1673" y="104" height="80" width="270" id=9 color="0" border="0" alignment="0" format="[general]" font.face="MS Sans Serif" font.height="-8" font.charset="222" background.color="536870912" background.mode="1" edit.autoselect=no edit.focusrectangle=no )
+column(name=moneytype_code band=detail x="2011" y="104" height="80" width="274" id=10 color="0" border="0" alignment="3" format="[general]" font.face="MS Sans Serif" font.height="-8" font.charset="222" background.color="536870912" background.mode="1" edit.autoselect=no edit.focusrectangle=no )
+column(name=loangroup_code band=detail x="2834" y="104" height="80" width="178" id=25 color="0" border="0" alignment="0" format="[general]" font.face="MS Sans Serif" font.height="-8" font.charset="222" background.color="536870912" background.mode="1" edit.autoselect=no edit.focusrectangle=no )
+column(name=membgroup_code band=detail x="3227" y="104" height="80" width="215" id=26 color="0" border="0" alignment="0" format="[general]" font.face="MS Sans Serif" font.height="-8" font.charset="222" background.color="65535" background.mode="2" edit.autoselect=no edit.focusrectangle=no )
+column(name=slipitemtype_code band=detail x="3602" y="104" height="80" width="219" id=20 color="0" border="0" alignment="0" format="[general]" font.face="MS Sans Serif" font.height="-8" font.charset="222" background.color="12639424" background.mode="2" edit.autoselect=no edit.focusrectangle=no )
+column(name=item_payamt band=detail x="3867" y="124" height="52" width="489" id=17 color="0" border="0" alignment="1" format="#,##0.00" font.face="MS Sans Serif" font.height="-8" font.charset="222" background.color="16776960" background.mode="2" edit.autoselect=no edit.focusrectangle=no )
+compute(name=compute_2 band=summary x="1801" y="32" height="64" width="631" format="#,##0.00" expression="sum(  payout_amt  for all )" alignment="1" border="0" font.face="Tahoma" font.height="-10" background.color="12639424" background.mode="2" )
+compute(name=compute_4 band=summary x="3191" y="36" height="52" width="215" color="0" format="[GENERAL]" expression="sum(  interest_payamt  for all )" alignment="0" border="0" font.face="MS Sans Serif" font.height="-8" font.charset="222" background.color="65280" background.mode="2" )
+compute(name=compute_5 band=summary x="3863" y="20" height="52" width="215" color="0" format="[GENERAL]" expression="sum(  principal_payamt  for all )" alignment="0" border="0" font.face="MS Sans Serif" font.height="-8" font.charset="222" background.color="16776960" background.mode="2" )
+compute(name=compute_6 band=summary x="4192" y="28" height="52" width="215" color="0" format="[GENERAL]" alignment="0" border="0" font.face="MS Sans Serif" font.height="-8" font.charset="222" background.color="15780518" background.mode="2" )
+compute(name=compute_7 band=summary x="3538" y="40" height="52" width="215" color="0" format="[GENERAL]" expression="sum(  slslippayin_slip_amt  for all )" alignment="0" border="0" font.face="MS Sans Serif" font.height="-8" font.charset="222" background.color="134217730" background.mode="2" )
+compute(name=compute_8 band=summary x="4535" y="16" height="52" width="357" color="0" format="[GENERAL]" expression="sum(  payoutnet_amt  for all )" alignment="0" border="0" font.face="MS Sans Serif" font.height="-8" font.charset="222" background.color="65280" background.mode="2" )

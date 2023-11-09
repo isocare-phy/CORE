@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rpt_certificate" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4a3e7eb6-87e4-44ca-8206-273d1f543434">
+	<property name="ireport.zoom" value="1.4641000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="as_name" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="as_type" class="java.lang.Number">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="as_manager" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from report_certificate]]>
+	</queryString>
+	<field name="MEMBER_NO" class="java.lang.String"/>
+	<field name="SYSTEM" class="java.lang.String"/>
+	<field name="PRNCBAL1" class="java.lang.String"/>
+	<field name="SHARESTK_AMT1" class="java.lang.String"/>
+	<field name="PRNCBAL_US" class="java.lang.String"/>
+	<field name="SHARESTK_AMT_US" class="java.lang.String"/>
+	<field name="SHARESTK_SHR" class="java.lang.String"/>
+	<field name="DEPTACCOUNT_NO" class="java.lang.String"/>
+	<field name="ENG_DESC" class="java.lang.String"/>
+	<field name="TYPE_DESC" class="java.lang.String"/>
+	<field name="TYPE_SHERE" class="java.lang.String"/>
+	<field name="TYPE_TBH" class="java.lang.String"/>
+	<field name="TYPE_US" class="java.lang.String"/>
+	<field name="FULLNAME_THAI" class="java.lang.String"/>
+	<field name="DEPTACCOUNT_NAME" class="java.lang.String"/>
+	<field name="PRNCBAL" class="java.math.BigDecimal"/>
+	<field name="SHARESTK_AMT" class="java.math.BigDecimal"/>
+	<variable name="num_count" class="java.math.BigDecimal" calculation="Count">
+		<variableExpression><![CDATA[$F{SYSTEM}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="92" splitType="Stretch">
+			<textField>
+				<reportElement uuid="d6234f38-a20d-4ebf-ab4a-39d8e4e937e1" x="156" y="28" width="74" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[((new SimpleDateFormat("MM",new Locale("eng","ENG")).format(new Date())=="01"?"January":
+    (new SimpleDateFormat("MM",new Locale("eng","ENG")).format(new Date())=="02"?"February":
+        (new SimpleDateFormat("MM",new Locale("eng","ENG")).format(new Date())=="03"?"March":
+            (new SimpleDateFormat("MM",new Locale("eng","ENG")).format(new Date())=="04"?"April":
+                (new SimpleDateFormat("MM",new Locale("eng","ENG")).format(new Date())=="05"?"May":
+                    (new SimpleDateFormat("MM",new Locale("eng","ENG")).format(new Date())=="06"?"June":
+                        (new SimpleDateFormat("MM",new Locale("eng","ENG")).format(new Date())=="07"?"July":
+                            (new SimpleDateFormat("MM",new Locale("eng","ENG")).format(new Date())=="08"?"August":
+                                (new SimpleDateFormat("MM",new Locale("eng","ENG")).format(new Date())=="09"?"September":
+                                    (new SimpleDateFormat("MM",new Locale("eng","ENG")).format(new Date())=="10"?"October":
+                                        (new SimpleDateFormat("MM",new Locale("eng","ENG")).format(new Date())=="11"?"November":
+                                            (new SimpleDateFormat("MM",new Locale("eng","ENG")).format(new Date())=="12"?"December":"")))))))))))))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="490dbe1d-1fc6-489d-bc6a-1fdd6f1a7320" x="234" y="28" width="17" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd",new Locale("eng","ENG")).format(new Date())]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="fee8b773-5426-469e-8d6b-6d8672596610" x="245" y="28" width="14" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<text><![CDATA[,]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="446d5db8-b2a7-4198-9b5f-fd57a0deb925" x="255" y="28" width="56" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("yyyy",new Locale("eng","ENG")).format(new Date())]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="a323b42e-539b-4910-9d70-5b329840e5d7" x="0" y="0" width="555" height="28"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="18"/>
+				</textElement>
+				<text><![CDATA[CERTIFICATE THE SHARE AND DEPPOSIT ACCOUNT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="36aa68ea-fab5-4745-b286-e85bff332511" x="0" y="48" width="156" height="24"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Angsana New" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[To whom it may concem :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="ff6a26d0-0c9f-4941-9d8c-043614aac90a" x="102" y="72" width="95" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{as_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="2561cce2-dc75-4aa7-81da-b7232a83448f" x="18" y="72" width="85" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<text><![CDATA[This is to certify that]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="50f5e647-33f5-4f60-9f2f-e36a29abbef8" x="183" y="72" width="335" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<text><![CDATA[one of our customer, has maintained with us of which details are as follow:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="df70792a-d222-4e2c-a72a-aabd87be17dc" x="176" y="72" width="14" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<text><![CDATA[,]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="19">
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="7947b75b-e655-48eb-ad70-f466908c194a" stretchType="RelativeToBandHeight" x="18" y="0" width="537" height="19"/>
+				<textElement verticalAlignment="Top" rotation="None">
+					<font fontName="Angsana New" size="14"/>
+					<paragraph lineSpacing="Proportional"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{SYSTEM}=="MAS"?$V{num_count}+"."+" "+$F{ENG_DESC}+" "+$P{as_name}:
+  ( $F{SYSTEM}=="DEP"?$V{num_count}+"."+" "+$F{ENG_DESC}+" "+$F{DEPTACCOUNT_NO}+" "+$F{TYPE_SHERE}+" "+$F{TYPE_TBH}+" "+$F{PRNCBAL1}+" "+"("+($F{TYPE_US}+" "+$F{PRNCBAL_US})+")":(
+      $F{SYSTEM}=="SHR"?$V{num_count}+"."+" "+$F{ENG_DESC}+" "+$F{MEMBER_NO}+" "+$F{TYPE_DESC}+" "+$F{SHARESTK_AMT1}+" "+$F{TYPE_TBH}+" "+$F{SHARESTK_SHR}+" "+"("+($F{TYPE_US}+" "+$F{SHARESTK_AMT_US})+")":"")
+   )
+)]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="164" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="16f0bf4d-5403-48ff-a593-ea5f4d6460fc" x="18" y="0" width="537" height="18"/>
+				<textElement>
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{as_type}==1?$V{num_count}+1+"."+" "+"Remarks:We are of the opinion that"+" "+$P{as_name}+" "+"is a reliable person and is in a position to take care of all expenses for "+""+$P{as_name}+","+" "+"while The United state.":" "]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="7f9c3eb8-a665-4bdd-82c2-ff037bcc8273" x="352" y="64" width="130" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<text><![CDATA[ Faithfully yours,]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="36502590-b2aa-45c3-8080-b4ab6b89c5ea" x="352" y="107" width="130" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{as_manager}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="a80bce06-13f7-44bc-806d-6a31dc8d3147" x="259" y="84" width="260" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<text><![CDATA[Verified True Authorizer signature .................................................. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b9e6411b-32e9-49a0-bca3-1bb616223974" x="352" y="127" width="130" height="17"/>
+				<textElement textAlignment="Center">
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<text><![CDATA[Manager]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="81248a6e-ef4f-4d4f-9f92-ff7f40b5e352" x="260" y="144" width="296" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<text><![CDATA[Tak Saving and Credit Co-operative for Officials in Ministry of Education Limited ]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

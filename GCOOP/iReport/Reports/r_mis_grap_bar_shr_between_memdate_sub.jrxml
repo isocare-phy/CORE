@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="r_mis_grap_bar_dep_between_type_sub" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="842" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="17b62d76-5f45-4a6d-80e5-5dbd55d748d7">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select sysdate,
+(case s.g_age when 1 then '1 - 10 ปี'
+when 2 then '11 - 20 ปี'
+when 3 then '21 - 30 ปี'
+when 4 then '31 - 40 ปี'
+when 5 then '41 - 50 ปี'
+when 6 then '51 ปีขึ้นไป'
+else '' end) as descript,
+sum(s.c_count) as c_count,
+sum(s.share_value) as share_value
+from(
+select
+shsharemaster.member_no ,
+nvl(trunc(months_between(sysdate,mbmembmaster.member_date)/12),0) year,
+(case  when nvl(trunc(months_between(sysdate,mbmembmaster.member_date)/12),0) <= 10 then 1
+when nvl(trunc(months_between(sysdate,mbmembmaster.member_date)/12),0) <= 20 then 2
+when nvl(trunc(months_between(sysdate,mbmembmaster.member_date)/12),0) <=30 then 3
+when nvl(trunc(months_between(sysdate,mbmembmaster.member_date)/12),0) <=40 then 4
+when nvl(trunc(months_between(sysdate,mbmembmaster.member_date)/12),0) <=50 then 5
+else 6 end ) as g_age,
+1 as c_count,
+shsharemaster.sharestk_amt * shsharetype.unitshare_value as share_value
+from shsharemaster
+join mbmembmaster on mbmembmaster.member_no = shsharemaster.member_no
+join shsharetype on shsharemaster.sharetype_code = shsharetype.sharetype_code
+where mbmembmaster.member_status = 1
+union
+select '' , 0 , 1 , 0 , 0 from dual
+union
+select '' , 0 , 2 , 0 , 0 from dual
+union
+select '' , 0 , 3 , 0 , 0 from dual
+union
+select '' , 0 , 4 , 0 , 0 from dual
+union
+select '' , 0 , 5 , 0 , 0 from dual
+union
+select '' , 0 , 6 , 0 , 0 from dual
+) s
+group by s.g_age
+order by s.g_age]]>
+	</queryString>
+	<field name="SYSDATE" class="java.sql.Timestamp"/>
+	<field name="DESCRIPT" class="java.lang.String"/>
+	<field name="C_COUNT" class="java.math.BigDecimal"/>
+	<field name="SHARE_VALUE" class="java.math.BigDecimal"/>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="16132fe0-4be3-4dc2-afae-29fdb8fc4bfa" x="178" y="0" width="210" height="20"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ช่วงการเป็นสมาชิก]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5ebe6ca3-4d05-4e77-b37c-a9cc6dbe7ebf" x="470" y="0" width="147" height="20"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ทุนเรือนหุ้น]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="25ee7b7e-2705-4570-883a-0c7e5b26aa08" x="388" y="0" width="82" height="20"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<text><![CDATA[จำนวนสมาชิก]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement uuid="8466c950-a45a-4375-8f12-1977706177f0" x="178" y="0" width="210" height="20"/>
+				<box leftPadding="10">
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DESCRIPT}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="0f668ea0-0589-4ff5-b08b-5387edcbf9a1" x="470" y="0" width="147" height="20"/>
+				<box rightPadding="10">
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SHARE_VALUE}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement uuid="8e62f266-7874-4e2e-b27e-878ccfb35d88" x="388" y="0" width="82" height="20"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{C_COUNT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

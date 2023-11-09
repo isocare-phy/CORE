@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="r_ln_print_loan_req_doc_pbn_full" language="groovy" pageWidth="595" pageHeight="842" columnWidth="545" leftMargin="25" rightMargin="25" topMargin="20" bottomMargin="20" uuid="a2fcca8f-9506-473d-bb80-1d4d65c18e46">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="dataset1" uuid="5e4cb02d-2b32-48c8-a927-d1e5ec9ebcbc"/>
+	<parameter name="as_loanreqdocno" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="as_coop_id" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\GCOOP_ALL\\PBN\\GCOOP\\iReport\\Reports\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT DISTINCT "MBUCFPRENAME"."PRENAME_DESC"||''||"MBMEMBMASTER"."MEMB_NAME"||' '||"MBMEMBMASTER"."MEMB_SURNAME" as fullname,
+         trunc(months_between(sysdate,"MBMEMBMASTER"."BIRTH_DATE")/12) as age,
+         "LNREQLOAN"."MEMBER_NO",
+         "MBMEMBMASTER"."CARD_PERSON",
+         "LNREQLOAN"."LOANTYPE_CODE",
+         "LNREQLOAN"."LOANCREDIT_AMT",
+         "LNREQLOAN"."LOANPERMISS_AMT",
+         "LNREQLOAN"."LOANREQUEST_AMT",
+         "LNREQLOAN"."LOANAPPROVE_AMT",
+         ftreadtbaht("LNREQLOAN"."LOANREQUEST_AMT") as thbathloan,
+         ftreadtbaht("LNREQLOAN"."PERIOD_PAYMENT") as thbathpayment,
+         "LNREQLOAN"."PERIOD_PAYMENT",
+         "LNREQLOAN"."LOANPAYMENT_TYPE",
+         "MBMEMBMASTER"."MEMB_NAME",
+         "MBMEMBMASTER"."MEMB_SURNAME",
+         "MBMEMBMASTER"."MEMBGROUP_CODE",
+         "MBUCFMEMBGROUP"."MEMBGROUP_DESC",
+         "CMCOOPCONSTANT"."COOP_NAME",
+         "CMCOOPCONSTANT"."MANAGER",
+         TO_CHAR("LNREQLOAN"."LOANREQUEST_DATE", 'dd MON yyyy', 'NLS_CALENDAR=''THAI BUDDHA'' NLS_DATE_LANGUAGE=THAI') as datethai,
+         "LNREQLOAN"."LOANREQUEST_DATE",
+         "LNREQLOAN"."LOANCONTRACT_NO",
+         "LNREQLOAN"."LOANREQUEST_DOCNO",
+         "LNREQLOAN"."PERIOD_LASTPAYMENT",
+         "LNREQLOAN"."SALARY_AMT",
+         "LNREQLOAN"."SHARE_LASTPERIOD",
+         "LNREQLOAN"."SHARE_PERIODVALUE",
+         "MBMEMBMASTER"."ADDR_NO",
+         "MBMEMBMASTER"."ADDR_MOO",
+         "MBMEMBMASTER"."ADDR_SOI",
+         "MBMEMBMASTER"."ADDR_VILLAGE",
+         "MBMEMBMASTER"."ADDR_ROAD",
+         "MBUCFDISTRICT"."DISTRICT_DESC",
+         "MBUCFPROVINCE"."PROVINCE_DESC",
+         "MBUCFTAMBOL"."TAMBOL_DESC",
+         "MBMEMBMASTER"."TAMBOL_CODE",
+         "MBMEMBMASTER"."AMPHUR_CODE",
+         "MBMEMBMASTER"."PROVINCE_CODE",
+         "MBMEMBMASTER"."ADDR_POSTCODE",
+         NVL("MBUCFPOSITION"."POSITION_DESC","MBMEMBMASTER"."POSITION_DESC") as POSITION_DESC,
+         TO_CHAR("LNREQLOAN"."LOANREQUEST_DATE", 'Month', 'NLS_CALENDAR=''THAI BUDDHA'' NLS_DATE_LANGUAGE=THAI') as monththai,
+         "LNREQLOAN"."PERIOD_PAYAMT",
+         "MBMEMBMASTER"."ADDR_PHONE",
+         "LNCFLOANINTRATEDET"."INTEREST_RATE",
+         "LNUCFLOANOBJECTIVE"."LOANOBJECTIVE_DESC",
+         FT_CALAGEMTH("MBMEMBMASTER"."BIRTH_DATE",SYSDATE) AS BIRTH_DATE
+    FROM "LNREQLOAN",
+         "MBMEMBMASTER",
+         "MBUCFMEMBGROUP",
+         "MBUCFPRENAME",
+         "CMCOOPCONSTANT",
+         "LNLOANTYPE",
+         "LNUCFLOANOBJECTIVE",
+         "LNCFLOANINTRATEDET",
+         "MBUCFDISTRICT",
+         "MBUCFPROVINCE",
+         "MBUCFTAMBOL",
+         "MBUCFPOSITION"
+   WHERE ( mbmembmaster.amphur_code = mbucfdistrict.district_code (+)) and
+         ( mbmembmaster.tambol_code = mbucftambol.tambol_code (+)) and
+         ( mbmembmaster.amphur_code = mbucftambol.district_code (+)) and
+         ( lnreqloan.loanobjective_code = lnucfloanobjective.loanobjective_code (+)) and
+         ( mbucfposition.position_code (+) = mbmembmaster.position_code) and
+         ( mbmembmaster.province_code = mbucfprovince.province_code (+)) and
+         ( "LNREQLOAN"."COOP_ID" = "MBMEMBMASTER"."COOP_ID" ) and
+         ( "LNREQLOAN"."LOANTYPE_CODE" = "LNLOANTYPE"."LOANTYPE_CODE" ) and
+         ( "MBUCFMEMBGROUP"."COOP_ID" = "MBMEMBMASTER"."COOP_ID" ) and
+         ( "MBUCFMEMBGROUP"."MEMBGROUP_CODE" = "MBMEMBMASTER"."MEMBGROUP_CODE" ) and
+         ( "MBUCFPRENAME"."PRENAME_CODE" = "MBMEMBMASTER"."PRENAME_CODE" ) and
+         ( "LNREQLOAN"."MEMBER_NO" = "MBMEMBMASTER"."MEMBER_NO" ) and
+         ( "LNCFLOANINTRATEDET"."LOANINTRATE_CODE" = "LNLOANTYPE"."INTTABRATE_CODE" ) and
+          ("LNREQLOAN"."LOANREQUEST_DATE" between "LNCFLOANINTRATEDET"."EFFECTIVE_DATE" and "LNCFLOANINTRATEDET"."EXPIRE_DATE") AND
+          ("LNREQLOAN"."COOP_ID" = $P{as_coop_id} ) AND
+          ( "LNREQLOAN"."LOANREQUEST_DOCNO" IN ($P{as_loanreqdocno} ))
+ORDER BY "LNREQLOAN"."LOANREQUEST_DOCNO" ASC]]>
+	</queryString>
+	<field name="FULLNAME" class="java.lang.String"/>
+	<field name="AGE" class="java.math.BigDecimal"/>
+	<field name="MEMBER_NO" class="java.lang.String"/>
+	<field name="CARD_PERSON" class="java.lang.String"/>
+	<field name="LOANTYPE_CODE" class="java.lang.String"/>
+	<field name="LOANCREDIT_AMT" class="java.math.BigDecimal"/>
+	<field name="LOANPERMISS_AMT" class="java.math.BigDecimal"/>
+	<field name="LOANREQUEST_AMT" class="java.math.BigDecimal"/>
+	<field name="LOANAPPROVE_AMT" class="java.math.BigDecimal"/>
+	<field name="THBATHLOAN" class="java.lang.String"/>
+	<field name="THBATHPAYMENT" class="java.lang.String"/>
+	<field name="PERIOD_PAYMENT" class="java.math.BigDecimal"/>
+	<field name="LOANPAYMENT_TYPE" class="java.math.BigDecimal"/>
+	<field name="MEMB_NAME" class="java.lang.String"/>
+	<field name="MEMB_SURNAME" class="java.lang.String"/>
+	<field name="MEMBGROUP_CODE" class="java.lang.String"/>
+	<field name="MEMBGROUP_DESC" class="java.lang.String"/>
+	<field name="COOP_NAME" class="java.lang.String"/>
+	<field name="MANAGER" class="java.lang.String"/>
+	<field name="DATETHAI" class="java.lang.String"/>
+	<field name="LOANREQUEST_DATE" class="java.sql.Timestamp"/>
+	<field name="LOANCONTRACT_NO" class="java.lang.String"/>
+	<field name="LOANREQUEST_DOCNO" class="java.lang.String"/>
+	<field name="PERIOD_LASTPAYMENT" class="java.math.BigDecimal"/>
+	<field name="SALARY_AMT" class="java.math.BigDecimal"/>
+	<field name="SHARE_LASTPERIOD" class="java.math.BigDecimal"/>
+	<field name="SHARE_PERIODVALUE" class="java.math.BigDecimal"/>
+	<field name="ADDR_NO" class="java.lang.String"/>
+	<field name="ADDR_MOO" class="java.lang.String"/>
+	<field name="ADDR_SOI" class="java.lang.String"/>
+	<field name="ADDR_VILLAGE" class="java.lang.String"/>
+	<field name="ADDR_ROAD" class="java.lang.String"/>
+	<field name="DISTRICT_DESC" class="java.lang.String"/>
+	<field name="PROVINCE_DESC" class="java.lang.String"/>
+	<field name="TAMBOL_DESC" class="java.lang.String"/>
+	<field name="TAMBOL_CODE" class="java.lang.String"/>
+	<field name="AMPHUR_CODE" class="java.lang.String"/>
+	<field name="PROVINCE_CODE" class="java.lang.String"/>
+	<field name="ADDR_POSTCODE" class="java.lang.String"/>
+	<field name="POSITION_DESC" class="java.lang.String"/>
+	<field name="MONTHTHAI" class="java.lang.String"/>
+	<field name="PERIOD_PAYAMT" class="java.math.BigDecimal"/>
+	<field name="ADDR_PHONE" class="java.lang.String"/>
+	<field name="INTEREST_RATE" class="java.math.BigDecimal"/>
+	<field name="LOANOBJECTIVE_DESC" class="java.lang.String"/>
+	<field name="BIRTH_DATE" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="802" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="00ebe484-d3d1-4fa6-a1cb-c7f1a164eb00" x="9" y="70" width="97" height="33"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[หนังสือสัญญากู้ยืมเงิน]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5fa372b9-a1d7-4e94-8994-70f285eaabc0" x="9" y="103" width="169" height="20"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[หนังสือสัญญาเงินกู้เลขที่...............................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="bd612b71-f33d-4c7a-911b-18136b978fc1" x="45" y="147" width="495" height="26"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<text><![CDATA[ชื่อผู้กู้ข้าพเจ้า.............................................................................สมาชิกสหกรณ์ออมทรัพย์ครูเพชรบูรณ์ จำกัด เลขที่.............................. ...................................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a9c6e838-4539-44bc-991f-d93de9922d2e" x="45" y="123" width="133" height="20"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ออกสัญญาวันที่..............................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9e9059bc-5b2f-47a4-b923-64a1900ca8bb" x="9" y="186" width="531" height="32"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<text><![CDATA[สังกัดโรงเรียนหลือสถานที่ทำงาน..........................................จังหวัดเพชรบูรณ์ ขอทำหนังสือสัญญากู้ยืมเงินให้ไว้ต่อสหกรณ์ออมทรัพย์ครูเพชรบูรณ์ จำกัด
+เป็นหลักฐานดังต่อไปนี้
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a5e7ef90-8708-4e37-980f-d0caf0798848" x="9" y="218" width="536" height="337"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<text><![CDATA[             ข้อ ๑. ข้าพเจ้าได้กู้เงินจากสหกรณ์ เป็นจำนวน................................................................ บาท(........................................................................................................)
+และข้าพเจ้าได้รับเงินกู้ยืมจำนวนดังกล่าวนั้นในวันที่ทำหนังสือสัญญากู้ยืมเงินนี้ โดยถูกต้องแล้ว
+             ข้อ ๒. ข้าพเจ้าสัญญาว่าจะส่งคืนต้นเงินกู้ยืมเป็นงวดรายเดือนเท่ากัน(คงต้นงวดละ....................................................... บาท(..........................................................)
+และดอกเบี้ยในอัตราร้อยละ...................................ต่อปี หลืส่งคืนต้นเงินกู้ยืมพร้อมด้วยดอกเบี้ยเป็นงวดรายเดือนเท่ากัน (คงยอด)งวดละ..............................................บาท
+(.......................................................) ในอัตราร้อยละ......................................ต่อปี รวม......................................งวด งวดสุดท้าย.........................................................บาท
+(.......................................................) ทั้งนี้ตั้งแต่งวดประจำเดือน...............................................................................เป็นต้นไป
+               ข้าพเจ้าขอยืนยันว่าเงินงวดชำระหนี้ (รวมทั้งต้นเงินและดอกเบี้ย) แต่ละงวด ถึงกำหนดส่งภายในสิ้นเดือนที่ระบุไว้สำหรับงวดนั้นๆ
+               ในกรณีที่มีเหตุจำเป็นที่สหกรณ์จะต้องเพิ่มอัตราดอกเบี้ยเงินกู้ยืม ข้าพเจ้ายินยอมให้สหกรณ์เพิ่มอัตราดอกเบี้ยสูงกว่าที่กำหนดไว้ในวรรคก่อนได้ตามที่
+เห็นสมควรเมื่อใดก็ได้ ทั้งนี้สหกรณ์ไม่จำเป็นต้องแจ้งให้ข้าพเจ้าทราบลวบล่วงหน้า
+               ข้อ ๓. ข้าพเจ้าสัญญาว่าจะนำเงินกู้ยืม ไปใช้เฉพาะเพื่อการดังต่อไปนี้ คือ........................................................................................................................................
+               ข้อ ๔. ข้พเจ้าตกลงยอมให้ถือว่า หุ้น เงินปันผล และ เงินเฉลี่ยคืนของข้าพเจ้า ชึ่งมือยู่ในสหกรณ์ในปัจจุบันและอนาคตนั้น เป็นหลักทรัพย์ค้ำประกันหนี้
+ของสัญญานี้ตลอดไป หากข้าพเจ้าผิดนัดการชำระหนี้สองงวดติดต่อกันหรือตั้งแต่สองงวดขื้นไป หรือขาดจากสมาชิกภาพ ข้าพเจ้ายินยอมให้สหกรณ์นำเินค่าหุ้น
+เงินปันผลและเงินเฉลี่ยคืนดังกล่าว มาหักกลบลบหนี้ของข้าพเจ้าให้แก่สหกรณ์ได้ทันที
+               ข้อ ๕. ข้าพเจ้ายินยอมและขอร้องให้ผู้บังคับบัญชา หรือเจ้าหน้าผู้จ่ายเงินได้รายเดือนของข้าพเจ้า เมื่อได้รับมอบหมายจากสหกรณ์
+โปรดหักจำนวนเงินงวดชำระหนี้ ชึ่งข้าพเจ้าต้องส่งต่อสหกรณ์นั้น จากเงินได้รายเดือนของข้าพเจ้า เพื่อส่งต่อสหกรณ์ด้วย
+               ข้อ ๖. ข้าพเจ้ายินยอมถือว่า ในกรณีใดๆ ดังกล่าว ในข้อบังคับและระเบียนของสหกรณ์ ที่ได้กำหนดสาเหตุเงินกู้ยืมเป็นอันถึงกำหนดส่งคืน โดยสิ้นเชิง
+พร้อมทั้งดอกเบี้ยในทันที ข้าพเจ้ายินยอมชำระ ปฏิบัติตาม โดยมิพักคำนึงถึงกำหนดเวลาที่ให้ไว้
+               ข้อ ๗. ข้าพเจ้ายอมรับผูกพันว่า ถ้าข้าพเจ้าจะลาออกหรือ โอนย้ายจากราชการหรืองานประจำ ข้าพเจ้าจะต้องแจ้งเป็นหนังสือให้สหกรณ์ทราบและจัดการ
+ชำระหนี้สินชึ่งข้าพเจ้ามีอยู่ต่อสหกรณ์ให้เสร็จสิ้นเสียก่อน เว้นแต่กรณียังคงเป็นสมาชิกอยู่ตามข้อบังคับของสหกรณ์
+               ถ้าข้าพเจ้าไม่จัดการชำระหนี้สินให้เสร็จสิ้นตามที่กล่าวในวรรคก่อนหรือในกรณีที่ข้าพเจ้าลาออกจากราชการหรือเสียชีวิดแล้ว หากมีเงินที่ทางราชการจ่าย
+ให้ไม่ว่าจะเป็นเงินบำนาญ,เงินบำเหน็จเงินบำเหน็จตกทอดหรือเงินอื่นใดที่ข้าพเจ้าคู่สมรสหรือทายาทจะพึงได้รับไม่ว่าจะเป็นเงินสวัสดิการหรือผลประโยชน์
+ภายในส่วนราชการหรือนอกส่วนราชการ,เงินค่าสินไหมทดแทนจาการประกันภัยหรือประกันชีวิต ฯลฯให้หน่วยงานเบิกจ่ายเงินหรือผู้มีหน้าที่จ่ายเงินต่างๆเหล่านี้ให้แก่
+ข้าพเจ้านำเงินดังกล่าวส่งใช้หนี้ให้สหกรณ์โดยพลันตามจำนวนที่สหกรณ์แจ้งไปโดยไม่ให้คู่สมรสและทายทของข้าพเจ้ายกสิทธิที่ได้รับเงินเหล่านี้ขึ้นต่อสู้กับสหกรณ์
+               หนังสือสัญญากู้ยืมเงินนี้ทำไว้ ณ วันที่ชึ่งระบุข้างต้นและข้าพเจ้าได้ลงลายมือชื่อไว้เป็นสำคัญต่อหน้าพยาน]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="521ab840-091c-41b1-b8fa-b8d61ae84085" x="185" y="561" width="167" height="36"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<text><![CDATA[ลงชื่อ...............................................................ผู้กู้
+       (................................................................)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5bb44d3f-59e0-4fd0-b67b-fd5bbdc6bb2a" x="177" y="594" width="177" height="25"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[คำยินยอมของคู่สมรส (ใช้เฉพาะกรณีที่มีคู่สมรส)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="47823a26-6c09-4437-9173-5980345df0bb" x="7" y="611" width="532" height="37"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[               ข้าพเจ้านาย/นาง.............................................................................................เป็นคู่สมรสของ นาย/นาง.........................................................................................
+ยินยอมให้คู่สมรสข้าพเจ้ากู้เงินสามัญของสหกรณ์ออมทรัพย์แห่งนี้ ตามหนังสือเงินกู้ข้างต้นนี้และข้าพเจ้าได้ลงลายมือชื่อ ไว้เป็นสำคัญ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="518af8eb-01d0-43db-ba94-987e465330d7" x="198" y="641" width="237" height="36"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<text><![CDATA[...............................................................คู่สมรสผู้ให้คำยินยอม
+(...............................................................)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0ac9fb63-1bee-44a7-937f-3672ee3e9825" x="39" y="663" width="159" height="70"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<text><![CDATA[ลงชื่อ................................................พยาน
+       (................................................ )
+ตำแหน่ง/สังกัด.....................................
+เลขทะเบียน........................................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="76106038-e273-494d-910f-b9ccf8c377f3" x="7" y="723" width="533" height="52"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<text><![CDATA[                ข้าพเจ้า........................................................................................................ได้รับเงินกู จำนวน.............................................................................................บาท
+(..........................................................................................) ตามหนังสือสัญญากู้ยืมเงินนี้ไปเป็นการถูกต้องแล้ว ณ วันที่.................................................................................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0c13f8b6-a664-42c7-99a5-b35ef9122725" x="379" y="664" width="138" height="70"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<text><![CDATA[ลงชื่อ................................................พยาน
+       (................................................ )
+ตำแหน่ง/สังกัด.....................................
+เลขทะเบียน........................................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cfc521c9-d3ec-4e96-9071-2f741751267a" x="169" y="767" width="237" height="29"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<text><![CDATA[ลงชื่อ................................................ผู้รับเงิน (ต้องลงลายมือชื่อในการรับเงินต่อเจ้าหน้าที่ของสหกรณ์)
+]]></text>
+			</staticText>
+		</band>
+		<band height="728"/>
+	</detail>
+</jasperReport>

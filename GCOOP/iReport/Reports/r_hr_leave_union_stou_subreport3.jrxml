@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="r_hr_leave_union_doae_subreport3" language="groovy" pageWidth="165" pageHeight="22" orientation="Landscape" columnWidth="165" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="3b2b3fbf-fc6d-443c-a92c-618a2ff99090">
+	<property name="ireport.zoom" value="2.357947691000002"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="as_coopid" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="as_period" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     DISTINCT hr.emp_no AS emp_no ,
+(select sum(hrl1.totalday)
+from HRLOGLEAVE hrl1
+where (to_char(hrl1.leave_from,'yyyymm') between substr(to_char(to_number($P{as_period})-54300),1,4)||'01' and to_char(to_number($P{as_period})-54300) or to_char(hrl1.leave_to,'yyyymm') between substr(to_char(to_number($P{as_period})-54300),1,4)||'01' and to_char(to_number($P{as_period})-54300))
+and hrl1.leave_code = '001' and hrl1.emp_no = hr.emp_no) as totalday_01,
+(select sum(hrl2.totalday)
+from HRLOGLEAVE hrl2
+where (to_char(hrl2.leave_from,'yyyymm') between substr(to_char(to_number($P{as_period})-54300),1,4)||'01' and to_char(to_number($P{as_period})-54300) or to_char(hrl2.leave_to,'yyyymm') between substr(to_char(to_number($P{as_period})-54300),1,4)||'01' and to_char(to_number($P{as_period})-54300))
+and hrl2.leave_code = '002' and hrl2.emp_no = hr.emp_no) as totalday_04,
+(select sum(hrl4.totalday)
+from HRLOGLEAVE hrl4
+where (to_char(hrl4.leave_from,'yyyymm') between substr(to_char(to_number($P{as_period})-54300),1,4)||'01' and to_char(to_number($P{as_period})-54300) or to_char(hrl4.leave_to,'yyyymm') between substr(to_char(to_number($P{as_period})-54300),1,4)||'01' and to_char(to_number($P{as_period})-54300))
+and hrl4.leave_code = '006' and hrl4.emp_no = hr.emp_no) as totalday_08,
+(select count(hll.emp_no)
+from hrloglate hll
+where to_char(hll.late_date,'yyyymm') between substr(to_char(to_number($P{as_period})-54300),1,4)||'01' and to_char(to_number($P{as_period})-54300)
+and  hll.emp_no = hr.emp_no) as work_late,
+(select count(hw.emp_no)
+from hrlogworktime hw
+where to_char(hw.work_date,'yyyymm') between substr(to_char(to_number($P{as_period})-54300),1,4)||'01' and to_char(to_number($P{as_period})-54300)
+and  hw.emp_no = hr.emp_no and hw.worktime_code = 'LW') as work_lw
+FROM
+HREMPLOYEE hr,
+mbucfprename mup
+WHERE hr.prename_code = mup.prename_code
+and hr.emp_status = 1
+and hr.coop_id =$P{as_coopid}
+order by hr.emp_no]]>
+	</queryString>
+	<field name="EMP_NO" class="java.lang.String"/>
+	<field name="TOTALDAY_01" class="java.math.BigDecimal"/>
+	<field name="TOTALDAY_04" class="java.math.BigDecimal"/>
+	<field name="TOTALDAY_08" class="java.math.BigDecimal"/>
+	<field name="WORK_LATE" class="java.math.BigDecimal"/>
+	<field name="WORK_LW" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="22">
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="20007232-a31f-47eb-88ff-5815c34a569b" x="0" y="0" width="31" height="22"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TOTALDAY_01} == null ? '-' : $F{TOTALDAY_01}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="aecc18c4-d984-442e-b5a4-5d5866697ffd" x="72" y="0" width="31" height="22"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TOTALDAY_04} == null ? '-' : $F{TOTALDAY_04}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="b678b380-7673-4e9b-a85f-286b35a8549f" x="103" y="0" width="31" height="22"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{WORK_LATE}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="09185dca-341b-4098-8854-9aac308c9109" x="134" y="0" width="31" height="22"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{WORK_LW}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="d62b0b10-3441-4fb5-8d3d-187f32301ae9" x="31" y="0" width="41" height="22"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TOTALDAY_08} == null ? '-' : $F{TOTALDAY_08}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

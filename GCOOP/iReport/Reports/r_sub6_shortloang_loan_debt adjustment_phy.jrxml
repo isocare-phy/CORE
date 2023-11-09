@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="r_shortloang_loan_memtype_phy" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c2385819-4b74-4d45-88ba-45c165711dcb">
+	<property name="ireport.zoom" value="1.000000000000008"/>
+	<property name="ireport.x" value="11"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="as_coopid" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="as_recvperiod" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="as_smembgroup" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="as_emembgroup" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select
+'02' as type_name2
+,sum(case when loangroup_code = '01' then sl.payout_amt else 0 end ) cc
+,sum(case when loangroup_code = '02' then sl.payout_amt else 0 end ) sa
+,sum(case when loangroup_code = '03' then sl.payout_amt else 0 end ) pc
+,sum(case when loangroup_code = '04' then sl.payout_amt else 0 end ) aa
+,sum(case when lnt.loantype_code in('11','13') then sl.payoutclr_amt else 0 end) ss
+from slslippayout sl
+left join lncontmaster ln on sl.loancontract_no = ln.loancontract_no
+left join lnloantype lnt on ln.loantype_code = lnt.loantype_code
+where sl.coop_id like $P{as_coopid}
+and sl.slip_status > 0
+and sl.sliptype_code in ('LWD')
+and sl.slipclear_no is not null]]>
+	</queryString>
+	<field name="TYPE_NAME2" class="java.lang.String"/>
+	<field name="CC" class="java.math.BigDecimal"/>
+	<field name="SA" class="java.math.BigDecimal"/>
+	<field name="PC" class="java.math.BigDecimal"/>
+	<field name="AA" class="java.math.BigDecimal"/>
+	<field name="SS" class="java.math.BigDecimal"/>
+	<variable name="sum_sa" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{SA}]]></variableExpression>
+	</variable>
+	<variable name="sum_pc" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{PC}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="20">
+			<textField pattern="#,##0.00 ">
+				<reportElement uuid="7d6afdc1-a5cd-4f16-a30a-8c37dbd3e9a7" x="275" y="0" width="100" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PC}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00 ">
+				<reportElement uuid="09282268-27b1-41ba-80f3-9311d22a6c13" x="172" y="0" width="100" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="d94f60a1-9a74-42a5-8abe-12d7a5ac6495" x="0" y="0" width="143" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[จ่ายโอนเปลี่ยนสัญญา (Refinance)]]></text>
+			</staticText>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="b8dddf23-7c60-4fe6-bcd6-17dd8f7441b2" x="378" y="0" width="100" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SA}+$F{PC}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

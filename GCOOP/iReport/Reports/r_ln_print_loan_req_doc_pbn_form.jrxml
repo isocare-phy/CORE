@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="r_ln_print_loan_req_doc_pbn_form" language="groovy" pageWidth="595" pageHeight="842" columnWidth="545" leftMargin="25" rightMargin="25" topMargin="20" bottomMargin="20" uuid="a2fcca8f-9506-473d-bb80-1d4d65c18e46">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="3"/>
+	<subDataset name="dataset1" uuid="5e4cb02d-2b32-48c8-a927-d1e5ec9ebcbc"/>
+	<parameter name="as_loanrequest_docno" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="as_coopid" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\GCOOP_ALL\\PBN\\GCOOP\\iReport\\Reports\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="as_name" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT DISTINCT "MBUCFPRENAME"."PRENAME_DESC"||''||"MBMEMBMASTER"."MEMB_NAME"||' '||"MBMEMBMASTER"."MEMB_SURNAME" as fullname,
+         trunc(months_between(sysdate,"MBMEMBMASTER"."BIRTH_DATE")/12) as age,
+         "LNREQLOAN"."MEMBER_NO",
+         "MBMEMBMASTER"."CARD_PERSON",
+         "LNREQLOAN"."LOANTYPE_CODE",
+         "LNREQLOAN"."LOANCREDIT_AMT",
+         "LNREQLOAN"."LOANPERMISS_AMT",
+         "LNREQLOAN"."LOANREQUEST_AMT",
+         "LNREQLOAN"."LOANAPPROVE_AMT",
+         ftreadtbaht("LNREQLOAN"."LOANREQUEST_AMT") as thbathloan,
+         ftreadtbaht("LNREQLOAN"."PERIOD_PAYMENT") as thbathpayment,
+         "LNREQLOAN"."PERIOD_PAYMENT",
+         "LNREQLOAN"."LOANPAYMENT_TYPE",
+         "MBMEMBMASTER"."MEMB_NAME",
+         "MBMEMBMASTER"."MEMB_SURNAME",
+         "MBMEMBMASTER"."MEMBGROUP_CODE",
+         "MBUCFMEMBGROUP"."MEMBGROUP_DESC",
+         "CMCOOPCONSTANT"."COOP_NAME",
+         "CMCOOPCONSTANT"."MANAGER",
+         TO_CHAR("LNREQLOAN"."LOANREQUEST_DATE", 'dd MON yyyy', 'NLS_CALENDAR=''THAI BUDDHA'' NLS_DATE_LANGUAGE=THAI') as datethai,
+         "LNREQLOAN"."LOANREQUEST_DATE",
+         "LNREQLOAN"."LOANCONTRACT_NO",
+         "LNREQLOAN"."LOANREQUEST_DOCNO",
+         "LNREQLOAN"."PERIOD_LASTPAYMENT",
+         "LNREQLOAN"."SALARY_AMT",
+         "LNREQLOAN"."SHARE_LASTPERIOD",
+         "LNREQLOAN"."SHARE_PERIODVALUE",
+         "MBMEMBMASTER"."ADDR_NO",
+         "MBMEMBMASTER"."ADDR_MOO",
+         "MBMEMBMASTER"."ADDR_SOI",
+         "MBMEMBMASTER"."ADDR_VILLAGE",
+         "MBMEMBMASTER"."ADDR_ROAD",
+         "MBUCFDISTRICT"."DISTRICT_DESC",
+         "MBUCFPROVINCE"."PROVINCE_DESC",
+         "MBUCFTAMBOL"."TAMBOL_DESC",
+         "MBMEMBMASTER"."TAMBOL_CODE",
+         "MBMEMBMASTER"."AMPHUR_CODE",
+         "MBMEMBMASTER"."PROVINCE_CODE",
+         "MBMEMBMASTER"."ADDR_POSTCODE",
+         NVL("MBUCFPOSITION"."POSITION_DESC","MBMEMBMASTER"."POSITION_DESC") as POSITION_DESC,
+         TO_CHAR("LNREQLOAN"."LOANREQUEST_DATE", 'Month', 'NLS_CALENDAR=''THAI BUDDHA'' NLS_DATE_LANGUAGE=THAI') as monththai,
+         "LNREQLOAN"."PERIOD_PAYAMT",
+         "MBMEMBMASTER"."ADDR_PHONE",
+         "LNCFLOANINTRATEDET"."INTEREST_RATE",
+         "LNUCFLOANOBJECTIVE"."LOANOBJECTIVE_DESC",
+         FT_CALAGEMTH("MBMEMBMASTER"."BIRTH_DATE",SYSDATE) AS BIRTH_DATE
+    FROM "LNREQLOAN",
+         "MBMEMBMASTER",
+         "MBUCFMEMBGROUP",
+         "MBUCFPRENAME",
+         "CMCOOPCONSTANT",
+         "LNLOANTYPE",
+         "LNUCFLOANOBJECTIVE",
+         "LNCFLOANINTRATEDET",
+         "MBUCFDISTRICT",
+         "MBUCFPROVINCE",
+         "MBUCFTAMBOL",
+         "MBUCFPOSITION"
+   WHERE ( mbmembmaster.amphur_code = mbucfdistrict.district_code (+)) and
+         ( mbmembmaster.tambol_code = mbucftambol.tambol_code (+)) and
+         ( mbmembmaster.amphur_code = mbucftambol.district_code (+)) and
+         ( lnreqloan.loanobjective_code = lnucfloanobjective.loanobjective_code (+)) and
+         ( mbucfposition.position_code (+) = mbmembmaster.position_code) and
+         ( mbmembmaster.province_code = mbucfprovince.province_code (+)) and
+         ( "LNREQLOAN"."COOP_ID" = "MBMEMBMASTER"."COOP_ID" ) and
+         ( "LNREQLOAN"."LOANTYPE_CODE" = "LNLOANTYPE"."LOANTYPE_CODE" ) and
+         ( "MBUCFMEMBGROUP"."COOP_ID" = "MBMEMBMASTER"."COOP_ID" ) and
+         ( "MBUCFMEMBGROUP"."MEMBGROUP_CODE" = "MBMEMBMASTER"."MEMBGROUP_CODE" ) and
+         ( "MBUCFPRENAME"."PRENAME_CODE" = "MBMEMBMASTER"."PRENAME_CODE" ) and
+         ( "LNREQLOAN"."MEMBER_NO" = "MBMEMBMASTER"."MEMBER_NO" ) and
+         ( "LNCFLOANINTRATEDET"."LOANINTRATE_CODE" = "LNLOANTYPE"."INTTABRATE_CODE" ) and
+          ("LNREQLOAN"."LOANREQUEST_DATE" between "LNCFLOANINTRATEDET"."EFFECTIVE_DATE" and "LNCFLOANINTRATEDET"."EXPIRE_DATE") AND
+          ("LNREQLOAN"."COOP_ID" = $P{as_coopid} ) AND
+          ( "LNREQLOAN"."LOANREQUEST_DOCNO" IN ( $P{as_loanrequest_docno} ))
+ORDER BY "LNREQLOAN"."LOANREQUEST_DOCNO" ASC]]>
+	</queryString>
+	<field name="FULLNAME" class="java.lang.String"/>
+	<field name="AGE" class="java.math.BigDecimal"/>
+	<field name="MEMBER_NO" class="java.lang.String"/>
+	<field name="CARD_PERSON" class="java.lang.String"/>
+	<field name="LOANTYPE_CODE" class="java.lang.String"/>
+	<field name="LOANCREDIT_AMT" class="java.math.BigDecimal"/>
+	<field name="LOANPERMISS_AMT" class="java.math.BigDecimal"/>
+	<field name="LOANREQUEST_AMT" class="java.math.BigDecimal"/>
+	<field name="LOANAPPROVE_AMT" class="java.math.BigDecimal"/>
+	<field name="THBATHLOAN" class="java.lang.String"/>
+	<field name="THBATHPAYMENT" class="java.lang.String"/>
+	<field name="PERIOD_PAYMENT" class="java.math.BigDecimal"/>
+	<field name="LOANPAYMENT_TYPE" class="java.math.BigDecimal"/>
+	<field name="MEMB_NAME" class="java.lang.String"/>
+	<field name="MEMB_SURNAME" class="java.lang.String"/>
+	<field name="MEMBGROUP_CODE" class="java.lang.String"/>
+	<field name="MEMBGROUP_DESC" class="java.lang.String"/>
+	<field name="COOP_NAME" class="java.lang.String"/>
+	<field name="MANAGER" class="java.lang.String"/>
+	<field name="DATETHAI" class="java.lang.String"/>
+	<field name="LOANREQUEST_DATE" class="java.sql.Timestamp"/>
+	<field name="LOANCONTRACT_NO" class="java.lang.String"/>
+	<field name="LOANREQUEST_DOCNO" class="java.lang.String"/>
+	<field name="PERIOD_LASTPAYMENT" class="java.math.BigDecimal"/>
+	<field name="SALARY_AMT" class="java.math.BigDecimal"/>
+	<field name="SHARE_LASTPERIOD" class="java.math.BigDecimal"/>
+	<field name="SHARE_PERIODVALUE" class="java.math.BigDecimal"/>
+	<field name="ADDR_NO" class="java.lang.String"/>
+	<field name="ADDR_MOO" class="java.lang.String"/>
+	<field name="ADDR_SOI" class="java.lang.String"/>
+	<field name="ADDR_VILLAGE" class="java.lang.String"/>
+	<field name="ADDR_ROAD" class="java.lang.String"/>
+	<field name="DISTRICT_DESC" class="java.lang.String"/>
+	<field name="PROVINCE_DESC" class="java.lang.String"/>
+	<field name="TAMBOL_DESC" class="java.lang.String"/>
+	<field name="TAMBOL_CODE" class="java.lang.String"/>
+	<field name="AMPHUR_CODE" class="java.lang.String"/>
+	<field name="PROVINCE_CODE" class="java.lang.String"/>
+	<field name="ADDR_POSTCODE" class="java.lang.String"/>
+	<field name="POSITION_DESC" class="java.lang.String"/>
+	<field name="MONTHTHAI" class="java.lang.String"/>
+	<field name="PERIOD_PAYAMT" class="java.math.BigDecimal"/>
+	<field name="ADDR_PHONE" class="java.lang.String"/>
+	<field name="INTEREST_RATE" class="java.math.BigDecimal"/>
+	<field name="LOANOBJECTIVE_DESC" class="java.lang.String"/>
+	<field name="BIRTH_DATE" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="802" splitType="Stretch">
+			<textField>
+				<reportElement uuid="549d71a1-8045-4779-bd74-0845679fe489" x="120" y="104" width="65" height="20"/>
+				<textElement>
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{LOANCONTRACT_NO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="7c2d0639-88a4-47d5-a37a-adc581782d6a" x="96" y="150" width="146" height="20"/>
+				<textElement>
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FULLNAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a26cf4d6-4520-4cff-9d95-1cc5ba210e83" x="439" y="150" width="100" height="20"/>
+				<textElement>
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MEMBER_NO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0d02d07b-1d40-4f55-afa1-3938ccdb2e4f" x="149" y="170" width="93" height="20"/>
+				<textElement>
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CARD_PERSON}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d3ae2bcd-e7ad-4507-a217-40b07e6086fc" x="464" y="169" width="75" height="20"/>
+				<textElement>
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{POSITION_DESC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ff5d8fe6-0424-48e1-a694-4e094ca70078" x="142" y="185" width="68" height="20"/>
+				<textElement>
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{POSITION_DESC}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="1d753f2a-20fb-41c1-8bd1-2c39149f068a" x="222" y="215" width="86" height="20"/>
+				<textElement>
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{LOANAPPROVE_AMT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="481f2794-3efb-4866-91ab-3de3c213f1b1" x="329" y="217" width="201" height="20"/>
+				<textElement>
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{THBATHLOAN}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="031a47d8-8873-47cc-a758-8c76139b5e75" x="338" y="244" width="68" height="20"/>
+				<textElement>
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PERIOD_PAYMENT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c1ab640b-e03c-4708-b132-250e388ac076" x="16" y="271" width="133" height="20"/>
+				<textElement>
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{THBATHPAYMENT}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="5fe028a6-b7fa-41f9-867c-cd29702d46fb" x="435" y="272" width="92" height="20"/>
+				<textElement>
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PERIOD_PAYMENT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6c2e352c-e310-4eea-bfd3-1de887c759c9" x="210" y="274" width="48" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{INTEREST_RATE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c43c19d6-7394-47f2-8a24-f60018bc366a" x="115" y="259" width="54" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{INTEREST_RATE}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="1f9fe23b-ced6-42d0-ad52-62ed9a58705f" x="307" y="274" width="47" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{PERIOD_PAYMENT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="9f4249b8-7aab-45a5-b7ba-dac2be0465c6" x="274" y="289" width="80" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{MONTHTHAI}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="921ec2bc-fccf-4b60-a180-49998a09b7dd" x="352" y="344" width="144" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{LOANOBJECTIVE_DESC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="2d1fc5c7-6974-4deb-b09d-bccf16ddae00" x="225" y="564" width="87" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{FULLNAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="7001280b-cbe8-4856-8b70-ab90da53f44b" x="129" y="732" width="129" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{FULLNAME}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="84dd0265-a34a-4b5c-83f5-9fc6b10703f2" x="354" y="733" width="159" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{LOANAPPROVE_AMT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="78966d45-5d11-422f-9e70-ea9d9548a810" x="435" y="748" width="78" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{DATETHAI}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="e6f014b9-13f0-4f2a-a792-bc813af6c82e" x="449" y="260" width="47" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{PERIOD_PAYMENT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e5eccf8d-9768-4a8a-a191-f7fde9588828" x="14" y="285" width="133" height="20"/>
+				<textElement>
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{THBATHPAYMENT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="62c17ce5-9df1-42ed-b205-e28f6f65252b" x="115" y="124" width="78" height="20"/>
+				<textElement>
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DATETHAI}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="1301139e-16a8-4146-b0d6-26e84a584c03" x="11" y="747" width="180" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{THBATHLOAN}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c30994d4-2769-4251-8cd6-415dce1fc820" x="391" y="612" width="136" height="20"/>
+				<textElement>
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FULLNAME}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement uuid="2a66e98a-3223-4d8f-82a0-9e20c761b02f" x="312" y="0" width="218" height="104"/>
+				<subreportParameter name="as_reqloandocno">
+					<subreportParameterExpression><![CDATA[$F{LOANREQUEST_DOCNO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["neted_ir_loan_print_cont_form.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="728"/>
+	</detail>
+</jasperReport>

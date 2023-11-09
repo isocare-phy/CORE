@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet1" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="connect_localhost_msv" IsAppSettingsProperty="true" Modifier="Assembly" Name="connect_localhost_msv (Web.config)" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.connect_localhost_msv.ConnectionString" Provider="System.Data.OracleClient" />
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="ConnectionString2" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ConnectionString2 (Web.config)" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.ConnectionString2.ConnectionString" Provider="System.Data.OracleClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="HRLOGLEAVETableAdapter" GeneratorDataComponentClassName="HRLOGLEAVETableAdapter" Name="HRLOGLEAVE" UserDataComponentName="HRLOGLEAVETableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ConnectionString2 (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        HRLOGLEAVE.COOP_ID, HRLOGLEAVE.EMP_NO, HRLOGLEAVE.LEAVE_DATE, HRLOGLEAVE.LEAVE_CODE, HRLOGLEAVE.LEAVE_FROM, HRLOGLEAVE.LEAVE_TO, HRLOGLEAVE.TOTALDAY, 
+                         HRLOGLEAVE.TOTALTIME, HRLOGLEAVE.LEAVE_CAUSE, HRLOGLEAVE.LEAVE_TEL, HRLOGLEAVE.LEAVE_PLACE, HRLOGLEAVE.APV_STATUS, HRLOGLEAVE.APV_REMARK, HRLOGLEAVE.APV_DATE, 
+                         HRLOGLEAVE.SEQ_NO, HRLOGLEAVE.APV_BYCODE, HRUCFLEAVECODE.LEAVE_DESC
+FROM            HRLOGLEAVE, HRUCFLEAVECODE
+WHERE        HRLOGLEAVE.LEAVE_CODE = HRUCFLEAVECODE.LEAVE_CODE</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="COOP_ID" DataSetColumn="COOP_ID" />
+              <Mapping SourceColumn="EMP_NO" DataSetColumn="EMP_NO" />
+              <Mapping SourceColumn="LEAVE_DATE" DataSetColumn="LEAVE_DATE" />
+              <Mapping SourceColumn="LEAVE_CODE" DataSetColumn="LEAVE_CODE" />
+              <Mapping SourceColumn="LEAVE_FROM" DataSetColumn="LEAVE_FROM" />
+              <Mapping SourceColumn="LEAVE_TO" DataSetColumn="LEAVE_TO" />
+              <Mapping SourceColumn="TOTALDAY" DataSetColumn="TOTALDAY" />
+              <Mapping SourceColumn="TOTALTIME" DataSetColumn="TOTALTIME" />
+              <Mapping SourceColumn="LEAVE_CAUSE" DataSetColumn="LEAVE_CAUSE" />
+              <Mapping SourceColumn="LEAVE_TEL" DataSetColumn="LEAVE_TEL" />
+              <Mapping SourceColumn="LEAVE_PLACE" DataSetColumn="LEAVE_PLACE" />
+              <Mapping SourceColumn="APV_STATUS" DataSetColumn="APV_STATUS" />
+              <Mapping SourceColumn="APV_REMARK" DataSetColumn="APV_REMARK" />
+              <Mapping SourceColumn="APV_DATE" DataSetColumn="APV_DATE" />
+              <Mapping SourceColumn="SEQ_NO" DataSetColumn="SEQ_NO" />
+              <Mapping SourceColumn="APV_BYCODE" DataSetColumn="APV_BYCODE" />
+              <Mapping SourceColumn="LEAVE_DESC" DataSetColumn="LEAVE_DESC" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="HRLOGLEAVE" msprop:Generator_TableClassName="HRLOGLEAVEDataTable" msprop:Generator_TableVarName="tableHRLOGLEAVE" msprop:Generator_TablePropName="HRLOGLEAVE" msprop:Generator_RowDeletingName="HRLOGLEAVERowDeleting" msprop:Generator_RowChangingName="HRLOGLEAVERowChanging" msprop:Generator_RowEvHandlerName="HRLOGLEAVERowChangeEventHandler" msprop:Generator_RowDeletedName="HRLOGLEAVERowDeleted" msprop:Generator_UserTableName="HRLOGLEAVE" msprop:Generator_RowChangedName="HRLOGLEAVERowChanged" msprop:Generator_RowEvArgName="HRLOGLEAVERowChangeEvent" msprop:Generator_RowClassName="HRLOGLEAVERow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="COOP_ID" msprop:Generator_ColumnVarNameInTable="columnCOOP_ID" msprop:Generator_ColumnPropNameInRow="COOP_ID" msprop:Generator_ColumnPropNameInTable="COOP_IDColumn" msprop:Generator_UserColumnName="COOP_ID">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="6" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="EMP_NO" msprop:Generator_ColumnVarNameInTable="columnEMP_NO" msprop:Generator_ColumnPropNameInRow="EMP_NO" msprop:Generator_ColumnPropNameInTable="EMP_NOColumn" msprop:Generator_UserColumnName="EMP_NO">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="LEAVE_DATE" msprop:Generator_ColumnVarNameInTable="columnLEAVE_DATE" msprop:Generator_ColumnPropNameInRow="LEAVE_DATE" msprop:Generator_ColumnPropNameInTable="LEAVE_DATEColumn" msprop:Generator_UserColumnName="LEAVE_DATE" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="LEAVE_CODE" msprop:Generator_ColumnVarNameInTable="columnLEAVE_CODE" msprop:Generator_ColumnPropNameInRow="LEAVE_CODE" msprop:Generator_ColumnPropNameInTable="LEAVE_CODEColumn" msprop:Generator_UserColumnName="LEAVE_CODE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="LEAVE_FROM" msprop:Generator_ColumnVarNameInTable="columnLEAVE_FROM" msprop:Generator_ColumnPropNameInRow="LEAVE_FROM" msprop:Generator_ColumnPropNameInTable="LEAVE_FROMColumn" msprop:Generator_UserColumnName="LEAVE_FROM" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="LEAVE_TO" msprop:Generator_ColumnVarNameInTable="columnLEAVE_TO" msprop:Generator_ColumnPropNameInRow="LEAVE_TO" msprop:Generator_ColumnPropNameInTable="LEAVE_TOColumn" msprop:Generator_UserColumnName="LEAVE_TO" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="TOTALDAY" msprop:Generator_ColumnVarNameInTable="columnTOTALDAY" msprop:Generator_ColumnPropNameInRow="TOTALDAY" msprop:Generator_ColumnPropNameInTable="TOTALDAYColumn" msprop:Generator_UserColumnName="TOTALDAY" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TOTALTIME" msprop:Generator_ColumnVarNameInTable="columnTOTALTIME" msprop:Generator_ColumnPropNameInRow="TOTALTIME" msprop:Generator_ColumnPropNameInTable="TOTALTIMEColumn" msprop:Generator_UserColumnName="TOTALTIME" type="xs:decimal" minOccurs="0" />
+              <xs:element name="LEAVE_CAUSE" msprop:Generator_ColumnVarNameInTable="columnLEAVE_CAUSE" msprop:Generator_ColumnPropNameInRow="LEAVE_CAUSE" msprop:Generator_ColumnPropNameInTable="LEAVE_CAUSEColumn" msprop:Generator_UserColumnName="LEAVE_CAUSE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="LEAVE_TEL" msprop:Generator_ColumnVarNameInTable="columnLEAVE_TEL" msprop:Generator_ColumnPropNameInRow="LEAVE_TEL" msprop:Generator_ColumnPropNameInTable="LEAVE_TELColumn" msprop:Generator_UserColumnName="LEAVE_TEL" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="LEAVE_PLACE" msprop:Generator_ColumnVarNameInTable="columnLEAVE_PLACE" msprop:Generator_ColumnPropNameInRow="LEAVE_PLACE" msprop:Generator_ColumnPropNameInTable="LEAVE_PLACEColumn" msprop:Generator_UserColumnName="LEAVE_PLACE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="APV_STATUS" msprop:Generator_ColumnVarNameInTable="columnAPV_STATUS" msprop:Generator_ColumnPropNameInRow="APV_STATUS" msprop:Generator_ColumnPropNameInTable="APV_STATUSColumn" msprop:Generator_UserColumnName="APV_STATUS" type="xs:decimal" minOccurs="0" />
+              <xs:element name="APV_REMARK" msprop:Generator_ColumnVarNameInTable="columnAPV_REMARK" msprop:Generator_ColumnPropNameInRow="APV_REMARK" msprop:Generator_ColumnPropNameInTable="APV_REMARKColumn" msprop:Generator_UserColumnName="APV_REMARK" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="APV_DATE" msprop:Generator_ColumnVarNameInTable="columnAPV_DATE" msprop:Generator_ColumnPropNameInRow="APV_DATE" msprop:Generator_ColumnPropNameInTable="APV_DATEColumn" msprop:Generator_UserColumnName="APV_DATE" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="SEQ_NO" msprop:Generator_ColumnVarNameInTable="columnSEQ_NO" msprop:Generator_ColumnPropNameInRow="SEQ_NO" msprop:Generator_ColumnPropNameInTable="SEQ_NOColumn" msprop:Generator_UserColumnName="SEQ_NO" type="xs:decimal" />
+              <xs:element name="APV_BYCODE" msprop:Generator_ColumnVarNameInTable="columnAPV_BYCODE" msprop:Generator_ColumnPropNameInRow="APV_BYCODE" msprop:Generator_ColumnPropNameInTable="APV_BYCODEColumn" msprop:Generator_UserColumnName="APV_BYCODE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="LEAVE_DESC" msprop:Generator_ColumnVarNameInTable="columnLEAVE_DESC" msprop:Generator_ColumnPropNameInRow="LEAVE_DESC" msprop:Generator_ColumnPropNameInTable="LEAVE_DESCColumn" msprop:Generator_UserColumnName="LEAVE_DESC" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FULLNAME" msprop:Generator_ColumnVarNameInTable="columnFULLNAME" msprop:Generator_ColumnPropNameInRow="FULLNAME" msprop:Generator_ColumnPropNameInTable="FULLNAMEColumn" msprop:Generator_UserColumnName="FULLNAME" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:HRLOGLEAVE" />
+      <xs:field xpath="mstns:COOP_ID" />
+      <xs:field xpath="mstns:EMP_NO" />
+      <xs:field xpath="mstns:SEQ_NO" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

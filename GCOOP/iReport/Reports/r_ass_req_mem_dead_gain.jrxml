@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="r_ass_req_mem_dead_gain" language="groovy" pageWidth="150" pageHeight="842" columnWidth="150" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="9864c7bb-b6ae-4c4c-af05-a063fda61c33">
+	<property name="ireport.zoom" value="1.610510000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="as_assist_docno" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT "ASSREQMASTERGAIN"."GAIN_NAME",
+         "MBUCFGAINCONCERN"."GAIN_CONCERN"
+    FROM "ASSREQMASTERGAIN",
+         "MBUCFGAINCONCERN"
+   WHERE ( "ASSREQMASTERGAIN"."GAINRELATION_CODE" = "MBUCFGAINCONCERN"."CONCERN_CODE" ) and
+         ( ( "ASSREQMASTERGAIN"."ASSIST_DOCNO" = $P{as_assist_docno} ) )]]>
+	</queryString>
+	<field name="GAIN_NAME" class="java.lang.String"/>
+	<field name="GAIN_CONCERN" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement uuid="b9b7451e-20d5-42c1-9f57-d87e377fa1d2" x="0" y="0" width="95" height="20"/>
+				<textElement>
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{GAIN_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3644d473-3c6d-4c01-bba2-a9353da6b067" x="95" y="0" width="55" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{GAIN_CONCERN}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet1" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="connect_localhost_msv" IsAppSettingsProperty="true" Modifier="Assembly" Name="connect_localhost_msv (Web.config)" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.connect_localhost_msv.ConnectionString" Provider="System.Data.OracleClient" />
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="localhost_gsb" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="localhost_gsb (Web.config)" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.localhost_gsb.ConnectionString" Provider="System.Data.OracleClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="HRLOGWORKTIMETableAdapter" GeneratorDataComponentClassName="HRLOGWORKTIMETableAdapter" Name="HRLOGWORKTIME" UserDataComponentName="HRLOGWORKTIMETableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="localhost_gsb (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT hr.EMP_NO, mup.PRENAME_DESC, hr.EMP_NAME, hr.EMP_SURNAME, hw.WORK_DATE, hw.START_TIME, hw.END_TIME, hl.LATE_TIME
+FROM     HREMPLOYEE hr, MBUCFPRENAME mup, HRLOGWORKTIME hw, HRLOGLATE hl</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="EMP_NO" DataSetColumn="EMP_NO" />
+              <Mapping SourceColumn="PRENAME_DESC" DataSetColumn="PRENAME_DESC" />
+              <Mapping SourceColumn="EMP_NAME" DataSetColumn="EMP_NAME" />
+              <Mapping SourceColumn="EMP_SURNAME" DataSetColumn="EMP_SURNAME" />
+              <Mapping SourceColumn="WORK_DATE" DataSetColumn="WORK_DATE" />
+              <Mapping SourceColumn="START_TIME" DataSetColumn="START_TIME" />
+              <Mapping SourceColumn="END_TIME" DataSetColumn="END_TIME" />
+              <Mapping SourceColumn="LATE_TIME" DataSetColumn="LATE_TIME" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="HRLOGWORKTIME" msprop:Generator_TableClassName="HRLOGWORKTIMEDataTable" msprop:Generator_TableVarName="tableHRLOGWORKTIME" msprop:Generator_RowChangedName="HRLOGWORKTIMERowChanged" msprop:Generator_TablePropName="HRLOGWORKTIME" msprop:Generator_RowDeletingName="HRLOGWORKTIMERowDeleting" msprop:Generator_RowChangingName="HRLOGWORKTIMERowChanging" msprop:Generator_RowEvHandlerName="HRLOGWORKTIMERowChangeEventHandler" msprop:Generator_RowDeletedName="HRLOGWORKTIMERowDeleted" msprop:Generator_RowClassName="HRLOGWORKTIMERow" msprop:Generator_UserTableName="HRLOGWORKTIME" msprop:Generator_RowEvArgName="HRLOGWORKTIMERowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="EMP_NO" msprop:Generator_ColumnVarNameInTable="columnEMP_NO" msprop:Generator_ColumnPropNameInRow="EMP_NO" msprop:Generator_ColumnPropNameInTable="EMP_NOColumn" msprop:Generator_UserColumnName="EMP_NO">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PRENAME_DESC" msprop:Generator_ColumnVarNameInTable="columnPRENAME_DESC" msprop:Generator_ColumnPropNameInRow="PRENAME_DESC" msprop:Generator_ColumnPropNameInTable="PRENAME_DESCColumn" msprop:Generator_UserColumnName="PRENAME_DESC" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="EMP_NAME" msprop:Generator_ColumnVarNameInTable="columnEMP_NAME" msprop:Generator_ColumnPropNameInRow="EMP_NAME" msprop:Generator_ColumnPropNameInTable="EMP_NAMEColumn" msprop:Generator_UserColumnName="EMP_NAME" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="EMP_SURNAME" msprop:Generator_ColumnVarNameInTable="columnEMP_SURNAME" msprop:Generator_ColumnPropNameInRow="EMP_SURNAME" msprop:Generator_ColumnPropNameInTable="EMP_SURNAMEColumn" msprop:Generator_UserColumnName="EMP_SURNAME" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="WORK_DATE" msprop:Generator_ColumnVarNameInTable="columnWORK_DATE" msprop:Generator_ColumnPropNameInRow="WORK_DATE" msprop:Generator_ColumnPropNameInTable="WORK_DATEColumn" msprop:Generator_UserColumnName="WORK_DATE" type="xs:string" />
+              <xs:element name="START_TIME" msprop:Generator_ColumnVarNameInTable="columnSTART_TIME" msprop:Generator_ColumnPropNameInRow="START_TIME" msprop:Generator_ColumnPropNameInTable="START_TIMEColumn" msprop:Generator_UserColumnName="START_TIME" type="xs:string" minOccurs="0" />
+              <xs:element name="END_TIME" msprop:Generator_ColumnVarNameInTable="columnEND_TIME" msprop:Generator_ColumnPropNameInRow="END_TIME" msprop:Generator_ColumnPropNameInTable="END_TIMEColumn" msprop:Generator_UserColumnName="END_TIME" type="xs:string" minOccurs="0" />
+              <xs:element name="LATE_TIME" msprop:Generator_ColumnVarNameInTable="columnLATE_TIME" msprop:Generator_ColumnPropNameInRow="LATE_TIME" msprop:Generator_ColumnPropNameInTable="LATE_TIMEColumn" msprop:Generator_UserColumnName="LATE_TIME" type="xs:string" minOccurs="0" />
+              <xs:element name="APV_WORKTIME" msprop:Generator_ColumnVarNameInTable="columnAPV_WORKTIME" msprop:Generator_ColumnPropNameInRow="APV_WORKTIME" msprop:Generator_ColumnPropNameInTable="APV_WORKTIMEColumn" msprop:Generator_UserColumnName="APV_WORKTIME" type="xs:string" minOccurs="0" />
+              <xs:element name="FULL_NAME" msprop:Generator_ColumnVarNameInTable="columnFULL_NAME" msprop:Generator_ColumnPropNameInRow="FULL_NAME" msprop:Generator_ColumnPropNameInTable="FULL_NAMEColumn" msprop:Generator_UserColumnName="FULL_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="WORK_DATES" msprop:Generator_ColumnVarNameInTable="columnWORK_DATES" msprop:Generator_ColumnPropNameInRow="WORK_DATES" msprop:Generator_ColumnPropNameInTable="WORK_DATESColumn" msprop:Generator_UserColumnName="WORK_DATES" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

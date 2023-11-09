@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="r_pm_accrued_interest_doa_sub" language="groovy" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="143cb019-057c-48c5-ab2b-64952afcab7b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="as_account_no" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select
+to_char(pminvestmaster.prncbal,'999,999,999,999.99') as prncbal,
+pminvestmaster.due_date,
+pminvestmaster.open_date,
+TRUNC(MONTHS_BETWEEN (pminvestmaster.due_date, pminvestmaster.open_date ) /12 ) as "YEAR",
+TRUNC(MOD(MONTHS_BETWEEN(pminvestmaster.due_date, pminvestmaster.open_date),12)) as "MONTH",
+cmucfbank.bank_desc,
+cmucfbankbranch.branch_name,
+pminvestintrate.seq_no,
+pminvestintrate.int_start_date,
+pminvestintrate.int_end_date,
+pminvestintrate.int_rate
+from pminvestmaster
+left join cmucfbank on pminvestmaster.bank_code = cmucfbank.bank_code
+left join cmucfbankbranch on pminvestmaster.bank_branch = cmucfbankbranch.branch_id
+and pminvestmaster.bank_code = cmucfbankbranch.bank_code
+join pminvestintrate on pminvestmaster.account_no = pminvestintrate.account_no
+where pminvestmaster.account_no = $P{as_account_no}
+order by pminvestintrate.seq_no]]>
+	</queryString>
+	<field name="PRNCBAL" class="java.lang.String"/>
+	<field name="DUE_DATE" class="java.sql.Timestamp"/>
+	<field name="OPEN_DATE" class="java.sql.Timestamp"/>
+	<field name="YEAR" class="java.math.BigDecimal"/>
+	<field name="MONTH" class="java.math.BigDecimal"/>
+	<field name="BANK_DESC" class="java.lang.String"/>
+	<field name="BRANCH_NAME" class="java.lang.String"/>
+	<field name="SEQ_NO" class="java.math.BigDecimal"/>
+	<field name="INT_START_DATE" class="java.sql.Timestamp"/>
+	<field name="INT_END_DATE" class="java.sql.Timestamp"/>
+	<field name="INT_RATE" class="java.math.BigDecimal"/>
+	<pageHeader>
+		<band height="60">
+			<textField>
+				<reportElement uuid="4b094913-b68b-4deb-a720-76cf93eb12e1" x="0" y="0" width="555" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ระยะเวลา  "+$F{YEAR} + " ปี " + ( $F{MONTH}== 0 ? "" : " "+$F{MONTH}+" เดือน" )+ "มูลค่า  "+$F{PRNCBAL}+" บาท"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a81e0845-2450-4802-98b7-50e14d149fba" x="0" y="20" width="555" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ตั้งแต่วันที่ "+new SimpleDateFormat("dd MMMMM yyyy",new Locale("th","TH")).format($F{OPEN_DATE})+" - "+new SimpleDateFormat("dd MMMMM yyyy",new Locale("th","TH")).format($F{DUE_DATE})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="2f71398d-bf84-4eb1-81a7-ecbd377c0455" x="0" y="40" width="555" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["รับดอกเบี้ยเข้าบัญชี "+$F{BANK_DESC}+" สาขา "+$F{BRANCH_NAME}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement uuid="95bd1794-63d8-47cd-9dce-6064b48d7caa" x="113" y="0" width="102" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["อัตราดอกเบี้ยที่ "+$F{SEQ_NO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d145fd33-c5e3-432c-b25d-761c406f6d67" x="215" y="0" width="120" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd MMM yyyy",new Locale("th","TH")).format($F{INT_START_DATE})+" - "+
+new SimpleDateFormat("dd MMM yyyy",new Locale("th","TH")).format($F{INT_END_DATE})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c2a5bd06-2485-4ba3-b7be-38296be3d35f" x="335" y="0" width="54" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{INT_RATE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="1f063050-9ba1-4a5d-b91a-5ac686d8432b" x="389" y="0" width="23" height="20"/>
+				<box leftPadding="2"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[%]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

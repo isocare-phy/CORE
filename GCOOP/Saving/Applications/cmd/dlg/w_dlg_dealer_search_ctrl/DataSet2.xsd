@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet2" targetNamespace="http://tempuri.org/DataSet2.xsd" xmlns:mstns="http://tempuri.org/DataSet2.xsd" xmlns="http://tempuri.org/DataSet2.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ConnectionString (Web.config)" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.ConnectionString.ConnectionString" Provider="System.Data.OracleClient" />
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="ConnectionString2" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ConnectionString2 (Web.config)" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.ConnectionString2.ConnectionString" Provider="System.Data.OracleClient" />
+        </Connections>
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet2" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet2" msprop:Generator_UserDSName="DataSet2">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ptucfdealer" msprop:Generator_TableClassName="ptucfdealerDataTable" msprop:Generator_TableVarName="tableptucfdealer" msprop:Generator_TablePropName="ptucfdealer" msprop:Generator_RowDeletingName="ptucfdealerRowDeleting" msprop:Generator_RowChangingName="ptucfdealerRowChanging" msprop:Generator_RowEvHandlerName="ptucfdealerRowChangeEventHandler" msprop:Generator_RowDeletedName="ptucfdealerRowDeleted" msprop:Generator_UserTableName="ptucfdealer" msprop:Generator_RowChangedName="ptucfdealerRowChanged" msprop:Generator_RowEvArgName="ptucfdealerRowChangeEvent" msprop:Generator_RowClassName="ptucfdealerRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="dealer_no" msprop:Generator_ColumnVarNameInTable="columndealer_no" msprop:Generator_ColumnPropNameInRow="dealer_no" msprop:Generator_ColumnPropNameInTable="dealer_noColumn" msprop:Generator_UserColumnName="dealer_no" type="xs:string" minOccurs="0" />
+              <xs:element name="dealer_name" msprop:Generator_ColumnVarNameInTable="columndealer_name" msprop:Generator_ColumnPropNameInRow="dealer_name" msprop:Generator_ColumnPropNameInTable="dealer_nameColumn" msprop:Generator_UserColumnName="dealer_name" type="xs:string" minOccurs="0" />
+              <xs:element name="dealer_addr" msprop:Generator_ColumnVarNameInTable="columndealer_addr" msprop:Generator_ColumnPropNameInRow="dealer_addr" msprop:Generator_ColumnPropNameInTable="dealer_addrColumn" msprop:Generator_UserColumnName="dealer_addr" type="xs:string" minOccurs="0" />
+              <xs:element name="dealer_taxid" msprop:Generator_ColumnVarNameInTable="columndealer_taxid" msprop:Generator_ColumnPropNameInRow="dealer_taxid" msprop:Generator_ColumnPropNameInTable="dealer_taxidColumn" msprop:Generator_UserColumnName="dealer_taxid" type="xs:string" minOccurs="0" />
+              <xs:element name="dealer_phone" msprop:Generator_ColumnVarNameInTable="columndealer_phone" msprop:Generator_ColumnPropNameInRow="dealer_phone" msprop:Generator_ColumnPropNameInTable="dealer_phoneColumn" msprop:Generator_UserColumnName="dealer_phone" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CRITERIA" msprop:Generator_TableClassName="CRITERIADataTable" msprop:Generator_TableVarName="tableCRITERIA" msprop:Generator_TablePropName="CRITERIA" msprop:Generator_RowDeletingName="CRITERIARowDeleting" msprop:Generator_RowChangingName="CRITERIARowChanging" msprop:Generator_RowEvHandlerName="CRITERIARowChangeEventHandler" msprop:Generator_RowDeletedName="CRITERIARowDeleted" msprop:Generator_UserTableName="CRITERIA" msprop:Generator_RowChangedName="CRITERIARowChanged" msprop:Generator_RowEvArgName="CRITERIARowChangeEvent" msprop:Generator_RowClassName="CRITERIARow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="dealer_no" msprop:Generator_ColumnVarNameInTable="columndealer_no" msprop:Generator_ColumnPropNameInRow="dealer_no" msprop:Generator_ColumnPropNameInTable="dealer_noColumn" msprop:Generator_UserColumnName="dealer_no" type="xs:string" minOccurs="0" />
+              <xs:element name="dealer_name" msprop:Generator_ColumnVarNameInTable="columndealer_name" msprop:Generator_ColumnPropNameInRow="dealer_name" msprop:Generator_ColumnPropNameInTable="dealer_nameColumn" msprop:Generator_UserColumnName="dealer_name" type="xs:string" minOccurs="0" />
+              <xs:element name="dealer_addr" msprop:Generator_ColumnVarNameInTable="columndealer_addr" msprop:Generator_ColumnPropNameInRow="dealer_addr" msprop:Generator_ColumnPropNameInTable="dealer_addrColumn" msprop:Generator_UserColumnName="dealer_addr" type="xs:string" minOccurs="0" />
+              <xs:element name="dealer_taxid" msprop:Generator_ColumnVarNameInTable="columndealer_taxid" msprop:Generator_ColumnPropNameInRow="dealer_taxid" msprop:Generator_ColumnPropNameInTable="dealer_taxidColumn" msprop:Generator_UserColumnName="dealer_taxid" type="xs:string" minOccurs="0" />
+              <xs:element name="dealer_phone" msprop:Generator_ColumnVarNameInTable="columndealer_phone" msprop:Generator_ColumnPropNameInRow="dealer_phone" msprop:Generator_ColumnPropNameInTable="dealer_phoneColumn" msprop:Generator_UserColumnName="dealer_phone" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

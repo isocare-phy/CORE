@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="r_pm_accrued_interest" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ef50dc97-53d8-4d9e-9fc2-911a35f6dafa">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="as_date" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select
+to_date($P{as_date},'dd/mm/yyyy') as s_date,
+pminvestmaster.open_date,
+pminvestmaster.account_no,
+pminvestmaster.due_date,
+pminvestmaster.symbol_code,
+pminvestmaster.invsource_code,
+pmucfinvsource.invsource_desc,
+pminvestmaster.invest_detail,
+pminvestmaster.prncbal,
+nvl((select max(int_rate) from pminvestintrate
+where pminvestintrate.account_no = pminvestmaster.account_no and
+to_date($P{as_date},'dd/mm/yyyy') between int_start_date and int_end_date
+),0) as int_rate,
+nvl((select max(start_calint_date) from pminvestduedate
+where pminvestduedate.account_no = pminvestmaster.account_no and
+to_date($P{as_date},'dd/mm/yyyy') between start_calint_date and last_cal_to_date),pminvestmaster.open_date) as last_cal_to_date,
+NVL((case when to_date($P{as_date},'dd/mm/yyyy') >= pminvestmaster.due_date then pminvestmaster.due_date else to_date($P{as_date},'dd/mm/yyyy') end) -
+(select max(start_calint_date)-1 from pminvestduedate
+where pminvestduedate.account_no = pminvestmaster.account_no and
+to_date($P{as_date},'dd/mm/yyyy') between start_calint_date and last_cal_to_date),0) as day ,
+(case when (nvl(LAST_DAY( add_months(to_date($P{as_date},'dd/mm/yyyy'),-1) ) -
+(select max(start_calint_date)-1 from pminvestduedate
+where pminvestduedate.account_no = pminvestmaster.account_no and
+to_date($P{as_date},'dd/mm/yyyy') between start_calint_date and last_cal_to_date),0)) < 0 then 0 else
+( nvl(LAST_DAY( add_months(to_date($P{as_date},'dd/mm/yyyy'),-1) ) -
+(select max(start_calint_date)-1 from pminvestduedate
+where pminvestduedate.account_no = pminvestmaster.account_no and
+to_date($P{as_date},'dd/mm/yyyy') between start_calint_date and last_cal_to_date),0)) end )
+ as day_befor,
+ROUND(pminvestmaster.prncbal *
+((nvl((select max(int_rate) from pminvestintrate
+where pminvestintrate.account_no = pminvestmaster.account_no and
+to_date($P{as_date},'dd/mm/yyyy') between int_start_date and int_end_date),0))/100) *
+(NVL((case when to_date($P{as_date},'dd/mm/yyyy') >= pminvestmaster.due_date then pminvestmaster.due_date else to_date($P{as_date},'dd/mm/yyyy') end) -
+(select max(start_calint_date)-1 from pminvestduedate
+where pminvestduedate.account_no = pminvestmaster.account_no and
+to_date($P{as_date},'dd/mm/yyyy') between start_calint_date and last_cal_to_date),0)) / 365 , 2 ) as arr_all,
+ROUND(pminvestmaster.prncbal *
+((nvl((select max(int_rate) from pminvestintrate
+where pminvestintrate.account_no = pminvestmaster.account_no and
+to_date($P{as_date},'dd/mm/yyyy') between int_start_date and int_end_date),0))/100) *
+((case when (nvl(LAST_DAY( add_months(to_date($P{as_date},'dd/mm/yyyy'),-1) ) -
+(select max(start_calint_date)-1 from pminvestduedate
+where pminvestduedate.account_no = pminvestmaster.account_no and
+to_date($P{as_date},'dd/mm/yyyy') between start_calint_date and last_cal_to_date),0)) < 0 then 0 else
+( nvl(LAST_DAY( add_months(to_date($P{as_date},'dd/mm/yyyy'),-1) ) -
+(select max(start_calint_date)-1 from pminvestduedate
+where pminvestduedate.account_no = pminvestmaster.account_no and
+to_date($P{as_date},'dd/mm/yyyy') between start_calint_date and last_cal_to_date),0)) end )) / 365 , 2 ) as arr_befor,
+(ROUND(pminvestmaster.prncbal *
+((nvl((select max(int_rate) from pminvestintrate
+where pminvestintrate.account_no = pminvestmaster.account_no and
+to_date($P{as_date},'dd/mm/yyyy') between int_start_date and int_end_date),0))/100) *
+(NVL((case when to_date($P{as_date},'dd/mm/yyyy') >= pminvestmaster.due_date then pminvestmaster.due_date else to_date($P{as_date},'dd/mm/yyyy') end) -
+(select max(start_calint_date)-1 from pminvestduedate
+where pminvestduedate.account_no = pminvestmaster.account_no and
+to_date($P{as_date},'dd/mm/yyyy') between start_calint_date and last_cal_to_date),0)) / 365 , 2 )) -
+(ROUND(pminvestmaster.prncbal *
+((nvl((select max(int_rate) from pminvestintrate
+where pminvestintrate.account_no = pminvestmaster.account_no and
+to_date($P{as_date},'dd/mm/yyyy') between int_start_date and int_end_date),0))/100) *
+((case when (nvl(LAST_DAY( add_months(to_date($P{as_date},'dd/mm/yyyy'),-1) ) -
+(select max(start_calint_date)-1 from pminvestduedate
+where pminvestduedate.account_no = pminvestmaster.account_no and
+to_date($P{as_date},'dd/mm/yyyy') between start_calint_date and last_cal_to_date),0)) < 0 then 0 else
+( nvl(LAST_DAY( add_months(to_date($P{as_date},'dd/mm/yyyy'),-1) ) -
+(select max(start_calint_date)-1 from pminvestduedate
+where pminvestduedate.account_no = pminvestmaster.account_no and
+to_date($P{as_date},'dd/mm/yyyy') between start_calint_date and last_cal_to_date),0)) end )) / 365 , 2 ))
+as arr_month
+from pminvestmaster
+join pmucfinvsource on pminvestmaster.invsource_code = pmucfinvsource.invsource_code
+where
+( (pminvestmaster.CLOSE_STATUS = 0) OR (pminvestmaster.CLOSE_STATUS = 1 AND pminvestmaster.CLOSE_DATE > to_date($P{as_date},'dd/mm/yyyy') ) )
+order by pminvestmaster.invsource_code]]>
+	</queryString>
+	<field name="S_DATE" class="java.sql.Timestamp"/>
+	<field name="OPEN_DATE" class="java.sql.Timestamp"/>
+	<field name="ACCOUNT_NO" class="java.lang.String"/>
+	<field name="DUE_DATE" class="java.sql.Timestamp"/>
+	<field name="SYMBOL_CODE" class="java.lang.String"/>
+	<field name="INVSOURCE_CODE" class="java.lang.String"/>
+	<field name="INVSOURCE_DESC" class="java.lang.String"/>
+	<field name="INVEST_DETAIL" class="java.lang.String"/>
+	<field name="PRNCBAL" class="java.math.BigDecimal"/>
+	<field name="INT_RATE" class="java.math.BigDecimal"/>
+	<field name="LAST_CAL_TO_DATE" class="java.sql.Timestamp"/>
+	<field name="DAY" class="java.math.BigDecimal"/>
+	<field name="DAY_BEFOR" class="java.math.BigDecimal"/>
+	<field name="ARR_ALL" class="java.math.BigDecimal"/>
+	<field name="ARR_BEFOR" class="java.math.BigDecimal"/>
+	<field name="ARR_MONTH" class="java.math.BigDecimal"/>
+	<variable name="sum_g_prncbal" class="java.math.BigDecimal" resetType="Group" resetGroup="invsource_code" calculation="Sum">
+		<variableExpression><![CDATA[$F{PRNCBAL}]]></variableExpression>
+	</variable>
+	<variable name="sum_all_prncbal" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{PRNCBAL}]]></variableExpression>
+	</variable>
+	<variable name="sum_all_acuall" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{PRNCBAL}*($F{INT_RATE}/100)*$F{DAY}/365]]></variableExpression>
+	</variable>
+	<variable name="sum_all_acuold" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{PRNCBAL}*($F{INT_RATE}/100)*$F{DAY_BEFOR}/365]]></variableExpression>
+	</variable>
+	<variable name="sum_all_acunew" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{PRNCBAL}*($F{INT_RATE}/100)*$F{DAY}/365 - $F{PRNCBAL}*($F{INT_RATE}/100)*$F{DAY_BEFOR}/365]]></variableExpression>
+	</variable>
+	<variable name="sum_g_acuall" class="java.math.BigDecimal" resetType="Group" resetGroup="invsource_code" calculation="Sum">
+		<variableExpression><![CDATA[$F{PRNCBAL}*($F{INT_RATE}/100)*$F{DAY}/365]]></variableExpression>
+	</variable>
+	<variable name="sum_g_acuold" class="java.math.BigDecimal" resetType="Group" resetGroup="invsource_code" calculation="Sum">
+		<variableExpression><![CDATA[$F{PRNCBAL}*($F{INT_RATE}/100)*$F{DAY_BEFOR}/365]]></variableExpression>
+	</variable>
+	<variable name="sum_g_acunew" class="java.math.BigDecimal" resetType="Group" resetGroup="invsource_code" calculation="Sum">
+		<variableExpression><![CDATA[$F{PRNCBAL}*($F{INT_RATE}/100)*$F{DAY}/365 - $F{PRNCBAL}*($F{INT_RATE}/100)*$F{DAY_BEFOR}/365]]></variableExpression>
+	</variable>
+	<variable name="sum_g_arrall" class="java.math.BigDecimal" resetType="Group" resetGroup="invsource_code" calculation="Sum">
+		<variableExpression><![CDATA[$F{ARR_ALL}]]></variableExpression>
+	</variable>
+	<variable name="sum_g_arrbefor" class="java.math.BigDecimal" resetType="Group" resetGroup="invsource_code" calculation="Sum">
+		<variableExpression><![CDATA[$F{ARR_BEFOR}]]></variableExpression>
+	</variable>
+	<variable name="sum_g_arrmonth" class="java.math.BigDecimal" resetType="Group" resetGroup="invsource_code" calculation="Sum">
+		<variableExpression><![CDATA[$F{ARR_MONTH}]]></variableExpression>
+	</variable>
+	<variable name="sum_all_arrall" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{ARR_ALL}]]></variableExpression>
+	</variable>
+	<variable name="sum_all_arrbefor" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{ARR_BEFOR}]]></variableExpression>
+	</variable>
+	<variable name="sum_all_arrmonth" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{ARR_MONTH}]]></variableExpression>
+	</variable>
+	<group name="invsource_code">
+		<groupExpression><![CDATA[$F{INVSOURCE_CODE}]]></groupExpression>
+		<groupHeader>
+			<band height="20">
+				<textField>
+					<reportElement uuid="d36b6570-e6f5-4cf7-a8b4-1f39c86b8957" x="0" y="0" width="802" height="20"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Angsana New" size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{INVSOURCE_CODE}+" - "+$F{INVSOURCE_DESC}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="20">
+				<textField pattern="#,##0.00">
+					<reportElement uuid="8528ad84-0ed6-414a-ac91-c8450bad156d" x="342" y="0" width="100" height="20"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Angsana New" size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{sum_g_prncbal}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00">
+					<reportElement uuid="c7996c0c-fb8f-4c0a-b5b8-676b93a8546a" x="572" y="0" width="80" height="20"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Angsana New" size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{sum_g_arrall}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00">
+					<reportElement uuid="ac0aaa40-a063-4938-8f89-5bf8beec0cd1" x="652" y="0" width="75" height="20"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Angsana New" size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{sum_g_arrbefor}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00">
+					<reportElement uuid="64d00f23-a5f1-4378-867a-d02231b028fc" x="727" y="0" width="75" height="20"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Angsana New" size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{sum_g_arrmonth}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<pageHeader>
+		<band height="40" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="a99a5fb2-03fa-4432-83b4-2ac780199cd8" x="213" y="0" width="353" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[รายงานรายละเอียดดอกเบี้ยค้างรับ]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="5e0e91d5-667b-4c03-acde-df6436a01f54" x="213" y="20" width="353" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ณ  "+new SimpleDateFormat("dd MMM yyyy",new Locale("th","TH")).format($F{S_DATE})]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="631979d8-1750-4f61-9cc4-5c462a04ce85" x="0" y="0" width="50" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[วันเปิด]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="79faa041-37be-492f-af26-30a663a16d79" x="50" y="0" width="50" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[วันครบ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8ca0e4d0-9e8b-47d4-ac27-661e2f21bc86" x="100" y="0" width="55" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SYMBOL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a563ce53-8835-404a-ac13-e5540a564ef3" x="155" y="0" width="187" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[รายละเอียด]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="738edac9-d747-4706-9b83-89bbb66f1e15" x="342" y="0" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[จำนวนเงิน]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c21b3361-ea6d-483b-8e99-d1368f5c9a88" x="442" y="0" width="40" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ดบ.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0a0f7e24-c755-4ef2-82a3-20550eb0b576" x="532" y="0" width="40" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[จน.วัน]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="974295b0-19e9-4b5f-ab34-77b6f87ccf7c" x="572" y="0" width="80" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ตั้งค้างรับ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="75087b19-ace9-4447-a4f0-ac73225cd33a" x="652" y="0" width="75" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[เดิม]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="0e2ccc66-6c53-4027-a1c1-e365518e3161" x="0" y="20" width="802" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="2dd424a6-b294-47f3-a6cd-710eea7b7f35" x="727" y="0" width="75" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ใหม่]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a2f71317-4b16-4a8b-bbf0-be60bc24194f" x="482" y="1" width="50" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ดบ.ล่าสุด]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement uuid="8d3b1f05-8f61-41de-978e-5140afa7079b" x="0" y="0" width="50" height="20"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy",new Locale("th","TH")).format($F{OPEN_DATE})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e3420610-9534-4ca8-bbe6-25ccb2eff116" x="50" y="0" width="50" height="20"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy",new Locale("th","TH")).format($F{DUE_DATE})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="271037a4-a149-458d-adee-bc07045bc9e3" x="100" y="0" width="55" height="20"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SYMBOL_CODE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ca1e1e66-ebda-491b-bc70-448cf7212e61" x="155" y="0" width="187" height="20"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{INVEST_DETAIL}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="1a6fdf59-c789-4fa0-9db4-5c2669badb02" x="342" y="0" width="100" height="20"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PRNCBAL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d23a0481-b3e9-4992-8837-29bce74262d8" x="442" y="0" width="40" height="20"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{INT_RATE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ab91fbc5-5f6b-437a-83c5-e1afca949470" x="532" y="0" width="40" height="20"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DAY}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="4086a845-94db-41b0-9280-cdb196b3fa6e" x="572" y="0" width="80" height="20"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ARR_ALL}
+
+/*$F{PRNCBAL}*($F{INT_RATE}/100)*$F{DAY}/365*/]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="88c3a223-2af2-4353-a39d-96697e4a7405" x="652" y="0" width="75" height="20"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ARR_BEFOR}
+
+/*$F{PRNCBAL}*($F{INT_RATE}/100)*$F{DAY_BEFOR}/365*/]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="e6592950-f4ff-4530-80c1-43dfbd7a1792" x="727" y="0" width="75" height="20"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ARR_MONTH}
+
+/*$F{PRNCBAL}*($F{INT_RATE}/100)*$F{DAY}/365 - $F{PRNCBAL}*($F{INT_RATE}/100)*$F{DAY_BEFOR}/365*/]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a3e5bd25-0080-46be-afae-45669da9128a" x="482" y="0" width="50" height="20"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="AngsanaUPC" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[( $F{LAST_CAL_TO_DATE}==null ? "" : new SimpleDateFormat("dd/MM/yyyy",new Locale("th","TH")).format($F{LAST_CAL_TO_DATE}) )]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="21" splitType="Stretch">
+			<textField pattern="#,##0.00">
+				<reportElement uuid="3e7db350-408c-4ea1-be92-23238cba302f" x="342" y="0" width="100" height="20"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sum_all_prncbal}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="d24f4c61-1f92-4964-ae0d-741a34c5b499" x="0" y="0" width="802" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="4ef48526-5c70-4008-a47d-a3d6bb760a31" x="0" y="20" width="802" height="1"/>
+			</line>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="215cc336-c4d3-405f-a5f0-dd557ea3e181" x="572" y="0" width="80" height="20"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sum_all_arrall}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="e2fd8704-dd14-49eb-953a-3f0404edb4a4" x="652" y="0" width="75" height="20"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sum_all_arrbefor}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="c8a3d8cf-5650-4310-8e07-b00517eb20c7" x="727" y="1" width="75" height="20"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sum_all_arrmonth}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="fdb2deef-3c74-4170-b29c-03c1cb8c30be" x="154" y="1" width="188" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[รวม]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

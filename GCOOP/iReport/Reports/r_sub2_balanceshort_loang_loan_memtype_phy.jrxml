@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="r_su1balanceshort_loang_loan_memtype_phy" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a98984fd-9dbb-4464-a1ba-86bb2c898d14">
+	<property name="ireport.zoom" value="1.100000000000004"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="as_coopid" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="as_recvperiod" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="as_smembgroup" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="as_emembgroup" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select distinct
+slclsmthbalance.member_no,
+lon_01.loancontract_no as ct01,
+lon_01.lastperiodpay_amt  as lp01,
+lon_01.balance_value  as vl01,
+lon_02.loancontract_no  as ct02,
+lon_02.lastperiodpay_amt  as lp02,
+lon_02.balance_value  as vl02,
+lon_03.loancontract_no  as ct03,
+lon_03.lastperiodpay_amt  as lp03,
+lon_03.balance_value   as vl03 ,
+sumloan.total,
+slclsmthbalance.intarrear_amt
+from slclsmthbalance,
+		mbmembmaster,
+		mbucfmembgroup,
+(select member_no,periodpay_value,lastperiodpay_amt,balance_value from slclsmthbalance where bizz_system = 'SHR'  and slclsmthbalance.clsmth_period   =    $P{as_recvperiod}  ) shr,
+(select slclsmthbalance.member_no,lnloantype.loangroup_code ,slclsmthbalance.loancontract_no,slclsmthbalance.lastperiodpay_amt,slclsmthbalance.balance_value  from slclsmthbalance,lnloantype
+where slclsmthbalance.bizztype_code = lnloantype.loantype_code and  lnloantype.loangroup_code  = '01' and bizz_system = 'LON' and slclsmthbalance.clsmth_period   =  $P{as_recvperiod} ) lon_01,
+(select slclsmthbalance.member_no,lnloantype.loangroup_code  ,slclsmthbalance.loancontract_no,slclsmthbalance.lastperiodpay_amt,slclsmthbalance.balance_value  from slclsmthbalance,lnloantype
+where slclsmthbalance.bizztype_code = lnloantype.loantype_code and  lnloantype.loangroup_code  = '02' and bizz_system = 'LON' and slclsmthbalance.clsmth_period   =  $P{as_recvperiod} ) lon_02,
+(select slclsmthbalance.member_no,lnloantype.loangroup_code  ,slclsmthbalance.loancontract_no,slclsmthbalance.lastperiodpay_amt,slclsmthbalance.balance_value  from slclsmthbalance,lnloantype
+where slclsmthbalance.bizztype_code = lnloantype.loantype_code and  lnloantype.loangroup_code  = '03' and bizz_system = 'LON'  and slclsmthbalance.clsmth_period   =  $P{as_recvperiod}  ) lon_03 ,
+(select slclsmthbalance.member_no  ,sum(slclsmthbalance.balance_value) as total from slclsmthbalance where  bizz_system = 'LON' and  slclsmthbalance.clsmth_period   =   $P{as_recvperiod}  group by slclsmthbalance.member_no) sumloan
+
+where slclsmthbalance.member_no = shr.member_no
+and slclsmthbalance.member_no = lon_01.member_no
+and slclsmthbalance.member_no = lon_02.member_no
+and slclsmthbalance.member_no = lon_03.member_no
+and slclsmthbalance.member_no = sumloan.member_no
+and slclsmthbalance.member_no = mbmembmaster.member_no
+and slclsmthbalance.membgroup_code =mbucfmembgroup.membgroup_code
+and slclsmthbalance.coop_id = $P{as_coopid}
+and slclsmthbalance.clsmth_period   = $P{as_recvperiod}
+and trim( slclsmthbalance.membgroup_code ) between $P{as_smembgroup} and  $P{as_emembgroup}
+and seq_no = '1'
+group by slclsmthbalance.member_no,
+slclsmthbalance.bizz_system,
+slclsmthbalance.membgroup_code ,
+mbucfmembgroup.membgroup_control,
+mbmembmaster.resign_status,
+mbmembmaster.member_type ,
+shr.periodpay_value,
+shr.lastperiodpay_amt,
+shr.balance_value ,
+lon_01.loancontract_no,
+lon_01.lastperiodpay_amt,
+lon_01.balance_value  ,
+lon_02.loancontract_no ,
+lon_02.lastperiodpay_amt  ,
+lon_02.balance_value ,
+lon_03.loancontract_no   ,
+lon_03.lastperiodpay_amt ,
+lon_03.balance_value    ,
+sumloan.total,
+slclsmthbalance.intarrear_amt]]>
+	</queryString>
+	<field name="MEMBER_NO" class="java.lang.String"/>
+	<field name="CT01" class="java.lang.String"/>
+	<field name="LP01" class="java.math.BigDecimal"/>
+	<field name="VL01" class="java.math.BigDecimal"/>
+	<field name="CT02" class="java.lang.String"/>
+	<field name="LP02" class="java.math.BigDecimal"/>
+	<field name="VL02" class="java.math.BigDecimal"/>
+	<field name="CT03" class="java.lang.String"/>
+	<field name="LP03" class="java.math.BigDecimal"/>
+	<field name="VL03" class="java.math.BigDecimal"/>
+	<field name="TOTAL" class="java.math.BigDecimal"/>
+	<field name="INTARREAR_AMT" class="java.math.BigDecimal"/>
+	<variable name="sum1" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{VL01}]]></variableExpression>
+	</variable>
+	<variable name="sum2" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{VL02}]]></variableExpression>
+	</variable>
+	<variable name="sum3" class="java.lang.String" calculation="Sum">
+		<variableExpression><![CDATA[$F{VL03}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageFooter>
+		<band height="21">
+			<textField pattern="#,##0.00">
+				<reportElement uuid="900920a3-da69-43d1-80bd-5c0f358a9c97" x="0" y="0" width="100" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sum1}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="6a7061a2-8135-4e76-8790-1f62cb234520" x="103" y="0" width="100" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sum2}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="6bdd9fcb-8020-4751-bc45-82181a8afc09" x="206" y="0" width="100" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sum3}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

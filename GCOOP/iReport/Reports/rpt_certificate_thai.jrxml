@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rpt_certificate" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4a3e7eb6-87e4-44ca-8206-273d1f543434">
+	<property name="ireport.zoom" value="1.4641000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="as_name" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="as_type" class="java.lang.Number">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="as_manager" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from report_certificate]]>
+	</queryString>
+	<field name="MEMBER_NO" class="java.lang.String"/>
+	<field name="SYSTEM" class="java.lang.String"/>
+	<field name="PRNCBAL1" class="java.lang.String"/>
+	<field name="SHARESTK_AMT1" class="java.lang.String"/>
+	<field name="PRNCBAL_US" class="java.lang.String"/>
+	<field name="SHARESTK_AMT_US" class="java.lang.String"/>
+	<field name="SHARESTK_SHR" class="java.lang.String"/>
+	<field name="DEPTACCOUNT_NO" class="java.lang.String"/>
+	<field name="ENG_DESC" class="java.lang.String"/>
+	<field name="TYPE_DESC" class="java.lang.String"/>
+	<field name="TYPE_SHERE" class="java.lang.String"/>
+	<field name="TYPE_TBH" class="java.lang.String"/>
+	<field name="TYPE_US" class="java.lang.String"/>
+	<field name="FULLNAME_THAI" class="java.lang.String"/>
+	<field name="DEPTACCOUNT_NAME" class="java.lang.String"/>
+	<field name="PRNCBAL" class="java.math.BigDecimal"/>
+	<field name="SHARESTK_AMT" class="java.math.BigDecimal"/>
+	<field name="BTH_THAI" class="java.lang.String"/>
+	<variable name="num_count" class="java.math.BigDecimal" calculation="Count">
+		<variableExpression><![CDATA[$F{SYSTEM}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="92" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="490dbe1d-1fc6-489d-bc6a-1fdd6f1a7320" x="50" y="28" width="505" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd",new Locale("th","TH")).format(new Date())+"   "+((new SimpleDateFormat("MM",new Locale("th","TH")).format(new Date())=="01"?"มกราคม":
+    (new SimpleDateFormat("MM",new Locale("th","TH")).format(new Date())=="02"?"กุมพาพันธ์":
+        (new SimpleDateFormat("MM",new Locale("th","TH")).format(new Date())=="03"?"มีนาคม":
+            (new SimpleDateFormat("MM",new Locale("th","TH")).format(new Date())=="04"?"เมษายน":
+                (new SimpleDateFormat("MM",new Locale("th","TH")).format(new Date())=="05"?"พฤษภาคม":
+                    (new SimpleDateFormat("MM",new Locale("th","TH")).format(new Date())=="06"?"มิถุนายน":
+                        (new SimpleDateFormat("MM",new Locale("th","TH")).format(new Date())=="07"?"กรกฎาคม":
+                            (new SimpleDateFormat("MM",new Locale("th","TH")).format(new Date())=="08"?"สิงหาคม":
+                                (new SimpleDateFormat("MM",new Locale("th","TH")).format(new Date())=="09"?"กันยายน":
+                                    (new SimpleDateFormat("MM",new Locale("th","TH")).format(new Date())=="10"?"ตุลาคม":
+                                        (new SimpleDateFormat("MM",new Locale("th","TH")).format(new Date())=="11"?"พฤศจิกายน":
+                                            (new SimpleDateFormat("MM",new Locale("th","TH")).format(new Date())=="12"?"ธันวาคม":"")))))))))))))+"   "+new SimpleDateFormat("yyyy",new Locale("th","TH")).format(new Date())]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="a323b42e-539b-4910-9d70-5b329840e5d7" x="0" y="0" width="555" height="28"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="18"/>
+				</textElement>
+				<text><![CDATA[หนังสือรับรอง]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="ff6a26d0-0c9f-4941-9d8c-043614aac90a" x="18" y="72" width="537" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA["สหกรณ์ออมทรัพย์ข้าราชการกระทรวงศึกษาธิการจังหวัดตาก จำกัด ขอรับรองว่า "+($F{FULLNAME_THAI})+" "+"สมาชิกเลขที่  "
++$F{MEMBER_NO}+" "+" รายละเอียด ณ วันที่ "+new SimpleDateFormat("dd",new Locale("th","TH")).format(new Date())+"   "+((new SimpleDateFormat("MM",new Locale("th","TH")).format(new Date())=="01"?"มกราคม":
+    (new SimpleDateFormat("MM",new Locale("th","TH")).format(new Date())=="02"?"กุมพาพันธ์":
+        (new SimpleDateFormat("MM",new Locale("th","TH")).format(new Date())=="03"?"มีนาคม":
+            (new SimpleDateFormat("MM",new Locale("th","TH")).format(new Date())=="04"?"เมษายน":
+                (new SimpleDateFormat("MM",new Locale("th","TH")).format(new Date())=="05"?"พฤษภาคม":
+                    (new SimpleDateFormat("MM",new Locale("th","TH")).format(new Date())=="06"?"มิถุนายน":
+                        (new SimpleDateFormat("MM",new Locale("th","TH")).format(new Date())=="07"?"กรกฎาคม":
+                            (new SimpleDateFormat("MM",new Locale("th","TH")).format(new Date())=="08"?"สิงหาคม":
+                                (new SimpleDateFormat("MM",new Locale("th","TH")).format(new Date())=="09"?"กันยายน":
+                                    (new SimpleDateFormat("MM",new Locale("th","TH")).format(new Date())=="10"?"ตุลาคม":
+                                        (new SimpleDateFormat("MM",new Locale("th","TH")).format(new Date())=="11"?"พฤศจิกายน":
+                                            (new SimpleDateFormat("MM",new Locale("th","TH")).format(new Date())=="12"?"ธันวาคม":"")))))))))))))+"   "+new SimpleDateFormat("yyyy",new Locale("th","TH")).format(new Date())]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="20">
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="0fbc4eaa-15c6-41c7-afe7-56636006c803" stretchType="RelativeToBandHeight" x="19" y="0" width="537" height="20"/>
+				<textElement verticalAlignment="Top" rotation="None">
+					<font fontName="Angsana New" size="14"/>
+					<paragraph lineSpacing="Proportional"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(( $F{SYSTEM}=="DEP"?"บัญชีเงินฝากอออมทรัพย์เลขที่   "+" "+$F{DEPTACCOUNT_NO}+" "+"จำนวนเงินคงเหลือ "+" "+$F{PRNCBAL1}+" บาท	"+"("+$F{BTH_THAI}+")":($F{SYSTEM}=="SHR"?"มีทุนเรือนหุ้นสะสม ณ วันที่  "+new SimpleDateFormat("dd",new Locale("th","TH")).format(new Date())+"   "+((new SimpleDateFormat("MM",new Locale("th","TH")).format(new Date())=="01"?"มกราคม":
+    (new SimpleDateFormat("MM",new Locale("th","TH")).format(new Date())=="02"?"กุมพาพันธ์":
+        (new SimpleDateFormat("MM",new Locale("th","TH")).format(new Date())=="03"?"มีนาคม":
+            (new SimpleDateFormat("MM",new Locale("th","TH")).format(new Date())=="04"?"เมษายน":
+                (new SimpleDateFormat("MM",new Locale("th","TH")).format(new Date())=="05"?"พฤษภาคม":
+                    (new SimpleDateFormat("MM",new Locale("th","TH")).format(new Date())=="06"?"มิถุนายน":
+                        (new SimpleDateFormat("MM",new Locale("th","TH")).format(new Date())=="07"?"กรกฎาคม":
+                            (new SimpleDateFormat("MM",new Locale("th","TH")).format(new Date())=="08"?"สิงหาคม":
+                                (new SimpleDateFormat("MM",new Locale("th","TH")).format(new Date())=="09"?"กันยายน":
+                                    (new SimpleDateFormat("MM",new Locale("th","TH")).format(new Date())=="10"?"ตุลาคม":
+                                        (new SimpleDateFormat("MM",new Locale("th","TH")).format(new Date())=="11"?"พฤศจิกายน":
+                                            (new SimpleDateFormat("MM",new Locale("th","TH")).format(new Date())=="12"?"ธันวาคม":"")))))))))))))+"   "+new SimpleDateFormat("yyyy",new Locale("th","TH")).format(new Date())+" "+"จำนวน "+$F{SHARESTK_AMT1}+" "+"หุ้น"+"  เป็นจำนวนเงิน  "+$F{SHARESTK_SHR}+"   บาท "+"("+$F{BTH_THAI}+")":"")))]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="113" splitType="Stretch">
+			<textField>
+				<reportElement uuid="36502590-b2aa-45c3-8080-b4ab6b89c5ea" x="351" y="56" width="130" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{as_manager}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="a80bce06-13f7-44bc-806d-6a31dc8d3147" x="351" y="33" width="130" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<text><![CDATA[ .....................................................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b9e6411b-32e9-49a0-bca3-1bb616223974" x="351" y="76" width="130" height="17"/>
+				<textElement textAlignment="Center">
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<text><![CDATA[ผู้จัดการ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="81248a6e-ef4f-4d4f-9f92-ff7f40b5e352" x="259" y="93" width="296" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<text><![CDATA[สหกรณ์ออมทรัพย์ข้าราชการกระทรวงศึกษาธิการจังหวัดตาก จำกัด]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

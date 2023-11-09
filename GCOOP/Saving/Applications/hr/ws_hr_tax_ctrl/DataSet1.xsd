@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet1" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ConnectionString (Web.config)" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.ConnectionString.ConnectionString" Provider="System.Data.OracleClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="HRTAXTableAdapter" GeneratorDataComponentClassName="HRTAXTableAdapter" Name="HRTAX" UserDataComponentName="HRTAXTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ConnectionString (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        HRUCFDETTAX.TAX_CALCODE, HREMPLOYEE.EMP_NO, HREMPLOYEE.COOP_ID, HREMPLOYEE.PRENAME_CODE, HREMPLOYEE.EMP_NAME, HREMPLOYEE.EMP_SURNAME, HREMPLOYEE.SALARY_ID, 
+                         HREMPLOYEE.SALARY_AMT, HREMPLOYEE.TAX_CALCODE AS EXPR1, HRUCFDETTAX.MINRATE, HRUCFDETTAX.MAXRATE, HRUCFDETTAX.PERTAXRATE, HRUCFDETTAX.PAYTAX, 
+                         HRUCFDETTAX.MAXPAYTAX
+FROM            HREMPLOYEE, HRUCFDETTAX
+WHERE        HREMPLOYEE.TAX_CALCODE = HRUCFDETTAX.TAX_CALCODE</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="TAX_CALCODE" DataSetColumn="TAX_CALCODE" />
+              <Mapping SourceColumn="EMP_NO" DataSetColumn="EMP_NO" />
+              <Mapping SourceColumn="COOP_ID" DataSetColumn="COOP_ID" />
+              <Mapping SourceColumn="PRENAME_CODE" DataSetColumn="PRENAME_CODE" />
+              <Mapping SourceColumn="EMP_NAME" DataSetColumn="EMP_NAME" />
+              <Mapping SourceColumn="EMP_SURNAME" DataSetColumn="EMP_SURNAME" />
+              <Mapping SourceColumn="SALARY_ID" DataSetColumn="SALARY_ID" />
+              <Mapping SourceColumn="SALARY_AMT" DataSetColumn="SALARY_AMT" />
+              <Mapping SourceColumn="EXPR1" DataSetColumn="EXPR1" />
+              <Mapping SourceColumn="MINRATE" DataSetColumn="MINRATE" />
+              <Mapping SourceColumn="MAXRATE" DataSetColumn="MAXRATE" />
+              <Mapping SourceColumn="PERTAXRATE" DataSetColumn="PERTAXRATE" />
+              <Mapping SourceColumn="PAYTAX" DataSetColumn="PAYTAX" />
+              <Mapping SourceColumn="MAXPAYTAX" DataSetColumn="MAXPAYTAX" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="HRTAX" msprop:Generator_TableClassName="HRTAXDataTable" msprop:Generator_TableVarName="tableHRTAX" msprop:Generator_RowChangedName="HRTAXRowChanged" msprop:Generator_TablePropName="HRTAX" msprop:Generator_RowDeletingName="HRTAXRowDeleting" msprop:Generator_RowChangingName="HRTAXRowChanging" msprop:Generator_RowEvHandlerName="HRTAXRowChangeEventHandler" msprop:Generator_RowDeletedName="HRTAXRowDeleted" msprop:Generator_RowClassName="HRTAXRow" msprop:Generator_UserTableName="HRTAX" msprop:Generator_RowEvArgName="HRTAXRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TAX_CALCODE" msprop:Generator_ColumnVarNameInTable="columnTAX_CALCODE" msprop:Generator_ColumnPropNameInRow="TAX_CALCODE" msprop:Generator_ColumnPropNameInTable="TAX_CALCODEColumn" msprop:Generator_UserColumnName="TAX_CALCODE">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="EMP_NO" msprop:Generator_ColumnVarNameInTable="columnEMP_NO" msprop:Generator_ColumnPropNameInRow="EMP_NO" msprop:Generator_ColumnPropNameInTable="EMP_NOColumn" msprop:Generator_UserColumnName="EMP_NO">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="COOP_ID" msprop:Generator_ColumnVarNameInTable="columnCOOP_ID" msprop:Generator_ColumnPropNameInRow="COOP_ID" msprop:Generator_ColumnPropNameInTable="COOP_IDColumn" msprop:Generator_UserColumnName="COOP_ID">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="6" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PRENAME_CODE" msprop:Generator_ColumnVarNameInTable="columnPRENAME_CODE" msprop:Generator_ColumnPropNameInRow="PRENAME_CODE" msprop:Generator_ColumnPropNameInTable="PRENAME_CODEColumn" msprop:Generator_UserColumnName="PRENAME_CODE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="EMP_NAME" msprop:Generator_ColumnVarNameInTable="columnEMP_NAME" msprop:Generator_ColumnPropNameInRow="EMP_NAME" msprop:Generator_ColumnPropNameInTable="EMP_NAMEColumn" msprop:Generator_UserColumnName="EMP_NAME" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="EMP_SURNAME" msprop:Generator_ColumnVarNameInTable="columnEMP_SURNAME" msprop:Generator_ColumnPropNameInRow="EMP_SURNAME" msprop:Generator_ColumnPropNameInTable="EMP_SURNAMEColumn" msprop:Generator_UserColumnName="EMP_SURNAME" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SALARY_ID" msprop:Generator_ColumnVarNameInTable="columnSALARY_ID" msprop:Generator_ColumnPropNameInRow="SALARY_ID" msprop:Generator_ColumnPropNameInTable="SALARY_IDColumn" msprop:Generator_UserColumnName="SALARY_ID" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SALARY_AMT" msprop:Generator_ColumnVarNameInTable="columnSALARY_AMT" msprop:Generator_ColumnPropNameInRow="SALARY_AMT" msprop:Generator_ColumnPropNameInTable="SALARY_AMTColumn" msprop:Generator_UserColumnName="SALARY_AMT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="EXPR1" msprop:Generator_ColumnVarNameInTable="columnEXPR1" msprop:Generator_ColumnPropNameInRow="EXPR1" msprop:Generator_ColumnPropNameInTable="EXPR1Column" msprop:Generator_UserColumnName="EXPR1" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MINRATE" msprop:Generator_ColumnVarNameInTable="columnMINRATE" msprop:Generator_ColumnPropNameInRow="MINRATE" msprop:Generator_ColumnPropNameInTable="MINRATEColumn" msprop:Generator_UserColumnName="MINRATE" type="xs:decimal" minOccurs="0" />
+              <xs:element name="MAXRATE" msprop:Generator_ColumnVarNameInTable="columnMAXRATE" msprop:Generator_ColumnPropNameInRow="MAXRATE" msprop:Generator_ColumnPropNameInTable="MAXRATEColumn" msprop:Generator_UserColumnName="MAXRATE" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PERTAXRATE" msprop:Generator_ColumnVarNameInTable="columnPERTAXRATE" msprop:Generator_ColumnPropNameInRow="PERTAXRATE" msprop:Generator_ColumnPropNameInTable="PERTAXRATEColumn" msprop:Generator_UserColumnName="PERTAXRATE" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PAYTAX" msprop:Generator_ColumnVarNameInTable="columnPAYTAX" msprop:Generator_ColumnPropNameInRow="PAYTAX" msprop:Generator_ColumnPropNameInTable="PAYTAXColumn" msprop:Generator_UserColumnName="PAYTAX" type="xs:decimal" minOccurs="0" />
+              <xs:element name="MAXPAYTAX" msprop:Generator_ColumnVarNameInTable="columnMAXPAYTAX" msprop:Generator_ColumnPropNameInRow="MAXPAYTAX" msprop:Generator_ColumnPropNameInTable="MAXPAYTAXColumn" msprop:Generator_UserColumnName="MAXPAYTAX" type="xs:decimal" minOccurs="0" />
+              <xs:element name="cp_name" msdata:ReadOnly="true" msdata:Expression="PRENAME_CODE+EMP_NAME+' '+EMP_SURNAME" msprop:Generator_ColumnVarNameInTable="columncp_name" msprop:Generator_ColumnPropNameInRow="cp_name" msprop:Generator_ColumnPropNameInTable="cp_nameColumn" msprop:Generator_UserColumnName="cp_name" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:HRTAX" />
+      <xs:field xpath="mstns:TAX_CALCODE" />
+      <xs:field xpath="mstns:EMP_NO" />
+      <xs:field xpath="mstns:COOP_ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

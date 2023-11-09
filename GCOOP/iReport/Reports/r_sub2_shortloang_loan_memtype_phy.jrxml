@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="r_shortloang_loan_memtype_phy" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c2385819-4b74-4d45-88ba-45c165711dcb">
+	<property name="ireport.zoom" value="0.8264462809917374"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="as_coopid" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="as_recvperiod" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="as_smembgroup" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="as_emembgroup" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select
+lnloantype.loangroup_code ,lnloantype.loantype_code,lnloantype.loantype_desc,
+CASE WHEN lnloantype.loangroup_code ='01'  THEN 'เงินกู้สามัญ'
+
+ELSE 'อื่น ๆ' END as loangroup_desc ,
+count (lnestloanshortlong.member_no ) as count_memberNo,
+sum (lnestloanshortlong.loanshort_amt) as sumloanshort_amt  ,
+sum (lnestloanshortlong.loanlong_amt) as sumloanlong_amt ,
+sum (lnestloanshortlong.principal_balance) as sumprincipal_balance ,
+ lnestloanshortlong.acc_year ,
+
+substr(  lnestloanshortlong.acc_year  ,1,4) as as_year ,
+(case  when  substr(  lnestloanshortlong.acc_year  ,5,2)= '01'  then 'มกราคม'
+ when substr(  lnestloanshortlong.acc_year  ,5,2)= '02'  then 'กุมภาพันธ์'
+ when substr(  lnestloanshortlong.acc_year  ,5,2)= '03'  then 'มีนาคม'
+ when substr(  lnestloanshortlong.acc_year  ,5,2) = '04' then 'เมษายน'
+ when substr(  lnestloanshortlong.acc_year  ,5,2)= '05'  then 'พฤษภาคม'
+ when substr(  lnestloanshortlong.acc_year  ,5,2)= '06'  then 'มิถุนายน'
+ when substr(  lnestloanshortlong.acc_year  ,5,2)= '07'  then 'กรกฎาคม'
+ when substr(  lnestloanshortlong.acc_year  ,5,2)= '08'  then 'สิงหาคม'
+ when substr(  lnestloanshortlong.acc_year  ,5,2)= '09'  then 'กันยายน'
+ when substr(  lnestloanshortlong.acc_year  ,5,2)= '10' then 'ตุลาคม'
+ when substr(  lnestloanshortlong.acc_year  ,5,2)= '11'  then 'พฤศจิกายน'
+ when substr(  lnestloanshortlong.acc_year  ,5,2)= '12'  then 'ธันวาคม'
+ else ' '  END) as as_month
+from lnestloanshortlong
+left join lnloantype on lnestloanshortlong.loantype_code = lnloantype.loantype_code
+left join mbmembmaster on lnestloanshortlong.member_no = mbmembmaster.member_no
+left join mbucfmembtype on mbmembmaster.membtype_code = mbucfmembtype.membtype_code
+left join mbucfmembgroup on mbmembmaster.membgroup_code = mbucfmembgroup.membgroup_code
+left join mbucfprename on mbmembmaster.prename_code = mbucfprename.prename_code
+where lnestloanshortlong.coop_id = $P{as_coopid}
+and lnestloanshortlong.acc_year = $P{as_recvperiod}
+and mbmembmaster.membgroup_code between $P{as_smembgroup} and $P{as_emembgroup}
+and lnloantype.loantype_code = 16
+group by lnloantype.loangroup_code,lnestloanshortlong.acc_year,lnloantype.loantype_code,lnloantype.loantype_desc]]>
+	</queryString>
+	<field name="LOANGROUP_CODE" class="java.lang.String"/>
+	<field name="LOANTYPE_CODE" class="java.lang.String"/>
+	<field name="LOANTYPE_DESC" class="java.lang.String"/>
+	<field name="LOANGROUP_DESC" class="java.lang.String"/>
+	<field name="COUNT_MEMBERNO" class="java.math.BigDecimal"/>
+	<field name="SUMLOANSHORT_AMT" class="java.math.BigDecimal"/>
+	<field name="SUMLOANLONG_AMT" class="java.math.BigDecimal"/>
+	<field name="SUMPRINCIPAL_BALANCE" class="java.math.BigDecimal"/>
+	<field name="ACC_YEAR" class="java.lang.String"/>
+	<field name="AS_YEAR" class="java.lang.String"/>
+	<field name="AS_MONTH" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="22">
+			<textField>
+				<reportElement uuid="24b0e0da-c2f7-4528-acbc-cbb33c115ff3" x="0" y="0" width="100" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SUMPRINCIPAL_BALANCE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

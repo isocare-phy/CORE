@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="r_shortloang_loan_memtype_phy" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c2385819-4b74-4d45-88ba-45c165711dcb">
+	<property name="ireport.zoom" value="1.2100000000000128"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="as_coopid" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="as_recvperiod" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="as_smembgroup" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="as_emembgroup" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select distinct
+count(lncontmaster.member_no), sum(lncontmaster.principal_balance) from lncontmaster left join lnloantype on lncontmaster.loantype_code = lnloantype.loantype_code where lnloantype.loangroup_code ='03'
+and lncontmaster.contract_status <>-1]]>
+	</queryString>
+	<field name="COUNT(LNCONTMASTER.MEMBER_NO)" class="java.math.BigDecimal"/>
+	<field name="SUM(LNCONTMASTER.PRINCIPAL_BALANCE)" class="java.math.BigDecimal"/>
+	<variable name="sum_count" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{COUNT(LNCONTMASTER.MEMBER_NO)}]]></variableExpression>
+	</variable>
+	<variable name="sum PRINCIPAL_BALANCE" class="java.lang.String" calculation="Sum">
+		<variableExpression><![CDATA[$F{SUM(LNCONTMASTER.PRINCIPAL_BALANCE)}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="21">
+			<staticText>
+				<reportElement uuid="54fa149d-eb95-47a6-ba58-cf52a166edf5" x="0" y="0" width="85" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[จำนวนเงิน (บาท)]]></text>
+			</staticText>
+			<textField pattern="#,##0.00 ">
+				<reportElement uuid="dc274aa8-5d25-4485-981e-dc6fc8ec2b08" x="176" y="0" width="100" height="20"/>
+				<box>
+					<pen lineStyle="Dashed"/>
+					<topPen lineStyle="Dashed"/>
+					<leftPen lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SUM(LNCONTMASTER.PRINCIPAL_BALANCE)}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00 ">
+				<reportElement uuid="ce703079-c019-4291-892c-0de28b445339" x="279" y="0" width="100" height="20"/>
+				<box>
+					<pen lineStyle="Dashed"/>
+					<topPen lineStyle="Dashed"/>
+					<leftPen lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SUM(LNCONTMASTER.PRINCIPAL_BALANCE)}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00 ">
+				<reportElement uuid="252403db-c7ab-4408-b7e5-a34fb8819960" x="382" y="1" width="100" height="19"/>
+				<box>
+					<pen lineStyle="Dashed"/>
+					<topPen lineStyle="Dashed"/>
+					<leftPen lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SUM(LNCONTMASTER.PRINCIPAL_BALANCE)}+$F{SUM(LNCONTMASTER.PRINCIPAL_BALANCE)}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

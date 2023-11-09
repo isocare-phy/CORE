@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="r_mis_grap_bar_shr_between_memdate" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6f5b75e0-8c1f-46fe-8e80-c9d97d5692ef">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="62"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\GCOOP_ALL\\CORE\\GCOOP\\iReport\\Reports\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select sysdate,
+(case s.g_age when 1 then '1 - 10 ปี'
+when 2 then '11 - 20 ปี'
+when 3 then '21 - 30 ปี'
+when 4 then '31 - 40 ปี'
+when 5 then '41 - 50 ปี'
+when 6 then '51 ปีขึ้นไป'
+else '' end) as descript,
+sum(s.c_count) as c_count,
+sum(s.share_value) as share_value
+from(
+select
+shsharemaster.member_no ,
+nvl(trunc(months_between(sysdate,mbmembmaster.member_date)/12),0) year,
+(case  when nvl(trunc(months_between(sysdate,mbmembmaster.member_date)/12),0) <= 10 then 1
+when nvl(trunc(months_between(sysdate,mbmembmaster.member_date)/12),0) <= 20 then 2
+when nvl(trunc(months_between(sysdate,mbmembmaster.member_date)/12),0) <=30 then 3
+when nvl(trunc(months_between(sysdate,mbmembmaster.member_date)/12),0) <=40 then 4
+when nvl(trunc(months_between(sysdate,mbmembmaster.member_date)/12),0) <=50 then 5
+else 6 end ) as g_age,
+1 as c_count,
+shsharemaster.sharestk_amt * shsharetype.unitshare_value as share_value
+from shsharemaster
+join mbmembmaster on mbmembmaster.member_no = shsharemaster.member_no
+join shsharetype on shsharemaster.sharetype_code = shsharetype.sharetype_code
+where mbmembmaster.member_status = 1
+union
+select '' , 0 , 1 , 0 , 0 from dual
+union
+select '' , 0 , 2 , 0 , 0 from dual
+union
+select '' , 0 , 3 , 0 , 0 from dual
+union
+select '' , 0 , 4 , 0 , 0 from dual
+union
+select '' , 0 , 5 , 0 , 0 from dual
+union
+select '' , 0 , 6 , 0 , 0 from dual
+) s
+group by s.g_age
+order by s.g_age]]>
+	</queryString>
+	<field name="SYSDATE" class="java.sql.Timestamp"/>
+	<field name="DESCRIPT" class="java.lang.String"/>
+	<field name="C_COUNT" class="java.math.BigDecimal"/>
+	<field name="SHARE_VALUE" class="java.math.BigDecimal"/>
+	<pageHeader>
+		<band height="66" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="f51f36ee-3913-462f-88d3-9a07d69201c1" x="201" y="0" width="357" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[รายงานแสดงสถิติทุนเรือนหุ้น(ตามช่วงอายุการเป็นสมาชิก)]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="4f0e375d-907e-447d-87ae-09ecb5e5de65" x="201" y="20" width="357" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Angsana New" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ณ วันที่ "+new SimpleDateFormat("dd MMMMM GG yyyy",new Locale("th","TH")).format($F{SYSDATE})]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="fdcefe1a-1e27-43a7-b5f4-110bb7fdd028" x="664" y="0" width="138" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Browallia New" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["พิมพ์วันที่ : "+new SimpleDateFormat("dd/MM/yyyy  HH:MM:ss",new Locale("th","TH")).format(new Date())]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<summary>
+		<band height="397">
+			<barChart>
+				<chart>
+					<reportElement uuid="ee662334-54b4-4dfe-a468-8a757bb53a4a" x="71" y="20" width="666" height="246"/>
+					<chartTitle>
+						<font fontName="Angsana New" size="14"/>
+					</chartTitle>
+					<chartSubtitle>
+						<font fontName="Angsana New" size="14"/>
+					</chartSubtitle>
+					<chartLegend>
+						<font fontName="Angsana New" size="14" isBold="true"/>
+					</chartLegend>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["ช่วงอายุการเป็นสมาชิก"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{DESCRIPT}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{SHARE_VALUE}/1000000]]></valueExpression>
+						<labelExpression><![CDATA[new java.text.DecimalFormat("#,##0.00").format(Double.valueOf((($F{SHARE_VALUE}/1000000).setScale(4,BigDecimal.ROUND_HALF_UP)).toString()))]]></labelExpression>
+					</categorySeries>
+				</categoryDataset>
+				<barPlot>
+					<plot/>
+					<itemLabel/>
+					<categoryAxisFormat>
+						<axisFormat>
+							<labelFont>
+								<font fontName="Angsana New" size="14"/>
+							</labelFont>
+							<tickLabelFont>
+								<font fontName="Angsana New" size="14"/>
+							</tickLabelFont>
+						</axisFormat>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat>
+							<labelFont>
+								<font fontName="Angsana New" size="14"/>
+							</labelFont>
+							<tickLabelFont>
+								<font fontName="Angsana New" size="14"/>
+							</tickLabelFont>
+						</axisFormat>
+					</valueAxisFormat>
+				</barPlot>
+			</barChart>
+			<staticText>
+				<reportElement uuid="838676fb-bc4d-41c9-930f-555bfa20f2de" x="71" y="0" width="43" height="20"/>
+				<textElement>
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<text><![CDATA[ล้านบาท]]></text>
+			</staticText>
+			<subreport>
+				<reportElement uuid="86ba1eb9-f336-491b-8d76-0687a8f3bf0f" x="0" y="286" width="802" height="111"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["r_mis_grap_bar_shr_between_memdate_sub.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</summary>
+</jasperReport>

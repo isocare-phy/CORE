@@ -1,0 +1,876 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet1" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ConnectionString (Web.config)" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.ConnectionString.ConnectionString" Provider="System.Data.OracleClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="LNCONTCOLLTableAdapter" GeneratorDataComponentClassName="LNCONTCOLLTableAdapter" Name="LNCONTCOLL" UserDataComponentName="LNCONTCOLLTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ConnectionString (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>  SELECT "LNCONTCOLL"."REF_COLLNO",   
+         "LNCONTMASTER"."LOANCONTRACT_NO",   
+         "LNCONTMASTER"."MEMBER_NO",   
+         "LNCONTMASTER"."LOANTYPE_CODE",   
+         "LNCONTMASTER"."LOANAPPROVE_AMT",   
+         "LNCONTMASTER"."WITHDRAWABLE_AMT",   
+         "LNCONTMASTER"."PRINCIPAL_BALANCE",   
+         "MBUCFPRENAME"."PRENAME_DESC",   
+         "MBMEMBMASTER"."MEMB_NAME",   
+         "MBMEMBMASTER"."MEMB_SURNAME",   
+         "LNLOANTYPE"."PREFIX",   
+         "LNCONTCOLL"."COLL_PERCENT",   
+         "LNCONTCOLL"."BASE_PERCENT",   
+         "LNLOANTYPE"."LOANTYPE_DESC"  
+    FROM "LNCONTCOLL",   
+         "LNCONTMASTER",   
+         "MBMEMBMASTER",   
+         "MBUCFPRENAME",   
+         "LNLOANTYPE"  
+   WHERE ( "LNCONTMASTER"."LOANCONTRACT_NO" = "LNCONTCOLL"."LOANCONTRACT_NO" ) and  
+         ( "MBMEMBMASTER"."MEMBER_NO" = "LNCONTMASTER"."MEMBER_NO" ) and  
+         ( "MBMEMBMASTER"."PRENAME_CODE" = "MBUCFPRENAME"."PRENAME_CODE" ) and  
+         ( "LNCONTMASTER"."LOANTYPE_CODE" = "LNLOANTYPE"."LOANTYPE_CODE" ) and  
+         ( "MBMEMBMASTER"."COOP_ID" = "LNCONTMASTER"."COOP_ID" ) and  
+         ( "LNCONTMASTER"."COOP_ID" = "LNCONTCOLL"."COOP_ID" ) and  
+         ( "LNCONTMASTER"."COOP_ID" = "LNLOANTYPE"."COOP_ID" )</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="REF_COLLNO" DataSetColumn="REF_COLLNO" />
+              <Mapping SourceColumn="LOANCONTRACT_NO" DataSetColumn="LOANCONTRACT_NO" />
+              <Mapping SourceColumn="MEMBER_NO" DataSetColumn="MEMBER_NO" />
+              <Mapping SourceColumn="LOANTYPE_CODE" DataSetColumn="LOANTYPE_CODE" />
+              <Mapping SourceColumn="LOANAPPROVE_AMT" DataSetColumn="LOANAPPROVE_AMT" />
+              <Mapping SourceColumn="WITHDRAWABLE_AMT" DataSetColumn="WITHDRAWABLE_AMT" />
+              <Mapping SourceColumn="PRINCIPAL_BALANCE" DataSetColumn="PRINCIPAL_BALANCE" />
+              <Mapping SourceColumn="PRENAME_DESC" DataSetColumn="PRENAME_DESC" />
+              <Mapping SourceColumn="MEMB_NAME" DataSetColumn="MEMB_NAME" />
+              <Mapping SourceColumn="MEMB_SURNAME" DataSetColumn="MEMB_SURNAME" />
+              <Mapping SourceColumn="PREFIX" DataSetColumn="PREFIX" />
+              <Mapping SourceColumn="COLL_PERCENT" DataSetColumn="COLL_PERCENT" />
+              <Mapping SourceColumn="BASE_PERCENT" DataSetColumn="BASE_PERCENT" />
+              <Mapping SourceColumn="LOANTYPE_DESC" DataSetColumn="LOANTYPE_DESC" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="LNREQLOANTableAdapter" GeneratorDataComponentClassName="LNREQLOANTableAdapter" Name="LNREQLOAN" UserDataComponentName="LNREQLOANTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ConnectionString (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>select lnreqloan.loanrequest_docno,   
+                    lnreqloan.member_no,   
+                    lnreqloan.loantype_code,   
+                    lnreqloan.loanrequest_amt, 
+                    lnreqloancoll.collactive_amt,  
+                    lnreqloancoll.collactive_percent,   
+                    lnreqloancoll.loancolltype_code,   
+                    lnreqloancoll.collbase_percent,   
+                    lnloantype.cntmangrtval_flag,   
+                    lnloantype.mangrtpermgrp_code,   
+                    mbucfprename.prename_desc,   
+                    mbmembmaster.memb_name,   
+                    mbmembmaster.memb_surname                    
+            from lnreqloan,   
+                    lnreqloancoll,   
+                    lnloantype,   
+                    mbmembmaster,   
+                    mbucfprename  
+            where ( lnreqloancoll.loanrequest_docno = lnreqloan.loanrequest_docno )  
+                    and ( lnreqloan.loantype_code = lnloantype.loantype_code )  
+                    and ( lnreqloan.member_no = mbmembmaster.member_no )  
+                    and ( mbucfprename.prename_code = mbmembmaster.prename_code )  
+                    and ( lnreqloan.coop_id = lnreqloancoll.coop_id )  
+                    and ( lnreqloan.coop_id = lnloantype.coop_id )  
+                    and ( lnreqloan.coop_id = mbmembmaster.coop_id )  
+                    and ( ( lnreqloan.loanrequest_status in (8,11) )   
+                    and ( lnreqloancoll.ref_collno = :as_refcollno )   
+                    and ( lnreqloancoll.loancolltype_code = :as_lncolltype ) )</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="as_refcollno" ColumnName="REF_COLLNO" DataSourceName="ISCOTKS.LNREQLOANCOLL" DataTypeServer="VARCHAR2(15)" DbType="AnsiString" Direction="Input" ParameterName="as_refcollno" Precision="0" ProviderType="VarChar" Scale="0" Size="15" SourceColumn="REF_COLLNO" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="as_lncolltype" ColumnName="LOANCOLLTYPE_CODE" DataSourceName="ISCOTKS.LNREQLOANCOLL" DataTypeServer="CHAR(2)" DbType="AnsiString" Direction="Input" ParameterName="as_lncolltype" Precision="0" ProviderType="Char" Scale="0" Size="2" SourceColumn="LOANCOLLTYPE_CODE" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="LOANREQUEST_DOCNO" DataSetColumn="LOANREQUEST_DOCNO" />
+              <Mapping SourceColumn="MEMBER_NO" DataSetColumn="MEMBER_NO" />
+              <Mapping SourceColumn="LOANTYPE_CODE" DataSetColumn="LOANTYPE_CODE" />
+              <Mapping SourceColumn="LOANREQUEST_AMT" DataSetColumn="LOANREQUEST_AMT" />
+              <Mapping SourceColumn="LOANCOLLTYPE_CODE" DataSetColumn="LOANCOLLTYPE_CODE" />
+              <Mapping SourceColumn="CNTMANGRTVAL_FLAG" DataSetColumn="CNTMANGRTVAL_FLAG" />
+              <Mapping SourceColumn="MANGRTPERMGRP_CODE" DataSetColumn="MANGRTPERMGRP_CODE" />
+              <Mapping SourceColumn="PRENAME_DESC" DataSetColumn="PRENAME_DESC" />
+              <Mapping SourceColumn="MEMB_NAME" DataSetColumn="MEMB_NAME" />
+              <Mapping SourceColumn="MEMB_SURNAME" DataSetColumn="MEMB_SURNAME" />
+              <Mapping SourceColumn="COLLACTIVE_PERCENT" DataSetColumn="COLLACTIVE_PERCENT" />
+              <Mapping SourceColumn="COLLBASE_PERCENT" DataSetColumn="COLLBASE_PERCENT" />
+              <Mapping SourceColumn="COLLACTIVE_AMT" DataSetColumn="COLLACTIVE_AMT" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="LNGRPMANGRTPERMTableAdapter" GeneratorDataComponentClassName="LNGRPMANGRTPERMTableAdapter" Name="LNGRPMANGRTPERM" UserDataComponentName="LNGRPMANGRTPERMTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ConnectionString (Web.config)" DbObjectName="ISCOTKS.LNGRPMANGRTPERM" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT MANGRTPERMGRP_CODE, MANGRTPERMGRP_DESC, MANGRTTIME_TYPE, EXPORTRIGTH_FLAG, MEMBER_TYPE FROM LNGRPMANGRTPERM</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="MANGRTPERMGRP_CODE" DataSetColumn="MANGRTPERMGRP_CODE" />
+              <Mapping SourceColumn="MANGRTPERMGRP_DESC" DataSetColumn="MANGRTPERMGRP_DESC" />
+              <Mapping SourceColumn="MANGRTTIME_TYPE" DataSetColumn="MANGRTTIME_TYPE" />
+              <Mapping SourceColumn="EXPORTRIGTH_FLAG" DataSetColumn="EXPORTRIGTH_FLAG" />
+              <Mapping SourceColumn="MEMBER_TYPE" DataSetColumn="MEMBER_TYPE" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SHSHAREMASTERTableAdapter" GeneratorDataComponentClassName="SHSHAREMASTERTableAdapter" Name="SHSHAREMASTER" UserDataComponentName="SHSHAREMASTERTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ConnectionString (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT "MBMEMBMASTER"."MEMBGROUP_CODE",   
+         "MBUCFMEMBGROUP"."MEMBGROUP_DESC",   
+         "MBMEMBMASTER"."BIRTH_DATE",   
+         "MBMEMBMASTER"."MEMBER_DATE",   
+         "MBMEMBMASTER"."SALARY_AMOUNT",   
+         "MBMEMBMASTER"."WORK_DATE",   
+         "MBMEMBMASTER"."RETRY_DATE",   
+         "SHSHAREMASTER"."SHARESTK_AMT",   
+         "SHSHAREMASTER"."LAST_PERIOD",   
+         "SHSHAREMASTER"."PERIODSHARE_AMT",   
+         "SHSHAREMASTER"."PAYMENT_STATUS",   
+         "SHSHAREMASTER"."SHAREARREAR_AMT",   
+         "SHSHARETYPE"."UNITSHARE_VALUE",   
+       
+         "MBUCFMEMBTYPE"."MEMBTYPE_CODE",   
+         "MBUCFMEMBTYPE"."MEMBTYPE_DESC",   
+         "MBMEMBMASTER"."APPLTYPE_CODE",   
+         "MBMEMBMASTER"."MEMBER_TYPE",   
+         "MBUCFPRENAME"."PRENAME_DESC",
+ "MBMEMBMASTER"."MEMB_NAME" ,
+ "MBMEMBMASTER"."MEMB_SURNAME",   
+         "MBMEMBMASTER"."RESIGN_STATUS"  
+    FROM "MBMEMBMASTER",   
+         "MBUCFMEMBGROUP",   
+         "SHSHAREMASTER",   
+         "SHSHARETYPE",   
+         "MBUCFMEMBTYPE",   
+         "MBUCFPRENAME"  
+   WHERE ( "MBUCFMEMBGROUP"."MEMBGROUP_CODE" = "MBMEMBMASTER"."MEMBGROUP_CODE" ) and  
+         ( "SHSHAREMASTER"."MEMBER_NO" = "MBMEMBMASTER"."MEMBER_NO" ) and  
+         ( "SHSHAREMASTER"."SHARETYPE_CODE" = "SHSHARETYPE"."SHARETYPE_CODE" ) and  
+         ( "MBMEMBMASTER"."MEMBTYPE_CODE" = "MBUCFMEMBTYPE"."MEMBTYPE_CODE" ) and  
+         ( "MBMEMBMASTER"."COOP_ID" = "MBUCFMEMBGROUP"."COOP_ID" ) and  
+         ( "MBMEMBMASTER"."COOP_ID" = "SHSHAREMASTER"."COOP_ID" ) and  
+         ( "MBMEMBMASTER"."COOP_ID" = "MBUCFMEMBTYPE"."COOP_ID" ) and  
+         ( "MBMEMBMASTER"."PRENAME_CODE" = "MBUCFPRENAME"."PRENAME_CODE" ) and  
+         ( "SHSHAREMASTER"."COOP_ID" = "SHSHARETYPE"."COOP_ID" ) </CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="MEMBGROUP_CODE" DataSetColumn="MEMBGROUP_CODE" />
+              <Mapping SourceColumn="MEMBGROUP_DESC" DataSetColumn="MEMBGROUP_DESC" />
+              <Mapping SourceColumn="BIRTH_DATE" DataSetColumn="BIRTH_DATE" />
+              <Mapping SourceColumn="MEMBER_DATE" DataSetColumn="MEMBER_DATE" />
+              <Mapping SourceColumn="SALARY_AMOUNT" DataSetColumn="SALARY_AMOUNT" />
+              <Mapping SourceColumn="WORK_DATE" DataSetColumn="WORK_DATE" />
+              <Mapping SourceColumn="RETRY_DATE" DataSetColumn="RETRY_DATE" />
+              <Mapping SourceColumn="SHARESTK_AMT" DataSetColumn="SHARESTK_AMT" />
+              <Mapping SourceColumn="LAST_PERIOD" DataSetColumn="LAST_PERIOD" />
+              <Mapping SourceColumn="PERIODSHARE_AMT" DataSetColumn="PERIODSHARE_AMT" />
+              <Mapping SourceColumn="PAYMENT_STATUS" DataSetColumn="PAYMENT_STATUS" />
+              <Mapping SourceColumn="SHAREARREAR_AMT" DataSetColumn="SHAREARREAR_AMT" />
+              <Mapping SourceColumn="UNITSHARE_VALUE" DataSetColumn="UNITSHARE_VALUE" />
+              <Mapping SourceColumn="MEMBTYPE_CODE" DataSetColumn="MEMBTYPE_CODE" />
+              <Mapping SourceColumn="MEMBTYPE_DESC" DataSetColumn="MEMBTYPE_DESC" />
+              <Mapping SourceColumn="APPLTYPE_CODE" DataSetColumn="APPLTYPE_CODE" />
+              <Mapping SourceColumn="MEMBER_TYPE" DataSetColumn="MEMBER_TYPE" />
+              <Mapping SourceColumn="PRENAME_DESC" DataSetColumn="PRENAME_DESC" />
+              <Mapping SourceColumn="MEMB_NAME" DataSetColumn="MEMB_NAME" />
+              <Mapping SourceColumn="MEMB_SURNAME" DataSetColumn="MEMB_SURNAME" />
+              <Mapping SourceColumn="RESIGN_STATUS" DataSetColumn="RESIGN_STATUS" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DPDEPTMASTERTableAdapter" GeneratorDataComponentClassName="DPDEPTMASTERTableAdapter" Name="DPDEPTMASTER" UserDataComponentName="DPDEPTMASTERTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ConnectionString (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT "DPDEPTMASTER"."DEPTACCOUNT_NO",   
+         "DPDEPTMASTER"."DEPTTYPE_CODE",   
+         "DPDEPTTYPE"."DEPTTYPE_DESC",   
+         "DPDEPTMASTER"."MEMBER_NO",   
+         "DPDEPTMASTER"."DEPTOPEN_DATE",   
+         "DPDEPTMASTER"."DEPTACCOUNT_NAME",   
+         "DPDEPTMASTER"."BEGINBAL",   
+         "DPDEPTMASTER"."PRNCBAL",   
+         "DPDEPTMASTER"."WITHDRAWABLE_AMT",   
+         "DPDEPTMASTER"."SEQUEST_AMOUNT",   
+         "DPDEPTMASTER"."DEPTCLOSE_DATE",   
+         "DPDEPTMASTER"."DEPTCLOSE_STATUS"  
+    FROM "DPDEPTMASTER",   
+         "DPDEPTTYPE"  
+   WHERE ( "DPDEPTTYPE"."DEPTTYPE_CODE" = "DPDEPTMASTER"."DEPTTYPE_CODE" ) and  
+         ( "DPDEPTMASTER"."COOP_ID" = "DPDEPTTYPE"."COOP_ID" ) </CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="DEPTACCOUNT_NO" DataSetColumn="DEPTACCOUNT_NO" />
+              <Mapping SourceColumn="DEPTTYPE_CODE" DataSetColumn="DEPTTYPE_CODE" />
+              <Mapping SourceColumn="DEPTTYPE_DESC" DataSetColumn="DEPTTYPE_DESC" />
+              <Mapping SourceColumn="MEMBER_NO" DataSetColumn="MEMBER_NO" />
+              <Mapping SourceColumn="DEPTOPEN_DATE" DataSetColumn="DEPTOPEN_DATE" />
+              <Mapping SourceColumn="DEPTACCOUNT_NAME" DataSetColumn="DEPTACCOUNT_NAME" />
+              <Mapping SourceColumn="BEGINBAL" DataSetColumn="BEGINBAL" />
+              <Mapping SourceColumn="PRNCBAL" DataSetColumn="PRNCBAL" />
+              <Mapping SourceColumn="WITHDRAWABLE_AMT" DataSetColumn="WITHDRAWABLE_AMT" />
+              <Mapping SourceColumn="SEQUEST_AMOUNT" DataSetColumn="SEQUEST_AMOUNT" />
+              <Mapping SourceColumn="DEPTCLOSE_DATE" DataSetColumn="DEPTCLOSE_DATE" />
+              <Mapping SourceColumn="DEPTCLOSE_STATUS" DataSetColumn="DEPTCLOSE_STATUS" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="LNCOLLMASTERTableAdapter" GeneratorDataComponentClassName="LNCOLLMASTERTableAdapter" Name="LNCOLLMASTER" UserDataComponentName="LNCOLLMASTERTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ConnectionString (Web.config)" DbObjectName="ISCOTKS.LNCOLLMASTER" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM "LNCOLLMASTER" WHERE (("COLLMAST_NO" = :Original_COLLMAST_NO) AND ("COOP_ID" = :Original_COOP_ID))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="Original_COLLMAST_NO" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="COLLMAST_NO" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="Original_COOP_ID" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="COOP_ID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO "LNCOLLMASTER" ("COLLMAST_NO", "MEMBER_NO", "COLLMAST_REFNO", "COLLMASTTYPE_CODE", "COLLMAST_DESC", "LANDESTIMATE_AMT", "HOUSEESTIMATE_AMT", "ESTIMATE_PRICE", "MORTGAGE_PRICE", "MORTGAGE_DATE", "EXPIRE_DATE", "REDEEM_FLAG", "REDEEM_DATE", "REMARK", "LAND_NO", "SURVEY_NO", "BOOK_NO", "PAGE_NO", "GROUP_NO", "COOP_ID") VALUES (:COLLMAST_NO, :MEMBER_NO, :COLLMAST_REFNO, :COLLMASTTYPE_CODE, :COLLMAST_DESC, :LANDESTIMATE_AMT, :HOUSEESTIMATE_AMT, :ESTIMATE_PRICE, :MORTGAGE_PRICE, :MORTGAGE_DATE, :EXPIRE_DATE, :REDEEM_FLAG, :REDEEM_DATE, :REMARK, :LAND_NO, :SURVEY_NO, :BOOK_NO, :PAGE_NO, :GROUP_NO, :COOP_ID)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="COLLMAST_NO" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="COLLMAST_NO" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="MEMBER_NO" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="MEMBER_NO" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="COLLMAST_REFNO" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="COLLMAST_REFNO" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="COLLMASTTYPE_CODE" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="COLLMASTTYPE_CODE" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="COLLMAST_DESC" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="COLLMAST_DESC" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="LANDESTIMATE_AMT" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="LANDESTIMATE_AMT" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="HOUSEESTIMATE_AMT" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="HOUSEESTIMATE_AMT" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="ESTIMATE_PRICE" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="ESTIMATE_PRICE" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="MORTGAGE_PRICE" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="MORTGAGE_PRICE" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="MORTGAGE_DATE" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="MORTGAGE_DATE" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="EXPIRE_DATE" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="EXPIRE_DATE" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="REDEEM_FLAG" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="REDEEM_FLAG" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="REDEEM_DATE" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="REDEEM_DATE" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="REMARK" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="REMARK" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="LAND_NO" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="LAND_NO" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="SURVEY_NO" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="SURVEY_NO" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="BOOK_NO" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="BOOK_NO" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="PAGE_NO" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="PAGE_NO" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="GROUP_NO" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="GROUP_NO" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="COOP_ID" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="COOP_ID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>  SELECT "LNCOLLMASTER"."COLLMAST_NO",   
+         "LNCOLLMASTER"."MEMBER_NO",   
+         "LNCOLLMASTER"."COLLMAST_REFNO",   
+         "LNCOLLMASTER"."COLLMASTTYPE_CODE",   
+         "LNCOLLMASTER"."COLLMAST_DESC",   
+         "LNCOLLMASTER"."LANDESTIMATE_AMT",   
+         "LNCOLLMASTER"."HOUSEESTIMATE_AMT",   
+         "LNCOLLMASTER"."ESTIMATE_PRICE",   
+         "LNCOLLMASTER"."MORTGAGE_PRICE",   
+         "LNCOLLMASTER"."MORTGAGE_DATE",   
+         "LNCOLLMASTER"."EXPIRE_DATE",   
+         "LNCOLLMASTER"."REDEEM_FLAG",   
+         "LNCOLLMASTER"."REDEEM_DATE",   
+         "LNCOLLMASTER"."REMARK",   
+         "LNCOLLMASTER"."LAND_NO",   
+         "LNCOLLMASTER"."SURVEY_NO",   
+         "LNCOLLMASTER"."BOOK_NO",   
+         "LNCOLLMASTER"."PAGE_NO",   
+         "LNCOLLMASTER"."GROUP_NO",   
+         "LNCOLLMASTER"."COOP_ID"  
+    FROM "LNCOLLMASTER"  </CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE "LNCOLLMASTER" SET "COLLMAST_NO" = :COLLMAST_NO, "MEMBER_NO" = :MEMBER_NO, "COLLMAST_REFNO" = :COLLMAST_REFNO, "COLLMASTTYPE_CODE" = :COLLMASTTYPE_CODE, "COLLMAST_DESC" = :COLLMAST_DESC, "LANDESTIMATE_AMT" = :LANDESTIMATE_AMT, "HOUSEESTIMATE_AMT" = :HOUSEESTIMATE_AMT, "ESTIMATE_PRICE" = :ESTIMATE_PRICE, "MORTGAGE_PRICE" = :MORTGAGE_PRICE, "MORTGAGE_DATE" = :MORTGAGE_DATE, "EXPIRE_DATE" = :EXPIRE_DATE, "REDEEM_FLAG" = :REDEEM_FLAG, "REDEEM_DATE" = :REDEEM_DATE, "REMARK" = :REMARK, "LAND_NO" = :LAND_NO, "SURVEY_NO" = :SURVEY_NO, "BOOK_NO" = :BOOK_NO, "PAGE_NO" = :PAGE_NO, "GROUP_NO" = :GROUP_NO, "COOP_ID" = :COOP_ID WHERE (("COLLMAST_NO" = :Original_COLLMAST_NO) AND ("COOP_ID" = :Original_COOP_ID))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="COLLMAST_NO" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="COLLMAST_NO" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="MEMBER_NO" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="MEMBER_NO" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="COLLMAST_REFNO" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="COLLMAST_REFNO" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="COLLMASTTYPE_CODE" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="COLLMASTTYPE_CODE" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="COLLMAST_DESC" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="COLLMAST_DESC" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="LANDESTIMATE_AMT" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="LANDESTIMATE_AMT" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="HOUSEESTIMATE_AMT" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="HOUSEESTIMATE_AMT" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="ESTIMATE_PRICE" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="ESTIMATE_PRICE" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="MORTGAGE_PRICE" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="MORTGAGE_PRICE" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="MORTGAGE_DATE" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="MORTGAGE_DATE" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="EXPIRE_DATE" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="EXPIRE_DATE" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="REDEEM_FLAG" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="REDEEM_FLAG" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="REDEEM_DATE" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="REDEEM_DATE" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="REMARK" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="REMARK" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="LAND_NO" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="LAND_NO" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="SURVEY_NO" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="SURVEY_NO" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="BOOK_NO" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="BOOK_NO" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="PAGE_NO" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="PAGE_NO" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="GROUP_NO" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="GROUP_NO" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="COOP_ID" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="COOP_ID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="Original_COLLMAST_NO" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="COLLMAST_NO" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="Original_COOP_ID" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="COOP_ID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="COLLMAST_NO" DataSetColumn="COLLMAST_NO" />
+              <Mapping SourceColumn="MEMBER_NO" DataSetColumn="MEMBER_NO" />
+              <Mapping SourceColumn="COLLMAST_REFNO" DataSetColumn="COLLMAST_REFNO" />
+              <Mapping SourceColumn="COLLMASTTYPE_CODE" DataSetColumn="COLLMASTTYPE_CODE" />
+              <Mapping SourceColumn="COLLMAST_DESC" DataSetColumn="COLLMAST_DESC" />
+              <Mapping SourceColumn="LANDESTIMATE_AMT" DataSetColumn="LANDESTIMATE_AMT" />
+              <Mapping SourceColumn="HOUSEESTIMATE_AMT" DataSetColumn="HOUSEESTIMATE_AMT" />
+              <Mapping SourceColumn="ESTIMATE_PRICE" DataSetColumn="ESTIMATE_PRICE" />
+              <Mapping SourceColumn="MORTGAGE_PRICE" DataSetColumn="MORTGAGE_PRICE" />
+              <Mapping SourceColumn="MORTGAGE_DATE" DataSetColumn="MORTGAGE_DATE" />
+              <Mapping SourceColumn="EXPIRE_DATE" DataSetColumn="EXPIRE_DATE" />
+              <Mapping SourceColumn="REDEEM_FLAG" DataSetColumn="REDEEM_FLAG" />
+              <Mapping SourceColumn="REDEEM_DATE" DataSetColumn="REDEEM_DATE" />
+              <Mapping SourceColumn="REMARK" DataSetColumn="REMARK" />
+              <Mapping SourceColumn="LAND_NO" DataSetColumn="LAND_NO" />
+              <Mapping SourceColumn="SURVEY_NO" DataSetColumn="SURVEY_NO" />
+              <Mapping SourceColumn="BOOK_NO" DataSetColumn="BOOK_NO" />
+              <Mapping SourceColumn="PAGE_NO" DataSetColumn="PAGE_NO" />
+              <Mapping SourceColumn="GROUP_NO" DataSetColumn="GROUP_NO" />
+              <Mapping SourceColumn="COOP_ID" DataSetColumn="COOP_ID" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="LNCOLLMASTMEMCOTableAdapter" GeneratorDataComponentClassName="LNCOLLMASTMEMCOTableAdapter" Name="LNCOLLMASTMEMCO" UserDataComponentName="LNCOLLMASTMEMCOTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ConnectionString (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>  SELECT "LNCOLLMASTMEMCO"."COLLMAST_NO",   
+         "LNCOLLMASTMEMCO"."MEMCO_NO",   
+         "LNCOLLMASTMEMCO"."COLLMASTMAIN_FLAG",   
+         "MBUCFPRENAME"."PRENAME_SHORT",   
+         "MBMEMBMASTER"."MEMB_NAME",   
+         "MBMEMBMASTER"."MEMB_SURNAME"  
+    FROM "LNCOLLMASTMEMCO",   
+         "MBMEMBMASTER",   
+         "MBUCFPRENAME"  
+   WHERE ( "MBMEMBMASTER"."PRENAME_CODE" = "MBUCFPRENAME"."PRENAME_CODE" ) and  
+         ( "LNCOLLMASTMEMCO"."MEMCO_NO" = "MBMEMBMASTER"."MEMBER_NO" )</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="COLLMAST_NO" DataSetColumn="COLLMAST_NO" />
+              <Mapping SourceColumn="MEMCO_NO" DataSetColumn="MEMCO_NO" />
+              <Mapping SourceColumn="COLLMASTMAIN_FLAG" DataSetColumn="COLLMASTMAIN_FLAG" />
+              <Mapping SourceColumn="PRENAME_SHORT" DataSetColumn="PRENAME_SHORT" />
+              <Mapping SourceColumn="MEMB_NAME" DataSetColumn="MEMB_NAME" />
+              <Mapping SourceColumn="MEMB_SURNAME" DataSetColumn="MEMB_SURNAME" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="LNCONTCOLL" msprop:Generator_TableClassName="LNCONTCOLLDataTable" msprop:Generator_TableVarName="tableLNCONTCOLL" msprop:Generator_TablePropName="LNCONTCOLL" msprop:Generator_RowDeletingName="LNCONTCOLLRowDeleting" msprop:Generator_UserTableName="LNCONTCOLL" msprop:Generator_RowChangingName="LNCONTCOLLRowChanging" msprop:Generator_RowEvHandlerName="LNCONTCOLLRowChangeEventHandler" msprop:Generator_RowDeletedName="LNCONTCOLLRowDeleted" msprop:Generator_RowEvArgName="LNCONTCOLLRowChangeEvent" msprop:Generator_RowChangedName="LNCONTCOLLRowChanged" msprop:Generator_RowClassName="LNCONTCOLLRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="REF_COLLNO" msprop:Generator_ColumnVarNameInTable="columnREF_COLLNO" msprop:Generator_ColumnPropNameInRow="REF_COLLNO" msprop:Generator_ColumnPropNameInTable="REF_COLLNOColumn" msprop:Generator_UserColumnName="REF_COLLNO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="LOANCONTRACT_NO" msprop:Generator_ColumnVarNameInTable="columnLOANCONTRACT_NO" msprop:Generator_ColumnPropNameInRow="LOANCONTRACT_NO" msprop:Generator_ColumnPropNameInTable="LOANCONTRACT_NOColumn" msprop:Generator_UserColumnName="LOANCONTRACT_NO">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MEMBER_NO" msprop:Generator_ColumnVarNameInTable="columnMEMBER_NO" msprop:Generator_ColumnPropNameInRow="MEMBER_NO" msprop:Generator_ColumnPropNameInTable="MEMBER_NOColumn" msprop:Generator_UserColumnName="MEMBER_NO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="LOANTYPE_CODE" msprop:Generator_ColumnVarNameInTable="columnLOANTYPE_CODE" msprop:Generator_ColumnPropNameInRow="LOANTYPE_CODE" msprop:Generator_ColumnPropNameInTable="LOANTYPE_CODEColumn" msprop:Generator_UserColumnName="LOANTYPE_CODE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="LOANAPPROVE_AMT" msprop:Generator_ColumnVarNameInTable="columnLOANAPPROVE_AMT" msprop:Generator_ColumnPropNameInRow="LOANAPPROVE_AMT" msprop:Generator_ColumnPropNameInTable="LOANAPPROVE_AMTColumn" msprop:Generator_UserColumnName="LOANAPPROVE_AMT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="WITHDRAWABLE_AMT" msprop:Generator_ColumnVarNameInTable="columnWITHDRAWABLE_AMT" msprop:Generator_ColumnPropNameInRow="WITHDRAWABLE_AMT" msprop:Generator_ColumnPropNameInTable="WITHDRAWABLE_AMTColumn" msprop:Generator_UserColumnName="WITHDRAWABLE_AMT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PRINCIPAL_BALANCE" msprop:Generator_ColumnVarNameInTable="columnPRINCIPAL_BALANCE" msprop:Generator_ColumnPropNameInRow="PRINCIPAL_BALANCE" msprop:Generator_ColumnPropNameInTable="PRINCIPAL_BALANCEColumn" msprop:Generator_UserColumnName="PRINCIPAL_BALANCE" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PRENAME_DESC" msprop:Generator_ColumnVarNameInTable="columnPRENAME_DESC" msprop:Generator_ColumnPropNameInRow="PRENAME_DESC" msprop:Generator_ColumnPropNameInTable="PRENAME_DESCColumn" msprop:Generator_UserColumnName="PRENAME_DESC" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MEMB_NAME" msprop:Generator_ColumnVarNameInTable="columnMEMB_NAME" msprop:Generator_ColumnPropNameInRow="MEMB_NAME" msprop:Generator_ColumnPropNameInTable="MEMB_NAMEColumn" msprop:Generator_UserColumnName="MEMB_NAME" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MEMB_SURNAME" msprop:Generator_ColumnVarNameInTable="columnMEMB_SURNAME" msprop:Generator_ColumnPropNameInRow="MEMB_SURNAME" msprop:Generator_ColumnPropNameInTable="MEMB_SURNAMEColumn" msprop:Generator_UserColumnName="MEMB_SURNAME" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PREFIX" msprop:Generator_ColumnVarNameInTable="columnPREFIX" msprop:Generator_ColumnPropNameInRow="PREFIX" msprop:Generator_ColumnPropNameInTable="PREFIXColumn" msprop:Generator_UserColumnName="PREFIX" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="COLL_PERCENT" msprop:Generator_ColumnVarNameInTable="columnCOLL_PERCENT" msprop:Generator_ColumnPropNameInRow="COLL_PERCENT" msprop:Generator_ColumnPropNameInTable="COLL_PERCENTColumn" msprop:Generator_UserColumnName="COLL_PERCENT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="BASE_PERCENT" msprop:Generator_ColumnVarNameInTable="columnBASE_PERCENT" msprop:Generator_ColumnPropNameInRow="BASE_PERCENT" msprop:Generator_ColumnPropNameInTable="BASE_PERCENTColumn" msprop:Generator_UserColumnName="BASE_PERCENT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="LOANTYPE_DESC" msprop:Generator_ColumnVarNameInTable="columnLOANTYPE_DESC" msprop:Generator_ColumnPropNameInRow="LOANTYPE_DESC" msprop:Generator_ColumnPropNameInTable="LOANTYPE_DESCColumn" msprop:Generator_UserColumnName="LOANTYPE_DESC" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="colltype_code_name" msprop:Generator_ColumnVarNameInTable="columncolltype_code_name" msprop:Generator_ColumnPropNameInRow="colltype_code_name" msprop:Generator_ColumnPropNameInTable="colltype_code_nameColumn" msprop:Generator_UserColumnName="colltype_code_name" type="xs:string" minOccurs="0" />
+              <xs:element name="colltype_code" msprop:Generator_ColumnVarNameInTable="columncolltype_code" msprop:Generator_ColumnPropNameInRow="colltype_code" msprop:Generator_ColumnPropNameInTable="colltype_codeColumn" msprop:Generator_UserColumnName="colltype_code" type="xs:string" minOccurs="0" />
+              <xs:element name="collateral_no" msprop:Generator_ColumnVarNameInTable="columncollateral_no" msprop:Generator_ColumnPropNameInRow="collateral_no" msprop:Generator_ColumnPropNameInTable="collateral_noColumn" msprop:Generator_UserColumnName="collateral_no" type="xs:string" minOccurs="0" />
+              <xs:element name="collateral_desc" msprop:Generator_ColumnVarNameInTable="columncollateral_desc" msprop:Generator_ColumnPropNameInRow="collateral_desc" msprop:Generator_ColumnPropNameInTable="collateral_descColumn" msprop:Generator_UserColumnName="collateral_desc" type="xs:string" minOccurs="0" />
+              <xs:element name="cp_name" msdata:ReadOnly="true" msdata:Expression=" member_no +' - '+ prename_desc + memb_name +'  '+ memb_surname " msprop:Generator_ColumnVarNameInTable="columncp_name" msprop:Generator_ColumnPropNameInRow="cp_name" msprop:Generator_ColumnPropNameInTable="cp_nameColumn" msprop:Generator_UserColumnName="cp_name" type="xs:string" minOccurs="0" />
+              <xs:element name="cp_colluse" msdata:ReadOnly="true" msdata:Expression="( ( principal_balance + withdrawable_amt ) * coll_percent ) / iif(base_percent=0,1,base_percent)" msprop:Generator_ColumnVarNameInTable="columncp_colluse" msprop:Generator_ColumnPropNameInRow="cp_colluse" msprop:Generator_ColumnPropNameInTable="cp_colluseColumn" msprop:Generator_UserColumnName="cp_colluse" type="xs:decimal" minOccurs="0" />
+              <xs:element name="cp_sumcp_colluse" msprop:Generator_ColumnVarNameInTable="columncp_sumcp_colluse" msprop:Generator_ColumnPropNameInRow="cp_sumcp_colluse" msprop:Generator_ColumnPropNameInTable="cp_sumcp_colluseColumn" msprop:Generator_UserColumnName="cp_sumcp_colluse" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="LNREQLOAN" msprop:Generator_TableClassName="LNREQLOANDataTable" msprop:Generator_TableVarName="tableLNREQLOAN" msprop:Generator_TablePropName="LNREQLOAN" msprop:Generator_RowDeletingName="LNREQLOANRowDeleting" msprop:Generator_UserTableName="LNREQLOAN" msprop:Generator_RowChangingName="LNREQLOANRowChanging" msprop:Generator_RowEvHandlerName="LNREQLOANRowChangeEventHandler" msprop:Generator_RowDeletedName="LNREQLOANRowDeleted" msprop:Generator_RowEvArgName="LNREQLOANRowChangeEvent" msprop:Generator_RowChangedName="LNREQLOANRowChanged" msprop:Generator_RowClassName="LNREQLOANRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="LOANREQUEST_DOCNO" msprop:Generator_ColumnVarNameInTable="columnLOANREQUEST_DOCNO" msprop:Generator_ColumnPropNameInRow="LOANREQUEST_DOCNO" msprop:Generator_ColumnPropNameInTable="LOANREQUEST_DOCNOColumn" msprop:Generator_UserColumnName="LOANREQUEST_DOCNO">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MEMBER_NO" msprop:Generator_ColumnVarNameInTable="columnMEMBER_NO" msprop:Generator_ColumnPropNameInRow="MEMBER_NO" msprop:Generator_ColumnPropNameInTable="MEMBER_NOColumn" msprop:Generator_UserColumnName="MEMBER_NO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="LOANTYPE_CODE" msprop:Generator_ColumnVarNameInTable="columnLOANTYPE_CODE" msprop:Generator_ColumnPropNameInRow="LOANTYPE_CODE" msprop:Generator_ColumnPropNameInTable="LOANTYPE_CODEColumn" msprop:Generator_UserColumnName="LOANTYPE_CODE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="LOANREQUEST_AMT" msprop:Generator_ColumnVarNameInTable="columnLOANREQUEST_AMT" msprop:Generator_ColumnPropNameInRow="LOANREQUEST_AMT" msprop:Generator_ColumnPropNameInTable="LOANREQUEST_AMTColumn" msprop:Generator_UserColumnName="LOANREQUEST_AMT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="LOANCOLLTYPE_CODE" msprop:Generator_ColumnVarNameInTable="columnLOANCOLLTYPE_CODE" msprop:Generator_ColumnPropNameInRow="LOANCOLLTYPE_CODE" msprop:Generator_ColumnPropNameInTable="LOANCOLLTYPE_CODEColumn" msprop:Generator_UserColumnName="LOANCOLLTYPE_CODE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CNTMANGRTVAL_FLAG" msprop:Generator_ColumnVarNameInTable="columnCNTMANGRTVAL_FLAG" msprop:Generator_ColumnPropNameInRow="CNTMANGRTVAL_FLAG" msprop:Generator_ColumnPropNameInTable="CNTMANGRTVAL_FLAGColumn" msprop:Generator_UserColumnName="CNTMANGRTVAL_FLAG" type="xs:decimal" minOccurs="0" />
+              <xs:element name="MANGRTPERMGRP_CODE" msprop:Generator_ColumnVarNameInTable="columnMANGRTPERMGRP_CODE" msprop:Generator_ColumnPropNameInRow="MANGRTPERMGRP_CODE" msprop:Generator_ColumnPropNameInTable="MANGRTPERMGRP_CODEColumn" msprop:Generator_UserColumnName="MANGRTPERMGRP_CODE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PRENAME_DESC" msprop:Generator_ColumnVarNameInTable="columnPRENAME_DESC" msprop:Generator_ColumnPropNameInRow="PRENAME_DESC" msprop:Generator_ColumnPropNameInTable="PRENAME_DESCColumn" msprop:Generator_UserColumnName="PRENAME_DESC" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MEMB_NAME" msprop:Generator_ColumnVarNameInTable="columnMEMB_NAME" msprop:Generator_ColumnPropNameInRow="MEMB_NAME" msprop:Generator_ColumnPropNameInTable="MEMB_NAMEColumn" msprop:Generator_UserColumnName="MEMB_NAME" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MEMB_SURNAME" msprop:Generator_ColumnVarNameInTable="columnMEMB_SURNAME" msprop:Generator_ColumnPropNameInRow="MEMB_SURNAME" msprop:Generator_ColumnPropNameInTable="MEMB_SURNAMEColumn" msprop:Generator_UserColumnName="MEMB_SURNAME" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="COLLACTIVE_PERCENT" msprop:Generator_ColumnVarNameInTable="columnCOLLACTIVE_PERCENT" msprop:Generator_ColumnPropNameInRow="COLLACTIVE_PERCENT" msprop:Generator_ColumnPropNameInTable="COLLACTIVE_PERCENTColumn" msprop:Generator_UserColumnName="COLLACTIVE_PERCENT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="COLLBASE_PERCENT" msprop:Generator_ColumnVarNameInTable="columnCOLLBASE_PERCENT" msprop:Generator_ColumnPropNameInRow="COLLBASE_PERCENT" msprop:Generator_ColumnPropNameInTable="COLLBASE_PERCENTColumn" msprop:Generator_UserColumnName="COLLBASE_PERCENT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="COLLACTIVE_AMT" msprop:Generator_ColumnVarNameInTable="columnCOLLACTIVE_AMT" msprop:Generator_ColumnPropNameInRow="COLLACTIVE_AMT" msprop:Generator_ColumnPropNameInTable="COLLACTIVE_AMTColumn" msprop:Generator_UserColumnName="COLLACTIVE_AMT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="full_name" msprop:Generator_ColumnVarNameInTable="columnfull_name" msprop:Generator_ColumnPropNameInRow="full_name" msprop:Generator_ColumnPropNameInTable="full_nameColumn" msprop:Generator_UserColumnName="full_name" type="xs:string" minOccurs="0" />
+              <xs:element name="cp_collamt" msdata:ReadOnly="true" msdata:Expression="LOANREQUEST_AMT *(COLLACTIVE_PERCENT/100)" msprop:Generator_ColumnVarNameInTable="columncp_collamt" msprop:Generator_ColumnPropNameInRow="cp_collamt" msprop:Generator_ColumnPropNameInTable="cp_collamtColumn" msprop:Generator_UserColumnName="cp_collamt" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="LNGRPMANGRTPERM" msprop:Generator_TableClassName="LNGRPMANGRTPERMDataTable" msprop:Generator_TableVarName="tableLNGRPMANGRTPERM" msprop:Generator_TablePropName="LNGRPMANGRTPERM" msprop:Generator_RowDeletingName="LNGRPMANGRTPERMRowDeleting" msprop:Generator_UserTableName="LNGRPMANGRTPERM" msprop:Generator_RowChangingName="LNGRPMANGRTPERMRowChanging" msprop:Generator_RowEvHandlerName="LNGRPMANGRTPERMRowChangeEventHandler" msprop:Generator_RowDeletedName="LNGRPMANGRTPERMRowDeleted" msprop:Generator_RowEvArgName="LNGRPMANGRTPERMRowChangeEvent" msprop:Generator_RowChangedName="LNGRPMANGRTPERMRowChanged" msprop:Generator_RowClassName="LNGRPMANGRTPERMRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MANGRTPERMGRP_CODE" msprop:Generator_ColumnVarNameInTable="columnMANGRTPERMGRP_CODE" msprop:Generator_ColumnPropNameInRow="MANGRTPERMGRP_CODE" msprop:Generator_ColumnPropNameInTable="MANGRTPERMGRP_CODEColumn" msprop:Generator_UserColumnName="MANGRTPERMGRP_CODE">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MANGRTPERMGRP_DESC" msprop:Generator_ColumnVarNameInTable="columnMANGRTPERMGRP_DESC" msprop:Generator_ColumnPropNameInRow="MANGRTPERMGRP_DESC" msprop:Generator_ColumnPropNameInTable="MANGRTPERMGRP_DESCColumn" msprop:Generator_UserColumnName="MANGRTPERMGRP_DESC" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MANGRTTIME_TYPE" msprop:Generator_ColumnVarNameInTable="columnMANGRTTIME_TYPE" msprop:Generator_ColumnPropNameInRow="MANGRTTIME_TYPE" msprop:Generator_ColumnPropNameInTable="MANGRTTIME_TYPEColumn" msprop:Generator_UserColumnName="MANGRTTIME_TYPE" type="xs:decimal" minOccurs="0" />
+              <xs:element name="EXPORTRIGTH_FLAG" msprop:Generator_ColumnVarNameInTable="columnEXPORTRIGTH_FLAG" msprop:Generator_ColumnPropNameInRow="EXPORTRIGTH_FLAG" msprop:Generator_ColumnPropNameInTable="EXPORTRIGTH_FLAGColumn" msprop:Generator_UserColumnName="EXPORTRIGTH_FLAG" type="xs:decimal" minOccurs="0" />
+              <xs:element name="MEMBER_TYPE" msprop:Generator_ColumnVarNameInTable="columnMEMBER_TYPE" msprop:Generator_ColumnPropNameInRow="MEMBER_TYPE" msprop:Generator_ColumnPropNameInTable="MEMBER_TYPEColumn" msprop:Generator_UserColumnName="MEMBER_TYPE" type="xs:decimal" minOccurs="0" />
+              <xs:element name="coll_amt" msprop:Generator_ColumnVarNameInTable="columncoll_amt" msprop:Generator_ColumnPropNameInRow="coll_amt" msprop:Generator_ColumnPropNameInTable="coll_amtColumn" msprop:Generator_UserColumnName="coll_amt" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SHSHAREMASTER" msprop:Generator_TableClassName="SHSHAREMASTERDataTable" msprop:Generator_TableVarName="tableSHSHAREMASTER" msprop:Generator_TablePropName="SHSHAREMASTER" msprop:Generator_RowDeletingName="SHSHAREMASTERRowDeleting" msprop:Generator_UserTableName="SHSHAREMASTER" msprop:Generator_RowChangingName="SHSHAREMASTERRowChanging" msprop:Generator_RowEvHandlerName="SHSHAREMASTERRowChangeEventHandler" msprop:Generator_RowDeletedName="SHSHAREMASTERRowDeleted" msprop:Generator_RowEvArgName="SHSHAREMASTERRowChangeEvent" msprop:Generator_RowChangedName="SHSHAREMASTERRowChanged" msprop:Generator_RowClassName="SHSHAREMASTERRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MEMBGROUP_CODE" msprop:Generator_ColumnVarNameInTable="columnMEMBGROUP_CODE" msprop:Generator_ColumnPropNameInRow="MEMBGROUP_CODE" msprop:Generator_ColumnPropNameInTable="MEMBGROUP_CODEColumn" msprop:Generator_UserColumnName="MEMBGROUP_CODE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="14" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MEMBGROUP_DESC" msprop:Generator_ColumnVarNameInTable="columnMEMBGROUP_DESC" msprop:Generator_ColumnPropNameInRow="MEMBGROUP_DESC" msprop:Generator_ColumnPropNameInTable="MEMBGROUP_DESCColumn" msprop:Generator_UserColumnName="MEMBGROUP_DESC" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BIRTH_DATE" msprop:Generator_ColumnVarNameInTable="columnBIRTH_DATE" msprop:Generator_ColumnPropNameInRow="BIRTH_DATE" msprop:Generator_ColumnPropNameInTable="BIRTH_DATEColumn" msprop:Generator_UserColumnName="BIRTH_DATE" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="MEMBER_DATE" msprop:Generator_ColumnVarNameInTable="columnMEMBER_DATE" msprop:Generator_ColumnPropNameInRow="MEMBER_DATE" msprop:Generator_ColumnPropNameInTable="MEMBER_DATEColumn" msprop:Generator_UserColumnName="MEMBER_DATE" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="SALARY_AMOUNT" msprop:Generator_ColumnVarNameInTable="columnSALARY_AMOUNT" msprop:Generator_ColumnPropNameInRow="SALARY_AMOUNT" msprop:Generator_ColumnPropNameInTable="SALARY_AMOUNTColumn" msprop:Generator_UserColumnName="SALARY_AMOUNT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="WORK_DATE" msprop:Generator_ColumnVarNameInTable="columnWORK_DATE" msprop:Generator_ColumnPropNameInRow="WORK_DATE" msprop:Generator_ColumnPropNameInTable="WORK_DATEColumn" msprop:Generator_UserColumnName="WORK_DATE" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="RETRY_DATE" msprop:Generator_ColumnVarNameInTable="columnRETRY_DATE" msprop:Generator_ColumnPropNameInRow="RETRY_DATE" msprop:Generator_ColumnPropNameInTable="RETRY_DATEColumn" msprop:Generator_UserColumnName="RETRY_DATE" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="SHARESTK_AMT" msprop:Generator_ColumnVarNameInTable="columnSHARESTK_AMT" msprop:Generator_ColumnPropNameInRow="SHARESTK_AMT" msprop:Generator_ColumnPropNameInTable="SHARESTK_AMTColumn" msprop:Generator_UserColumnName="SHARESTK_AMT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="LAST_PERIOD" msprop:Generator_ColumnVarNameInTable="columnLAST_PERIOD" msprop:Generator_ColumnPropNameInRow="LAST_PERIOD" msprop:Generator_ColumnPropNameInTable="LAST_PERIODColumn" msprop:Generator_UserColumnName="LAST_PERIOD" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PERIODSHARE_AMT" msprop:Generator_ColumnVarNameInTable="columnPERIODSHARE_AMT" msprop:Generator_ColumnPropNameInRow="PERIODSHARE_AMT" msprop:Generator_ColumnPropNameInTable="PERIODSHARE_AMTColumn" msprop:Generator_UserColumnName="PERIODSHARE_AMT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PAYMENT_STATUS" msprop:Generator_ColumnVarNameInTable="columnPAYMENT_STATUS" msprop:Generator_ColumnPropNameInRow="PAYMENT_STATUS" msprop:Generator_ColumnPropNameInTable="PAYMENT_STATUSColumn" msprop:Generator_UserColumnName="PAYMENT_STATUS" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SHAREARREAR_AMT" msprop:Generator_ColumnVarNameInTable="columnSHAREARREAR_AMT" msprop:Generator_ColumnPropNameInRow="SHAREARREAR_AMT" msprop:Generator_ColumnPropNameInTable="SHAREARREAR_AMTColumn" msprop:Generator_UserColumnName="SHAREARREAR_AMT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="UNITSHARE_VALUE" msprop:Generator_ColumnVarNameInTable="columnUNITSHARE_VALUE" msprop:Generator_ColumnPropNameInRow="UNITSHARE_VALUE" msprop:Generator_ColumnPropNameInTable="UNITSHARE_VALUEColumn" msprop:Generator_UserColumnName="UNITSHARE_VALUE" type="xs:decimal" minOccurs="0" />
+              <xs:element name="MEMBTYPE_CODE" msprop:Generator_ColumnVarNameInTable="columnMEMBTYPE_CODE" msprop:Generator_ColumnPropNameInRow="MEMBTYPE_CODE" msprop:Generator_ColumnPropNameInTable="MEMBTYPE_CODEColumn" msprop:Generator_UserColumnName="MEMBTYPE_CODE">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MEMBTYPE_DESC" msprop:Generator_ColumnVarNameInTable="columnMEMBTYPE_DESC" msprop:Generator_ColumnPropNameInRow="MEMBTYPE_DESC" msprop:Generator_ColumnPropNameInTable="MEMBTYPE_DESCColumn" msprop:Generator_UserColumnName="MEMBTYPE_DESC" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="APPLTYPE_CODE" msprop:Generator_ColumnVarNameInTable="columnAPPLTYPE_CODE" msprop:Generator_ColumnPropNameInRow="APPLTYPE_CODE" msprop:Generator_ColumnPropNameInTable="APPLTYPE_CODEColumn" msprop:Generator_UserColumnName="APPLTYPE_CODE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MEMBER_TYPE" msprop:Generator_ColumnVarNameInTable="columnMEMBER_TYPE" msprop:Generator_ColumnPropNameInRow="MEMBER_TYPE" msprop:Generator_ColumnPropNameInTable="MEMBER_TYPEColumn" msprop:Generator_UserColumnName="MEMBER_TYPE" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PRENAME_DESC" msprop:Generator_ColumnVarNameInTable="columnPRENAME_DESC" msprop:Generator_ColumnPropNameInRow="PRENAME_DESC" msprop:Generator_ColumnPropNameInTable="PRENAME_DESCColumn" msprop:Generator_UserColumnName="PRENAME_DESC" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MEMB_NAME" msprop:Generator_ColumnVarNameInTable="columnMEMB_NAME" msprop:Generator_ColumnPropNameInRow="MEMB_NAME" msprop:Generator_ColumnPropNameInTable="MEMB_NAMEColumn" msprop:Generator_UserColumnName="MEMB_NAME" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MEMB_SURNAME" msprop:Generator_ColumnVarNameInTable="columnMEMB_SURNAME" msprop:Generator_ColumnPropNameInRow="MEMB_SURNAME" msprop:Generator_ColumnPropNameInTable="MEMB_SURNAMEColumn" msprop:Generator_UserColumnName="MEMB_SURNAME" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="RESIGN_STATUS" msprop:Generator_ColumnVarNameInTable="columnRESIGN_STATUS" msprop:Generator_ColumnPropNameInRow="RESIGN_STATUS" msprop:Generator_ColumnPropNameInTable="RESIGN_STATUSColumn" msprop:Generator_UserColumnName="RESIGN_STATUS" type="xs:decimal" minOccurs="0" />
+              <xs:element name="birth_age" msprop:Generator_ColumnVarNameInTable="columnbirth_age" msprop:Generator_ColumnPropNameInRow="birth_age" msprop:Generator_ColumnPropNameInTable="birth_ageColumn" msprop:Generator_UserColumnName="birth_age" type="xs:decimal" minOccurs="0" />
+              <xs:element name="retry_age" msprop:Generator_ColumnVarNameInTable="columnretry_age" msprop:Generator_ColumnPropNameInRow="retry_age" msprop:Generator_ColumnPropNameInTable="retry_ageColumn" msprop:Generator_UserColumnName="retry_age" type="xs:decimal" minOccurs="0" />
+              <xs:element name="member_age" msprop:Generator_ColumnVarNameInTable="columnmember_age" msprop:Generator_ColumnPropNameInRow="member_age" msprop:Generator_ColumnPropNameInTable="member_ageColumn" msprop:Generator_UserColumnName="member_age" type="xs:decimal" minOccurs="0" />
+              <xs:element name="work_age" msprop:Generator_ColumnVarNameInTable="columnwork_age" msprop:Generator_ColumnPropNameInRow="work_age" msprop:Generator_ColumnPropNameInTable="work_ageColumn" msprop:Generator_UserColumnName="work_age" type="xs:decimal" minOccurs="0" />
+              <xs:element name="memfull_name" msprop:Generator_ColumnVarNameInTable="columnmemfull_name" msprop:Generator_ColumnPropNameInRow="memfull_name" msprop:Generator_ColumnPropNameInTable="memfull_nameColumn" msprop:Generator_UserColumnName="memfull_name" type="xs:string" minOccurs="0" />
+              <xs:element name="cp_membgroup" msdata:ReadOnly="true" msdata:Expression="trim( membgroup_code ) +' - '+ membgroup_desc " msprop:Generator_ColumnVarNameInTable="columncp_membgroup" msprop:Generator_ColumnPropNameInRow="cp_membgroup" msprop:Generator_ColumnPropNameInTable="cp_membgroupColumn" msprop:Generator_UserColumnName="cp_membgroup" type="xs:string" minOccurs="0" />
+              <xs:element name="cp_sharestk_value" msdata:ReadOnly="true" msdata:Expression=" ( sharestk_amt +  sharearrear_amt ) * unitshare_value" msprop:Generator_ColumnVarNameInTable="columncp_sharestk_value" msprop:Generator_ColumnPropNameInRow="cp_sharestk_value" msprop:Generator_ColumnPropNameInTable="cp_sharestk_valueColumn" msprop:Generator_UserColumnName="cp_sharestk_value" type="xs:decimal" minOccurs="0" />
+              <xs:element name="cp_last_period" msdata:ReadOnly="true" msdata:Expression=" periodshare_amt * unitshare_value" msprop:Generator_ColumnVarNameInTable="columncp_last_period" msprop:Generator_ColumnPropNameInRow="cp_last_period" msprop:Generator_ColumnPropNameInTable="cp_last_periodColumn" msprop:Generator_UserColumnName="cp_last_period" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SHAREBEGIN_AMT" msprop:Generator_ColumnVarNameInTable="columnSHAREBEGIN_AMT" msprop:Generator_ColumnPropNameInRow="SHAREBEGIN_AMT" msprop:Generator_ColumnPropNameInTable="SHAREBEGIN_AMTColumn" msprop:Generator_UserColumnName="SHAREBEGIN_AMT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SHAREMASTER_STATUS" msprop:Generator_ColumnVarNameInTable="columnSHAREMASTER_STATUS" msprop:Generator_ColumnPropNameInRow="SHAREMASTER_STATUS" msprop:Generator_ColumnPropNameInTable="SHAREMASTER_STATUSColumn" msprop:Generator_UserColumnName="SHAREMASTER_STATUS" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SHAREARREARBF_AMT" msprop:Generator_ColumnVarNameInTable="columnSHAREARREARBF_AMT" msprop:Generator_ColumnPropNameInRow="SHAREARREARBF_AMT" msprop:Generator_ColumnPropNameInTable="SHAREARREARBF_AMTColumn" msprop:Generator_UserColumnName="SHAREARREARBF_AMT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="cp_sharebegin_amt" msdata:ReadOnly="true" msdata:Expression="(iif(sharebegin_amt =null,0,sharebegin_amt )+iif(sharearrearbf_amt =null,0,sharearrearbf_amt ))*iif(unitshare_value =null,0,unitshare_value) " msprop:Generator_ColumnVarNameInTable="columncp_sharebegin_amt" msprop:Generator_ColumnPropNameInRow="cp_sharebegin_amt" msprop:Generator_ColumnPropNameInTable="cp_sharebegin_amtColumn" msprop:Generator_UserColumnName="cp_sharebegin_amt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="cp_sharestk_amt" msdata:ReadOnly="true" msdata:Expression="(iif(sharestk_amt =null,0,sharestk_amt )+iif(sharearrear_amt=null,0,sharearrear_amt  ))*iif(unitshare_value =null,0,unitshare_value )" msprop:Generator_ColumnVarNameInTable="columncp_sharestk_amt" msprop:Generator_ColumnPropNameInRow="cp_sharestk_amt" msprop:Generator_ColumnPropNameInTable="cp_sharestk_amtColumn" msprop:Generator_UserColumnName="cp_sharestk_amt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="cp_periodshare_amt" msdata:ReadOnly="true" msdata:Expression="iif(periodshare_amt=null,0,periodshare_amt)*iif(unitshare_value=null,0,unitshare_value)" msprop:Generator_ColumnVarNameInTable="columncp_periodshare_amt" msprop:Generator_ColumnPropNameInRow="cp_periodshare_amt" msprop:Generator_ColumnPropNameInTable="cp_periodshare_amtColumn" msprop:Generator_UserColumnName="cp_periodshare_amt" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DPDEPTMASTER" msprop:Generator_TableClassName="DPDEPTMASTERDataTable" msprop:Generator_TableVarName="tableDPDEPTMASTER" msprop:Generator_TablePropName="DPDEPTMASTER" msprop:Generator_RowDeletingName="DPDEPTMASTERRowDeleting" msprop:Generator_UserTableName="DPDEPTMASTER" msprop:Generator_RowChangingName="DPDEPTMASTERRowChanging" msprop:Generator_RowEvHandlerName="DPDEPTMASTERRowChangeEventHandler" msprop:Generator_RowDeletedName="DPDEPTMASTERRowDeleted" msprop:Generator_RowEvArgName="DPDEPTMASTERRowChangeEvent" msprop:Generator_RowChangedName="DPDEPTMASTERRowChanged" msprop:Generator_RowClassName="DPDEPTMASTERRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DEPTACCOUNT_NO" msprop:Generator_ColumnVarNameInTable="columnDEPTACCOUNT_NO" msprop:Generator_ColumnPropNameInRow="DEPTACCOUNT_NO" msprop:Generator_ColumnPropNameInTable="DEPTACCOUNT_NOColumn" msprop:Generator_UserColumnName="DEPTACCOUNT_NO">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DEPTTYPE_CODE" msprop:Generator_ColumnVarNameInTable="columnDEPTTYPE_CODE" msprop:Generator_ColumnPropNameInRow="DEPTTYPE_CODE" msprop:Generator_ColumnPropNameInTable="DEPTTYPE_CODEColumn" msprop:Generator_UserColumnName="DEPTTYPE_CODE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DEPTTYPE_DESC" msprop:Generator_ColumnVarNameInTable="columnDEPTTYPE_DESC" msprop:Generator_ColumnPropNameInRow="DEPTTYPE_DESC" msprop:Generator_ColumnPropNameInTable="DEPTTYPE_DESCColumn" msprop:Generator_UserColumnName="DEPTTYPE_DESC">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MEMBER_NO" msprop:Generator_ColumnVarNameInTable="columnMEMBER_NO" msprop:Generator_ColumnPropNameInRow="MEMBER_NO" msprop:Generator_ColumnPropNameInTable="MEMBER_NOColumn" msprop:Generator_UserColumnName="MEMBER_NO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DEPTOPEN_DATE" msprop:Generator_ColumnVarNameInTable="columnDEPTOPEN_DATE" msprop:Generator_ColumnPropNameInRow="DEPTOPEN_DATE" msprop:Generator_ColumnPropNameInTable="DEPTOPEN_DATEColumn" msprop:Generator_UserColumnName="DEPTOPEN_DATE" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="DEPTACCOUNT_NAME" msprop:Generator_ColumnVarNameInTable="columnDEPTACCOUNT_NAME" msprop:Generator_ColumnPropNameInRow="DEPTACCOUNT_NAME" msprop:Generator_ColumnPropNameInTable="DEPTACCOUNT_NAMEColumn" msprop:Generator_UserColumnName="DEPTACCOUNT_NAME">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BEGINBAL" msprop:Generator_ColumnVarNameInTable="columnBEGINBAL" msprop:Generator_ColumnPropNameInRow="BEGINBAL" msprop:Generator_ColumnPropNameInTable="BEGINBALColumn" msprop:Generator_UserColumnName="BEGINBAL" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PRNCBAL" msprop:Generator_ColumnVarNameInTable="columnPRNCBAL" msprop:Generator_ColumnPropNameInRow="PRNCBAL" msprop:Generator_ColumnPropNameInTable="PRNCBALColumn" msprop:Generator_UserColumnName="PRNCBAL" type="xs:decimal" minOccurs="0" />
+              <xs:element name="WITHDRAWABLE_AMT" msprop:Generator_ColumnVarNameInTable="columnWITHDRAWABLE_AMT" msprop:Generator_ColumnPropNameInRow="WITHDRAWABLE_AMT" msprop:Generator_ColumnPropNameInTable="WITHDRAWABLE_AMTColumn" msprop:Generator_UserColumnName="WITHDRAWABLE_AMT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SEQUEST_AMOUNT" msprop:Generator_ColumnVarNameInTable="columnSEQUEST_AMOUNT" msprop:Generator_ColumnPropNameInRow="SEQUEST_AMOUNT" msprop:Generator_ColumnPropNameInTable="SEQUEST_AMOUNTColumn" msprop:Generator_UserColumnName="SEQUEST_AMOUNT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="DEPTCLOSE_DATE" msprop:Generator_ColumnVarNameInTable="columnDEPTCLOSE_DATE" msprop:Generator_ColumnPropNameInRow="DEPTCLOSE_DATE" msprop:Generator_ColumnPropNameInTable="DEPTCLOSE_DATEColumn" msprop:Generator_UserColumnName="DEPTCLOSE_DATE" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="DEPTCLOSE_STATUS" msprop:Generator_ColumnVarNameInTable="columnDEPTCLOSE_STATUS" msprop:Generator_ColumnPropNameInRow="DEPTCLOSE_STATUS" msprop:Generator_ColumnPropNameInTable="DEPTCLOSE_STATUSColumn" msprop:Generator_UserColumnName="DEPTCLOSE_STATUS" type="xs:decimal" minOccurs="0" />
+              <xs:element name="cp_depttype" msdata:ReadOnly="true" msdata:Expression=" depttype_code +' - '+ depttype_desc" msprop:Generator_ColumnVarNameInTable="columncp_depttype" msprop:Generator_ColumnPropNameInRow="cp_depttype" msprop:Generator_ColumnPropNameInTable="cp_depttypeColumn" msprop:Generator_UserColumnName="cp_depttype" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="LNCOLLMASTER" msprop:Generator_TableClassName="LNCOLLMASTERDataTable" msprop:Generator_TableVarName="tableLNCOLLMASTER" msprop:Generator_TablePropName="LNCOLLMASTER" msprop:Generator_RowDeletingName="LNCOLLMASTERRowDeleting" msprop:Generator_UserTableName="LNCOLLMASTER" msprop:Generator_RowChangingName="LNCOLLMASTERRowChanging" msprop:Generator_RowEvHandlerName="LNCOLLMASTERRowChangeEventHandler" msprop:Generator_RowDeletedName="LNCOLLMASTERRowDeleted" msprop:Generator_RowEvArgName="LNCOLLMASTERRowChangeEvent" msprop:Generator_RowChangedName="LNCOLLMASTERRowChanged" msprop:Generator_RowClassName="LNCOLLMASTERRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="COLLMAST_NO" msprop:Generator_ColumnVarNameInTable="columnCOLLMAST_NO" msprop:Generator_ColumnPropNameInRow="COLLMAST_NO" msprop:Generator_ColumnPropNameInTable="COLLMAST_NOColumn" msprop:Generator_UserColumnName="COLLMAST_NO">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MEMBER_NO" msprop:Generator_ColumnVarNameInTable="columnMEMBER_NO" msprop:Generator_ColumnPropNameInRow="MEMBER_NO" msprop:Generator_ColumnPropNameInTable="MEMBER_NOColumn" msprop:Generator_UserColumnName="MEMBER_NO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="COLLMAST_REFNO" msprop:Generator_ColumnVarNameInTable="columnCOLLMAST_REFNO" msprop:Generator_ColumnPropNameInRow="COLLMAST_REFNO" msprop:Generator_ColumnPropNameInTable="COLLMAST_REFNOColumn" msprop:Generator_UserColumnName="COLLMAST_REFNO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="COLLMASTTYPE_CODE" msprop:Generator_ColumnVarNameInTable="columnCOLLMASTTYPE_CODE" msprop:Generator_ColumnPropNameInRow="COLLMASTTYPE_CODE" msprop:Generator_ColumnPropNameInTable="COLLMASTTYPE_CODEColumn" msprop:Generator_UserColumnName="COLLMASTTYPE_CODE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="COLLMAST_DESC" msprop:Generator_ColumnVarNameInTable="columnCOLLMAST_DESC" msprop:Generator_ColumnPropNameInRow="COLLMAST_DESC" msprop:Generator_ColumnPropNameInTable="COLLMAST_DESCColumn" msprop:Generator_UserColumnName="COLLMAST_DESC" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="LANDESTIMATE_AMT" msprop:Generator_ColumnVarNameInTable="columnLANDESTIMATE_AMT" msprop:Generator_ColumnPropNameInRow="LANDESTIMATE_AMT" msprop:Generator_ColumnPropNameInTable="LANDESTIMATE_AMTColumn" msprop:Generator_UserColumnName="LANDESTIMATE_AMT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="HOUSEESTIMATE_AMT" msprop:Generator_ColumnVarNameInTable="columnHOUSEESTIMATE_AMT" msprop:Generator_ColumnPropNameInRow="HOUSEESTIMATE_AMT" msprop:Generator_ColumnPropNameInTable="HOUSEESTIMATE_AMTColumn" msprop:Generator_UserColumnName="HOUSEESTIMATE_AMT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ESTIMATE_PRICE" msprop:Generator_ColumnVarNameInTable="columnESTIMATE_PRICE" msprop:Generator_ColumnPropNameInRow="ESTIMATE_PRICE" msprop:Generator_ColumnPropNameInTable="ESTIMATE_PRICEColumn" msprop:Generator_UserColumnName="ESTIMATE_PRICE" type="xs:decimal" minOccurs="0" />
+              <xs:element name="MORTGAGE_PRICE" msprop:Generator_ColumnVarNameInTable="columnMORTGAGE_PRICE" msprop:Generator_ColumnPropNameInRow="MORTGAGE_PRICE" msprop:Generator_ColumnPropNameInTable="MORTGAGE_PRICEColumn" msprop:Generator_UserColumnName="MORTGAGE_PRICE" type="xs:decimal" minOccurs="0" />
+              <xs:element name="MORTGAGE_DATE" msprop:Generator_ColumnVarNameInTable="columnMORTGAGE_DATE" msprop:Generator_ColumnPropNameInRow="MORTGAGE_DATE" msprop:Generator_ColumnPropNameInTable="MORTGAGE_DATEColumn" msprop:Generator_UserColumnName="MORTGAGE_DATE" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="EXPIRE_DATE" msprop:Generator_ColumnVarNameInTable="columnEXPIRE_DATE" msprop:Generator_ColumnPropNameInRow="EXPIRE_DATE" msprop:Generator_ColumnPropNameInTable="EXPIRE_DATEColumn" msprop:Generator_UserColumnName="EXPIRE_DATE" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="REDEEM_FLAG" msprop:Generator_ColumnVarNameInTable="columnREDEEM_FLAG" msprop:Generator_ColumnPropNameInRow="REDEEM_FLAG" msprop:Generator_ColumnPropNameInTable="REDEEM_FLAGColumn" msprop:Generator_UserColumnName="REDEEM_FLAG" type="xs:decimal" minOccurs="0" />
+              <xs:element name="REDEEM_DATE" msprop:Generator_ColumnVarNameInTable="columnREDEEM_DATE" msprop:Generator_ColumnPropNameInRow="REDEEM_DATE" msprop:Generator_ColumnPropNameInTable="REDEEM_DATEColumn" msprop:Generator_UserColumnName="REDEEM_DATE" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="REMARK" msprop:Generator_ColumnVarNameInTable="columnREMARK" msprop:Generator_ColumnPropNameInRow="REMARK" msprop:Generator_ColumnPropNameInTable="REMARKColumn" msprop:Generator_UserColumnName="REMARK" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="LAND_NO" msprop:Generator_ColumnVarNameInTable="columnLAND_NO" msprop:Generator_ColumnPropNameInRow="LAND_NO" msprop:Generator_ColumnPropNameInTable="LAND_NOColumn" msprop:Generator_UserColumnName="LAND_NO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SURVEY_NO" msprop:Generator_ColumnVarNameInTable="columnSURVEY_NO" msprop:Generator_ColumnPropNameInRow="SURVEY_NO" msprop:Generator_ColumnPropNameInTable="SURVEY_NOColumn" msprop:Generator_UserColumnName="SURVEY_NO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BOOK_NO" msprop:Generator_ColumnVarNameInTable="columnBOOK_NO" msprop:Generator_ColumnPropNameInRow="BOOK_NO" msprop:Generator_ColumnPropNameInTable="BOOK_NOColumn" msprop:Generator_UserColumnName="BOOK_NO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PAGE_NO" msprop:Generator_ColumnVarNameInTable="columnPAGE_NO" msprop:Generator_ColumnPropNameInRow="PAGE_NO" msprop:Generator_ColumnPropNameInTable="PAGE_NOColumn" msprop:Generator_UserColumnName="PAGE_NO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="GROUP_NO" msprop:Generator_ColumnVarNameInTable="columnGROUP_NO" msprop:Generator_ColumnPropNameInRow="GROUP_NO" msprop:Generator_ColumnPropNameInTable="GROUP_NOColumn" msprop:Generator_UserColumnName="GROUP_NO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="COOP_ID" msprop:Generator_ColumnVarNameInTable="columnCOOP_ID" msprop:Generator_ColumnPropNameInRow="COOP_ID" msprop:Generator_ColumnPropNameInTable="COOP_IDColumn" msprop:Generator_UserColumnName="COOP_ID">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="6" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="LNCOLLMASTMEMCO" msprop:Generator_TableClassName="LNCOLLMASTMEMCODataTable" msprop:Generator_TableVarName="tableLNCOLLMASTMEMCO" msprop:Generator_TablePropName="LNCOLLMASTMEMCO" msprop:Generator_RowDeletingName="LNCOLLMASTMEMCORowDeleting" msprop:Generator_UserTableName="LNCOLLMASTMEMCO" msprop:Generator_RowChangingName="LNCOLLMASTMEMCORowChanging" msprop:Generator_RowEvHandlerName="LNCOLLMASTMEMCORowChangeEventHandler" msprop:Generator_RowDeletedName="LNCOLLMASTMEMCORowDeleted" msprop:Generator_RowEvArgName="LNCOLLMASTMEMCORowChangeEvent" msprop:Generator_RowChangedName="LNCOLLMASTMEMCORowChanged" msprop:Generator_RowClassName="LNCOLLMASTMEMCORow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="COLLMAST_NO" msprop:Generator_ColumnVarNameInTable="columnCOLLMAST_NO" msprop:Generator_ColumnPropNameInRow="COLLMAST_NO" msprop:Generator_ColumnPropNameInTable="COLLMAST_NOColumn" msprop:Generator_UserColumnName="COLLMAST_NO">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MEMCO_NO" msprop:Generator_ColumnVarNameInTable="columnMEMCO_NO" msprop:Generator_ColumnPropNameInRow="MEMCO_NO" msprop:Generator_ColumnPropNameInTable="MEMCO_NOColumn" msprop:Generator_UserColumnName="MEMCO_NO">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="COLLMASTMAIN_FLAG" msprop:Generator_ColumnVarNameInTable="columnCOLLMASTMAIN_FLAG" msprop:Generator_ColumnPropNameInRow="COLLMASTMAIN_FLAG" msprop:Generator_ColumnPropNameInTable="COLLMASTMAIN_FLAGColumn" msprop:Generator_UserColumnName="COLLMASTMAIN_FLAG" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PRENAME_SHORT" msprop:Generator_ColumnVarNameInTable="columnPRENAME_SHORT" msprop:Generator_ColumnPropNameInRow="PRENAME_SHORT" msprop:Generator_ColumnPropNameInTable="PRENAME_SHORTColumn" msprop:Generator_UserColumnName="PRENAME_SHORT" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MEMB_NAME" msprop:Generator_ColumnVarNameInTable="columnMEMB_NAME" msprop:Generator_ColumnPropNameInRow="MEMB_NAME" msprop:Generator_ColumnPropNameInTable="MEMB_NAMEColumn" msprop:Generator_UserColumnName="MEMB_NAME" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MEMB_SURNAME" msprop:Generator_ColumnVarNameInTable="columnMEMB_SURNAME" msprop:Generator_ColumnPropNameInRow="MEMB_SURNAME" msprop:Generator_ColumnPropNameInTable="MEMB_SURNAMEColumn" msprop:Generator_UserColumnName="MEMB_SURNAME" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="cp_name" msdata:ReadOnly="true" msdata:Expression=" prename_short + memb_name +'  '+ memb_surname" msprop:Generator_ColumnVarNameInTable="columncp_name" msprop:Generator_ColumnPropNameInRow="cp_name" msprop:Generator_ColumnPropNameInTable="cp_nameColumn" msprop:Generator_UserColumnName="cp_name" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:LNCOLLMASTER" />
+      <xs:field xpath="mstns:COLLMAST_NO" />
+      <xs:field xpath="mstns:COOP_ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

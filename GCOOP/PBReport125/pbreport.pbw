@@ -1,0 +1,9 @@
+Save Format v3.0(19990112)
+@begin Unchecked
+@end;
+@begin Targets
+ 0 "pbreport.pbt";
+ 1 "..\\..\\..\\PHY\\GCOOP\\PBProcess\\pbprocess.pbt";
+@end;
+DefaultTarget "..\\..\\..\\PHY\\GCOOP\\PBProcess\\pbprocess.pbt";
+DefaultRemoteTarget "..\\..\\..\\PHY\\GCOOP\\PBProcess\\pbprocess.pbt";

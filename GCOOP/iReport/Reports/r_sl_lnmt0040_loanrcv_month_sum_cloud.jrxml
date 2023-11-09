@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="r_sl_lnmt0040_loanrcv_month_sum_cloud" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="842" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="cfea7265-75de-4a2f-8bb1-67ed850d7212">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="as_coopid" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="adtm_startdate" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="adtm_enddate" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="as_startlntype" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="as_endlntype" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select	ln.loantype_code,
+		lt.prefix, lt.loantype_desc,
+		sum( sl.payout_amt ) as sum_loanrcv,
+		sum( sl.payoutnet_amt ) as sum_loanrcvnet,
+		count( sl.loancontract_no ) as count_loanrcv
+from	slslippayout sl
+		join lncontmaster ln on sl.coop_id = ln.coop_id and sl.loancontract_no = ln.loancontract_no
+		join lnloantype lt on ln.coop_id = lt.coop_id and ln.loantype_code = lt.loantype_code
+		join cmucfmoneytype my on sl.moneytype_code = my.moneytype_code
+where	sl.coop_id = $P{as_coopid}
+and		sl.slip_date between $P{adtm_startdate} and $P{adtm_enddate}
+and		ln.loantype_code between $P{as_startlntype} and $P{as_endlntype}
+and		sl.slip_status = 1
+group by ln.loantype_code, lt.prefix, lt.loantype_desc]]>
+	</queryString>
+	<field name="LOANTYPE_CODE" class="java.lang.String"/>
+	<field name="PREFIX" class="java.lang.String"/>
+	<field name="LOANTYPE_DESC" class="java.lang.String"/>
+	<field name="SUM_LOANRCV" class="java.math.BigDecimal"/>
+	<field name="SUM_LOANRCVNET" class="java.math.BigDecimal"/>
+	<field name="COUNT_LOANRCV" class="java.math.BigDecimal"/>
+	<variable name="sum_loan" class="java.lang.Number" calculation="Sum">
+		<variableExpression><![CDATA[$F{COUNT_LOANRCV}]]></variableExpression>
+	</variable>
+	<variable name="sum_loanpay" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{SUM_LOANRCV}]]></variableExpression>
+	</variable>
+	<variable name="sum_loanpay_all" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{SUM_LOANRCVNET}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="50" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="b8fc57c5-8ead-4030-945e-ff06795830c4" x="21" y="10" width="379" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Angsana New" size="16" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[สรุปยอดการจ่ายเงินกู้ทั้งหมด]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a8187cf7-50c6-4588-9d8f-0569cffd547a" x="21" y="30" width="164" height="20"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<text><![CDATA[ประเภทเงินกู้]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="95cade27-f7b1-4026-9625-507392fca304" x="185" y="30" width="100" height="20"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<text><![CDATA[จำนวนสัญญา]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1a21c918-da76-4abe-ab9d-3a07ae39db00" x="285" y="30" width="115" height="20"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<text><![CDATA[ยอดเงินจ่ายเงินกู้]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="405efdd3-8b7f-4dde-b9fa-7a51fd9ea82e" x="400" y="30" width="115" height="20"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<text><![CDATA[ยอดเงินจ่ายเงินกู้สุทธิ]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement uuid="14a7a62e-0f71-4533-9073-582ed2b1eedd" x="21" y="0" width="164" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PREFIX}+"-"+$F{LOANTYPE_DESC}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0" isBlankWhenNull="true">
+				<reportElement uuid="ccf28d45-a6ac-4333-994b-767cdedaf7ac" x="185" y="0" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{COUNT_LOANRCV}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="d3206b3e-36f9-4d27-99c0-fdf304bdf208" x="285" y="0" width="115" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SUM_LOANRCV}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="04243e4f-f30f-425f-942a-d0bfc36585f2" x="400" y="0" width="115" height="20"/>
+				<textElement textAlignment="Right">
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SUM_LOANRCVNET}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="56e9afef-b2f0-4228-9edb-7853170ea849" x="21" y="0" width="164" height="20"/>
+				<box>
+					<topPen lineWidth="0.75" lineStyle="Dashed"/>
+					<bottomPen lineWidth="1.25" lineStyle="Double"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<text><![CDATA[รวมจ่ายเงินกู้ทั้งหมด]]></text>
+			</staticText>
+			<textField pattern="#,##0" isBlankWhenNull="true">
+				<reportElement uuid="0b332a8a-6568-4125-83ef-850bf852d5b0" x="185" y="0" width="100" height="20"/>
+				<box>
+					<topPen lineWidth="0.75" lineStyle="Dashed"/>
+					<bottomPen lineWidth="1.25" lineStyle="Double"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sum_loan}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="6006e37c-5b5b-480a-9a85-e45157acab5e" x="285" y="0" width="115" height="20"/>
+				<box>
+					<topPen lineWidth="0.75" lineStyle="Dashed"/>
+					<bottomPen lineWidth="1.25" lineStyle="Double"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sum_loanpay}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="4b6f585c-21f3-4498-9d12-9d49c837fa0e" x="400" y="0" width="115" height="20"/>
+				<box>
+					<topPen lineWidth="1.25" lineStyle="Dashed"/>
+					<bottomPen lineWidth="1.25" lineStyle="Double"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sum_loanpay_all}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

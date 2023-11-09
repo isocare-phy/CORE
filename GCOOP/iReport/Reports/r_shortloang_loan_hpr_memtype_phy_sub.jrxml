@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="r_shortloang_loan_hpr_memtype_phy" language="groovy" pageWidth="95" pageHeight="595" orientation="Landscape" columnWidth="95" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="f31030a8-e749-4a24-9b38-3afae1ad49e9">
+	<property name="ireport.zoom" value="1.4641000000000013"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="as_coopid" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="as_recvperiod" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="as_smembgroup" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="as_emembgroup" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select  (lnestloanshortlong.member_no ) as count_memberNo
+ from lnestloanshortlong
+left join mbmembmaster on lnestloanshortlong.member_no = mbmembmaster.member_no
+left join mbucfmembgroup on mbmembmaster.membgroup_code = mbucfmembgroup.membgroup_code
+where lnestloanshortlong.coop_id = $P{as_coopid}
+and lnestloanshortlong.acc_year =$P{as_recvperiod}
+and mbmembmaster.membgroup_code between $P{as_smembgroup} and $P{as_emembgroup}
+group by lnestloanshortlong.member_no]]>
+	</queryString>
+	<field name="COUNT_MEMBERNO" class="java.lang.String"/>
+	<variable name="S_COUNT_MEMBERNO" class="java.math.BigDecimal" calculation="DistinctCount">
+		<variableExpression><![CDATA[$F{COUNT_MEMBERNO}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<summary>
+		<band height="20" splitType="Stretch">
+			<textField pattern="#,##0">
+				<reportElement uuid="d79a9ac7-0e03-48d3-b37e-cc841fb975a0" x="0" y="0" width="90" height="20"/>
+				<box>
+					<pen lineStyle="Dashed"/>
+					<topPen lineStyle="Dashed"/>
+					<leftPen lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{S_COUNT_MEMBERNO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="aadab4e1-9cd8-4030-9319-07fd46ebd634" x="90" y="0" width="5" height="20"/>
+				<box>
+					<pen lineStyle="Dashed"/>
+					<topPen lineStyle="Dashed"/>
+					<leftPen lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+					<rightPen lineStyle="Dashed"/>
+				</box>
+				<textElement>
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

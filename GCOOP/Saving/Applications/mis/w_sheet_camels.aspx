@@ -1,0 +1,41 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Frame.Master" AutoEventWireup="true" CodeBehind="w_sheet_camels.aspx.cs" Inherits="Saving.Applications.mis.w_sheet_camels" %>
+<%@ Register Assembly="WebDataWindow" Namespace="Sybase.DataWindow.Web" TagPrefix="dw" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <%=jsClickSubmit %>
+
+    <script type="text/javascript">
+        function Validate() {
+        }
+        function ClickSubmit() {
+            jsClickSubmit();
+        }
+    </script>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlace" runat="server">
+    <asp:Literal ID="LtServerMessage" runat="server"></asp:Literal>
+    <table style="width: 100%; border: solid 1px; margin-top: 5px">
+         <tr>
+             <td width="80%">
+                <dw:WebDataWindowControl ID="dw_cri" runat="server" DataWindowObject="d_mis_cri_monthyear_nobutton"
+                    LibraryList="~/DataWindow/mis.pbl;~/DataWindow/mis/criteria.pbl" ClientEventItemChanged="ItemChangeDwCri" 
+                    AutoRestoreContext="False" AutoRestoreDataCache="True" AutoSaveDataCacheAfterRetrieve="True" 
+                    ClientFormatting="True" ClientScriptable="True" Width="600">
+                </dw:WebDataWindowControl>
+             </td>
+            <td width="20%">
+                <input type="button" id="B_retrieve" onclick="ClickSubmit();" value="แสดงข้อมูล" style="margin-left:65px;"/>
+                <%--<asp:Button ID="B_retrieve" runat="server" onclick="B_click" Text="แสดงข้อมูล" />--%>
+            </td>
+         </tr>
+         <tr>
+            <td colspan="2">
+                <dw:WebDataWindowControl ID="dw_main" runat="server" DataWindowObject="d_mis_ratio_values"
+                    LibraryList="~/DataWindow/mis/camels.pbl" ClientScriptable="True" ClientEventButtonClicked="OnOpenDlgVar"
+                    AutoRestoreContext="False" AutoRestoreDataCache="True" AutoSaveDataCacheAfterRetrieve="True" ClientFormatting="True" 
+                    Width="740" VerticalScrollBar="Auto" BorderWidth="1" Height="500">
+                </dw:WebDataWindowControl>
+            </td>
+         </tr>
+    </table>
+</asp:Content>

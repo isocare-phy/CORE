@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="r_cmd_report_ptdurtcaldevalue_year" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fa5e9260-862f-427e-8c09-32f535f44d9f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="ai_cal_smonth" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ai_cal_emonth" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ai_cal_year" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT "PTDURTMASTER"."DURT_NAME",
+         	"PTDURTMASTER"."UNIT_PRICE",
+ 	"PTDURTMASTER"."DURT_ID" ,
+	"PTDURTMASTER"."BUY_DATE",
+         	"PTDURTCALDEVALUE"."DEVL_PERCENT",
+	"PTDURTMASTER"."REMARK",
+sum( case "PTDURTCALDEVALUE"."DEVL_MONTH" when 1 then "PTDURTCALDEVALUE"."DEVL_BFAMT" else 0 end) as DEVL_BFAMT,
+sum( "PTDURTCALDEVALUE"."DEVL_AMT" ) as DEVL_AMT,
+( select DEVL_BAL from PTDURTCALDEVALUE where DURT_ID = "PTDURTMASTER"."DURT_ID" and DEVL_MONTH = $P{ai_cal_emonth} ) as DEVL_BAL,
+sum( "PTDURTCALDEVALUE"."INCREASE_AMT" ) as INCREASE_AMT,
+sum( "PTDURTCALDEVALUE"."DECREASE_AMT" ) as DECREASE_AMT
+FROM "PTDURTMASTER","PTDURTCALDEVALUE"
+WHERE ( "PTDURTMASTER"."DURT_ID" = "PTDURTCALDEVALUE"."DURT_ID" )
+and ( ( "PTDURTCALDEVALUE"."DEVL_MONTH" between $P{ai_cal_smonth} and $P{ai_cal_emonth} )
+and ( "PTDURTCALDEVALUE"."ACC_YEAR" = $P{ai_cal_year} ) )
+GROUP BY "PTDURTMASTER"."DURT_NAME",
+         "PTDURTMASTER"."UNIT_PRICE",
+	"PTDURTMASTER"."DURT_ID",
+	"PTDURTMASTER"."BUY_DATE",
+	"PTDURTCALDEVALUE"."DEVL_PERCENT",
+	"PTDURTMASTER"."REMARK"]]>
+	</queryString>
+	<field name="DURT_NAME" class="java.lang.String"/>
+	<field name="UNIT_PRICE" class="java.math.BigDecimal"/>
+	<field name="DURT_ID" class="java.lang.String"/>
+	<field name="BUY_DATE" class="java.sql.Timestamp"/>
+	<field name="DEVL_PERCENT" class="java.math.BigDecimal"/>
+	<field name="REMARK" class="java.lang.String"/>
+	<field name="DEVL_BFAMT" class="java.math.BigDecimal"/>
+	<field name="DEVL_AMT" class="java.math.BigDecimal"/>
+	<field name="DEVL_BAL" class="java.math.BigDecimal"/>
+	<field name="INCREASE_AMT" class="java.math.BigDecimal"/>
+	<field name="DECREASE_AMT" class="java.math.BigDecimal"/>
+	<group name="DURT_NAME">
+		<groupExpression><![CDATA[$F{DURT_NAME}]]></groupExpression>
+	</group>
+	<group name="UNIT_PRICE">
+		<groupExpression><![CDATA[$F{UNIT_PRICE}]]></groupExpression>
+	</group>
+	<group name="DURT_ID">
+		<groupExpression><![CDATA[$F{DURT_ID}]]></groupExpression>
+	</group>
+	<group name="BUY_DATE">
+		<groupExpression><![CDATA[$F{BUY_DATE}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="97" splitType="Stretch">
+			<textField>
+				<reportElement uuid="b9e909b9-eafd-4954-851d-aea8b274a337" x="330" y="4" width="145" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA["รายงานค่าเสื่อมครุภัณฑ์"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f9ef12d8-26f3-4ffb-af68-108cb8440b94" x="255" y="25" width="294" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA["ระหว่างเดือน " +( $P{ai_cal_smonth} == "1" ? "มกราคม" :
+    ( $P{ai_cal_smonth} == "2" ? "กุมภาพันธ์" :
+    ( $P{ai_cal_smonth} == "3" ? "มีนาคม" :
+    ( $P{ai_cal_smonth} == "4" ? "เมษายน" :
+    ( $P{ai_cal_smonth} == "5" ? "พฤษภาคม" :
+    ( $P{ai_cal_smonth} == "6" ? "มิถุนายน" :
+    ( $P{ai_cal_smonth} == "7" ? "กรกฎาคม" :
+    ( $P{ai_cal_smonth} == "8" ? "สิงหาคม" :
+    ( $P{ai_cal_smonth} == "9" ? "กันยายน" :
+    ( $P{ai_cal_smonth} == "10" ? "ตุลาคม" :
+    ( $P{ai_cal_smonth} == "11" ? "พฤศจิกายน" : "ธันวาคม" )))))))))))
++ "ถึงเดือน " +( $P{ai_cal_emonth} == "1" ? "มกราคม" :
+    ( $P{ai_cal_emonth} == "2" ? "กุมภาพันธ์" :
+    ( $P{ai_cal_emonth} == "3" ? "มีนาคม" :
+    ( $P{ai_cal_emonth} == "4" ? "เมษายน" :
+    ( $P{ai_cal_emonth} == "5" ? "พฤษภาคม" :
+    ( $P{ai_cal_emonth} == "6" ? "มิถุนายน" :
+    ( $P{ai_cal_emonth} == "7" ? "กรกฎาคม" :
+    ( $P{ai_cal_emonth} == "8" ? "สิงหาคม" :
+    ( $P{ai_cal_emonth} == "9" ? "กันยายน" :
+    ( $P{ai_cal_emonth} == "10" ? "ตุลาคม" :
+    ( $P{ai_cal_emonth} == "11" ? "พฤศจิกายน" : "ธันวาคม" )))))))))))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ae9e8761-5b57-4806-a692-6abeaa444a36" x="0" y="74" width="44" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA["ลำดับที่"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="400e555a-b252-473f-a046-54ec1494cdba" x="144" y="74" width="68" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA["ราคาทุน"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="4f7701be-1fc4-4541-9959-26346203e6cd" x="44" y="74" width="100" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA["รายการ"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="1d5cef01-003b-4b74-bd98-e44f89692456" x="212" y="74" width="37" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA["หน่วย"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="7b8debbd-cc10-47f5-8a99-8c703beedef4" x="249" y="74" width="68" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA["ราคาต่อหน่วย"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="4803a2eb-4f6b-44a3-9c9f-2612c6e5ec36" x="384" y="74" width="47" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA["เพิ่ม"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3ed65e8e-8b44-41c2-80f0-a002f576d3eb" x="384" y="54" width="94" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA["ระหว่างปี"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="29bb985d-c985-4640-af04-a75b6decc275" x="431" y="74" width="47" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA["ลด"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e0bd42c8-b861-4e9d-bf95-ab07e49a0727" x="478" y="74" width="47" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA["รวม"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e4ea589e-5f04-4acf-acb5-bb6212535a46" x="525" y="54" width="94" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA["การคำนวนค่าเสื่อมราคา"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="afe98f9e-07e1-4d19-a11e-edf2bc9524c4" x="525" y="74" width="47" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA["ร้อยละ"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="49d156fb-1c8b-4585-ae8e-e11dabbac809" x="572" y="74" width="47" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA["จำนวนเงิน"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="bcbf4f07-a936-4d72-a988-a9d5bdbe2b26" x="619" y="54" width="67" height="40"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA["ราคาสินทรัพย์"+
+"สุทธิยกไป"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="fd606aca-f86f-4794-a9f4-3aa45febb0dd" x="317" y="54" width="67" height="40"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA["ราคาสินทรัพย์"+
+"สุทธิยกมา"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e8790e68-fe90-4078-9f96-35d470b87ff1" x="686" y="74" width="47" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA["วันที่ซื้อ"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="529aeea0-8ed9-41fe-8c95-37db0e6ad208" x="733" y="74" width="69" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA["หมายเหตุ"]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="5" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="25" splitType="Stretch">
+			<textField>
+				<reportElement uuid="f3cda736-5880-4a02-a8da-c8d2c4a10042" x="44" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{DURT_NAME}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="4f4337f6-8349-4d8f-8817-4efe6250d8c2" x="144" y="0" width="68" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{UNIT_PRICE}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="92370383-4557-4acc-8362-d84108af3813" x="249" y="0" width="68" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{UNIT_PRICE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a376e3e1-20ec-489d-91de-7e42c14a6092" x="212" y="0" width="37" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA["1"]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="2e559a9b-3be9-4d43-ae6d-5ae0858af1cd" x="317" y="0" width="67" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{DEVL_BFAMT}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="0208cad7-2d41-4e50-a21c-4f2a262eda22" x="384" y="0" width="47" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{INCREASE_AMT}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="32d8604d-b9fe-4061-88b1-0eb2d025d12c" x="431" y="0" width="47" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{DECREASE_AMT}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="3bd2715c-545f-4582-8c6a-089de8dd0771" x="478" y="0" width="47" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[($F{DEVL_BFAMT}+$F{INCREASE_AMT})-$F{DECREASE_AMT}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="6b056897-028c-46d3-96fe-4a14bb4b9dcf" x="525" y="0" width="47" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{DEVL_PERCENT}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="3ba7c386-da1f-4f7c-995e-dad7b7ceae8c" x="572" y="0" width="47" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{DEVL_AMT}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="9563b643-d381-4d64-a4bf-111d96f5fe1f" x="619" y="0" width="67" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{DEVL_BAL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="afddc1fb-9744-4c9a-9182-b50f317f4322" x="0" y="0" width="44" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="92bd3970-4341-447a-befb-ac78de7ce855" x="686" y="0" width="47" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy",new Locale("th","TH")).format($F{BUY_DATE})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3359eac4-904a-4e5e-b1b8-d336a60c44b9" x="733" y="0" width="69" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{REMARK}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="8" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="8" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<textField>
+				<reportElement uuid="52bcb244-d9ad-47f3-ac6e-21e48c20f7a9" x="44" y="7" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA["รวมทั้งสิ้น (บาท) "]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="578fd21f-3c20-4e37-bdf6-0e5526ba0ea9" x="144" y="7" width="68" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[sum $F{UNIT_PRICE}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="23d3c6ef-a3ab-42d6-930f-5e5220002e7f" x="249" y="7" width="68" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[sum $F{UNIT_PRICE}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="29251ef7-a5f5-46dd-b5ec-a09622486ec9" x="317" y="7" width="67" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[sum $F{DEVL_BFAMT}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="25a1636c-bde0-4363-aaec-690d5d34f6c9" x="384" y="7" width="47" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[sum $F{INCREASE_AMT}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="6108973d-0ff3-4d7a-9220-63e3a228bfa9" x="431" y="7" width="47" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[sum $F{DECREASE_AMT}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="951c58c9-bf12-4e83-8028-fc24e0f7649a" x="478" y="7" width="47" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[sum ($F{DEVL_BFAMT}+$F{INCREASE_AMT})-$F{DECREASE_AMT}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="f93536e2-1df8-4fa6-b005-48aac1389545" x="572" y="7" width="47" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{DEVL_AMT}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="c3ab99bf-b3c3-4db1-9c40-d1648b6d8322" x="619" y="7" width="67" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[sum $F{DEVL_BAL}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet1" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="ConnectionStringLAP231" IsAppSettingsProperty="true" Modifier="Assembly" Name="ConnectionStringLAP231 (Web.config)" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.ConnectionStringLAP231.ConnectionString" Provider="System.Data.OracleClient" />
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="ConnectionStringLAP" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ConnectionStringLAP (Web.config)" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.ConnectionStringLAP.ConnectionString" Provider="System.Data.OracleClient" />
+        </Connections>
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DsAssisttype" msprop:Generator_TableClassName="DsAssisttypeDataTable" msprop:Generator_TableVarName="tableDsAssisttype" msprop:Generator_RowChangedName="DsAssisttypeRowChanged" msprop:Generator_TablePropName="DsAssisttype" msprop:Generator_RowDeletingName="DsAssisttypeRowDeleting" msprop:Generator_RowChangingName="DsAssisttypeRowChanging" msprop:Generator_RowEvHandlerName="DsAssisttypeRowChangeEventHandler" msprop:Generator_RowDeletedName="DsAssisttypeRowDeleted" msprop:Generator_RowClassName="DsAssisttypeRow" msprop:Generator_UserTableName="DsAssisttype" msprop:Generator_RowEvArgName="DsAssisttypeRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ASSISTTYPE_CODE" msprop:Generator_ColumnVarNameInTable="columnASSISTTYPE_CODE" msprop:Generator_ColumnPropNameInRow="ASSISTTYPE_CODE" msprop:Generator_ColumnPropNameInTable="ASSISTTYPE_CODEColumn" msprop:Generator_UserColumnName="ASSISTTYPE_CODE" type="xs:string" minOccurs="0" />
+              <xs:element name="ASSISTTYPE_DESC" msprop:Generator_ColumnVarNameInTable="columnASSISTTYPE_DESC" msprop:Generator_ColumnPropNameInRow="ASSISTTYPE_DESC" msprop:Generator_ColumnPropNameInTable="ASSISTTYPE_DESCColumn" msprop:Generator_UserColumnName="ASSISTTYPE_DESC" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DsUcfasstype" msprop:Generator_TableClassName="DsUcfasstypeDataTable" msprop:Generator_TableVarName="tableDsUcfasstype" msprop:Generator_RowChangedName="DsUcfasstypeRowChanged" msprop:Generator_TablePropName="DsUcfasstype" msprop:Generator_RowDeletingName="DsUcfasstypeRowDeleting" msprop:Generator_RowChangingName="DsUcfasstypeRowChanging" msprop:Generator_RowEvHandlerName="DsUcfasstypeRowChangeEventHandler" msprop:Generator_RowDeletedName="DsUcfasstypeRowDeleted" msprop:Generator_RowClassName="DsUcfasstypeRow" msprop:Generator_UserTableName="DsUcfasstype" msprop:Generator_RowEvArgName="DsUcfasstypeRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="COOP_ID" msprop:Generator_ColumnVarNameInTable="columnCOOP_ID" msprop:Generator_ColumnPropNameInRow="COOP_ID" msprop:Generator_ColumnPropNameInTable="COOP_IDColumn" msprop:Generator_UserColumnName="COOP_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="ASSISTTYPE_CODE" msprop:Generator_ColumnVarNameInTable="columnASSISTTYPE_CODE" msprop:Generator_ColumnPropNameInRow="ASSISTTYPE_CODE" msprop:Generator_ColumnPropNameInTable="ASSISTTYPE_CODEColumn" msprop:Generator_UserColumnName="ASSISTTYPE_CODE" type="xs:string" minOccurs="0" />
+              <xs:element name="ASSISTTYPE_DESC" msprop:Generator_ColumnVarNameInTable="columnASSISTTYPE_DESC" msprop:Generator_ColumnPropNameInRow="ASSISTTYPE_DESC" msprop:Generator_ColumnPropNameInTable="ASSISTTYPE_DESCColumn" msprop:Generator_UserColumnName="ASSISTTYPE_DESC" type="xs:string" minOccurs="0" />
+              <xs:element name="STM_FLAG" msprop:Generator_ColumnVarNameInTable="columnSTM_FLAG" msprop:Generator_ColumnPropNameInRow="STM_FLAG" msprop:Generator_ColumnPropNameInTable="STM_FLAGColumn" msprop:Generator_UserColumnName="STM_FLAG" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ASSISTTYPE_GROUP" msprop:Generator_ColumnVarNameInTable="columnASSISTTYPE_GROUP" msprop:Generator_ColumnPropNameInRow="ASSISTTYPE_GROUP" msprop:Generator_ColumnPropNameInTable="ASSISTTYPE_GROUPColumn" msprop:Generator_UserColumnName="ASSISTTYPE_GROUP" type="xs:string" minOccurs="0" />
+              <xs:element name="membtype_flag" msprop:Generator_ColumnVarNameInTable="columnmembtype_flag" msprop:Generator_ColumnPropNameInRow="membtype_flag" msprop:Generator_ColumnPropNameInTable="membtype_flagColumn" msprop:Generator_UserColumnName="membtype_flag" type="xs:int" minOccurs="0" />
+              <xs:element name="calculate_flag" msprop:Generator_ColumnVarNameInTable="columncalculate_flag" msprop:Generator_ColumnPropNameInRow="calculate_flag" msprop:Generator_ColumnPropNameInTable="calculate_flagColumn" msprop:Generator_UserColumnName="calculate_flag" type="xs:int" minOccurs="0" />
+              <xs:element name="process_flag" msprop:Generator_ColumnVarNameInTable="columnprocess_flag" msprop:Generator_ColumnPropNameInRow="process_flag" msprop:Generator_ColumnPropNameInTable="process_flagColumn" msprop:Generator_UserColumnName="process_flag" type="xs:int" minOccurs="0" />
+              <xs:element name="family_flag" msprop:Generator_ColumnVarNameInTable="columnfamily_flag" msprop:Generator_ColumnPropNameInRow="family_flag" msprop:Generator_ColumnPropNameInTable="family_flagColumn" msprop:Generator_UserColumnName="family_flag" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DsUcfasspaytype" msprop:Generator_TableClassName="DsUcfasspaytypeDataTable" msprop:Generator_TableVarName="tableDsUcfasspaytype" msprop:Generator_RowChangedName="DsUcfasspaytypeRowChanged" msprop:Generator_TablePropName="DsUcfasspaytype" msprop:Generator_RowDeletingName="DsUcfasspaytypeRowDeleting" msprop:Generator_RowChangingName="DsUcfasspaytypeRowChanging" msprop:Generator_RowEvHandlerName="DsUcfasspaytypeRowChangeEventHandler" msprop:Generator_RowDeletedName="DsUcfasspaytypeRowDeleted" msprop:Generator_RowClassName="DsUcfasspaytypeRow" msprop:Generator_UserTableName="DsUcfasspaytype" msprop:Generator_RowEvArgName="DsUcfasspaytypeRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="COOP_ID" msprop:Generator_ColumnVarNameInTable="columnCOOP_ID" msprop:Generator_ColumnPropNameInRow="COOP_ID" msprop:Generator_ColumnPropNameInTable="COOP_IDColumn" msprop:Generator_UserColumnName="COOP_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="ASSISTPAY_CODE" msprop:Generator_ColumnVarNameInTable="columnASSISTPAY_CODE" msprop:Generator_ColumnPropNameInRow="ASSISTPAY_CODE" msprop:Generator_ColumnPropNameInTable="ASSISTPAY_CODEColumn" msprop:Generator_UserColumnName="ASSISTPAY_CODE" type="xs:string" minOccurs="0" />
+              <xs:element name="ASSISTPAY_DESC" msprop:Generator_ColumnVarNameInTable="columnASSISTPAY_DESC" msprop:Generator_ColumnPropNameInRow="ASSISTPAY_DESC" msprop:Generator_ColumnPropNameInTable="ASSISTPAY_DESCColumn" msprop:Generator_UserColumnName="ASSISTPAY_DESC" type="xs:string" minOccurs="0" />
+              <xs:element name="ASSISTTYPE_GROUP" msprop:Generator_ColumnVarNameInTable="columnASSISTTYPE_GROUP" msprop:Generator_ColumnPropNameInRow="ASSISTTYPE_GROUP" msprop:Generator_ColumnPropNameInTable="ASSISTTYPE_GROUPColumn" msprop:Generator_UserColumnName="ASSISTTYPE_GROUP" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DsUcfasstypedet" msprop:Generator_TableClassName="DsUcfasstypedetDataTable" msprop:Generator_TableVarName="tableDsUcfasstypedet" msprop:Generator_RowChangedName="DsUcfasstypedetRowChanged" msprop:Generator_TablePropName="DsUcfasstypedet" msprop:Generator_RowDeletingName="DsUcfasstypedetRowDeleting" msprop:Generator_RowChangingName="DsUcfasstypedetRowChanging" msprop:Generator_RowEvHandlerName="DsUcfasstypedetRowChangeEventHandler" msprop:Generator_RowDeletedName="DsUcfasstypedetRowDeleted" msprop:Generator_RowClassName="DsUcfasstypedetRow" msprop:Generator_UserTableName="DsUcfasstypedet" msprop:Generator_RowEvArgName="DsUcfasstypedetRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="COOP_ID" msprop:Generator_ColumnVarNameInTable="columnCOOP_ID" msprop:Generator_ColumnPropNameInRow="COOP_ID" msprop:Generator_ColumnPropNameInTable="COOP_IDColumn" msprop:Generator_UserColumnName="COOP_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="ASSISTTYPE_CODE" msprop:Generator_ColumnVarNameInTable="columnASSISTTYPE_CODE" msprop:Generator_ColumnPropNameInRow="ASSISTTYPE_CODE" msprop:Generator_ColumnPropNameInTable="ASSISTTYPE_CODEColumn" msprop:Generator_UserColumnName="ASSISTTYPE_CODE" type="xs:string" minOccurs="0" />
+              <xs:element name="ASSISTTYPE_PAY" msprop:Generator_ColumnVarNameInTable="columnASSISTTYPE_PAY" msprop:Generator_ColumnPropNameInRow="ASSISTTYPE_PAY" msprop:Generator_ColumnPropNameInTable="ASSISTTYPE_PAYColumn" msprop:Generator_UserColumnName="ASSISTTYPE_PAY" type="xs:string" minOccurs="0" />
+              <xs:element name="MEMBTYPE_CODE" msprop:Generator_ColumnVarNameInTable="columnMEMBTYPE_CODE" msprop:Generator_ColumnPropNameInRow="MEMBTYPE_CODE" msprop:Generator_ColumnPropNameInTable="MEMBTYPE_CODEColumn" msprop:Generator_UserColumnName="MEMBTYPE_CODE" type="xs:string" minOccurs="0" />
+              <xs:element name="SEQ_NO" msprop:Generator_ColumnVarNameInTable="columnSEQ_NO" msprop:Generator_ColumnPropNameInRow="SEQ_NO" msprop:Generator_ColumnPropNameInTable="SEQ_NOColumn" msprop:Generator_UserColumnName="SEQ_NO" type="xs:int" minOccurs="0" />
+              <xs:element name="MIN_CHECK" msprop:Generator_ColumnVarNameInTable="columnMIN_CHECK" msprop:Generator_ColumnPropNameInRow="MIN_CHECK" msprop:Generator_ColumnPropNameInTable="MIN_CHECKColumn" msprop:Generator_UserColumnName="MIN_CHECK" type="xs:int" minOccurs="0" />
+              <xs:element name="MAX_CHECK" msprop:Generator_ColumnVarNameInTable="columnMAX_CHECK" msprop:Generator_ColumnPropNameInRow="MAX_CHECK" msprop:Generator_ColumnPropNameInTable="MAX_CHECKColumn" msprop:Generator_UserColumnName="MAX_CHECK" type="xs:int" minOccurs="0" />
+              <xs:element name="MAX_PAYAMT" msprop:Generator_ColumnVarNameInTable="columnMAX_PAYAMT" msprop:Generator_ColumnPropNameInRow="MAX_PAYAMT" msprop:Generator_ColumnPropNameInTable="MAX_PAYAMTColumn" msprop:Generator_UserColumnName="MAX_PAYAMT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="NUM_PAY" msprop:Generator_ColumnVarNameInTable="columnNUM_PAY" msprop:Generator_ColumnPropNameInRow="NUM_PAY" msprop:Generator_ColumnPropNameInTable="NUM_PAYColumn" msprop:Generator_UserColumnName="NUM_PAY" type="xs:int" minOccurs="0" />
+              <xs:element name="NEXT_PAYAMT" msprop:Generator_ColumnVarNameInTable="columnNEXT_PAYAMT" msprop:Generator_ColumnPropNameInRow="NEXT_PAYAMT" msprop:Generator_ColumnPropNameInTable="NEXT_PAYAMTColumn" msprop:Generator_UserColumnName="NEXT_PAYAMT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="FIRST_PAYAMT" msprop:Generator_ColumnVarNameInTable="columnFIRST_PAYAMT" msprop:Generator_ColumnPropNameInRow="FIRST_PAYAMT" msprop:Generator_ColumnPropNameInTable="FIRST_PAYAMTColumn" msprop:Generator_UserColumnName="FIRST_PAYAMT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="FIRST_TYPEPAY" msprop:Generator_ColumnVarNameInTable="columnFIRST_TYPEPAY" msprop:Generator_ColumnPropNameInRow="FIRST_TYPEPAY" msprop:Generator_ColumnPropNameInTable="FIRST_TYPEPAYColumn" msprop:Generator_UserColumnName="FIRST_TYPEPAY" type="xs:decimal" minOccurs="0" />
+              <xs:element name="NEXT_TYPEPAY" msprop:Generator_ColumnVarNameInTable="columnNEXT_TYPEPAY" msprop:Generator_ColumnPropNameInRow="NEXT_TYPEPAY" msprop:Generator_ColumnPropNameInTable="NEXT_TYPEPAYColumn" msprop:Generator_UserColumnName="NEXT_TYPEPAY" type="xs:decimal" minOccurs="0" />
+              <xs:element name="MAX_FIRSTPAYAMT" msprop:Generator_ColumnVarNameInTable="columnMAX_FIRSTPAYAMT" msprop:Generator_ColumnPropNameInRow="MAX_FIRSTPAYAMT" msprop:Generator_ColumnPropNameInTable="MAX_FIRSTPAYAMTColumn" msprop:Generator_UserColumnName="MAX_FIRSTPAYAMT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="MAX_NEXTPAYAMT" msprop:Generator_ColumnVarNameInTable="columnMAX_NEXTPAYAMT" msprop:Generator_ColumnPropNameInRow="MAX_NEXTPAYAMT" msprop:Generator_ColumnPropNameInTable="MAX_NEXTPAYAMTColumn" msprop:Generator_UserColumnName="MAX_NEXTPAYAMT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ASSISTTYPE_DESC" msprop:Generator_ColumnVarNameInTable="columnASSISTTYPE_DESC" msprop:Generator_ColumnPropNameInRow="ASSISTTYPE_DESC" msprop:Generator_ColumnPropNameInTable="ASSISTTYPE_DESCColumn" msprop:Generator_UserColumnName="ASSISTTYPE_DESC" type="xs:string" minOccurs="0" />
+              <xs:element name="ASSISTTYPE_GROUP" msprop:Generator_ColumnVarNameInTable="columnASSISTTYPE_GROUP" msprop:Generator_ColumnPropNameInRow="ASSISTTYPE_GROUP" msprop:Generator_ColumnPropNameInTable="ASSISTTYPE_GROUPColumn" msprop:Generator_UserColumnName="ASSISTTYPE_GROUP" type="xs:string" minOccurs="0" />
+              <xs:element name="calculate_flag" msprop:Generator_ColumnVarNameInTable="columncalculate_flag" msprop:Generator_ColumnPropNameInRow="calculate_flag" msprop:Generator_ColumnPropNameInTable="calculate_flagColumn" msprop:Generator_UserColumnName="calculate_flag" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

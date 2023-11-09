@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="r_pm_linkacc" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ef815bb5-931d-4ab8-b28f-e5b7a9a8d975">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select
+sysdate as s_date,
+pminvlinkaccount.account_no,
+pminvestmaster.invest_detail,
+pmucfinvsource.invsource_desc,
+pmucfinvest_type.investtype_desc,
+(select accmaster.account_id||' - '||accmaster.account_name from accmaster where accmaster.account_id = pminvlinkaccount.prnc_account_id) as prn_accid,
+(select accmaster.account_id||' - '||accmaster.account_name from accmaster where accmaster.account_id = pminvlinkaccount.int_account_id) as int_accid,
+(select accmaster.account_id||' - '||accmaster.account_name from accmaster where accmaster.account_id = pminvlinkaccount.tax_account_id) as tax_accid,
+(select accmaster.account_id||' - '||accmaster.account_name from accmaster where accmaster.account_id = pminvlinkaccount.arr_account_id) as arr_accid
+from pminvlinkaccount
+left join pminvestmaster on pminvlinkaccount.account_no = pminvestmaster.account_no
+left join pmucfinvsource on pminvlinkaccount.invsource_code = pmucfinvsource.invsource_code
+left join pmucfinvest_type on pminvlinkaccount.investtype_code = pmucfinvest_type.investtype_code]]>
+	</queryString>
+	<field name="S_DATE" class="java.sql.Timestamp"/>
+	<field name="ACCOUNT_NO" class="java.lang.String"/>
+	<field name="INVEST_DETAIL" class="java.lang.String"/>
+	<field name="INVSOURCE_DESC" class="java.lang.String"/>
+	<field name="INVESTTYPE_DESC" class="java.lang.String"/>
+	<field name="PRN_ACCID" class="java.lang.String"/>
+	<field name="INT_ACCID" class="java.lang.String"/>
+	<field name="TAX_ACCID" class="java.lang.String"/>
+	<field name="ARR_ACCID" class="java.lang.String"/>
+	<pageHeader>
+		<band height="40" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="bf71a9fe-6100-4a87-bbdd-cf7a6dc3d03c" x="285" y="0" width="237" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[รายงานบันทึกเชื่อมโยงคู่บัญชี]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="0b31ac86-effb-4771-a737-ade459a7753d" x="223" y="20" width="353" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ณ  "+new SimpleDateFormat("dd MMM yyyy",new Locale("th","TH")).format($F{S_DATE})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="2c8f4680-1797-41c8-9374-af28036f6abd" x="730" y="20" width="69" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["วันที่พิมพ์ : " + new SimpleDateFormat("dd/MM/yyyy",new Locale ( "th", "TH" )).format(new java.util.Date())]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="2d275835-4d41-4ef5-9047-4c92ef7ea3aa" x="731" y="0" width="58" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["หน้าที่ "+$V{PAGE_NUMBER}+" / "]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="a121a2d4-5ad1-4980-9996-b90dd5401b3f" x="789" y="0" width="10" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="24" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="ab661c20-c7ba-4367-b091-4a6e53238bfe" x="0" y="3" width="60" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<text><![CDATA[รหัสลงทุน]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fd3e1ba4-e7f9-4491-b107-92066cee8d06" x="60" y="3" width="142" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<text><![CDATA[กิจการ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b110bf79-a01a-41a5-9cb4-0055bc6439b0" x="202" y="3" width="143" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<text><![CDATA[ประเภท]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b12789f2-9881-4124-8d6b-bd53a9c58172" x="345" y="3" width="115" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<text><![CDATA[ผังบัญชีเงินต้น]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3c5e9061-319c-4570-bfbb-3b159ab25036" x="460" y="3" width="115" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<text><![CDATA[ผังบัญชีดอกเบี้ย]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="22f65388-d791-4485-b625-596173e5873d" x="575" y="3" width="115" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<text><![CDATA[ผังบัญชีภาษี]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="91a428fe-ed20-4690-abe8-03ba60b053e3" x="690" y="3" width="115" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<text><![CDATA[ผังบัญชีดอกเบี้ยค้าง]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="791e18ac-c90f-4b79-9978-0fa141148aa3" x="0" y="23" width="799" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="2c1de4eb-dd0f-4a5a-98b6-f921890c38ca" x="0" y="2" width="799" height="1"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement uuid="3402ce6b-6772-47fc-a633-02c8f0c3eb98" x="0" y="0" width="60" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ACCOUNT_NO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6173d235-37b7-4a9f-bb61-dd6db60ab066" x="60" y="0" width="142" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{INVSOURCE_DESC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b58b8c41-153e-4bbc-9d4d-ef8e76e20f5f" x="202" y="0" width="143" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{INVESTTYPE_DESC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="46018215-ba6d-42ec-aa1f-7c461b37389a" x="345" y="0" width="115" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[( $F{PRN_ACCID}== null ? "" : $F{PRN_ACCID} )]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="48d6a4eb-bae5-401a-8f66-51d17abbbdeb" x="460" y="0" width="115" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[( $F{INT_ACCID}== null ? "" : $F{INT_ACCID} )]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e4ad30dc-cba9-4bcd-9356-71e70a990073" x="575" y="0" width="115" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[( $F{TAX_ACCID}== null ? "" : $F{TAX_ACCID} )]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3b2df39b-37f2-4250-856f-51a71b8a070a" x="690" y="0" width="115" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[( $F{ARR_ACCID}== null ? "" : $F{ARR_ACCID} )]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="50">
+			<line>
+				<reportElement uuid="9fe42680-9e80-4608-9273-e296f60dc291" x="0" y="0" width="802" height="1"/>
+			</line>
+		</band>
+	</summary>
+</jasperReport>

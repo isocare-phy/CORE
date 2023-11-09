@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ir_ln_contract_colldet" language="groovy" pageWidth="454" pageHeight="20" orientation="Landscape" columnWidth="454" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="07c23153-eb6b-4224-a556-ea1284db26a5">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="as_coopid" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="as_loancontract" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select lc.ref_collno ,lc.description from mbmembmtharrear mt
+join mbmembmaster mb on mb.coop_id = mt.coop_id and mb.member_no = mt.member_no
+join cmcoopconstant cm on cm.coop_no = mt.coop_id
+join lncontmaster lm on lm.coop_id = mt.coop_id and lm.loancontract_no = mt.loancontract_no
+join lncfloanintratedet id on mt.coop_id = id.coop_id and lm.int_continttabcode = id.loanintrate_code
+join lncontcoll lc on lc.loancontract_no = lm.loancontract_no and lc.coop_id = lm.coop_id and mt.member_no = lm.member_no and mt.loancontract_no = lm.loancontract_no
+where mt.mtharritem_code = 'LON'
+and mt.coop_id = $P{as_coopid}
+and mt.loancontract_no = $P{as_loancontract}
+and lc.loancolltype_code = '01'
+and id.expire_date > sysdate]]>
+	</queryString>
+	<field name="REF_COLLNO" class="java.lang.String"/>
+	<field name="DESCRIPTION" class="java.lang.String"/>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="37e09141-2e60-4fb0-b3bb-d7bd8e698583" x="0" y="0" width="36" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="16"/>
+				</textElement>
+				<text><![CDATA[เรียน]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="aaf9a027-4052-4c20-96ae-a123fd4b34f2" isPrintRepeatedValues="false" x="36" y="0" width="153" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="16" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DESCRIPTION}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="80a5abc1-2728-40bb-b739-e756fe82b909" x="189" y="0" width="63" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="16"/>
+				</textElement>
+				<text><![CDATA[เลขทะเบียน]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="88afd22d-2d8f-4eee-b85d-0904cb7a1e0e" x="252" y="0" width="124" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="16" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{REF_COLLNO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="2b1972cf-9750-41d3-8dfc-aaf1a35484a7" x="376" y="0" width="78" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="16"/>
+				</textElement>
+				<text><![CDATA[ผู้ค้ำประกัน]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

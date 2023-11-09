@@ -1,0 +1,844 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="r_shortloang_loan_phy" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d95c7ce2-78ff-4592-9b3d-6879c16fb491">
+	<property name="ireport.zoom" value="1.1000000000000079"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="as_emembgroup" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="as_coopid" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="as_smembgroup" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="as_recvperiod" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select
+lnestloanshortlong.coop_id
+from lnestloanshortlong
+left join lnloantype on lnestloanshortlong.loantype_code = lnloantype.loantype_code
+left join mbmembmaster on lnestloanshortlong.member_no = mbmembmaster.member_no
+left join mbucfmembtype on mbmembmaster.membtype_code = mbucfmembtype.membtype_code
+left join mbucfmembgroup on mbmembmaster.membgroup_code = mbucfmembgroup.membgroup_code
+left join mbucfprename on mbmembmaster.prename_code = mbucfprename.prename_code
+where lnestloanshortlong.coop_id = $P{as_coopid}
+and lnestloanshortlong.acc_year = $P{as_recvperiod}
+group by lnestloanshortlong.coop_id]]>
+	</queryString>
+	<field name="COOP_ID" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="60" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="8909669a-7749-430c-9467-57e62ac12eb5" x="210" y="20" width="215" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[ประเภทเงินให้กู้]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="605c84fa-436d-4bdc-9e10-b574ee34f02f" x="210" y="40" width="100" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[ระยะสั้น (บาท)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="22414b84-7d9c-4249-a659-bfeda56cbf82" x="325" y="40" width="100" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[ระยะยาว (บาท)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="23b2a352-9015-4399-a401-241c4a0082c6" x="435" y="40" width="120" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[รวม (บาท)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="28a626f8-d112-4bc2-846e-a707df0c4bf5" x="0" y="0" width="555" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[การจ่ายเงินให้สหกรณ์อื่นกู้]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="640" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="323529c1-f231-48dd-b1db-93ddee0d10a9" x="0" y="0" width="210" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[วันต้นปี]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="18532322-96d2-4299-8151-bf4a7399fadf" x="0" y="20" width="30" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[บวก]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8d347443-f8cf-4a4f-9092-7bde8a3a7c85" x="30" y="20" width="180" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[เพิ่มระหว่างปี]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e52813b6-094d-4c0f-ae79-ee67a1789880" x="0" y="40" width="30" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[หัก]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5407d82b-c3ab-4c7e-a553-9a766dad3e8a" x="30" y="40" width="180" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[รับชำระระหว่างปี]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6c4a9614-7c95-4275-be25-d9a1453ea5fa" x="0" y="60" width="30" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[หัก]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e2e979ee-5bfb-4800-b4ae-af699f52233e" x="30" y="60" width="180" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[โอนไปเป็นลูกหนี้อื่น]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="14ee18a9-51d2-468e-ab08-6eccb8790a83" x="0" y="80" width="210" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[คงเหลือวันสิ้นปี]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="98e29a3c-5c71-4891-921a-b2102d23d3df" x="30" y="100" width="180" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[- ลูกหนี้ระยะสั้น (ถึงกำหนดชำระภายใน 1 ปี)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c00e84b9-556c-4328-93dc-cec0c1474f4b" x="30" y="120" width="180" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[- ลูกหนี้ระยะยาว (เกิน 1 ปี)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="97b0ef47-f2cb-467e-b94a-66e73677aa25" x="30" y="140" width="180" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[- ลูกหนี้ที่ไม่ก่อให้เกิดรายได้ (NPL)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="078fc5ca-b820-4583-88cb-6bbab6f5766e" x="30" y="180" width="180" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[- ลูกหนี้ระยะสั้น]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0d842f36-9353-4181-b170-4407398623d7" x="30" y="220" width="180" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[- ลูกหนี้ที่ไม่ก่อให้เกิดรายได้ (NPL)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4b4cf4ac-5658-49b9-9104-33da1d5b5e00" x="0" y="160" width="210" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ค่าเผื่อหนี้สงสัยจะสูญ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="447cc6d3-7139-4901-8d96-5c0e10e74499" x="30" y="200" width="180" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[- ลูกหนี้ระยะยาว ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e4d2d77b-6352-47aa-81b0-b563b1389148" x="0" y="240" width="210" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ค่าเผื่อลูกหนี้คลาดเคลื่อน]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7cb7bb83-6331-44fa-8ef7-9a27566c65ef" x="30" y="300" width="180" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[- ลูกหนี้ที่ไม่ก่อให้เกิดรายได้ (NPL)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="70dd7dee-49b7-4ee2-aa5c-ea77269ea723" x="30" y="260" width="180" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[- ลูกหนี้ระยะสั้น (ไม่เกิน 1 ปี)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4e09a09f-488e-46c4-b5a5-3962d3ff9c62" x="30" y="280" width="180" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[- ลูกหนี้ระยะยาว (เกิน 1 ปี)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="027c12a1-77d5-4c8b-a720-cb1e8b3fc04a" x="0" y="340" width="30" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[หัก]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0e6faeb3-1a8c-4955-9564-76b66aad204e" x="0" y="320" width="210" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ดอกเบี้ยค้างรับสิ้นปี]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="108f7823-4359-455f-a9c7-f07629e1f168" x="30" y="340" width="180" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[ค่าเผื่อหนี้สงสัยจะสูญ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="080879f4-fe78-49d6-aa44-51427493f8e6" x="0" y="360" width="210" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ดอกเบี้ยค้างรับ - สุทธิ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="55ec392c-dcb9-4d74-aa45-6ba58d09cfc6" x="0" y="380" width="210" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[ดอกเบี้ยค้างรับเกิน 5 ปี]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a3324a9b-d049-4d61-a6e0-0714d12cb788" x="0" y="400" width="210" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[หนี้ถึงกำหนดชำระ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a01799c5-6fcb-4b34-a2e9-531fccb239db" x="0" y="420" width="210" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[หนี้ที่ชำระไม่ได้ตามกำหนด]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e23f9551-62c3-455d-848c-c49285e76f80" x="0" y="460" width="210" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[จำนวนที่กู้ระหว่างปี]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7c102589-c357-42ba-bf02-a86ff931f122" x="0" y="500" width="210" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[จำนวนคงเหลือวันสิ้นปี]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f780659c-0ca0-4400-9f67-9529d505540a" x="0" y="540" width="210" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[จำนวนหนี้ที่ชำระไม่ได้ตามกำหนดวันสิ้นปี]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c309853f-1b03-4ff5-ab7e-d51f257f9ba5" x="0" y="580" width="210" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[จำนวนหนี้ที่ไม่ก่อให้เกิดรายได้ (NPL) คงเหลือวันสิ้นปี]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a4ba6e13-8ac4-457e-a16a-11f67bb542d1" x="280" y="460" width="30" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[สัญญา]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4fa130b8-7161-44a3-946a-f61dd1bf3403" x="280" y="480" width="30" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[สหกรณ์]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ae0fa922-9c1b-4af5-b0f9-9899dff3b4cb" x="210" y="460" width="70" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="54606d0e-e05d-48ae-8b12-53239e224ecb" x="210" y="480" width="70" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3d8b1ce8-a400-45e1-b5cb-9345774b26d8" x="325" y="460" width="70" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1c75ff6a-045d-4d6d-9073-d6c9bd19c518" x="395" y="480" width="30" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[สหกรณ์]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ef41a57c-8548-46c8-a1f3-af92e9b7d968" x="325" y="480" width="70" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c1d0e177-ea5c-4f3d-93b6-29eb6aabc302" x="395" y="460" width="30" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[สัญญา]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="298de47d-7ce8-4f1d-94a9-58aecfed901b" x="435" y="460" width="70" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2174f730-03a3-49e6-8702-17943844a784" x="505" y="480" width="30" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[สหกรณ์]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="62c197c8-2c88-4377-8cf9-1753cf7d4545" x="435" y="480" width="70" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="296b107d-2f03-448a-8db5-ff7483638098" x="505" y="460" width="30" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[สัญญา]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="384256b8-535e-43fd-b85d-6e86f4236a8f" x="210" y="500" width="70" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="63607e64-891d-4f29-b8a8-7a3a88a75d16" x="280" y="520" width="30" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[สหกรณ์]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0e5c34fa-0040-45c5-85ed-caa0a7d1fb5e" x="210" y="520" width="70" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c6edb8c4-95a6-4292-b0f4-5dd037cc016e" x="325" y="500" width="70" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b1c542de-d7b3-44a1-8b6f-cc94f1c2c59f" x="395" y="500" width="30" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[สัญญา]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e5f1e8f2-7e14-489f-9b3e-891f71688e15" x="435" y="520" width="70" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="72ae0e96-bca3-4b63-866a-df3bd564386a" x="395" y="520" width="30" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[สหกรณ์]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="88f67661-e316-48f9-89e2-2e138cfb3a65" x="280" y="500" width="30" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[สัญญา]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2c539b5a-66c5-41b6-ab7d-d4756523ee2f" x="505" y="500" width="30" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[สัญญา]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="dc4b0a31-2ffb-44e7-860b-7fb8ea245ff8" x="505" y="520" width="30" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[สหกรณ์]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7fb49fb6-dacf-4b9f-92a5-11794441e71e" x="435" y="500" width="70" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d596160a-a2d7-4fd5-b8c3-a6e75b8c7d92" x="325" y="520" width="70" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="30a2c6f9-63f1-4f17-860e-214bda0b7222" x="325" y="580" width="70" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2cdc205b-399a-417a-ac6f-25962d9b88e6" x="505" y="600" width="30" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[สหกรณ์]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c63fe24f-ea02-46b6-be0b-50b8c6cffb57" x="210" y="540" width="70" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0d9cad50-1df4-4c9d-aac2-98082430c44e" x="280" y="600" width="30" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[สหกรณ์]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0733171a-34f2-46c2-9316-eb148db9d86e" x="435" y="600" width="70" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="96289481-115d-4309-bc6a-e6760793e994" x="280" y="560" width="30" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[สหกรณ์]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6d761eb3-a7dd-4ad5-8f99-bc406a05e33e" x="395" y="580" width="30" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[สัญญา]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1648161e-f436-4cce-acd6-ee1fca062aa2" x="325" y="540" width="70" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="47ce0fc8-d891-4916-9ec2-13b2e1c0e574" x="210" y="560" width="70" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="37a53677-77a3-401d-8e84-f8789d27ecd8" x="280" y="580" width="30" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[สัญญา]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="143fb656-b4d1-4b29-9992-1f02a6ea5f7d" x="395" y="600" width="30" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[สหกรณ์]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="17e6cd9a-9ce8-4065-8ee0-ca34d4c6293f" x="210" y="580" width="70" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d6f6cb46-12ce-4e6e-985d-5cfb90459226" x="395" y="540" width="30" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[สัญญา]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="30fb2b04-0d22-4bab-9308-0d6bc9d158a5" x="435" y="560" width="70" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="008393c9-7546-42cf-87ea-a24722fe5bf8" x="395" y="560" width="30" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[สหกรณ์]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f8d14abd-9f92-437f-80df-3e0f9036b3cb" x="280" y="540" width="30" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[สัญญา]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9ebe1231-46a3-40e9-931a-f7b4da304af6" x="505" y="580" width="30" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[สัญญา]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9fd0df11-dce2-428b-b9e9-b07e0c5fe9c6" x="505" y="540" width="30" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[สัญญา]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="67f435a2-e99f-4f1b-8767-4acb6587c1e3" x="435" y="580" width="70" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ae42534d-b563-4eb9-ad76-c0b23615c9c5" x="505" y="560" width="30" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[สหกรณ์]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="684685da-37df-4b13-9b9d-4403e585d688" x="435" y="540" width="70" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b93164ab-854e-4ee0-bb89-3bbac4473c16" x="210" y="600" width="70" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f1391ac3-4799-4c9e-a708-72103b4c8d4a" x="325" y="600" width="70" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="023763a5-f135-4d9a-b51b-bbb0d077e6da" x="325" y="560" width="70" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<summary>
+		<band height="100">
+			<staticText>
+				<reportElement uuid="3c048226-7d7c-4d57-9561-e0c1cc208821" x="0" y="0" width="210" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[รวม วงเงินสูงสุดรวมทุกประเภทตามระเบียบ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="39921990-4f5e-4f3a-8c5f-16e614b0b385" x="0" y="20" width="210" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[วงเงินกู้สูงสุด (บาท)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="423884a4-3384-4919-959c-f4c2efad682e" x="0" y="40" width="210" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[จำนวนเงินชำระหนี้สูงสุด (งวด)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b07d8e69-325f-4e7c-8ef2-ef6cb6921052" x="0" y="60" width="210" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[อัตราดอกเบี้ยเงินให้กู้สูงสุด (ร้อยละ)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="bd6df043-7bbf-4000-8734-25e9ffd267f9" x="0" y="80" width="210" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[อัตราดอกเบี้ยเงินให้กู้ต่ำสุด (ร้อยละ)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ee57762f-7c7f-42c6-acc9-2490dafe1995" x="435" y="0" width="70" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4e8b4764-e248-4286-a60f-3ac577ef57d4" x="505" y="0" width="30" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[บาท]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c75a2a0f-8bbc-43b3-9c31-25ebd3a65348" x="210" y="20" width="100" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ab23f82c-dd11-4f5e-8efe-558617340e9d" x="325" y="40" width="100" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3168fe16-9d36-4a45-8d13-a3f381fc3f7c" x="210" y="60" width="100" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="39241609-5b39-4666-b6e1-2a13055fa7fb" x="325" y="20" width="100" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f975db32-88c9-4d19-8905-5f22d7dbeb6b" x="210" y="40" width="100" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0d25c9d7-4ab3-4a3c-8569-efb791a4ff2a" x="325" y="60" width="100" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6d0873f9-0445-402b-a60a-006263c3b7b1" x="325" y="80" width="100" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="50287134-0462-4d8a-8cfe-7fb0f9b09825" x="210" y="80" width="100" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

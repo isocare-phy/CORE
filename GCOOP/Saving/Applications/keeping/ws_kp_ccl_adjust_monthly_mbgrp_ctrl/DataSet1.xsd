@@ -1,0 +1,618 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet1" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="ConnectionString2" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ConnectionString2 (Web.config)" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.ConnectionString2.ConnectionString" Provider="System.Data.OracleClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SLSLIPADJUSTTableAdapter" GeneratorDataComponentClassName="SLSLIPADJUSTTableAdapter" Name="SLSLIPADJUST" UserDataComponentName="SLSLIPADJUSTTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ConnectionString2 (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>  SELECT 
+         MBMEMBMASTER.MEMB_NAME,   
+         MBMEMBMASTER.MEMB_SURNAME,   
+         MBMEMBMASTER.MEMBGROUP_CODE,   
+         MBUCFPRENAME.PRENAME_DESC,   
+         SLSLIPADJUST.ADJSLIP_NO,   
+         SLSLIPADJUST.MEMBER_NO,   
+         SLSLIPADJUST.REF_SLIPNO,   
+         SLSLIPADJUST.REF_SLIPDATE,   
+         SLSLIPADJUST.REF_SLIPAMT,   
+         SLSLIPADJUST.ADJSLIP_DATE,   
+         SLSLIPADJUST.ADJTYPE_CODE,   
+         SLSLIPADJUST.OPERATE_DATE,   
+         SLSLIPADJUST.SLIP_AMT,   
+         SLSLIPADJUST.SLIP_STATUS,   
+         SLSLIPADJUST.ENTRY_ID,   
+         SLSLIPADJUST.ENTRY_DATE,   
+         SLSLIPADJUST.CANCEL_ID,   
+         SLSLIPADJUST.CANCEL_DATE,   
+         SLSLIPADJUST.POSTTOVC_FLAG,   
+         SLSLIPADJUST.VOUCHER_NO,   
+         SLSLIPADJUST.CANCELTOVC_FLAG,   
+         SLSLIPADJUST.CANCELVC_NO,   
+         SLSLIPADJUST.ACCID_FLAG,   
+         SLSLIPADJUST.TOFROM_ACCID,   
+         SLSLIPADJUST.SLIPRETCAUSE_CODE,   
+         SLSLIPADJUST.ADJUST_CAUSE,   
+         SLSLIPADJUST.COOP_ID,   
+         SLSLIPADJUST.MEMCOOP_ID,   
+         SLSLIPADJUST.REF_RECVPERIOD,   
+         SLSLIPADJUST.REF_CONTNO,   
+         SLSLIPADJUST.SLIPRETALL_FLAG,   
+         SLSLIPADJUST.AGENTSET_FLAG,   
+         SLSLIPADJUST.ENTRY_BYCOOPID,   
+         MBUCFMEMBGROUP.MEMBGROUP_DESC  
+    FROM SLSLIPADJUST,   
+         MBMEMBMASTER,   
+         MBUCFPRENAME,   
+         MBUCFMEMBGROUP  
+   WHERE MBUCFPRENAME.PRENAME_CODE = MBMEMBMASTER.PRENAME_CODE and  
+         SLSLIPADJUST.MEMBER_NO = MBMEMBMASTER.MEMBER_NO and  
+         SLSLIPADJUST.MEMCOOP_ID = MBMEMBMASTER.COOP_ID and  
+         MBMEMBMASTER.COOP_ID = MBUCFMEMBGROUP.COOP_ID and  
+         MBMEMBMASTER.MEMBGROUP_CODE = MBUCFMEMBGROUP.MEMBGROUP_CODE</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="MEMB_NAME" DataSetColumn="MEMB_NAME" />
+              <Mapping SourceColumn="MEMB_SURNAME" DataSetColumn="MEMB_SURNAME" />
+              <Mapping SourceColumn="MEMBGROUP_CODE" DataSetColumn="MEMBGROUP_CODE" />
+              <Mapping SourceColumn="PRENAME_DESC" DataSetColumn="PRENAME_DESC" />
+              <Mapping SourceColumn="ADJSLIP_NO" DataSetColumn="ADJSLIP_NO" />
+              <Mapping SourceColumn="MEMBER_NO" DataSetColumn="MEMBER_NO" />
+              <Mapping SourceColumn="REF_SLIPNO" DataSetColumn="REF_SLIPNO" />
+              <Mapping SourceColumn="REF_SLIPDATE" DataSetColumn="REF_SLIPDATE" />
+              <Mapping SourceColumn="REF_SLIPAMT" DataSetColumn="REF_SLIPAMT" />
+              <Mapping SourceColumn="ADJSLIP_DATE" DataSetColumn="ADJSLIP_DATE" />
+              <Mapping SourceColumn="ADJTYPE_CODE" DataSetColumn="ADJTYPE_CODE" />
+              <Mapping SourceColumn="OPERATE_DATE" DataSetColumn="OPERATE_DATE" />
+              <Mapping SourceColumn="SLIP_AMT" DataSetColumn="SLIP_AMT" />
+              <Mapping SourceColumn="SLIP_STATUS" DataSetColumn="SLIP_STATUS" />
+              <Mapping SourceColumn="ENTRY_ID" DataSetColumn="ENTRY_ID" />
+              <Mapping SourceColumn="ENTRY_DATE" DataSetColumn="ENTRY_DATE" />
+              <Mapping SourceColumn="CANCEL_ID" DataSetColumn="CANCEL_ID" />
+              <Mapping SourceColumn="CANCEL_DATE" DataSetColumn="CANCEL_DATE" />
+              <Mapping SourceColumn="POSTTOVC_FLAG" DataSetColumn="POSTTOVC_FLAG" />
+              <Mapping SourceColumn="VOUCHER_NO" DataSetColumn="VOUCHER_NO" />
+              <Mapping SourceColumn="CANCELTOVC_FLAG" DataSetColumn="CANCELTOVC_FLAG" />
+              <Mapping SourceColumn="CANCELVC_NO" DataSetColumn="CANCELVC_NO" />
+              <Mapping SourceColumn="ACCID_FLAG" DataSetColumn="ACCID_FLAG" />
+              <Mapping SourceColumn="TOFROM_ACCID" DataSetColumn="TOFROM_ACCID" />
+              <Mapping SourceColumn="SLIPRETCAUSE_CODE" DataSetColumn="SLIPRETCAUSE_CODE" />
+              <Mapping SourceColumn="ADJUST_CAUSE" DataSetColumn="ADJUST_CAUSE" />
+              <Mapping SourceColumn="COOP_ID" DataSetColumn="COOP_ID" />
+              <Mapping SourceColumn="MEMCOOP_ID" DataSetColumn="MEMCOOP_ID" />
+              <Mapping SourceColumn="REF_RECVPERIOD" DataSetColumn="REF_RECVPERIOD" />
+              <Mapping SourceColumn="REF_CONTNO" DataSetColumn="REF_CONTNO" />
+              <Mapping SourceColumn="SLIPRETALL_FLAG" DataSetColumn="SLIPRETALL_FLAG" />
+              <Mapping SourceColumn="AGENTSET_FLAG" DataSetColumn="AGENTSET_FLAG" />
+              <Mapping SourceColumn="ENTRY_BYCOOPID" DataSetColumn="ENTRY_BYCOOPID" />
+              <Mapping SourceColumn="MEMBGROUP_DESC" DataSetColumn="MEMBGROUP_DESC" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SLSLIPADJUSTDETTableAdapter" GeneratorDataComponentClassName="SLSLIPADJUSTDETTableAdapter" Name="SLSLIPADJUSTDET" UserDataComponentName="SLSLIPADJUSTDETTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ConnectionString2 (Web.config)" DbObjectName="ISCORID.SLSLIPADJUSTDET" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM "SLSLIPADJUSTDET" WHERE (("ADJSLIP_NO" = :Original_ADJSLIP_NO) AND ("SLIPITEMTYPE_CODE" = :Original_SLIPITEMTYPE_CODE) AND ("SEQ_NO" = :Original_SEQ_NO) AND ("COOP_ID" = :Original_COOP_ID))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="Original_ADJSLIP_NO" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="ADJSLIP_NO" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="Original_SLIPITEMTYPE_CODE" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="SLIPITEMTYPE_CODE" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="Original_SEQ_NO" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="SEQ_NO" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="Original_COOP_ID" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="COOP_ID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO "SLSLIPADJUSTDET" ("ADJSLIP_NO", "SLIPITEMTYPE_CODE", "SEQ_NO", "LOANCONTRACT_NO", "SLIPITEM_DESC", "PRINCIPAL_ADJAMT", "INTEREST_ADJAMT", "INTARREAR_ADJAMT", "ITEM_ADJAMT", "ITEM_BALANCE", "PERIODADJ_TYPE", "PERIODADJ_AMT", "BFINTARR_AMT", "BFINTARRSET_AMT", "BFLASTCALINT_DATE", "BFLASTPROC_DATE", "BFLASTPAY_DATE", "BFSHRCONT_BALAMT", "BFSHRCONT_STATUS", "BFCONTLAW_STATUS", "BFCONTSTATUS_DESC", "BFMTHPAY_PRNAMT", "BFMTHPAY_INTAMT", "BFMTHPAY_ITEMAMT", "BFMTHPAY_INTARRAMT", "BFMTHPAY_REFMEMBNO", "BFMTHPAY_SEQNO", "SIGN_FLAG", "COOP_ID", "SHRLONTYPE_CODE", "CONCOOP_ID", "BFMTHADJ_PRNAMT", "BFMTHADJ_INTAMT", "BFMTHADJ_INTARRAMT", "BFMTHADJ_ITEMAMT", "BFMTHPAY_KPITEMTYP", "REF_ITEMSLIPNO", "REF_ITEMSLIPDATE", "REF_ITEMSEQNO") VALUES (:ADJSLIP_NO, :SLIPITEMTYPE_CODE, :SEQ_NO, :LOANCONTRACT_NO, :SLIPITEM_DESC, :PRINCIPAL_ADJAMT, :INTEREST_ADJAMT, :INTARREAR_ADJAMT, :ITEM_ADJAMT, :ITEM_BALANCE, :PERIODADJ_TYPE, :PERIODADJ_AMT, :BFINTARR_AMT, :BFINTARRSET_AMT, :BFLASTCALINT_DATE, :BFLASTPROC_DATE, :BFLASTPAY_DATE, :BFSHRCONT_BALAMT, :BFSHRCONT_STATUS, :BFCONTLAW_STATUS, :BFCONTSTATUS_DESC, :BFMTHPAY_PRNAMT, :BFMTHPAY_INTAMT, :BFMTHPAY_ITEMAMT, :BFMTHPAY_INTARRAMT, :BFMTHPAY_REFMEMBNO, :BFMTHPAY_SEQNO, :SIGN_FLAG, :COOP_ID, :SHRLONTYPE_CODE, :CONCOOP_ID, :BFMTHADJ_PRNAMT, :BFMTHADJ_INTAMT, :BFMTHADJ_INTARRAMT, :BFMTHADJ_ITEMAMT, :BFMTHPAY_KPITEMTYP, :REF_ITEMSLIPNO, :REF_ITEMSLIPDATE, :REF_ITEMSEQNO)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="ADJSLIP_NO" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="ADJSLIP_NO" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="SLIPITEMTYPE_CODE" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="SLIPITEMTYPE_CODE" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="SEQ_NO" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="SEQ_NO" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="LOANCONTRACT_NO" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="LOANCONTRACT_NO" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="SLIPITEM_DESC" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="SLIPITEM_DESC" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="PRINCIPAL_ADJAMT" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="PRINCIPAL_ADJAMT" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="INTEREST_ADJAMT" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="INTEREST_ADJAMT" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="INTARREAR_ADJAMT" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="INTARREAR_ADJAMT" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="ITEM_ADJAMT" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="ITEM_ADJAMT" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="ITEM_BALANCE" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="ITEM_BALANCE" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="PERIODADJ_TYPE" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="PERIODADJ_TYPE" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="PERIODADJ_AMT" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="PERIODADJ_AMT" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="BFINTARR_AMT" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="BFINTARR_AMT" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="BFINTARRSET_AMT" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="BFINTARRSET_AMT" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="BFLASTCALINT_DATE" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="BFLASTCALINT_DATE" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="BFLASTPROC_DATE" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="BFLASTPROC_DATE" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="BFLASTPAY_DATE" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="BFLASTPAY_DATE" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="BFSHRCONT_BALAMT" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="BFSHRCONT_BALAMT" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="BFSHRCONT_STATUS" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="BFSHRCONT_STATUS" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="BFCONTLAW_STATUS" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="BFCONTLAW_STATUS" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="BFCONTSTATUS_DESC" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="BFCONTSTATUS_DESC" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="BFMTHPAY_PRNAMT" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="BFMTHPAY_PRNAMT" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="BFMTHPAY_INTAMT" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="BFMTHPAY_INTAMT" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="BFMTHPAY_ITEMAMT" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="BFMTHPAY_ITEMAMT" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="BFMTHPAY_INTARRAMT" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="BFMTHPAY_INTARRAMT" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="BFMTHPAY_REFMEMBNO" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="BFMTHPAY_REFMEMBNO" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="BFMTHPAY_SEQNO" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="BFMTHPAY_SEQNO" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="SIGN_FLAG" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="SIGN_FLAG" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="COOP_ID" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="COOP_ID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="SHRLONTYPE_CODE" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="SHRLONTYPE_CODE" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="CONCOOP_ID" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="CONCOOP_ID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="BFMTHADJ_PRNAMT" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="BFMTHADJ_PRNAMT" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="BFMTHADJ_INTAMT" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="BFMTHADJ_INTAMT" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="BFMTHADJ_INTARRAMT" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="BFMTHADJ_INTARRAMT" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="BFMTHADJ_ITEMAMT" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="BFMTHADJ_ITEMAMT" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="BFMTHPAY_KPITEMTYP" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="BFMTHPAY_KPITEMTYP" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="REF_ITEMSLIPNO" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="REF_ITEMSLIPNO" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="REF_ITEMSLIPDATE" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="REF_ITEMSLIPDATE" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="REF_ITEMSEQNO" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="REF_ITEMSEQNO" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT 0 as operate_flag,   
+         SLSLIPADJUSTDET.ADJSLIP_NO,   
+         SLSLIPADJUSTDET.SLIPITEMTYPE_CODE,   
+         SLSLIPADJUSTDET.SEQ_NO,   
+         SLSLIPADJUSTDET.LOANCONTRACT_NO,   
+         SLSLIPADJUSTDET.SLIPITEM_DESC,   
+         SLSLIPADJUSTDET.PRINCIPAL_ADJAMT,   
+         SLSLIPADJUSTDET.INTEREST_ADJAMT,   
+         SLSLIPADJUSTDET.INTARREAR_ADJAMT,   
+         SLSLIPADJUSTDET.ITEM_ADJAMT,   
+         SLSLIPADJUSTDET.ITEM_BALANCE,   
+         SLSLIPADJUSTDET.PERIODADJ_TYPE,   
+         SLSLIPADJUSTDET.PERIODADJ_AMT,   
+         SLSLIPADJUSTDET.BFINTARR_AMT,   
+         SLSLIPADJUSTDET.BFINTARRSET_AMT,   
+         SLSLIPADJUSTDET.BFLASTCALINT_DATE,   
+         SLSLIPADJUSTDET.BFLASTPROC_DATE,   
+         SLSLIPADJUSTDET.BFLASTPAY_DATE,   
+         SLSLIPADJUSTDET.BFSHRCONT_BALAMT,   
+         SLSLIPADJUSTDET.BFSHRCONT_STATUS,   
+         SLSLIPADJUSTDET.BFCONTLAW_STATUS,   
+         SLSLIPADJUSTDET.BFCONTSTATUS_DESC,   
+         SLSLIPADJUSTDET.BFMTHPAY_PRNAMT,   
+         SLSLIPADJUSTDET.BFMTHPAY_INTAMT,   
+         SLSLIPADJUSTDET.BFMTHPAY_ITEMAMT,   
+         SLSLIPADJUSTDET.BFMTHPAY_INTARRAMT,   
+         SLSLIPADJUSTDET.BFMTHPAY_REFMEMBNO,   
+         SLSLIPADJUSTDET.BFMTHPAY_SEQNO,   
+         SLSLIPADJUSTDET.SIGN_FLAG,   
+         SLSLIPADJUSTDET.COOP_ID,   
+         SLSLIPADJUSTDET.SHRLONTYPE_CODE,   
+         SLSLIPADJUSTDET.CONCOOP_ID,   
+         SLSLIPADJUSTDET.BFMTHADJ_PRNAMT,   
+         SLSLIPADJUSTDET.BFMTHADJ_INTAMT,   
+         SLSLIPADJUSTDET.BFMTHADJ_INTARRAMT,   
+         SLSLIPADJUSTDET.BFMTHADJ_ITEMAMT,   
+         SLSLIPADJUSTDET.BFMTHPAY_KPITEMTYP,   
+         SLSLIPADJUSTDET.REF_ITEMSLIPNO,   
+         SLSLIPADJUSTDET.REF_ITEMSLIPDATE,   
+         SLSLIPADJUSTDET.REF_ITEMSEQNO  
+    FROM SLSLIPADJUSTDET   </CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE "SLSLIPADJUSTDET" SET "ADJSLIP_NO" = :ADJSLIP_NO, "SLIPITEMTYPE_CODE" = :SLIPITEMTYPE_CODE, "SEQ_NO" = :SEQ_NO, "LOANCONTRACT_NO" = :LOANCONTRACT_NO, "SLIPITEM_DESC" = :SLIPITEM_DESC, "PRINCIPAL_ADJAMT" = :PRINCIPAL_ADJAMT, "INTEREST_ADJAMT" = :INTEREST_ADJAMT, "INTARREAR_ADJAMT" = :INTARREAR_ADJAMT, "ITEM_ADJAMT" = :ITEM_ADJAMT, "ITEM_BALANCE" = :ITEM_BALANCE, "PERIODADJ_TYPE" = :PERIODADJ_TYPE, "PERIODADJ_AMT" = :PERIODADJ_AMT, "BFINTARR_AMT" = :BFINTARR_AMT, "BFINTARRSET_AMT" = :BFINTARRSET_AMT, "BFLASTCALINT_DATE" = :BFLASTCALINT_DATE, "BFLASTPROC_DATE" = :BFLASTPROC_DATE, "BFLASTPAY_DATE" = :BFLASTPAY_DATE, "BFSHRCONT_BALAMT" = :BFSHRCONT_BALAMT, "BFSHRCONT_STATUS" = :BFSHRCONT_STATUS, "BFCONTLAW_STATUS" = :BFCONTLAW_STATUS, "BFCONTSTATUS_DESC" = :BFCONTSTATUS_DESC, "BFMTHPAY_PRNAMT" = :BFMTHPAY_PRNAMT, "BFMTHPAY_INTAMT" = :BFMTHPAY_INTAMT, "BFMTHPAY_ITEMAMT" = :BFMTHPAY_ITEMAMT, "BFMTHPAY_INTARRAMT" = :BFMTHPAY_INTARRAMT, "BFMTHPAY_REFMEMBNO" = :BFMTHPAY_REFMEMBNO, "BFMTHPAY_SEQNO" = :BFMTHPAY_SEQNO, "SIGN_FLAG" = :SIGN_FLAG, "COOP_ID" = :COOP_ID, "SHRLONTYPE_CODE" = :SHRLONTYPE_CODE, "CONCOOP_ID" = :CONCOOP_ID, "BFMTHADJ_PRNAMT" = :BFMTHADJ_PRNAMT, "BFMTHADJ_INTAMT" = :BFMTHADJ_INTAMT, "BFMTHADJ_INTARRAMT" = :BFMTHADJ_INTARRAMT, "BFMTHADJ_ITEMAMT" = :BFMTHADJ_ITEMAMT, "BFMTHPAY_KPITEMTYP" = :BFMTHPAY_KPITEMTYP, "REF_ITEMSLIPNO" = :REF_ITEMSLIPNO, "REF_ITEMSLIPDATE" = :REF_ITEMSLIPDATE, "REF_ITEMSEQNO" = :REF_ITEMSEQNO WHERE (("ADJSLIP_NO" = :Original_ADJSLIP_NO) AND ("SLIPITEMTYPE_CODE" = :Original_SLIPITEMTYPE_CODE) AND ("SEQ_NO" = :Original_SEQ_NO) AND ("COOP_ID" = :Original_COOP_ID))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="ADJSLIP_NO" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="ADJSLIP_NO" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="SLIPITEMTYPE_CODE" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="SLIPITEMTYPE_CODE" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="SEQ_NO" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="SEQ_NO" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="LOANCONTRACT_NO" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="LOANCONTRACT_NO" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="SLIPITEM_DESC" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="SLIPITEM_DESC" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="PRINCIPAL_ADJAMT" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="PRINCIPAL_ADJAMT" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="INTEREST_ADJAMT" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="INTEREST_ADJAMT" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="INTARREAR_ADJAMT" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="INTARREAR_ADJAMT" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="ITEM_ADJAMT" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="ITEM_ADJAMT" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="ITEM_BALANCE" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="ITEM_BALANCE" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="PERIODADJ_TYPE" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="PERIODADJ_TYPE" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="PERIODADJ_AMT" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="PERIODADJ_AMT" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="BFINTARR_AMT" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="BFINTARR_AMT" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="BFINTARRSET_AMT" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="BFINTARRSET_AMT" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="BFLASTCALINT_DATE" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="BFLASTCALINT_DATE" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="BFLASTPROC_DATE" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="BFLASTPROC_DATE" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="BFLASTPAY_DATE" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="BFLASTPAY_DATE" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="BFSHRCONT_BALAMT" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="BFSHRCONT_BALAMT" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="BFSHRCONT_STATUS" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="BFSHRCONT_STATUS" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="BFCONTLAW_STATUS" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="BFCONTLAW_STATUS" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="BFCONTSTATUS_DESC" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="BFCONTSTATUS_DESC" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="BFMTHPAY_PRNAMT" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="BFMTHPAY_PRNAMT" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="BFMTHPAY_INTAMT" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="BFMTHPAY_INTAMT" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="BFMTHPAY_ITEMAMT" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="BFMTHPAY_ITEMAMT" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="BFMTHPAY_INTARRAMT" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="BFMTHPAY_INTARRAMT" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="BFMTHPAY_REFMEMBNO" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="BFMTHPAY_REFMEMBNO" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="BFMTHPAY_SEQNO" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="BFMTHPAY_SEQNO" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="SIGN_FLAG" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="SIGN_FLAG" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="COOP_ID" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="COOP_ID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="SHRLONTYPE_CODE" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="SHRLONTYPE_CODE" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="CONCOOP_ID" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="CONCOOP_ID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="BFMTHADJ_PRNAMT" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="BFMTHADJ_PRNAMT" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="BFMTHADJ_INTAMT" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="BFMTHADJ_INTAMT" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="BFMTHADJ_INTARRAMT" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="BFMTHADJ_INTARRAMT" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="BFMTHADJ_ITEMAMT" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="BFMTHADJ_ITEMAMT" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="BFMTHPAY_KPITEMTYP" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="BFMTHPAY_KPITEMTYP" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="REF_ITEMSLIPNO" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="REF_ITEMSLIPNO" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="REF_ITEMSLIPDATE" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="REF_ITEMSLIPDATE" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="REF_ITEMSEQNO" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="REF_ITEMSEQNO" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="Original_ADJSLIP_NO" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="ADJSLIP_NO" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="Original_SLIPITEMTYPE_CODE" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="SLIPITEMTYPE_CODE" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="Original_SEQ_NO" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="SEQ_NO" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="Original_COOP_ID" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="COOP_ID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="OPERATE_FLAG" DataSetColumn="OPERATE_FLAG" />
+              <Mapping SourceColumn="ADJSLIP_NO" DataSetColumn="ADJSLIP_NO" />
+              <Mapping SourceColumn="SLIPITEMTYPE_CODE" DataSetColumn="SLIPITEMTYPE_CODE" />
+              <Mapping SourceColumn="SEQ_NO" DataSetColumn="SEQ_NO" />
+              <Mapping SourceColumn="LOANCONTRACT_NO" DataSetColumn="LOANCONTRACT_NO" />
+              <Mapping SourceColumn="SLIPITEM_DESC" DataSetColumn="SLIPITEM_DESC" />
+              <Mapping SourceColumn="PRINCIPAL_ADJAMT" DataSetColumn="PRINCIPAL_ADJAMT" />
+              <Mapping SourceColumn="INTEREST_ADJAMT" DataSetColumn="INTEREST_ADJAMT" />
+              <Mapping SourceColumn="INTARREAR_ADJAMT" DataSetColumn="INTARREAR_ADJAMT" />
+              <Mapping SourceColumn="ITEM_ADJAMT" DataSetColumn="ITEM_ADJAMT" />
+              <Mapping SourceColumn="ITEM_BALANCE" DataSetColumn="ITEM_BALANCE" />
+              <Mapping SourceColumn="PERIODADJ_TYPE" DataSetColumn="PERIODADJ_TYPE" />
+              <Mapping SourceColumn="PERIODADJ_AMT" DataSetColumn="PERIODADJ_AMT" />
+              <Mapping SourceColumn="BFINTARR_AMT" DataSetColumn="BFINTARR_AMT" />
+              <Mapping SourceColumn="BFINTARRSET_AMT" DataSetColumn="BFINTARRSET_AMT" />
+              <Mapping SourceColumn="BFLASTCALINT_DATE" DataSetColumn="BFLASTCALINT_DATE" />
+              <Mapping SourceColumn="BFLASTPROC_DATE" DataSetColumn="BFLASTPROC_DATE" />
+              <Mapping SourceColumn="BFLASTPAY_DATE" DataSetColumn="BFLASTPAY_DATE" />
+              <Mapping SourceColumn="BFSHRCONT_BALAMT" DataSetColumn="BFSHRCONT_BALAMT" />
+              <Mapping SourceColumn="BFSHRCONT_STATUS" DataSetColumn="BFSHRCONT_STATUS" />
+              <Mapping SourceColumn="BFCONTLAW_STATUS" DataSetColumn="BFCONTLAW_STATUS" />
+              <Mapping SourceColumn="BFCONTSTATUS_DESC" DataSetColumn="BFCONTSTATUS_DESC" />
+              <Mapping SourceColumn="BFMTHPAY_PRNAMT" DataSetColumn="BFMTHPAY_PRNAMT" />
+              <Mapping SourceColumn="BFMTHPAY_INTAMT" DataSetColumn="BFMTHPAY_INTAMT" />
+              <Mapping SourceColumn="BFMTHPAY_ITEMAMT" DataSetColumn="BFMTHPAY_ITEMAMT" />
+              <Mapping SourceColumn="BFMTHPAY_INTARRAMT" DataSetColumn="BFMTHPAY_INTARRAMT" />
+              <Mapping SourceColumn="BFMTHPAY_REFMEMBNO" DataSetColumn="BFMTHPAY_REFMEMBNO" />
+              <Mapping SourceColumn="BFMTHPAY_SEQNO" DataSetColumn="BFMTHPAY_SEQNO" />
+              <Mapping SourceColumn="SIGN_FLAG" DataSetColumn="SIGN_FLAG" />
+              <Mapping SourceColumn="COOP_ID" DataSetColumn="COOP_ID" />
+              <Mapping SourceColumn="SHRLONTYPE_CODE" DataSetColumn="SHRLONTYPE_CODE" />
+              <Mapping SourceColumn="CONCOOP_ID" DataSetColumn="CONCOOP_ID" />
+              <Mapping SourceColumn="BFMTHADJ_PRNAMT" DataSetColumn="BFMTHADJ_PRNAMT" />
+              <Mapping SourceColumn="BFMTHADJ_INTAMT" DataSetColumn="BFMTHADJ_INTAMT" />
+              <Mapping SourceColumn="BFMTHADJ_INTARRAMT" DataSetColumn="BFMTHADJ_INTARRAMT" />
+              <Mapping SourceColumn="BFMTHADJ_ITEMAMT" DataSetColumn="BFMTHADJ_ITEMAMT" />
+              <Mapping SourceColumn="BFMTHPAY_KPITEMTYP" DataSetColumn="BFMTHPAY_KPITEMTYP" />
+              <Mapping SourceColumn="REF_ITEMSLIPNO" DataSetColumn="REF_ITEMSLIPNO" />
+              <Mapping SourceColumn="REF_ITEMSLIPDATE" DataSetColumn="REF_ITEMSLIPDATE" />
+              <Mapping SourceColumn="REF_ITEMSEQNO" DataSetColumn="REF_ITEMSEQNO" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DT_PROC" msprop:Generator_TableClassName="DT_PROCDataTable" msprop:Generator_TableVarName="tableDT_PROC" msprop:Generator_TablePropName="DT_PROC" msprop:Generator_RowDeletingName="DT_PROCRowDeleting" msprop:Generator_RowChangingName="DT_PROCRowChanging" msprop:Generator_RowEvHandlerName="DT_PROCRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_PROCRowDeleted" msprop:Generator_UserTableName="DT_PROC" msprop:Generator_RowChangedName="DT_PROCRowChanged" msprop:Generator_RowEvArgName="DT_PROCRowChangeEvent" msprop:Generator_RowClassName="DT_PROCRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MEMBGROUP_CODE" msprop:Generator_ColumnVarNameInTable="columnMEMBGROUP_CODE" msprop:Generator_ColumnPropNameInRow="MEMBGROUP_CODE" msprop:Generator_ColumnPropNameInTable="MEMBGROUP_CODEColumn" msprop:Generator_UserColumnName="MEMBGROUP_CODE" type="xs:string" minOccurs="0" />
+              <xs:element name="MEMBGROUP_DESC" msprop:Generator_ColumnVarNameInTable="columnMEMBGROUP_DESC" msprop:Generator_ColumnPropNameInRow="MEMBGROUP_DESC" msprop:Generator_ColumnPropNameInTable="MEMBGROUP_DESCColumn" msprop:Generator_UserColumnName="MEMBGROUP_DESC" type="xs:string" minOccurs="0" />
+              <xs:element name="RECV_PERIOD" msprop:Generator_ColumnVarNameInTable="columnRECV_PERIOD" msprop:Generator_ColumnPropNameInRow="RECV_PERIOD" msprop:Generator_ColumnPropNameInTable="RECV_PERIODColumn" msprop:Generator_UserColumnName="RECV_PERIOD" type="xs:string" minOccurs="0" />
+              <xs:element name="SLIPRETCAUSE_CODE" msprop:Generator_ColumnVarNameInTable="columnSLIPRETCAUSE_CODE" msprop:Generator_ColumnPropNameInRow="SLIPRETCAUSE_CODE" msprop:Generator_ColumnPropNameInTable="SLIPRETCAUSE_CODEColumn" msprop:Generator_UserColumnName="SLIPRETCAUSE_CODE" type="xs:string" minOccurs="0" />
+              <xs:element name="RECEIVE_YEAR" msprop:Generator_ColumnVarNameInTable="columnRECEIVE_YEAR" msprop:Generator_ColumnPropNameInRow="RECEIVE_YEAR" msprop:Generator_ColumnPropNameInTable="RECEIVE_YEARColumn" msprop:Generator_UserColumnName="RECEIVE_YEAR" type="xs:decimal" minOccurs="0" />
+              <xs:element name="RECEIVE_MONTH" msprop:Generator_ColumnVarNameInTable="columnRECEIVE_MONTH" msprop:Generator_ColumnPropNameInRow="RECEIVE_MONTH" msprop:Generator_ColumnPropNameInTable="RECEIVE_MONTHColumn" msprop:Generator_UserColumnName="RECEIVE_MONTH" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SLIPRETCAUSE_DESC" msprop:Generator_ColumnVarNameInTable="columnSLIPRETCAUSE_DESC" msprop:Generator_ColumnPropNameInRow="SLIPRETCAUSE_DESC" msprop:Generator_ColumnPropNameInTable="SLIPRETCAUSE_DESCColumn" msprop:Generator_UserColumnName="SLIPRETCAUSE_DESC" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SLSLIPADJUST" msprop:Generator_TableClassName="SLSLIPADJUSTDataTable" msprop:Generator_TableVarName="tableSLSLIPADJUST" msprop:Generator_TablePropName="SLSLIPADJUST" msprop:Generator_RowDeletingName="SLSLIPADJUSTRowDeleting" msprop:Generator_RowChangingName="SLSLIPADJUSTRowChanging" msprop:Generator_RowEvHandlerName="SLSLIPADJUSTRowChangeEventHandler" msprop:Generator_RowDeletedName="SLSLIPADJUSTRowDeleted" msprop:Generator_UserTableName="SLSLIPADJUST" msprop:Generator_RowChangedName="SLSLIPADJUSTRowChanged" msprop:Generator_RowEvArgName="SLSLIPADJUSTRowChangeEvent" msprop:Generator_RowClassName="SLSLIPADJUSTRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MEMB_NAME" msprop:Generator_ColumnVarNameInTable="columnMEMB_NAME" msprop:Generator_ColumnPropNameInRow="MEMB_NAME" msprop:Generator_ColumnPropNameInTable="MEMB_NAMEColumn" msprop:Generator_UserColumnName="MEMB_NAME" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MEMB_SURNAME" msprop:Generator_ColumnVarNameInTable="columnMEMB_SURNAME" msprop:Generator_ColumnPropNameInRow="MEMB_SURNAME" msprop:Generator_ColumnPropNameInTable="MEMB_SURNAMEColumn" msprop:Generator_UserColumnName="MEMB_SURNAME" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MEMBGROUP_CODE" msprop:Generator_ColumnVarNameInTable="columnMEMBGROUP_CODE" msprop:Generator_ColumnPropNameInRow="MEMBGROUP_CODE" msprop:Generator_ColumnPropNameInTable="MEMBGROUP_CODEColumn" msprop:Generator_UserColumnName="MEMBGROUP_CODE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PRENAME_DESC" msprop:Generator_ColumnVarNameInTable="columnPRENAME_DESC" msprop:Generator_ColumnPropNameInRow="PRENAME_DESC" msprop:Generator_ColumnPropNameInTable="PRENAME_DESCColumn" msprop:Generator_UserColumnName="PRENAME_DESC" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ADJSLIP_NO" msprop:Generator_ColumnVarNameInTable="columnADJSLIP_NO" msprop:Generator_ColumnPropNameInRow="ADJSLIP_NO" msprop:Generator_ColumnPropNameInTable="ADJSLIP_NOColumn" msprop:Generator_UserColumnName="ADJSLIP_NO">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MEMBER_NO" msprop:Generator_ColumnVarNameInTable="columnMEMBER_NO" msprop:Generator_ColumnPropNameInRow="MEMBER_NO" msprop:Generator_ColumnPropNameInTable="MEMBER_NOColumn" msprop:Generator_UserColumnName="MEMBER_NO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="REF_SLIPNO" msprop:Generator_ColumnVarNameInTable="columnREF_SLIPNO" msprop:Generator_ColumnPropNameInRow="REF_SLIPNO" msprop:Generator_ColumnPropNameInTable="REF_SLIPNOColumn" msprop:Generator_UserColumnName="REF_SLIPNO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="REF_SLIPDATE" msprop:Generator_ColumnVarNameInTable="columnREF_SLIPDATE" msprop:Generator_ColumnPropNameInRow="REF_SLIPDATE" msprop:Generator_ColumnPropNameInTable="REF_SLIPDATEColumn" msprop:Generator_UserColumnName="REF_SLIPDATE" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="REF_SLIPAMT" msprop:Generator_ColumnVarNameInTable="columnREF_SLIPAMT" msprop:Generator_ColumnPropNameInRow="REF_SLIPAMT" msprop:Generator_ColumnPropNameInTable="REF_SLIPAMTColumn" msprop:Generator_UserColumnName="REF_SLIPAMT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ADJSLIP_DATE" msprop:Generator_ColumnVarNameInTable="columnADJSLIP_DATE" msprop:Generator_ColumnPropNameInRow="ADJSLIP_DATE" msprop:Generator_ColumnPropNameInTable="ADJSLIP_DATEColumn" msprop:Generator_UserColumnName="ADJSLIP_DATE" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="ADJTYPE_CODE" msprop:Generator_ColumnVarNameInTable="columnADJTYPE_CODE" msprop:Generator_ColumnPropNameInRow="ADJTYPE_CODE" msprop:Generator_ColumnPropNameInTable="ADJTYPE_CODEColumn" msprop:Generator_UserColumnName="ADJTYPE_CODE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="OPERATE_DATE" msprop:Generator_ColumnVarNameInTable="columnOPERATE_DATE" msprop:Generator_ColumnPropNameInRow="OPERATE_DATE" msprop:Generator_ColumnPropNameInTable="OPERATE_DATEColumn" msprop:Generator_UserColumnName="OPERATE_DATE" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="SLIP_AMT" msprop:Generator_ColumnVarNameInTable="columnSLIP_AMT" msprop:Generator_ColumnPropNameInRow="SLIP_AMT" msprop:Generator_ColumnPropNameInTable="SLIP_AMTColumn" msprop:Generator_UserColumnName="SLIP_AMT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SLIP_STATUS" msprop:Generator_ColumnVarNameInTable="columnSLIP_STATUS" msprop:Generator_ColumnPropNameInRow="SLIP_STATUS" msprop:Generator_ColumnPropNameInTable="SLIP_STATUSColumn" msprop:Generator_UserColumnName="SLIP_STATUS" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ENTRY_ID" msprop:Generator_ColumnVarNameInTable="columnENTRY_ID" msprop:Generator_ColumnPropNameInRow="ENTRY_ID" msprop:Generator_ColumnPropNameInTable="ENTRY_IDColumn" msprop:Generator_UserColumnName="ENTRY_ID" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="32" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ENTRY_DATE" msprop:Generator_ColumnVarNameInTable="columnENTRY_DATE" msprop:Generator_ColumnPropNameInRow="ENTRY_DATE" msprop:Generator_ColumnPropNameInTable="ENTRY_DATEColumn" msprop:Generator_UserColumnName="ENTRY_DATE" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="CANCEL_ID" msprop:Generator_ColumnVarNameInTable="columnCANCEL_ID" msprop:Generator_ColumnPropNameInRow="CANCEL_ID" msprop:Generator_ColumnPropNameInTable="CANCEL_IDColumn" msprop:Generator_UserColumnName="CANCEL_ID" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="32" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CANCEL_DATE" msprop:Generator_ColumnVarNameInTable="columnCANCEL_DATE" msprop:Generator_ColumnPropNameInRow="CANCEL_DATE" msprop:Generator_ColumnPropNameInTable="CANCEL_DATEColumn" msprop:Generator_UserColumnName="CANCEL_DATE" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="POSTTOVC_FLAG" msprop:Generator_ColumnVarNameInTable="columnPOSTTOVC_FLAG" msprop:Generator_ColumnPropNameInRow="POSTTOVC_FLAG" msprop:Generator_ColumnPropNameInTable="POSTTOVC_FLAGColumn" msprop:Generator_UserColumnName="POSTTOVC_FLAG" type="xs:decimal" minOccurs="0" />
+              <xs:element name="VOUCHER_NO" msprop:Generator_ColumnVarNameInTable="columnVOUCHER_NO" msprop:Generator_ColumnPropNameInRow="VOUCHER_NO" msprop:Generator_ColumnPropNameInTable="VOUCHER_NOColumn" msprop:Generator_UserColumnName="VOUCHER_NO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CANCELTOVC_FLAG" msprop:Generator_ColumnVarNameInTable="columnCANCELTOVC_FLAG" msprop:Generator_ColumnPropNameInRow="CANCELTOVC_FLAG" msprop:Generator_ColumnPropNameInTable="CANCELTOVC_FLAGColumn" msprop:Generator_UserColumnName="CANCELTOVC_FLAG" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CANCELVC_NO" msprop:Generator_ColumnVarNameInTable="columnCANCELVC_NO" msprop:Generator_ColumnPropNameInRow="CANCELVC_NO" msprop:Generator_ColumnPropNameInTable="CANCELVC_NOColumn" msprop:Generator_UserColumnName="CANCELVC_NO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ACCID_FLAG" msprop:Generator_ColumnVarNameInTable="columnACCID_FLAG" msprop:Generator_ColumnPropNameInRow="ACCID_FLAG" msprop:Generator_ColumnPropNameInTable="ACCID_FLAGColumn" msprop:Generator_UserColumnName="ACCID_FLAG" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TOFROM_ACCID" msprop:Generator_ColumnVarNameInTable="columnTOFROM_ACCID" msprop:Generator_ColumnPropNameInRow="TOFROM_ACCID" msprop:Generator_ColumnPropNameInTable="TOFROM_ACCIDColumn" msprop:Generator_UserColumnName="TOFROM_ACCID" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SLIPRETCAUSE_CODE" msprop:Generator_ColumnVarNameInTable="columnSLIPRETCAUSE_CODE" msprop:Generator_ColumnPropNameInRow="SLIPRETCAUSE_CODE" msprop:Generator_ColumnPropNameInTable="SLIPRETCAUSE_CODEColumn" msprop:Generator_UserColumnName="SLIPRETCAUSE_CODE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ADJUST_CAUSE" msprop:Generator_ColumnVarNameInTable="columnADJUST_CAUSE" msprop:Generator_ColumnPropNameInRow="ADJUST_CAUSE" msprop:Generator_ColumnPropNameInTable="ADJUST_CAUSEColumn" msprop:Generator_UserColumnName="ADJUST_CAUSE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="COOP_ID" msprop:Generator_ColumnVarNameInTable="columnCOOP_ID" msprop:Generator_ColumnPropNameInRow="COOP_ID" msprop:Generator_ColumnPropNameInTable="COOP_IDColumn" msprop:Generator_UserColumnName="COOP_ID">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="6" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MEMCOOP_ID" msprop:Generator_ColumnVarNameInTable="columnMEMCOOP_ID" msprop:Generator_ColumnPropNameInRow="MEMCOOP_ID" msprop:Generator_ColumnPropNameInTable="MEMCOOP_IDColumn" msprop:Generator_UserColumnName="MEMCOOP_ID" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="6" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="REF_RECVPERIOD" msprop:Generator_ColumnVarNameInTable="columnREF_RECVPERIOD" msprop:Generator_ColumnPropNameInRow="REF_RECVPERIOD" msprop:Generator_ColumnPropNameInTable="REF_RECVPERIODColumn" msprop:Generator_UserColumnName="REF_RECVPERIOD" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="6" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="REF_CONTNO" msprop:Generator_ColumnVarNameInTable="columnREF_CONTNO" msprop:Generator_ColumnPropNameInRow="REF_CONTNO" msprop:Generator_ColumnPropNameInTable="REF_CONTNOColumn" msprop:Generator_UserColumnName="REF_CONTNO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SLIPRETALL_FLAG" msprop:Generator_ColumnVarNameInTable="columnSLIPRETALL_FLAG" msprop:Generator_ColumnPropNameInRow="SLIPRETALL_FLAG" msprop:Generator_ColumnPropNameInTable="SLIPRETALL_FLAGColumn" msprop:Generator_UserColumnName="SLIPRETALL_FLAG" type="xs:decimal" minOccurs="0" />
+              <xs:element name="AGENTSET_FLAG" msprop:Generator_ColumnVarNameInTable="columnAGENTSET_FLAG" msprop:Generator_ColumnPropNameInRow="AGENTSET_FLAG" msprop:Generator_ColumnPropNameInTable="AGENTSET_FLAGColumn" msprop:Generator_UserColumnName="AGENTSET_FLAG" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ENTRY_BYCOOPID" msprop:Generator_ColumnVarNameInTable="columnENTRY_BYCOOPID" msprop:Generator_ColumnPropNameInRow="ENTRY_BYCOOPID" msprop:Generator_ColumnPropNameInTable="ENTRY_BYCOOPIDColumn" msprop:Generator_UserColumnName="ENTRY_BYCOOPID" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="6" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MEMBGROUP_DESC" msprop:Generator_ColumnVarNameInTable="columnMEMBGROUP_DESC" msprop:Generator_ColumnPropNameInRow="MEMBGROUP_DESC" msprop:Generator_ColumnPropNameInTable="MEMBGROUP_DESCColumn" msprop:Generator_UserColumnName="MEMBGROUP_DESC" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SLSLIPADJUSTDET" msprop:Generator_TableClassName="SLSLIPADJUSTDETDataTable" msprop:Generator_TableVarName="tableSLSLIPADJUSTDET" msprop:Generator_TablePropName="SLSLIPADJUSTDET" msprop:Generator_RowDeletingName="SLSLIPADJUSTDETRowDeleting" msprop:Generator_RowChangingName="SLSLIPADJUSTDETRowChanging" msprop:Generator_RowEvHandlerName="SLSLIPADJUSTDETRowChangeEventHandler" msprop:Generator_RowDeletedName="SLSLIPADJUSTDETRowDeleted" msprop:Generator_UserTableName="SLSLIPADJUSTDET" msprop:Generator_RowChangedName="SLSLIPADJUSTDETRowChanged" msprop:Generator_RowEvArgName="SLSLIPADJUSTDETRowChangeEvent" msprop:Generator_RowClassName="SLSLIPADJUSTDETRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="OPERATE_FLAG" msprop:Generator_ColumnVarNameInTable="columnOPERATE_FLAG" msprop:Generator_ColumnPropNameInRow="OPERATE_FLAG" msprop:Generator_ColumnPropNameInTable="OPERATE_FLAGColumn" msprop:Generator_UserColumnName="OPERATE_FLAG" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ADJSLIP_NO" msprop:Generator_ColumnVarNameInTable="columnADJSLIP_NO" msprop:Generator_ColumnPropNameInRow="ADJSLIP_NO" msprop:Generator_ColumnPropNameInTable="ADJSLIP_NOColumn" msprop:Generator_UserColumnName="ADJSLIP_NO">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SLIPITEMTYPE_CODE" msprop:Generator_ColumnVarNameInTable="columnSLIPITEMTYPE_CODE" msprop:Generator_ColumnPropNameInRow="SLIPITEMTYPE_CODE" msprop:Generator_ColumnPropNameInTable="SLIPITEMTYPE_CODEColumn" msprop:Generator_UserColumnName="SLIPITEMTYPE_CODE">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SEQ_NO" msprop:Generator_ColumnVarNameInTable="columnSEQ_NO" msprop:Generator_ColumnPropNameInRow="SEQ_NO" msprop:Generator_ColumnPropNameInTable="SEQ_NOColumn" msprop:Generator_UserColumnName="SEQ_NO" type="xs:decimal" />
+              <xs:element name="LOANCONTRACT_NO" msprop:Generator_ColumnVarNameInTable="columnLOANCONTRACT_NO" msprop:Generator_ColumnPropNameInRow="LOANCONTRACT_NO" msprop:Generator_ColumnPropNameInTable="LOANCONTRACT_NOColumn" msprop:Generator_UserColumnName="LOANCONTRACT_NO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SLIPITEM_DESC" msprop:Generator_ColumnVarNameInTable="columnSLIPITEM_DESC" msprop:Generator_ColumnPropNameInRow="SLIPITEM_DESC" msprop:Generator_ColumnPropNameInTable="SLIPITEM_DESCColumn" msprop:Generator_UserColumnName="SLIPITEM_DESC" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PRINCIPAL_ADJAMT" msprop:Generator_ColumnVarNameInTable="columnPRINCIPAL_ADJAMT" msprop:Generator_ColumnPropNameInRow="PRINCIPAL_ADJAMT" msprop:Generator_ColumnPropNameInTable="PRINCIPAL_ADJAMTColumn" msprop:Generator_UserColumnName="PRINCIPAL_ADJAMT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="INTEREST_ADJAMT" msprop:Generator_ColumnVarNameInTable="columnINTEREST_ADJAMT" msprop:Generator_ColumnPropNameInRow="INTEREST_ADJAMT" msprop:Generator_ColumnPropNameInTable="INTEREST_ADJAMTColumn" msprop:Generator_UserColumnName="INTEREST_ADJAMT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="INTARREAR_ADJAMT" msprop:Generator_ColumnVarNameInTable="columnINTARREAR_ADJAMT" msprop:Generator_ColumnPropNameInRow="INTARREAR_ADJAMT" msprop:Generator_ColumnPropNameInTable="INTARREAR_ADJAMTColumn" msprop:Generator_UserColumnName="INTARREAR_ADJAMT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ITEM_ADJAMT" msprop:Generator_ColumnVarNameInTable="columnITEM_ADJAMT" msprop:Generator_ColumnPropNameInRow="ITEM_ADJAMT" msprop:Generator_ColumnPropNameInTable="ITEM_ADJAMTColumn" msprop:Generator_UserColumnName="ITEM_ADJAMT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ITEM_BALANCE" msprop:Generator_ColumnVarNameInTable="columnITEM_BALANCE" msprop:Generator_ColumnPropNameInRow="ITEM_BALANCE" msprop:Generator_ColumnPropNameInTable="ITEM_BALANCEColumn" msprop:Generator_UserColumnName="ITEM_BALANCE" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PERIODADJ_TYPE" msprop:Generator_ColumnVarNameInTable="columnPERIODADJ_TYPE" msprop:Generator_ColumnPropNameInRow="PERIODADJ_TYPE" msprop:Generator_ColumnPropNameInTable="PERIODADJ_TYPEColumn" msprop:Generator_UserColumnName="PERIODADJ_TYPE" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PERIODADJ_AMT" msprop:Generator_ColumnVarNameInTable="columnPERIODADJ_AMT" msprop:Generator_ColumnPropNameInRow="PERIODADJ_AMT" msprop:Generator_ColumnPropNameInTable="PERIODADJ_AMTColumn" msprop:Generator_UserColumnName="PERIODADJ_AMT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="BFINTARR_AMT" msprop:Generator_ColumnVarNameInTable="columnBFINTARR_AMT" msprop:Generator_ColumnPropNameInRow="BFINTARR_AMT" msprop:Generator_ColumnPropNameInTable="BFINTARR_AMTColumn" msprop:Generator_UserColumnName="BFINTARR_AMT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="BFINTARRSET_AMT" msprop:Generator_ColumnVarNameInTable="columnBFINTARRSET_AMT" msprop:Generator_ColumnPropNameInRow="BFINTARRSET_AMT" msprop:Generator_ColumnPropNameInTable="BFINTARRSET_AMTColumn" msprop:Generator_UserColumnName="BFINTARRSET_AMT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="BFLASTCALINT_DATE" msprop:Generator_ColumnVarNameInTable="columnBFLASTCALINT_DATE" msprop:Generator_ColumnPropNameInRow="BFLASTCALINT_DATE" msprop:Generator_ColumnPropNameInTable="BFLASTCALINT_DATEColumn" msprop:Generator_UserColumnName="BFLASTCALINT_DATE" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="BFLASTPROC_DATE" msprop:Generator_ColumnVarNameInTable="columnBFLASTPROC_DATE" msprop:Generator_ColumnPropNameInRow="BFLASTPROC_DATE" msprop:Generator_ColumnPropNameInTable="BFLASTPROC_DATEColumn" msprop:Generator_UserColumnName="BFLASTPROC_DATE" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="BFLASTPAY_DATE" msprop:Generator_ColumnVarNameInTable="columnBFLASTPAY_DATE" msprop:Generator_ColumnPropNameInRow="BFLASTPAY_DATE" msprop:Generator_ColumnPropNameInTable="BFLASTPAY_DATEColumn" msprop:Generator_UserColumnName="BFLASTPAY_DATE" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="BFSHRCONT_BALAMT" msprop:Generator_ColumnVarNameInTable="columnBFSHRCONT_BALAMT" msprop:Generator_ColumnPropNameInRow="BFSHRCONT_BALAMT" msprop:Generator_ColumnPropNameInTable="BFSHRCONT_BALAMTColumn" msprop:Generator_UserColumnName="BFSHRCONT_BALAMT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="BFSHRCONT_STATUS" msprop:Generator_ColumnVarNameInTable="columnBFSHRCONT_STATUS" msprop:Generator_ColumnPropNameInRow="BFSHRCONT_STATUS" msprop:Generator_ColumnPropNameInTable="BFSHRCONT_STATUSColumn" msprop:Generator_UserColumnName="BFSHRCONT_STATUS" type="xs:decimal" minOccurs="0" />
+              <xs:element name="BFCONTLAW_STATUS" msprop:Generator_ColumnVarNameInTable="columnBFCONTLAW_STATUS" msprop:Generator_ColumnPropNameInRow="BFCONTLAW_STATUS" msprop:Generator_ColumnPropNameInTable="BFCONTLAW_STATUSColumn" msprop:Generator_UserColumnName="BFCONTLAW_STATUS" type="xs:decimal" minOccurs="0" />
+              <xs:element name="BFCONTSTATUS_DESC" msprop:Generator_ColumnVarNameInTable="columnBFCONTSTATUS_DESC" msprop:Generator_ColumnPropNameInRow="BFCONTSTATUS_DESC" msprop:Generator_ColumnPropNameInTable="BFCONTSTATUS_DESCColumn" msprop:Generator_UserColumnName="BFCONTSTATUS_DESC" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BFMTHPAY_PRNAMT" msprop:Generator_ColumnVarNameInTable="columnBFMTHPAY_PRNAMT" msprop:Generator_ColumnPropNameInRow="BFMTHPAY_PRNAMT" msprop:Generator_ColumnPropNameInTable="BFMTHPAY_PRNAMTColumn" msprop:Generator_UserColumnName="BFMTHPAY_PRNAMT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="BFMTHPAY_INTAMT" msprop:Generator_ColumnVarNameInTable="columnBFMTHPAY_INTAMT" msprop:Generator_ColumnPropNameInRow="BFMTHPAY_INTAMT" msprop:Generator_ColumnPropNameInTable="BFMTHPAY_INTAMTColumn" msprop:Generator_UserColumnName="BFMTHPAY_INTAMT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="BFMTHPAY_ITEMAMT" msprop:Generator_ColumnVarNameInTable="columnBFMTHPAY_ITEMAMT" msprop:Generator_ColumnPropNameInRow="BFMTHPAY_ITEMAMT" msprop:Generator_ColumnPropNameInTable="BFMTHPAY_ITEMAMTColumn" msprop:Generator_UserColumnName="BFMTHPAY_ITEMAMT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="BFMTHPAY_INTARRAMT" msprop:Generator_ColumnVarNameInTable="columnBFMTHPAY_INTARRAMT" msprop:Generator_ColumnPropNameInRow="BFMTHPAY_INTARRAMT" msprop:Generator_ColumnPropNameInTable="BFMTHPAY_INTARRAMTColumn" msprop:Generator_UserColumnName="BFMTHPAY_INTARRAMT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="BFMTHPAY_REFMEMBNO" msprop:Generator_ColumnVarNameInTable="columnBFMTHPAY_REFMEMBNO" msprop:Generator_ColumnPropNameInRow="BFMTHPAY_REFMEMBNO" msprop:Generator_ColumnPropNameInTable="BFMTHPAY_REFMEMBNOColumn" msprop:Generator_UserColumnName="BFMTHPAY_REFMEMBNO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BFMTHPAY_SEQNO" msprop:Generator_ColumnVarNameInTable="columnBFMTHPAY_SEQNO" msprop:Generator_ColumnPropNameInRow="BFMTHPAY_SEQNO" msprop:Generator_ColumnPropNameInTable="BFMTHPAY_SEQNOColumn" msprop:Generator_UserColumnName="BFMTHPAY_SEQNO" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SIGN_FLAG" msprop:Generator_ColumnVarNameInTable="columnSIGN_FLAG" msprop:Generator_ColumnPropNameInRow="SIGN_FLAG" msprop:Generator_ColumnPropNameInTable="SIGN_FLAGColumn" msprop:Generator_UserColumnName="SIGN_FLAG" type="xs:decimal" minOccurs="0" />
+              <xs:element name="COOP_ID" msprop:Generator_ColumnVarNameInTable="columnCOOP_ID" msprop:Generator_ColumnPropNameInRow="COOP_ID" msprop:Generator_ColumnPropNameInTable="COOP_IDColumn" msprop:Generator_UserColumnName="COOP_ID">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="6" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SHRLONTYPE_CODE" msprop:Generator_ColumnVarNameInTable="columnSHRLONTYPE_CODE" msprop:Generator_ColumnPropNameInRow="SHRLONTYPE_CODE" msprop:Generator_ColumnPropNameInTable="SHRLONTYPE_CODEColumn" msprop:Generator_UserColumnName="SHRLONTYPE_CODE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CONCOOP_ID" msprop:Generator_ColumnVarNameInTable="columnCONCOOP_ID" msprop:Generator_ColumnPropNameInRow="CONCOOP_ID" msprop:Generator_ColumnPropNameInTable="CONCOOP_IDColumn" msprop:Generator_UserColumnName="CONCOOP_ID" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="6" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BFMTHADJ_PRNAMT" msprop:Generator_ColumnVarNameInTable="columnBFMTHADJ_PRNAMT" msprop:Generator_ColumnPropNameInRow="BFMTHADJ_PRNAMT" msprop:Generator_ColumnPropNameInTable="BFMTHADJ_PRNAMTColumn" msprop:Generator_UserColumnName="BFMTHADJ_PRNAMT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="BFMTHADJ_INTAMT" msprop:Generator_ColumnVarNameInTable="columnBFMTHADJ_INTAMT" msprop:Generator_ColumnPropNameInRow="BFMTHADJ_INTAMT" msprop:Generator_ColumnPropNameInTable="BFMTHADJ_INTAMTColumn" msprop:Generator_UserColumnName="BFMTHADJ_INTAMT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="BFMTHADJ_INTARRAMT" msprop:Generator_ColumnVarNameInTable="columnBFMTHADJ_INTARRAMT" msprop:Generator_ColumnPropNameInRow="BFMTHADJ_INTARRAMT" msprop:Generator_ColumnPropNameInTable="BFMTHADJ_INTARRAMTColumn" msprop:Generator_UserColumnName="BFMTHADJ_INTARRAMT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="BFMTHADJ_ITEMAMT" msprop:Generator_ColumnVarNameInTable="columnBFMTHADJ_ITEMAMT" msprop:Generator_ColumnPropNameInRow="BFMTHADJ_ITEMAMT" msprop:Generator_ColumnPropNameInTable="BFMTHADJ_ITEMAMTColumn" msprop:Generator_UserColumnName="BFMTHADJ_ITEMAMT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="BFMTHPAY_KPITEMTYP" msprop:Generator_ColumnVarNameInTable="columnBFMTHPAY_KPITEMTYP" msprop:Generator_ColumnPropNameInRow="BFMTHPAY_KPITEMTYP" msprop:Generator_ColumnPropNameInTable="BFMTHPAY_KPITEMTYPColumn" msprop:Generator_UserColumnName="BFMTHPAY_KPITEMTYP" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="REF_ITEMSLIPNO" msprop:Generator_ColumnVarNameInTable="columnREF_ITEMSLIPNO" msprop:Generator_ColumnPropNameInRow="REF_ITEMSLIPNO" msprop:Generator_ColumnPropNameInTable="REF_ITEMSLIPNOColumn" msprop:Generator_UserColumnName="REF_ITEMSLIPNO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="REF_ITEMSLIPDATE" msprop:Generator_ColumnVarNameInTable="columnREF_ITEMSLIPDATE" msprop:Generator_ColumnPropNameInRow="REF_ITEMSLIPDATE" msprop:Generator_ColumnPropNameInTable="REF_ITEMSLIPDATEColumn" msprop:Generator_UserColumnName="REF_ITEMSLIPDATE" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="REF_ITEMSEQNO" msprop:Generator_ColumnVarNameInTable="columnREF_ITEMSEQNO" msprop:Generator_ColumnPropNameInRow="REF_ITEMSEQNO" msprop:Generator_ColumnPropNameInTable="REF_ITEMSEQNOColumn" msprop:Generator_UserColumnName="REF_ITEMSEQNO" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:SLSLIPADJUST" />
+      <xs:field xpath="mstns:ADJSLIP_NO" />
+      <xs:field xpath="mstns:COOP_ID" />
+    </xs:unique>
+    <xs:unique name="SLSLIPADJUSTDET_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:SLSLIPADJUSTDET" />
+      <xs:field xpath="mstns:ADJSLIP_NO" />
+      <xs:field xpath="mstns:SLIPITEMTYPE_CODE" />
+      <xs:field xpath="mstns:SEQ_NO" />
+      <xs:field xpath="mstns:COOP_ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="r_sl_slip_in_nida_a5" language="groovy" pageWidth="576" pageHeight="396" columnWidth="576" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="e6fc9b90-605a-402e-9774-f4b46433662d">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="37"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#000000">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#FFBFBF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="as_coop_id" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="as_payinslip_no" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\GCOOP_ALL\\CORE\\GCOOP\\iReport\\Reports\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select si.member_no ,
+mp.prename_desc,
+mb.memb_name,
+mb.memb_surname ,
+   si.SHARESTKBF_VALUE,
+         si.SHARESTK_VALUE,
+         ft_readtbaht(si.SLIP_AMT) as tbaht,
+         si.SLIP_AMT,
+mb.membgroup_code,mg.membgroup_desc,
+si.slip_date ,
+si.payinslip_no,
+kc.receipt_remark1,
+decode( si.slip_status, -9, 'ยกเลิก', -99, 'ยกเลิก', '') as slip_status,
+(case when si.moneytype_code = 'CBT' then decode(si.tofrom_accid, '11102001', 'KBANK', '11102002', 'GSB', '11102003', 'BAY', '11102005', 'KTB', '11102010', 'TBANK', '11102014', 'BBL', '11102021', 'SCB', '')
+	when si.moneytype_code = 'TRN' and si.sliptype_code = 'CLC' then 'LCL'
+	when si.moneytype_code = 'CSH' then 'CSH'
+	else ''
+end) as bank_short
+from  slslippayin si ,mbmembmaster mb,mbucfprename mp,mbucfmembgroup mg, KPCONSTANT kc
+where
+si.payinslip_no=$P{as_payinslip_no}
+and si.coop_id = $P{as_coop_id}
+and si.member_no=mb.member_no
+and si.coop_id=mb.coop_id
+and mb.prename_code=mp.prename_code
+and mb.membgroup_code = mg.membgroup_code
+and mb.coop_id = mg.coop_id
+and mb.coop_id = kc.coop_id
+and si.slip_amt > 0]]>
+	</queryString>
+	<field name="MEMBER_NO" class="java.lang.String"/>
+	<field name="PRENAME_DESC" class="java.lang.String"/>
+	<field name="MEMB_NAME" class="java.lang.String"/>
+	<field name="MEMB_SURNAME" class="java.lang.String"/>
+	<field name="SHARESTKBF_VALUE" class="java.math.BigDecimal"/>
+	<field name="SHARESTK_VALUE" class="java.math.BigDecimal"/>
+	<field name="TBAHT" class="java.lang.String"/>
+	<field name="SLIP_AMT" class="java.math.BigDecimal"/>
+	<field name="MEMBGROUP_CODE" class="java.lang.String"/>
+	<field name="MEMBGROUP_DESC" class="java.lang.String"/>
+	<field name="SLIP_DATE" class="java.sql.Timestamp"/>
+	<field name="PAYINSLIP_NO" class="java.lang.String"/>
+	<field name="RECEIPT_REMARK1" class="java.lang.String"/>
+	<field name="SLIP_STATUS" class="java.lang.String"/>
+	<field name="BANK_SHORT" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="381" splitType="Stretch">
+			<textField>
+				<reportElement uuid="e993e0c6-46ca-4705-b348-cac955b2dcbe" x="62" y="105" width="84" height="20"/>
+				<textElement>
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MEMBER_NO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="2de97785-143b-49c4-bcbe-090d67607046" x="72" y="87" width="274" height="20"/>
+				<textElement>
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MEMBGROUP_CODE}+" - "+$F{MEMBGROUP_DESC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="91d67d5f-e086-479c-ab52-13cd0643636e" x="464" y="87" width="62" height="20"/>
+				<textElement>
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PAYINSLIP_NO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a325e768-782d-42e4-b32e-1d9338e3b03c" x="62" y="123" width="273" height="20"/>
+				<textElement>
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PRENAME_DESC}+$F{MEMB_NAME}+' '+$F{MEMB_SURNAME}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement uuid="c47fc457-dda1-4b2a-9177-c861cca87666" x="4" y="168" width="566" height="127"/>
+				<subreportParameter name="as_payinslipno">
+					<subreportParameterExpression><![CDATA[$F{PAYINSLIP_NO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "r_sl_slippayin_sub2_nida.jasper"]]></subreportExpression>
+			</subreport>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="6beeae99-4f1c-4a7a-a7c6-199b936d9dc7" x="362" y="310" width="117" height="20"/>
+				<textElement textAlignment="Right">
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SLIP_AMT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="da6f91b7-2bf6-434d-8f35-d676a4961ce8" x="8" y="310" width="306" height="20"/>
+				<textElement>
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA["( "+ $F{TBAHT}+" )"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e4acdf82-fb1f-4495-84e5-a602bc4197c5" x="464" y="105" width="83" height="20"/>
+				<textElement>
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy",new Locale("th","TH")).format($F{SLIP_DATE})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="1f4fecb9-3f07-43a6-9b57-477d57af47ce" x="8" y="350" width="357" height="20"/>
+				<textElement>
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{RECEIPT_REMARK1}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="f49f3927-936a-483f-95ea-7d3a4ffcd91c" x="85" y="330" width="81" height="20"/>
+				<textElement textAlignment="Right">
+					<font fontName="Angsana New" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SHARESTK_VALUE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="d28e04ab-663c-44df-983c-fe9640f267e6" x="8" y="330" width="74" height="20"/>
+				<textElement>
+					<font fontName="Angsana New" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ทุนเรือนหุ้นสะสม]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1aca1146-8361-4c8d-bacb-12be775ecec8" x="184" y="330" width="28" height="20"/>
+				<textElement>
+					<font fontName="Angsana New" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[บาท]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="f5d2e27c-e068-4a05-a227-b4fea9f5bf0b" x="146" y="202" width="273" height="73"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="48"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SLIP_STATUS}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="37557019-1dec-4099-9d66-b2f1507b16c7" x="526" y="87" width="50" height="20"/>
+				<textElement>
+					<font fontName="Angsana New" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{BANK_SHORT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

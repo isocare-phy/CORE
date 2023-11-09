@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet1" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DT_MAIN" msprop:Generator_TableClassName="DT_MAINDataTable" msprop:Generator_TableVarName="tableDT_MAIN" msprop:Generator_RowChangedName="DT_MAINRowChanged" msprop:Generator_TablePropName="DT_MAIN" msprop:Generator_RowDeletingName="DT_MAINRowDeleting" msprop:Generator_RowChangingName="DT_MAINRowChanging" msprop:Generator_RowEvHandlerName="DT_MAINRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_MAINRowDeleted" msprop:Generator_RowClassName="DT_MAINRow" msprop:Generator_UserTableName="DT_MAIN" msprop:Generator_RowEvArgName="DT_MAINRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="COOP_ID" msprop:Generator_ColumnVarNameInTable="columnCOOP_ID" msprop:Generator_ColumnPropNameInRow="COOP_ID" msprop:Generator_ColumnPropNameInTable="COOP_IDColumn" msprop:Generator_UserColumnName="COOP_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="POST_DATE" msprop:Generator_ColumnVarNameInTable="columnPOST_DATE" msprop:Generator_ColumnPropNameInRow="POST_DATE" msprop:Generator_ColumnPropNameInTable="POST_DATEColumn" msprop:Generator_UserColumnName="POST_DATE" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="SMEMB_NO" msprop:Generator_ColumnVarNameInTable="columnSMEMB_NO" msprop:Generator_ColumnPropNameInRow="SMEMB_NO" msprop:Generator_ColumnPropNameInTable="SMEMB_NOColumn" msprop:Generator_UserColumnName="SMEMB_NO" type="xs:string" minOccurs="0" />
+              <xs:element name="EMEMB_NO" msprop:Generator_ColumnVarNameInTable="columnEMEMB_NO" msprop:Generator_ColumnPropNameInRow="EMEMB_NO" msprop:Generator_ColumnPropNameInTable="EMEMB_NOColumn" msprop:Generator_UserColumnName="EMEMB_NO" type="xs:string" minOccurs="0" />
+              <xs:element name="SEMP_NO" msprop:Generator_ColumnVarNameInTable="columnSEMP_NO" msprop:Generator_ColumnPropNameInRow="SEMP_NO" msprop:Generator_ColumnPropNameInTable="SEMP_NOColumn" msprop:Generator_UserColumnName="SEMP_NO" type="xs:string" minOccurs="0" />
+              <xs:element name="EEMP_NO" msprop:Generator_ColumnVarNameInTable="columnEEMP_NO" msprop:Generator_ColumnPropNameInRow="EEMP_NO" msprop:Generator_ColumnPropNameInTable="EEMP_NOColumn" msprop:Generator_UserColumnName="EEMP_NO" type="xs:string" minOccurs="0" />
+              <xs:element name="POST_DATE2" msprop:Generator_ColumnVarNameInTable="columnPOST_DATE2" msprop:Generator_ColumnPropNameInRow="POST_DATE2" msprop:Generator_ColumnPropNameInTable="POST_DATE2Column" msprop:Generator_UserColumnName="POST_DATE2" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

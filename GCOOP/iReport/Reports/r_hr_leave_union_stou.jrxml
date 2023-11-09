@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="รายงาน บัญชีวันลาของเจ้าหน้าที่สหกรณ์" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="814" leftMargin="14" rightMargin="14" topMargin="20" bottomMargin="20" uuid="891d010d-dfc0-4f1c-bb6b-0501a4c4935a">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="498"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="as_period" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="as_coopid" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select
+hr.emp_no,
+$P{as_period} as period,
+cm.coop_name,
+mup.prename_desc || hr.emp_name || ' ' || hr.emp_surname as fullname,
+hpd.pos_desc,
+(substr($P{as_period},1 ,4)) as year,
+case   substr($P{as_period},-2) when '01' then 'มกราคม'
+    when '02' then 'กุมภาพันธ์'
+    when '03' then 'มีนาคม'
+    when '04' then 'เมษายน'
+    when '05' then 'พฤษภาคม'
+    when '06' then 'มิถุนายน'
+    when '07' then 'กรกฎาคม'
+    when '08' then 'สิงหาคม'
+    when '09' then 'กันยายน'
+    when '10' then 'ตุลาคม'
+    when '11' then 'พฤศจิกายน'
+    when '12' then 'ธันวาคม'
+    else ''
+    end as month,
+substr((substr($P{as_period},1,4)),3,2) as year1,
+case   (case when substr($P{as_period},-2) = '01' then substr($P{as_period},-2) else substr(to_char(to_number($P{as_period}) - 1),-2) end) when '01' then 'ม.ค.'
+    when '02' then 'ก.พ.'
+    when '03' then 'มี.ค.'
+    when '04' then 'เม.ย.'
+    when '05' then 'พ.ค.'
+    when '06' then 'มิ.ย.'
+    when '07' then 'ก.ค.'
+    when '08' then 'ส.ค.'
+    when '09' then 'ก.ย.'
+    when '10' then 'ต.ย.'
+    when '11' then 'พ.ย.'
+    when '12' then 'ธ.ค.'
+    else ''
+    end as month1,
+case   substr($P{as_period},-2) when '01' then 'ม.ค.'
+    when '02' then 'ก.พ.'
+    when '03' then 'มี.ค.'
+    when '04' then 'เม.ย.'
+    when '05' then 'พ.ค.'
+    when '06' then 'มิ.ย.'
+    when '07' then 'ก.ค.'
+    when '08' then 'ส.ค.'
+    when '09' then 'ก.ย.'
+    when '10' then 'ต.ย.'
+    when '11' then 'พ.ย.'
+    when '12' then 'ธ.ค.'
+    else ''
+    end as month2
+from
+hremployee hr, mbucfprename mup , hrucfposition hpd, cmcoopmaster cm
+where hr.prename_code = mup.prename_code
+and hr.coop_id = cm.coop_id
+and hr.pos_code = hpd.pos_code
+and hr.emp_status = '1' order by hr.emp_no]]>
+	</queryString>
+	<field name="EMP_NO" class="java.lang.String"/>
+	<field name="PERIOD" class="java.lang.String"/>
+	<field name="COOP_NAME" class="java.lang.String"/>
+	<field name="FULLNAME" class="java.lang.String"/>
+	<field name="POS_DESC" class="java.lang.String"/>
+	<field name="YEAR" class="java.lang.String"/>
+	<field name="MONTH" class="java.lang.String"/>
+	<field name="YEAR1" class="java.lang.String"/>
+	<field name="MONTH1" class="java.lang.String"/>
+	<field name="MONTH2" class="java.lang.String"/>
+	<group name="Detail" isStartNewColumn="true" isStartNewPage="true">
+		<groupFooter>
+			<band height="22">
+				<subreport>
+					<reportElement uuid="41152d0e-72bf-4eb7-b2e4-f6ce7caf310f" x="0" y="0" width="484" height="22"/>
+					<subreportParameter name="as_coopid">
+						<subreportParameterExpression><![CDATA[$P{as_coopid}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="FULLNAME">
+						<subreportParameterExpression><![CDATA[$F{FULLNAME}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="as_period">
+						<subreportParameterExpression><![CDATA[$P{as_period}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="POS_DESC">
+						<subreportParameterExpression><![CDATA[$F{POS_DESC}]]></subreportParameterExpression>
+					</subreportParameter>
+					<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					<subreportExpression><![CDATA["r_hr_leave_union_stou_subreport1.jasper"]]></subreportExpression>
+				</subreport>
+				<subreport>
+					<reportElement uuid="bc0e0257-1dd3-431a-b34a-b189f2ce5122" x="484" y="0" width="165" height="22"/>
+					<subreportParameter name="as_coopid">
+						<subreportParameterExpression><![CDATA[$P{as_coopid}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="as_period">
+						<subreportParameterExpression><![CDATA[$P{as_period}]]></subreportParameterExpression>
+					</subreportParameter>
+					<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					<subreportExpression><![CDATA["r_hr_leave_union_stou_subreport2.jasper"]]></subreportExpression>
+				</subreport>
+				<subreport>
+					<reportElement uuid="21a4700e-ba1a-4b85-b139-9b8a65c7441c" x="649" y="0" width="165" height="22"/>
+					<subreportParameter name="as_coopid">
+						<subreportParameterExpression><![CDATA[$P{as_coopid}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="as_period">
+						<subreportParameterExpression><![CDATA[$P{as_period}]]></subreportParameterExpression>
+					</subreportParameter>
+					<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					<subreportExpression><![CDATA["r_hr_leave_union_stou_subreport3.jasper"]]></subreportExpression>
+				</subreport>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="76">
+			<textField>
+				<reportElement uuid="86664787-f517-4318-86b6-d5f3d4064c61" x="0" y="54" width="814" height="22"/>
+				<textElement textAlignment="Center">
+					<font fontName="Angsana New" size="16" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ประจำเดือน "+$F{MONTH}+" "+$F{YEAR}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="69584fc8-4d99-4b32-9dab-f29c7eed93e5" x="741" y="3" width="69" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["วันที่พิมพ์ : " + new SimpleDateFormat("dd/MM/yyyy",new Locale ( "th", "TH" )).format(new java.util.Date())]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="00d43a2c-6ac1-4d84-a7bc-5d546bdf5700" x="0" y="10" width="814" height="22"/>
+				<textElement textAlignment="Center">
+					<font fontName="Angsana New" size="18" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{COOP_NAME}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="976ac858-0d51-4484-8e50-010ee1669c77" mode="Opaque" x="0" y="32" width="814" height="22"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Angsana New" size="16" isBold="false"/>
+				</textElement>
+				<text><![CDATA[บัญชีวันลาของเจ้าหน้าที่สหกรณ์]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="42">
+			<staticText>
+				<reportElement uuid="d295fa53-cf7f-4c13-9157-f2c628d8b5db" x="22" y="0" width="157" height="42"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ชื่อ - สกุล]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="f1dfa61d-c949-4041-ad66-1ed127447145" mode="Transparent" x="319" y="0" width="165" height="20" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["วันลาสะสมเดือนก่อน (ม.ค. - "+$F{MONTH1}+$F{YEAR1}+")"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="d2412c7b-5cb0-420a-b1c2-94c35dba806f" mode="Transparent" x="319" y="20" width="31" height="22" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ลาป่วย]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="48599540-b9c6-4bb1-8381-70e49758fdc2" mode="Transparent" x="350" y="20" width="41" height="22" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ลาพักผ่อน]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d36a373d-eead-42d8-b6c2-194211276ca3" mode="Transparent" x="391" y="20" width="31" height="22" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ลากิจ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c7d7ecb3-67a7-4941-a3d2-962dc5ceb207" mode="Transparent" x="453" y="20" width="31" height="22" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ขาด]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="771ac7c3-4caa-4bdb-ae3b-109112577531" mode="Transparent" x="422" y="20" width="31" height="22" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[สาย]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="96f54ca6-32bb-41c8-a10a-36d442ade48d" x="0" y="0" width="22" height="42"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ที่]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="c0641847-9b6f-43a4-9e02-cb11b4a9216a" mode="Transparent" x="484" y="0" width="165" height="20" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["วันลาเดือนนี้ ("+$F{MONTH2}+$F{YEAR1}+")"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="0be1e78e-a256-40b9-a1e0-f4c3974f9c36" mode="Transparent" x="484" y="20" width="31" height="22" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ลาป่วย]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1e936dbf-6236-4cd1-970b-52757f61fc14" mode="Transparent" x="587" y="20" width="31" height="22" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[สาย]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="66181632-cf8d-4c9a-a6bd-ce263d1f38ba" mode="Transparent" x="618" y="20" width="31" height="22" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ขาด]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b9aaacd2-a202-4bc1-acac-576223d09abd" mode="Transparent" x="556" y="20" width="31" height="22" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ลากิจ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7770ce99-bad6-4790-a6fd-f9da0bf4d9ab" mode="Transparent" x="515" y="20" width="41" height="22" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ลาพักผ่อน]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ff2f5740-4e42-4048-a763-e19745518195" x="179" y="0" width="140" height="42"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ตำแหน่ง]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="899810a8-46fb-4b1f-b5b5-74b95de0410b" mode="Transparent" x="649" y="0" width="165" height="20" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["รวมวันลาสะสมเดือนนี้ (ม.ค. - "+$F{MONTH2}+$F{YEAR1}+")"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="46f41e46-f948-4fc1-9495-690ef904a19c" mode="Transparent" x="783" y="20" width="31" height="22" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ขาด]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="811f5aa9-9781-49ed-88a8-a15086a22fed" mode="Transparent" x="721" y="20" width="31" height="22" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ลากิจ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="23876d23-e3e9-4117-97fb-1b32d51735cf" mode="Transparent" x="752" y="20" width="31" height="22" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[สาย]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1be3474c-0afe-415e-882b-d51f6966edf3" mode="Transparent" x="649" y="20" width="31" height="22" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ลาป่วย]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0a3f7af8-4ebc-4da6-9393-9a42b6cdbdc1" mode="Transparent" x="680" y="20" width="41" height="22" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ลาพักผ่อน]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+</jasperReport>

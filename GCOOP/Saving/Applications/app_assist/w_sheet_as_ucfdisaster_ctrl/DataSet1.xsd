@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet1" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ConnectionString (Web.config)" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.ConnectionString.ConnectionString" Provider="System.Data.OracleClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ASNSENVIRONMENTVARTableAdapter" GeneratorDataComponentClassName="ASNSENVIRONMENTVARTableAdapter" Name="ASNSENVIRONMENTVAR" UserDataComponentName="ASNSENVIRONMENTVARTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ConnectionString (Web.config)" DbObjectName="ISCOTKS.ASNSENVIRONMENTVAR" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>  SELECT "ASNSENVIRONMENTVAR"."ENVVALUE",   
+"ASNSENVIRONMENTVAR"."ENVCODE",  
+         "ASNSENVIRONMENTVAR"."ENVDESC",   
+         "ASNSENVIRONMENTVAR"."ENVGROUP",   
+         "ASNSENVIRONMENTVAR"."START_AGE",   
+         "ASNSENVIRONMENTVAR"."END_AGE",   
+         "ASNSENVIRONMENTVAR"."SYSTEM_CODE",   
+         "ASNSENVIRONMENTVAR"."SEQ_NO",   
+         "ASNSENVIRONMENTVAR"."TOFROM_ACCID"  
+    FROM "ASNSENVIRONMENTVAR"  
+   WHERE "ASNSENVIRONMENTVAR"."ENVGROUP" = 'disaster'    
+</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ENVVALUE" DataSetColumn="ENVVALUE" />
+              <Mapping SourceColumn="ENVDESC" DataSetColumn="ENVDESC" />
+              <Mapping SourceColumn="ENVGROUP" DataSetColumn="ENVGROUP" />
+              <Mapping SourceColumn="START_AGE" DataSetColumn="START_AGE" />
+              <Mapping SourceColumn="END_AGE" DataSetColumn="END_AGE" />
+              <Mapping SourceColumn="SYSTEM_CODE" DataSetColumn="SYSTEM_CODE" />
+              <Mapping SourceColumn="SEQ_NO" DataSetColumn="SEQ_NO" />
+              <Mapping SourceColumn="TOFROM_ACCID" DataSetColumn="TOFROM_ACCID" />
+              <Mapping SourceColumn="ENVCODE" DataSetColumn="ENVCODE" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ASNSENVIRONMENTVAR" msprop:Generator_TableClassName="ASNSENVIRONMENTVARDataTable" msprop:Generator_TableVarName="tableASNSENVIRONMENTVAR" msprop:Generator_TablePropName="ASNSENVIRONMENTVAR" msprop:Generator_RowDeletingName="ASNSENVIRONMENTVARRowDeleting" msprop:Generator_UserTableName="ASNSENVIRONMENTVAR" msprop:Generator_RowChangingName="ASNSENVIRONMENTVARRowChanging" msprop:Generator_RowEvHandlerName="ASNSENVIRONMENTVARRowChangeEventHandler" msprop:Generator_RowDeletedName="ASNSENVIRONMENTVARRowDeleted" msprop:Generator_RowEvArgName="ASNSENVIRONMENTVARRowChangeEvent" msprop:Generator_RowChangedName="ASNSENVIRONMENTVARRowChanged" msprop:Generator_RowClassName="ASNSENVIRONMENTVARRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ENVVALUE" msprop:Generator_ColumnVarNameInTable="columnENVVALUE" msprop:Generator_ColumnPropNameInRow="ENVVALUE" msprop:Generator_ColumnPropNameInTable="ENVVALUEColumn" msprop:Generator_UserColumnName="ENVVALUE" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ENVDESC" msprop:Generator_ColumnVarNameInTable="columnENVDESC" msprop:Generator_ColumnPropNameInRow="ENVDESC" msprop:Generator_ColumnPropNameInTable="ENVDESCColumn" msprop:Generator_UserColumnName="ENVDESC" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="64" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ENVGROUP" msprop:Generator_ColumnVarNameInTable="columnENVGROUP" msprop:Generator_ColumnPropNameInRow="ENVGROUP" msprop:Generator_ColumnPropNameInTable="ENVGROUPColumn" msprop:Generator_UserColumnName="ENVGROUP" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="32" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="START_AGE" msprop:Generator_ColumnVarNameInTable="columnSTART_AGE" msprop:Generator_ColumnPropNameInRow="START_AGE" msprop:Generator_ColumnPropNameInTable="START_AGEColumn" msprop:Generator_UserColumnName="START_AGE" type="xs:decimal" minOccurs="0" />
+              <xs:element name="END_AGE" msprop:Generator_ColumnVarNameInTable="columnEND_AGE" msprop:Generator_ColumnPropNameInRow="END_AGE" msprop:Generator_ColumnPropNameInTable="END_AGEColumn" msprop:Generator_UserColumnName="END_AGE" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SYSTEM_CODE" msprop:Generator_ColumnVarNameInTable="columnSYSTEM_CODE" msprop:Generator_ColumnPropNameInRow="SYSTEM_CODE" msprop:Generator_ColumnPropNameInTable="SYSTEM_CODEColumn" msprop:Generator_UserColumnName="SYSTEM_CODE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SEQ_NO" msprop:Generator_ColumnVarNameInTable="columnSEQ_NO" msprop:Generator_ColumnPropNameInRow="SEQ_NO" msprop:Generator_ColumnPropNameInTable="SEQ_NOColumn" msprop:Generator_UserColumnName="SEQ_NO" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TOFROM_ACCID" msprop:Generator_ColumnVarNameInTable="columnTOFROM_ACCID" msprop:Generator_ColumnPropNameInRow="TOFROM_ACCID" msprop:Generator_ColumnPropNameInTable="TOFROM_ACCIDColumn" msprop:Generator_UserColumnName="TOFROM_ACCID" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ENVCODE" msprop:Generator_ColumnVarNameInTable="columnENVCODE" msprop:Generator_ColumnPropNameInRow="ENVCODE" msprop:Generator_ColumnPropNameInTable="ENVCODEColumn" msprop:Generator_UserColumnName="ENVCODE">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="32" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:ASNSENVIRONMENTVAR" />
+      <xs:field xpath="mstns:ENVCODE" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

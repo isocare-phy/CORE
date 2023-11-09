@@ -1,0 +1,5 @@
+Save Format v3.0(19990112)
+appname "Default";
+applib "mbshr.pbl";
+LibList "admin_cm_constant_config.pbl;as_exportexcel.pbl;cmcomddw.pbl;kp_recieve_return.pbl;mb_add_newgroup.pbl;mb_apv_trnmb.pbl;mb_apvchg_group.pbl;mb_apvchgmthshr.pbl;mb_apvmb_resign.pbl;mb_apvmbnew.pbl;mb_audit_data_fromfile.pbl;mb_audit_wfsct.pbl;mb_chgdetail.pbl;mb_close_mems.pbl;mb_dddw.pbl;mb_list_apvchgmthshr.pbl;mb_member_audit.pbl;mb_member_loan_audit.pbl;mb_req_chggroup.pbl;mb_req_trnmb.pbl;mbshr.pbl;mbshr_common.pbl;sl_approve_member_new.pbl;sl_approve_member_resign.pbl;sl_cancelresign.pbl;sl_member_detail.pbl;sl_member_new.pbl;sl_member_new_search.pbl;sl_member_resign.pbl;sl_member_search.pbl;sl_reqgain_true.pbl;sl_share_withdraw.pbl;sl_share_withdraw_partial.pbl;sl_sharetype_detail.pbl;sl_shrpayment_adjust.pbl;sl_shrpayment_approve.pbl;sl_slipall.pbl;sl_contack.pbl";
+type "DataWindow Designer";

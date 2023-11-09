@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet1" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ConnectionString (Web.config)" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.ConnectionString.ConnectionString" Provider="System.Data.OracleClient" />
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="ConnectionStringLAP" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ConnectionStringLAP (Web.config)" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.ConnectionStringLAP.ConnectionString" Provider="System.Data.OracleClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DT_LISTTableAdapter" GeneratorDataComponentClassName="DT_LISTTableAdapter" Name="DT_LIST" UserDataComponentName="DT_LISTTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ConnectionStringLAP (Web.config)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        MBUCFPRENAME.PRENAME_DESC || MBMEMBMASTER.MEMB_NAME || ' ' || MBMEMBMASTER.MEMB_SURNAME full_name, MBMEMBMASTER.MEMBGROUP_CODE, ASSREQMASTER.ASSIST_DOCNO, 
+                         ASSREQMASTER.MEMBER_NO, ASSREQMASTER.ASSISTTYPE_CODE, ASSREQMASTER.APPROVE_AMT, ASSREQMASTER.REQ_STATUS, ASSREQMASTER.ASSISTPAY_CODE, 
+                         ASSUCFASSISTPAYTYPE.ASSISTPAY_DESC
+FROM            MBMEMBMASTER, MBUCFPRENAME, ASSREQMASTER, ASSUCFASSISTTYPE, ASSUCFASSISTPAYTYPE
+WHERE        MBMEMBMASTER.PRENAME_CODE = MBUCFPRENAME.PRENAME_CODE AND ASSREQMASTER.MEMBER_NO = MBMEMBMASTER.MEMBER_NO AND 
+                         ASSREQMASTER.ASSISTTYPE_CODE = ASSUCFASSISTTYPE.ASSISTTYPE_CODE AND ASSREQMASTER.ASSISTPAY_CODE = ASSUCFASSISTPAYTYPE.ASSISTPAY_CODE</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="PRENAME_DESC" DataSetColumn="PRENAME_DESC" />
+              <Mapping SourceColumn="MEMB_NAME" DataSetColumn="MEMB_NAME" />
+              <Mapping SourceColumn="MEMB_SURNAME" DataSetColumn="MEMB_SURNAME" />
+              <Mapping SourceColumn="MEMBGROUP_CODE" DataSetColumn="MEMBGROUP_CODE" />
+              <Mapping SourceColumn="ASSIST_DOCNO" DataSetColumn="ASSIST_DOCNO" />
+              <Mapping SourceColumn="MEMBER_NO" DataSetColumn="MEMBER_NO" />
+              <Mapping SourceColumn="ASSISTTYPE_CODE" DataSetColumn="ASSISTTYPE_CODE" />
+              <Mapping SourceColumn="APPROVE_AMT" DataSetColumn="APPROVE_AMT" />
+              <Mapping SourceColumn="REQ_STATUS" DataSetColumn="REQ_STATUS" />
+              <Mapping SourceColumn="ASSISTPAY_CODE" DataSetColumn="ASSISTPAY_CODE" />
+              <Mapping SourceColumn="ASSISTPAY_DESC" DataSetColumn="ASSISTPAY_DESC" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DT_MAIN" msprop:Generator_TableClassName="DT_MAINDataTable" msprop:Generator_TableVarName="tableDT_MAIN" msprop:Generator_RowChangedName="DT_MAINRowChanged" msprop:Generator_TablePropName="DT_MAIN" msprop:Generator_RowDeletingName="DT_MAINRowDeleting" msprop:Generator_RowChangingName="DT_MAINRowChanging" msprop:Generator_RowEvHandlerName="DT_MAINRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_MAINRowDeleted" msprop:Generator_RowClassName="DT_MAINRow" msprop:Generator_UserTableName="DT_MAIN" msprop:Generator_RowEvArgName="DT_MAINRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="entry_id" msprop:Generator_ColumnVarNameInTable="columnentry_id" msprop:Generator_ColumnPropNameInRow="entry_id" msprop:Generator_ColumnPropNameInTable="entry_idColumn" msprop:Generator_UserColumnName="entry_id" type="xs:string" minOccurs="0" />
+              <xs:element name="member_no" msprop:Generator_ColumnVarNameInTable="columnmember_no" msprop:Generator_ColumnPropNameInRow="member_no" msprop:Generator_ColumnPropNameInTable="member_noColumn" msprop:Generator_UserColumnName="member_no" type="xs:string" minOccurs="0" />
+              <xs:element name="assisttype_code" msprop:Generator_ColumnVarNameInTable="columnassisttype_code" msprop:Generator_ColumnPropNameInRow="assisttype_code" msprop:Generator_ColumnPropNameInTable="assisttype_codeColumn" msprop:Generator_UserColumnName="assisttype_code" type="xs:string" minOccurs="0" />
+              <xs:element name="select_check" msprop:Generator_ColumnVarNameInTable="columnselect_check" msprop:Generator_ColumnPropNameInRow="select_check" msprop:Generator_ColumnPropNameInTable="select_checkColumn" msprop:Generator_UserColumnName="select_check" type="xs:string" minOccurs="0" />
+              <xs:element name="req_status" msprop:Generator_ColumnVarNameInTable="columnreq_status" msprop:Generator_ColumnPropNameInRow="req_status" msprop:Generator_ColumnPropNameInTable="req_statusColumn" msprop:Generator_UserColumnName="req_status" type="xs:string" minOccurs="0" />
+              <xs:element name="assist_code" msprop:Generator_ColumnVarNameInTable="columnassist_code" msprop:Generator_ColumnPropNameInRow="assist_code" msprop:Generator_ColumnPropNameInTable="assist_codeColumn" msprop:Generator_UserColumnName="assist_code" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DT_LIST" msprop:Generator_TableClassName="DT_LISTDataTable" msprop:Generator_TableVarName="tableDT_LIST" msprop:Generator_TablePropName="DT_LIST" msprop:Generator_RowDeletingName="DT_LISTRowDeleting" msprop:Generator_RowChangingName="DT_LISTRowChanging" msprop:Generator_RowEvHandlerName="DT_LISTRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_LISTRowDeleted" msprop:Generator_UserTableName="DT_LIST" msprop:Generator_RowChangedName="DT_LISTRowChanged" msprop:Generator_RowEvArgName="DT_LISTRowChangeEvent" msprop:Generator_RowClassName="DT_LISTRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PRENAME_DESC" msprop:Generator_ColumnVarNameInTable="columnPRENAME_DESC" msprop:Generator_ColumnPropNameInRow="PRENAME_DESC" msprop:Generator_ColumnPropNameInTable="PRENAME_DESCColumn" msprop:Generator_UserColumnName="PRENAME_DESC" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MEMB_NAME" msprop:Generator_ColumnVarNameInTable="columnMEMB_NAME" msprop:Generator_ColumnPropNameInRow="MEMB_NAME" msprop:Generator_ColumnPropNameInTable="MEMB_NAMEColumn" msprop:Generator_UserColumnName="MEMB_NAME" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="80" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MEMB_SURNAME" msprop:Generator_ColumnVarNameInTable="columnMEMB_SURNAME" msprop:Generator_ColumnPropNameInRow="MEMB_SURNAME" msprop:Generator_ColumnPropNameInTable="MEMB_SURNAMEColumn" msprop:Generator_UserColumnName="MEMB_SURNAME" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MEMBGROUP_CODE" msprop:Generator_ColumnVarNameInTable="columnMEMBGROUP_CODE" msprop:Generator_ColumnPropNameInRow="MEMBGROUP_CODE" msprop:Generator_ColumnPropNameInTable="MEMBGROUP_CODEColumn" msprop:Generator_UserColumnName="MEMBGROUP_CODE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="14" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ASSIST_DOCNO" msprop:Generator_ColumnVarNameInTable="columnASSIST_DOCNO" msprop:Generator_ColumnPropNameInRow="ASSIST_DOCNO" msprop:Generator_ColumnPropNameInTable="ASSIST_DOCNOColumn" msprop:Generator_UserColumnName="ASSIST_DOCNO">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MEMBER_NO" msprop:Generator_ColumnVarNameInTable="columnMEMBER_NO" msprop:Generator_ColumnPropNameInRow="MEMBER_NO" msprop:Generator_ColumnPropNameInTable="MEMBER_NOColumn" msprop:Generator_UserColumnName="MEMBER_NO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ASSISTTYPE_CODE" msprop:Generator_ColumnVarNameInTable="columnASSISTTYPE_CODE" msprop:Generator_ColumnPropNameInRow="ASSISTTYPE_CODE" msprop:Generator_ColumnPropNameInTable="ASSISTTYPE_CODEColumn" msprop:Generator_UserColumnName="ASSISTTYPE_CODE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="APPROVE_AMT" msprop:Generator_ColumnVarNameInTable="columnAPPROVE_AMT" msprop:Generator_ColumnPropNameInRow="APPROVE_AMT" msprop:Generator_ColumnPropNameInTable="APPROVE_AMTColumn" msprop:Generator_UserColumnName="APPROVE_AMT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="REQ_STATUS" msprop:Generator_ColumnVarNameInTable="columnREQ_STATUS" msprop:Generator_ColumnPropNameInRow="REQ_STATUS" msprop:Generator_ColumnPropNameInTable="REQ_STATUSColumn" msprop:Generator_UserColumnName="REQ_STATUS" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ASSISTPAY_CODE" msprop:Generator_ColumnVarNameInTable="columnASSISTPAY_CODE" msprop:Generator_ColumnPropNameInRow="ASSISTPAY_CODE" msprop:Generator_ColumnPropNameInTable="ASSISTPAY_CODEColumn" msprop:Generator_UserColumnName="ASSISTPAY_CODE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="choose_flag" msprop:Generator_ColumnVarNameInTable="columnchoose_flag" msprop:Generator_ColumnPropNameInRow="choose_flag" msprop:Generator_ColumnPropNameInTable="choose_flagColumn" msprop:Generator_UserColumnName="choose_flag" type="xs:string" minOccurs="0" />
+              <xs:element name="ASSISTPAY_DESC" msprop:Generator_ColumnVarNameInTable="columnASSISTPAY_DESC" msprop:Generator_ColumnPropNameInRow="ASSISTPAY_DESC" msprop:Generator_ColumnPropNameInTable="ASSISTPAY_DESCColumn" msprop:Generator_UserColumnName="ASSISTPAY_DESC" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="full_name" msprop:Generator_ColumnVarNameInTable="columnfull_name" msprop:Generator_ColumnPropNameInRow="full_name" msprop:Generator_ColumnPropNameInTable="full_nameColumn" msprop:Generator_UserColumnName="full_name" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

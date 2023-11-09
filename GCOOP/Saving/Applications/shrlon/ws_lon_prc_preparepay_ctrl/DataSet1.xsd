@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet1" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="main" msprop:Generator_TableClassName="mainDataTable" msprop:Generator_TableVarName="tablemain" msprop:Generator_RowChangedName="mainRowChanged" msprop:Generator_TablePropName="main" msprop:Generator_RowDeletingName="mainRowDeleting" msprop:Generator_RowChangingName="mainRowChanging" msprop:Generator_RowEvHandlerName="mainRowChangeEventHandler" msprop:Generator_RowDeletedName="mainRowDeleted" msprop:Generator_RowClassName="mainRow" msprop:Generator_UserTableName="main" msprop:Generator_RowEvArgName="mainRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="COOP_ID" msprop:Generator_ColumnVarNameInTable="columnCOOP_ID" msprop:Generator_ColumnPropNameInRow="COOP_ID" msprop:Generator_ColumnPropNameInTable="COOP_IDColumn" msprop:Generator_UserColumnName="COOP_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="PREPARE_DATE" msprop:Generator_ColumnVarNameInTable="columnPREPARE_DATE" msprop:Generator_ColumnPropNameInRow="PREPARE_DATE" msprop:Generator_ColumnPropNameInTable="PREPARE_DATEColumn" msprop:Generator_UserColumnName="PREPARE_DATE" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="ENTRY_ID" msprop:Generator_ColumnVarNameInTable="columnENTRY_ID" msprop:Generator_ColumnPropNameInRow="ENTRY_ID" msprop:Generator_ColumnPropNameInTable="ENTRY_IDColumn" msprop:Generator_UserColumnName="ENTRY_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="PREPARE_TDATE" msprop:Generator_ColumnVarNameInTable="columnPREPARE_TDATE" msprop:Generator_ColumnPropNameInRow="PREPARE_TDATE" msprop:Generator_ColumnPropNameInTable="PREPARE_TDATEColumn" msprop:Generator_UserColumnName="PREPARE_TDATE" type="xs:string" minOccurs="0" />
+              <xs:element name="CALINTTO_TDATE" msprop:Generator_ColumnVarNameInTable="columnCALINTTO_TDATE" msprop:Generator_ColumnPropNameInRow="CALINTTO_TDATE" msprop:Generator_ColumnPropNameInTable="CALINTTO_TDATEColumn" msprop:Generator_UserColumnName="CALINTTO_TDATE" type="xs:string" minOccurs="0" />
+              <xs:element name="BIZZ_PERIOD" msprop:Generator_ColumnVarNameInTable="columnBIZZ_PERIOD" msprop:Generator_ColumnPropNameInRow="BIZZ_PERIOD" msprop:Generator_ColumnPropNameInTable="BIZZ_PERIODColumn" msprop:Generator_UserColumnName="BIZZ_PERIOD" type="xs:string" minOccurs="0" />
+              <xs:element name="PROC_TEXT" msprop:Generator_ColumnVarNameInTable="columnPROC_TEXT" msprop:Generator_ColumnPropNameInRow="PROC_TEXT" msprop:Generator_ColumnPropNameInTable="PROC_TEXTColumn" msprop:Generator_UserColumnName="PROC_TEXT" type="xs:string" minOccurs="0" />
+              <xs:element name="PROC_TYPE" msprop:Generator_ColumnVarNameInTable="columnPROC_TYPE" msprop:Generator_ColumnPropNameInRow="PROC_TYPE" msprop:Generator_ColumnPropNameInTable="PROC_TYPEColumn" msprop:Generator_UserColumnName="PROC_TYPE" type="xs:string" minOccurs="0" />
+              <xs:element name="PROC_LABEL" msprop:Generator_ColumnVarNameInTable="columnPROC_LABEL" msprop:Generator_ColumnPropNameInRow="PROC_LABEL" msprop:Generator_ColumnPropNameInTable="PROC_LABELColumn" msprop:Generator_UserColumnName="PROC_LABEL" type="xs:string" minOccurs="0" />
+              <xs:element name="PREPARETYPE_CODE" msprop:Generator_ColumnVarNameInTable="columnPREPARETYPE_CODE" msprop:Generator_ColumnPropNameInRow="PREPARETYPE_CODE" msprop:Generator_ColumnPropNameInTable="PREPARETYPE_CODEColumn" msprop:Generator_UserColumnName="PREPARETYPE_CODE" type="xs:string" minOccurs="0" />
+              <xs:element name="CALTYPE_CODE" msprop:Generator_ColumnVarNameInTable="columnCALTYPE_CODE" msprop:Generator_ColumnPropNameInRow="CALTYPE_CODE" msprop:Generator_ColumnPropNameInTable="CALTYPE_CODEColumn" msprop:Generator_UserColumnName="CALTYPE_CODE" type="xs:string" minOccurs="0" />
+              <xs:element name="CALINTTO_DATE" msprop:Generator_ColumnVarNameInTable="columnCALINTTO_DATE" msprop:Generator_ColumnPropNameInRow="CALINTTO_DATE" msprop:Generator_ColumnPropNameInTable="CALINTTO_DATEColumn" msprop:Generator_UserColumnName="CALINTTO_DATE" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="PREPARECLR_FLAG" msprop:Generator_ColumnVarNameInTable="columnPREPARECLR_FLAG" msprop:Generator_ColumnPropNameInRow="PREPARECLR_FLAG" msprop:Generator_ColumnPropNameInTable="PREPARECLR_FLAGColumn" msprop:Generator_UserColumnName="PREPARECLR_FLAG" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PREPARELON_FLAG" msprop:Generator_ColumnVarNameInTable="columnPREPARELON_FLAG" msprop:Generator_ColumnPropNameInRow="PREPARELON_FLAG" msprop:Generator_ColumnPropNameInTable="PREPARELON_FLAGColumn" msprop:Generator_UserColumnName="PREPARELON_FLAG" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="loan" msprop:Generator_TableClassName="loanDataTable" msprop:Generator_TableVarName="tableloan" msprop:Generator_RowChangedName="loanRowChanged" msprop:Generator_TablePropName="loan" msprop:Generator_RowDeletingName="loanRowDeleting" msprop:Generator_RowChangingName="loanRowChanging" msprop:Generator_RowEvHandlerName="loanRowChangeEventHandler" msprop:Generator_RowDeletedName="loanRowDeleted" msprop:Generator_RowClassName="loanRow" msprop:Generator_UserTableName="loan" msprop:Generator_RowEvArgName="loanRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="COOP_ID" msprop:Generator_ColumnVarNameInTable="columnCOOP_ID" msprop:Generator_ColumnPropNameInRow="COOP_ID" msprop:Generator_ColumnPropNameInTable="COOP_IDColumn" msprop:Generator_UserColumnName="COOP_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="LOANTYPE_CODE" msprop:Generator_ColumnVarNameInTable="columnLOANTYPE_CODE" msprop:Generator_ColumnPropNameInRow="LOANTYPE_CODE" msprop:Generator_ColumnPropNameInTable="LOANTYPE_CODEColumn" msprop:Generator_UserColumnName="LOANTYPE_CODE" type="xs:string" minOccurs="0" />
+              <xs:element name="LOANTYPE_DESC" msprop:Generator_ColumnVarNameInTable="columnLOANTYPE_DESC" msprop:Generator_ColumnPropNameInRow="LOANTYPE_DESC" msprop:Generator_ColumnPropNameInTable="LOANTYPE_DESCColumn" msprop:Generator_UserColumnName="LOANTYPE_DESC" type="xs:string" minOccurs="0" />
+              <xs:element name="OPERATE_FLAG" msprop:Generator_ColumnVarNameInTable="columnOPERATE_FLAG" msprop:Generator_ColumnPropNameInRow="OPERATE_FLAG" msprop:Generator_ColumnPropNameInTable="OPERATE_FLAGColumn" msprop:Generator_UserColumnName="OPERATE_FLAG" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ALL_FLAG" msprop:Generator_ColumnVarNameInTable="columnALL_FLAG" msprop:Generator_ColumnPropNameInRow="ALL_FLAG" msprop:Generator_ColumnPropNameInTable="ALL_FLAGColumn" msprop:Generator_UserColumnName="ALL_FLAG" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

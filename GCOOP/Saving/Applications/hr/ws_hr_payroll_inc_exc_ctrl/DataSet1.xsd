@@ -1,0 +1,403 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet1" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ConnectionString (Web.config)" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.ConnectionString.ConnectionString" Provider="System.Data.OracleClient" />
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="ConnectionString2" IsAppSettingsProperty="true" Modifier="Assembly" Name="ConnectionString2 (Web.config)" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.ConnectionString2.ConnectionString" Provider="System.Data.OracleClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DT_MainTableAdapter" GeneratorDataComponentClassName="DT_MainTableAdapter" Name="DT_Main" UserDataComponentName="DT_MainTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>select hremployee.coop_id,   
+                hremployee.emp_no,   
+                mbucfprename.prename_desc,
+                hremployee.emp_name,   
+                hremployee.emp_surname,         
+                hremployee.sex,
+                hremployee.salary_id,
+                hrucfposition.pos_desc,
+                hrucfemptype.emptype_desc,
+                hrucfdeptgrp.deptgrp_desc
+            from hremployee,
+            mbucfprename,
+            hrucfposition,
+            hrucfemptype,
+            hrucfdeptgrp,
+            hrucfdeptline			
+            where hremployee.prename_code = mbucfprename.prename_code
+            and hremployee.pos_code = hrucfposition.pos_code
+            and hremployee.emptype_code = hrucfemptype.emptype_code
+            and hremployee.deptgrp_code = hrucfdeptgrp.deptgrp_code
+            and hrucfdeptgrp.deptline_code = hrucfdeptline.deptline_code</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="COOP_ID" DataSetColumn="COOP_ID" />
+              <Mapping SourceColumn="EMP_NO" DataSetColumn="EMP_NO" />
+              <Mapping SourceColumn="PRENAME_CODE" DataSetColumn="PRENAME_CODE" />
+              <Mapping SourceColumn="EMP_NAME" DataSetColumn="EMP_NAME" />
+              <Mapping SourceColumn="EMP_SURNAME" DataSetColumn="EMP_SURNAME" />
+              <Mapping SourceColumn="EMPTYPE_CODE" DataSetColumn="EMPTYPE_CODE" />
+              <Mapping SourceColumn="DEPTGRP_CODE" DataSetColumn="DEPTGRP_CODE" />
+              <Mapping SourceColumn="POS_CODE" DataSetColumn="POS_CODE" />
+              <Mapping SourceColumn="SEX" DataSetColumn="SEX" />
+              <Mapping SourceColumn="SALARY_ID" DataSetColumn="SALARY_ID" />
+              <Mapping SourceColumn="PRENAME_DESC" DataSetColumn="PRENAME_DESC" />
+              <Mapping SourceColumn="POS_DESC" DataSetColumn="POS_DESC" />
+              <Mapping SourceColumn="EMPTYPE_DESC" DataSetColumn="EMPTYPE_DESC" />
+              <Mapping SourceColumn="DEPTGRP_DESC" DataSetColumn="DEPTGRP_DESC" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="HRBASEPAYROLLFIXEDTableAdapter" GeneratorDataComponentClassName="HRBASEPAYROLLFIXEDTableAdapter" Name="HRBASEPAYROLLFIXED" UserDataComponentName="HRBASEPAYROLLFIXEDTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ConnectionString2 (Web.config)" DbObjectName="ISCOTKS.HRBASEPAYROLLFIXED" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM "HRBASEPAYROLLFIXED" WHERE (("COOP_ID" = :Original_COOP_ID) AND ("EMP_NO" = :Original_EMP_NO) AND ("SEQ_NO" = :Original_SEQ_NO))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="Original_COOP_ID" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="COOP_ID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="Original_EMP_NO" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="EMP_NO" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="Original_SEQ_NO" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="SEQ_NO" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO "HRBASEPAYROLLFIXED" ("COOP_ID", "EMP_NO", "SEQ_NO", "SALITEM_CODE", "ITEM_AMT") VALUES (:COOP_ID, :EMP_NO, :SEQ_NO, :SALITEM_CODE, :ITEM_AMT)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="COOP_ID" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="COOP_ID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="EMP_NO" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="EMP_NO" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="SEQ_NO" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="SEQ_NO" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="SALITEM_CODE" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="SALITEM_CODE" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="ITEM_AMT" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="ITEM_AMT" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>  select hrbasepayrollfixed.coop_id,   
+         hrbasepayrollfixed.emp_no,   
+         hrbasepayrollfixed.seq_no,   
+         hrbasepayrollfixed.salitem_code,   
+         hrbasepayrollfixed.item_amt  
+    from hrbasepayrollfixed 
+</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE "HRBASEPAYROLLFIXED" SET "COOP_ID" = :COOP_ID, "EMP_NO" = :EMP_NO, "SEQ_NO" = :SEQ_NO, "SALITEM_CODE" = :SALITEM_CODE, "ITEM_AMT" = :ITEM_AMT WHERE (("COOP_ID" = :Original_COOP_ID) AND ("EMP_NO" = :Original_EMP_NO) AND ("SEQ_NO" = :Original_SEQ_NO))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="COOP_ID" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="COOP_ID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="EMP_NO" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="EMP_NO" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="SEQ_NO" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="SEQ_NO" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="SALITEM_CODE" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="SALITEM_CODE" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="ITEM_AMT" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="ITEM_AMT" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="Original_COOP_ID" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="COOP_ID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="Original_EMP_NO" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="EMP_NO" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="Original_SEQ_NO" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="SEQ_NO" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="COOP_ID" DataSetColumn="COOP_ID" />
+              <Mapping SourceColumn="EMP_NO" DataSetColumn="EMP_NO" />
+              <Mapping SourceColumn="SEQ_NO" DataSetColumn="SEQ_NO" />
+              <Mapping SourceColumn="SALITEM_CODE" DataSetColumn="SALITEM_CODE" />
+              <Mapping SourceColumn="ITEM_AMT" DataSetColumn="ITEM_AMT" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="HRBASEPAYROLLOTHERTableAdapter" GeneratorDataComponentClassName="HRBASEPAYROLLOTHERTableAdapter" Name="HRBASEPAYROLLOTHER" UserDataComponentName="HRBASEPAYROLLOTHERTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ConnectionString (Web.config)" DbObjectName="ISCOTKS.HRBASEPAYROLLOTHER" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM "HRBASEPAYROLLOTHER" WHERE (("COOP_ID" = :Original_COOP_ID) AND ("EMP_NO" = :Original_EMP_NO) AND ("PAYROLL_PERIOD" = :Original_PAYROLL_PERIOD) AND ("SEQ_NO" = :Original_SEQ_NO))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="Original_COOP_ID" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="COOP_ID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="Original_EMP_NO" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="EMP_NO" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="Original_PAYROLL_PERIOD" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="PAYROLL_PERIOD" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="Original_SEQ_NO" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="SEQ_NO" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO "HRBASEPAYROLLOTHER" ("COOP_ID", "EMP_NO", "PAYROLL_PERIOD", "SEQ_NO", "SALITEM_CODE", "PAYOTHER_DESC", "ITEM_AMT") VALUES (:COOP_ID, :EMP_NO, :PAYROLL_PERIOD, :SEQ_NO, :SALITEM_CODE, :PAYOTHER_DESC, :ITEM_AMT)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="COOP_ID" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="COOP_ID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="EMP_NO" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="EMP_NO" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="PAYROLL_PERIOD" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="PAYROLL_PERIOD" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="SEQ_NO" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="SEQ_NO" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="SALITEM_CODE" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="SALITEM_CODE" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="PAYOTHER_DESC" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="PAYOTHER_DESC" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="ITEM_AMT" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="ITEM_AMT" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>  select hrbasepayrollother.coop_id,   
+         hrbasepayrollother.emp_no,   
+         hrbasepayrollother.payroll_period,   
+         hrbasepayrollother.seq_no,   
+         hrbasepayrollother.salitem_code,   
+         hrbasepayrollother.payother_desc,   
+         hrbasepayrollother.item_amt  
+    from hrbasepayrollother</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE "HRBASEPAYROLLOTHER" SET "COOP_ID" = :COOP_ID, "EMP_NO" = :EMP_NO, "PAYROLL_PERIOD" = :PAYROLL_PERIOD, "SEQ_NO" = :SEQ_NO, "SALITEM_CODE" = :SALITEM_CODE, "PAYOTHER_DESC" = :PAYOTHER_DESC, "ITEM_AMT" = :ITEM_AMT WHERE (("COOP_ID" = :Original_COOP_ID) AND ("EMP_NO" = :Original_EMP_NO) AND ("PAYROLL_PERIOD" = :Original_PAYROLL_PERIOD) AND ("SEQ_NO" = :Original_SEQ_NO))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="COOP_ID" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="COOP_ID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="EMP_NO" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="EMP_NO" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="PAYROLL_PERIOD" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="PAYROLL_PERIOD" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="SEQ_NO" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="SEQ_NO" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="SALITEM_CODE" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="SALITEM_CODE" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="PAYOTHER_DESC" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="PAYOTHER_DESC" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="ITEM_AMT" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="ITEM_AMT" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="Original_COOP_ID" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="COOP_ID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="Original_EMP_NO" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="EMP_NO" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="Original_PAYROLL_PERIOD" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="PAYROLL_PERIOD" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="VarNumeric" Direction="Input" ParameterName="Original_SEQ_NO" Precision="0" ProviderType="Number" Scale="0" Size="0" SourceColumn="SEQ_NO" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="COOP_ID" DataSetColumn="COOP_ID" />
+              <Mapping SourceColumn="EMP_NO" DataSetColumn="EMP_NO" />
+              <Mapping SourceColumn="PAYROLL_PERIOD" DataSetColumn="PAYROLL_PERIOD" />
+              <Mapping SourceColumn="SEQ_NO" DataSetColumn="SEQ_NO" />
+              <Mapping SourceColumn="SALITEM_CODE" DataSetColumn="SALITEM_CODE" />
+              <Mapping SourceColumn="PAYOTHER_DESC" DataSetColumn="PAYOTHER_DESC" />
+              <Mapping SourceColumn="ITEM_AMT" DataSetColumn="ITEM_AMT" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DT_Main" msprop:Generator_TableClassName="DT_MainDataTable" msprop:Generator_TableVarName="tableDT_Main" msprop:Generator_TablePropName="DT_Main" msprop:Generator_RowDeletingName="DT_MainRowDeleting" msprop:Generator_RowChangingName="DT_MainRowChanging" msprop:Generator_RowEvHandlerName="DT_MainRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_MainRowDeleted" msprop:Generator_UserTableName="DT_Main" msprop:Generator_RowChangedName="DT_MainRowChanged" msprop:Generator_RowEvArgName="DT_MainRowChangeEvent" msprop:Generator_RowClassName="DT_MainRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="COOP_ID" msprop:Generator_ColumnVarNameInTable="columnCOOP_ID" msprop:Generator_ColumnPropNameInRow="COOP_ID" msprop:Generator_ColumnPropNameInTable="COOP_IDColumn" msprop:Generator_UserColumnName="COOP_ID">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="6" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="EMP_NO" msprop:Generator_ColumnVarNameInTable="columnEMP_NO" msprop:Generator_ColumnPropNameInRow="EMP_NO" msprop:Generator_ColumnPropNameInTable="EMP_NOColumn" msprop:Generator_UserColumnName="EMP_NO" default="">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PRENAME_CODE" msprop:Generator_ColumnVarNameInTable="columnPRENAME_CODE" msprop:Generator_ColumnPropNameInRow="PRENAME_CODE" msprop:Generator_ColumnPropNameInTable="PRENAME_CODEColumn" msprop:Generator_UserColumnName="PRENAME_CODE" default="01" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="EMP_NAME" msprop:Generator_ColumnVarNameInTable="columnEMP_NAME" msprop:Generator_ColumnPropNameInRow="EMP_NAME" msprop:Generator_ColumnPropNameInTable="EMP_NAMEColumn" msprop:Generator_UserColumnName="EMP_NAME" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="EMP_SURNAME" msprop:Generator_ColumnVarNameInTable="columnEMP_SURNAME" msprop:Generator_ColumnPropNameInRow="EMP_SURNAME" msprop:Generator_ColumnPropNameInTable="EMP_SURNAMEColumn" msprop:Generator_UserColumnName="EMP_SURNAME" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="EMPTYPE_CODE" msprop:Generator_ColumnVarNameInTable="columnEMPTYPE_CODE" msprop:Generator_ColumnPropNameInRow="EMPTYPE_CODE" msprop:Generator_ColumnPropNameInTable="EMPTYPE_CODEColumn" msprop:Generator_UserColumnName="EMPTYPE_CODE" default="01" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DEPTGRP_CODE" msprop:Generator_ColumnVarNameInTable="columnDEPTGRP_CODE" msprop:Generator_ColumnPropNameInRow="DEPTGRP_CODE" msprop:Generator_ColumnPropNameInTable="DEPTGRP_CODEColumn" msprop:Generator_UserColumnName="DEPTGRP_CODE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="POS_CODE" msprop:Generator_ColumnVarNameInTable="columnPOS_CODE" msprop:Generator_ColumnPropNameInRow="POS_CODE" msprop:Generator_ColumnPropNameInTable="POS_CODEColumn" msprop:Generator_UserColumnName="POS_CODE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SEX" msprop:Generator_ColumnVarNameInTable="columnSEX" msprop:Generator_ColumnPropNameInRow="SEX" msprop:Generator_ColumnPropNameInTable="SEXColumn" msprop:Generator_UserColumnName="SEX" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SALARY_ID" msprop:Generator_ColumnVarNameInTable="columnSALARY_ID" msprop:Generator_ColumnPropNameInRow="SALARY_ID" msprop:Generator_ColumnPropNameInTable="SALARY_IDColumn" msprop:Generator_UserColumnName="SALARY_ID" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PRENAME_DESC" msprop:Generator_ColumnVarNameInTable="columnPRENAME_DESC" msprop:Generator_ColumnPropNameInRow="PRENAME_DESC" msprop:Generator_ColumnPropNameInTable="PRENAME_DESCColumn" msprop:Generator_UserColumnName="PRENAME_DESC" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="cp_name" msdata:ReadOnly="true" msdata:Expression="PRENAME_DESC+EMP_NAME+'  '+EMP_SURNAME" msprop:Generator_ColumnVarNameInTable="columncp_name" msprop:Generator_ColumnPropNameInRow="cp_name" msprop:Generator_ColumnPropNameInTable="cp_nameColumn" msprop:Generator_UserColumnName="cp_name" type="xs:string" minOccurs="0" />
+              <xs:element name="POS_DESC" msprop:Generator_ColumnVarNameInTable="columnPOS_DESC" msprop:Generator_ColumnPropNameInRow="POS_DESC" msprop:Generator_ColumnPropNameInTable="POS_DESCColumn" msprop:Generator_UserColumnName="POS_DESC" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="EMPTYPE_DESC" msprop:Generator_ColumnVarNameInTable="columnEMPTYPE_DESC" msprop:Generator_ColumnPropNameInRow="EMPTYPE_DESC" msprop:Generator_ColumnPropNameInTable="EMPTYPE_DESCColumn" msprop:Generator_UserColumnName="EMPTYPE_DESC" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DEPTGRP_DESC" msprop:Generator_ColumnVarNameInTable="columnDEPTGRP_DESC" msprop:Generator_ColumnPropNameInRow="DEPTGRP_DESC" msprop:Generator_ColumnPropNameInTable="DEPTGRP_DESCColumn" msprop:Generator_UserColumnName="DEPTGRP_DESC" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="HRBASEPAYROLLFIXED" msprop:Generator_TableClassName="HRBASEPAYROLLFIXEDDataTable" msprop:Generator_TableVarName="tableHRBASEPAYROLLFIXED" msprop:Generator_RowChangedName="HRBASEPAYROLLFIXEDRowChanged" msprop:Generator_TablePropName="HRBASEPAYROLLFIXED" msprop:Generator_RowDeletingName="HRBASEPAYROLLFIXEDRowDeleting" msprop:Generator_RowChangingName="HRBASEPAYROLLFIXEDRowChanging" msprop:Generator_RowEvHandlerName="HRBASEPAYROLLFIXEDRowChangeEventHandler" msprop:Generator_RowDeletedName="HRBASEPAYROLLFIXEDRowDeleted" msprop:Generator_RowClassName="HRBASEPAYROLLFIXEDRow" msprop:Generator_UserTableName="HRBASEPAYROLLFIXED" msprop:Generator_RowEvArgName="HRBASEPAYROLLFIXEDRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="COOP_ID" msprop:Generator_ColumnVarNameInTable="columnCOOP_ID" msprop:Generator_ColumnPropNameInRow="COOP_ID" msprop:Generator_ColumnPropNameInTable="COOP_IDColumn" msprop:Generator_UserColumnName="COOP_ID">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="6" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="EMP_NO" msprop:Generator_ColumnVarNameInTable="columnEMP_NO" msprop:Generator_ColumnPropNameInRow="EMP_NO" msprop:Generator_ColumnPropNameInTable="EMP_NOColumn" msprop:Generator_UserColumnName="EMP_NO">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SEQ_NO" msprop:Generator_ColumnVarNameInTable="columnSEQ_NO" msprop:Generator_ColumnPropNameInRow="SEQ_NO" msprop:Generator_ColumnPropNameInTable="SEQ_NOColumn" msprop:Generator_UserColumnName="SEQ_NO" type="xs:decimal" />
+              <xs:element name="SALITEM_CODE" msprop:Generator_ColumnVarNameInTable="columnSALITEM_CODE" msprop:Generator_ColumnPropNameInRow="SALITEM_CODE" msprop:Generator_ColumnPropNameInTable="SALITEM_CODEColumn" msprop:Generator_UserColumnName="SALITEM_CODE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ITEM_AMT" msprop:Generator_ColumnVarNameInTable="columnITEM_AMT" msprop:Generator_ColumnPropNameInRow="ITEM_AMT" msprop:Generator_ColumnPropNameInTable="ITEM_AMTColumn" msprop:Generator_UserColumnName="ITEM_AMT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PAY" msprop:Generator_ColumnVarNameInTable="columnPAY" msprop:Generator_ColumnPropNameInRow="PAY" msprop:Generator_ColumnPropNameInTable="PAYColumn" msprop:Generator_UserColumnName="PAY" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ROLL" msprop:Generator_ColumnVarNameInTable="columnROLL" msprop:Generator_ColumnPropNameInRow="ROLL" msprop:Generator_ColumnPropNameInTable="ROLLColumn" msprop:Generator_UserColumnName="ROLL" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="HRBASEPAYROLLOTHER" msprop:Generator_TableClassName="HRBASEPAYROLLOTHERDataTable" msprop:Generator_TableVarName="tableHRBASEPAYROLLOTHER" msprop:Generator_RowChangedName="HRBASEPAYROLLOTHERRowChanged" msprop:Generator_TablePropName="HRBASEPAYROLLOTHER" msprop:Generator_RowDeletingName="HRBASEPAYROLLOTHERRowDeleting" msprop:Generator_RowChangingName="HRBASEPAYROLLOTHERRowChanging" msprop:Generator_RowEvHandlerName="HRBASEPAYROLLOTHERRowChangeEventHandler" msprop:Generator_RowDeletedName="HRBASEPAYROLLOTHERRowDeleted" msprop:Generator_RowClassName="HRBASEPAYROLLOTHERRow" msprop:Generator_UserTableName="HRBASEPAYROLLOTHER" msprop:Generator_RowEvArgName="HRBASEPAYROLLOTHERRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="COOP_ID" msprop:Generator_ColumnVarNameInTable="columnCOOP_ID" msprop:Generator_ColumnPropNameInRow="COOP_ID" msprop:Generator_ColumnPropNameInTable="COOP_IDColumn" msprop:Generator_UserColumnName="COOP_ID">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="6" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="EMP_NO" msprop:Generator_ColumnVarNameInTable="columnEMP_NO" msprop:Generator_ColumnPropNameInRow="EMP_NO" msprop:Generator_ColumnPropNameInTable="EMP_NOColumn" msprop:Generator_UserColumnName="EMP_NO">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PAYROLL_PERIOD" msprop:Generator_ColumnVarNameInTable="columnPAYROLL_PERIOD" msprop:Generator_ColumnPropNameInRow="PAYROLL_PERIOD" msprop:Generator_ColumnPropNameInTable="PAYROLL_PERIODColumn" msprop:Generator_UserColumnName="PAYROLL_PERIOD">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SEQ_NO" msprop:Generator_ColumnVarNameInTable="columnSEQ_NO" msprop:Generator_ColumnPropNameInRow="SEQ_NO" msprop:Generator_ColumnPropNameInTable="SEQ_NOColumn" msprop:Generator_UserColumnName="SEQ_NO" type="xs:decimal" />
+              <xs:element name="SALITEM_CODE" msprop:Generator_ColumnVarNameInTable="columnSALITEM_CODE" msprop:Generator_ColumnPropNameInRow="SALITEM_CODE" msprop:Generator_ColumnPropNameInTable="SALITEM_CODEColumn" msprop:Generator_UserColumnName="SALITEM_CODE">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PAYOTHER_DESC" msprop:Generator_ColumnVarNameInTable="columnPAYOTHER_DESC" msprop:Generator_ColumnPropNameInRow="PAYOTHER_DESC" msprop:Generator_ColumnPropNameInTable="PAYOTHER_DESCColumn" msprop:Generator_UserColumnName="PAYOTHER_DESC" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ITEM_AMT" msprop:Generator_ColumnVarNameInTable="columnITEM_AMT" msprop:Generator_ColumnPropNameInRow="ITEM_AMT" msprop:Generator_ColumnPropNameInTable="ITEM_AMTColumn" msprop:Generator_UserColumnName="ITEM_AMT" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:DT_Main" />
+      <xs:field xpath="mstns:COOP_ID" />
+      <xs:field xpath="mstns:EMP_NO" />
+    </xs:unique>
+    <xs:unique name="HRBASEPAYROLLFIXED_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:HRBASEPAYROLLFIXED" />
+      <xs:field xpath="mstns:COOP_ID" />
+      <xs:field xpath="mstns:EMP_NO" />
+      <xs:field xpath="mstns:SEQ_NO" />
+    </xs:unique>
+    <xs:unique name="HRBASEPAYROLLOTHER_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:HRBASEPAYROLLOTHER" />
+      <xs:field xpath="mstns:COOP_ID" />
+      <xs:field xpath="mstns:EMP_NO" />
+      <xs:field xpath="mstns:PAYROLL_PERIOD" />
+      <xs:field xpath="mstns:SEQ_NO" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

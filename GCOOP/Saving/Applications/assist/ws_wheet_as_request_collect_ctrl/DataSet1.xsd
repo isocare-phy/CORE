@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet1" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataDsSequence" msprop:Generator_TableClassName="DataDsSequenceDataTable" msprop:Generator_TableVarName="tableDataDsSequence" msprop:Generator_TablePropName="DataDsSequence" msprop:Generator_RowDeletingName="DataDsSequenceRowDeleting" msprop:Generator_RowChangingName="DataDsSequenceRowChanging" msprop:Generator_RowEvHandlerName="DataDsSequenceRowChangeEventHandler" msprop:Generator_RowDeletedName="DataDsSequenceRowDeleted" msprop:Generator_UserTableName="DataDsSequence" msprop:Generator_RowChangedName="DataDsSequenceRowChanged" msprop:Generator_RowEvArgName="DataDsSequenceRowChangeEvent" msprop:Generator_RowClassName="DataDsSequenceRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="sequence_one" msprop:Generator_ColumnVarNameInTable="columnsequence_one" msprop:Generator_ColumnPropNameInRow="sequence_one" msprop:Generator_ColumnPropNameInTable="sequence_oneColumn" msprop:Generator_UserColumnName="sequence_one" type="xs:decimal" minOccurs="0" />
+              <xs:element name="sequence_two" msprop:Generator_ColumnVarNameInTable="columnsequence_two" msprop:Generator_ColumnPropNameInRow="sequence_two" msprop:Generator_ColumnPropNameInTable="sequence_twoColumn" msprop:Generator_UserColumnName="sequence_two" type="xs:decimal" minOccurs="0" />
+              <xs:element name="sequence_three" msprop:Generator_ColumnVarNameInTable="columnsequence_three" msprop:Generator_ColumnPropNameInRow="sequence_three" msprop:Generator_ColumnPropNameInTable="sequence_threeColumn" msprop:Generator_UserColumnName="sequence_three" type="xs:decimal" minOccurs="0" />
+              <xs:element name="sequence_four" msprop:Generator_ColumnVarNameInTable="columnsequence_four" msprop:Generator_ColumnPropNameInRow="sequence_four" msprop:Generator_ColumnPropNameInTable="sequence_fourColumn" msprop:Generator_UserColumnName="sequence_four" type="xs:decimal" minOccurs="0" />
+              <xs:element name="sequence_five" msprop:Generator_ColumnVarNameInTable="columnsequence_five" msprop:Generator_ColumnPropNameInRow="sequence_five" msprop:Generator_ColumnPropNameInTable="sequence_fiveColumn" msprop:Generator_UserColumnName="sequence_five" type="xs:decimal" minOccurs="0" />
+              <xs:element name="assist_collect" msprop:Generator_ColumnVarNameInTable="columnassist_collect" msprop:Generator_ColumnPropNameInRow="assist_collect" msprop:Generator_ColumnPropNameInTable="assist_collectColumn" msprop:Generator_UserColumnName="assist_collect" type="xs:decimal" minOccurs="0" />
+              <xs:element name="principal_balance" msprop:Generator_ColumnVarNameInTable="columnprincipal_balance" msprop:Generator_ColumnPropNameInRow="principal_balance" msprop:Generator_ColumnPropNameInTable="principal_balanceColumn" msprop:Generator_UserColumnName="principal_balance" type="xs:decimal" minOccurs="0" />
+              <xs:element name="int_amt" msprop:Generator_ColumnVarNameInTable="columnint_amt" msprop:Generator_ColumnPropNameInRow="int_amt" msprop:Generator_ColumnPropNameInTable="int_amtColumn" msprop:Generator_UserColumnName="int_amt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="prnc_amt" msprop:Generator_ColumnVarNameInTable="columnprnc_amt" msprop:Generator_ColumnPropNameInRow="prnc_amt" msprop:Generator_ColumnPropNameInTable="prnc_amtColumn" msprop:Generator_UserColumnName="prnc_amt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="s_sharespm" msprop:Generator_ColumnVarNameInTable="columns_sharespm" msprop:Generator_ColumnPropNameInRow="s_sharespm" msprop:Generator_ColumnPropNameInTable="s_sharespmColumn" msprop:Generator_UserColumnName="s_sharespm" type="xs:decimal" minOccurs="0" />
+              <xs:element name="s_sharespx" msprop:Generator_ColumnVarNameInTable="columns_sharespx" msprop:Generator_ColumnPropNameInRow="s_sharespx" msprop:Generator_ColumnPropNameInTable="s_sharespxColumn" msprop:Generator_UserColumnName="s_sharespx" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DataDsMain" msprop:Generator_TableClassName="DataDsMainDataTable" msprop:Generator_TableVarName="tableDataDsMain" msprop:Generator_TablePropName="DataDsMain" msprop:Generator_RowDeletingName="DataDsMainRowDeleting" msprop:Generator_RowChangingName="DataDsMainRowChanging" msprop:Generator_RowEvHandlerName="DataDsMainRowChangeEventHandler" msprop:Generator_RowDeletedName="DataDsMainRowDeleted" msprop:Generator_UserTableName="DataDsMain" msprop:Generator_RowChangedName="DataDsMainRowChanged" msprop:Generator_RowEvArgName="DataDsMainRowChangeEvent" msprop:Generator_RowClassName="DataDsMainRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="member_no" msprop:Generator_ColumnVarNameInTable="columnmember_no" msprop:Generator_ColumnPropNameInRow="member_no" msprop:Generator_ColumnPropNameInTable="member_noColumn" msprop:Generator_UserColumnName="member_no" type="xs:string" minOccurs="0" />
+              <xs:element name="fullname" msprop:Generator_ColumnVarNameInTable="columnfullname" msprop:Generator_ColumnPropNameInRow="fullname" msprop:Generator_ColumnPropNameInTable="fullnameColumn" msprop:Generator_UserColumnName="fullname" type="xs:string" minOccurs="0" />
+              <xs:element name="membtype_desc" msprop:Generator_ColumnVarNameInTable="columnmembtype_desc" msprop:Generator_ColumnPropNameInRow="membtype_desc" msprop:Generator_ColumnPropNameInTable="membtype_descColumn" msprop:Generator_UserColumnName="membtype_desc" type="xs:string" minOccurs="0" />
+              <xs:element name="fullgroup_desc" msprop:Generator_ColumnVarNameInTable="columnfullgroup_desc" msprop:Generator_ColumnPropNameInRow="fullgroup_desc" msprop:Generator_ColumnPropNameInTable="fullgroup_descColumn" msprop:Generator_UserColumnName="fullgroup_desc" type="xs:string" minOccurs="0" />
+              <xs:element name="assisttype_code" msprop:Generator_ColumnVarNameInTable="columnassisttype_code" msprop:Generator_ColumnPropNameInRow="assisttype_code" msprop:Generator_ColumnPropNameInTable="assisttype_codeColumn" msprop:Generator_UserColumnName="assisttype_code" type="xs:string" default="00" minOccurs="0" />
+              <xs:element name="stm_flag" msprop:Generator_ColumnVarNameInTable="columnstm_flag" msprop:Generator_ColumnPropNameInRow="stm_flag" msprop:Generator_ColumnPropNameInTable="stm_flagColumn" msprop:Generator_UserColumnName="stm_flag" type="xs:short" minOccurs="0" />
+              <xs:element name="resign_status" msprop:Generator_ColumnVarNameInTable="columnresign_status" msprop:Generator_ColumnPropNameInRow="resign_status" msprop:Generator_ColumnPropNameInTable="resign_statusColumn" msprop:Generator_UserColumnName="resign_status" type="xs:short" default="0" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DataDsDetail" msprop:Generator_TableClassName="DataDsDetailDataTable" msprop:Generator_TableVarName="tableDataDsDetail" msprop:Generator_TablePropName="DataDsDetail" msprop:Generator_RowDeletingName="DataDsDetailRowDeleting" msprop:Generator_RowChangingName="DataDsDetailRowChanging" msprop:Generator_RowEvHandlerName="DataDsDetailRowChangeEventHandler" msprop:Generator_RowDeletedName="DataDsDetailRowDeleted" msprop:Generator_UserTableName="DataDsDetail" msprop:Generator_RowChangedName="DataDsDetailRowChanged" msprop:Generator_RowEvArgName="DataDsDetailRowChangeEvent" msprop:Generator_RowClassName="DataDsDetailRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="member_date" msprop:Generator_ColumnVarNameInTable="columnmember_date" msprop:Generator_ColumnPropNameInRow="member_date" msprop:Generator_ColumnPropNameInTable="member_dateColumn" msprop:Generator_UserColumnName="member_date" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="work_age" msprop:Generator_ColumnVarNameInTable="columnwork_age" msprop:Generator_ColumnPropNameInRow="work_age" msprop:Generator_ColumnPropNameInTable="work_ageColumn" msprop:Generator_UserColumnName="work_age" type="xs:string" minOccurs="0" />
+              <xs:element name="assist_docno" msprop:Generator_ColumnVarNameInTable="columnassist_docno" msprop:Generator_ColumnPropNameInRow="assist_docno" msprop:Generator_ColumnPropNameInTable="assist_docnoColumn" msprop:Generator_UserColumnName="assist_docno" type="xs:string" default="Auto" minOccurs="0" />
+              <xs:element name="req_date" msprop:Generator_ColumnVarNameInTable="columnreq_date" msprop:Generator_ColumnPropNameInRow="req_date" msprop:Generator_ColumnPropNameInTable="req_dateColumn" msprop:Generator_UserColumnName="req_date" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="resign_date" msprop:Generator_ColumnVarNameInTable="columnresign_date" msprop:Generator_ColumnPropNameInRow="resign_date" msprop:Generator_ColumnPropNameInTable="resign_dateColumn" msprop:Generator_UserColumnName="resign_date" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="resigncause_desc" msprop:Generator_ColumnVarNameInTable="columnresigncause_desc" msprop:Generator_ColumnPropNameInRow="resigncause_desc" msprop:Generator_ColumnPropNameInTable="resigncause_descColumn" msprop:Generator_UserColumnName="resigncause_desc" type="xs:string" minOccurs="0" />
+              <xs:element name="sharestk_amt" msprop:Generator_ColumnVarNameInTable="columnsharestk_amt" msprop:Generator_ColumnPropNameInRow="sharestk_amt" msprop:Generator_ColumnPropNameInTable="sharestk_amtColumn" msprop:Generator_UserColumnName="sharestk_amt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="last_period" msprop:Generator_ColumnVarNameInTable="columnlast_period" msprop:Generator_ColumnPropNameInRow="last_period" msprop:Generator_ColumnPropNameInTable="last_periodColumn" msprop:Generator_UserColumnName="last_period" type="xs:short" minOccurs="0" />
+              <xs:element name="sum_sharespm" msprop:Generator_ColumnVarNameInTable="columnsum_sharespm" msprop:Generator_ColumnPropNameInRow="sum_sharespm" msprop:Generator_ColumnPropNameInTable="sum_sharespmColumn" msprop:Generator_UserColumnName="sum_sharespm" type="xs:decimal" minOccurs="0" />
+              <xs:element name="sum_sharespx" msprop:Generator_ColumnVarNameInTable="columnsum_sharespx" msprop:Generator_ColumnPropNameInRow="sum_sharespx" msprop:Generator_ColumnPropNameInTable="sum_sharespxColumn" msprop:Generator_UserColumnName="sum_sharespx" type="xs:decimal" minOccurs="0" />
+              <xs:element name="monthcollect" msprop:Generator_ColumnVarNameInTable="columnmonthcollect" msprop:Generator_ColumnPropNameInRow="monthcollect" msprop:Generator_ColumnPropNameInTable="monthcollectColumn" msprop:Generator_UserColumnName="monthcollect" type="xs:short" minOccurs="0" />
+              <xs:element name="sum_sharestk" msprop:Generator_ColumnVarNameInTable="columnsum_sharestk" msprop:Generator_ColumnPropNameInRow="sum_sharestk" msprop:Generator_ColumnPropNameInTable="sum_sharestkColumn" msprop:Generator_UserColumnName="sum_sharestk" type="xs:decimal" minOccurs="0" />
+              <xs:element name="sharespx" msprop:Generator_ColumnVarNameInTable="columnsharespx" msprop:Generator_ColumnPropNameInRow="sharespx" msprop:Generator_ColumnPropNameInTable="sharespxColumn" msprop:Generator_UserColumnName="sharespx" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

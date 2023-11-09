@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet1" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ptucfbranchcode" msprop:Generator_TableClassName="ptucfbranchcodeDataTable" msprop:Generator_TableVarName="tableptucfbranchcode" msprop:Generator_TablePropName="ptucfbranchcode" msprop:Generator_RowDeletingName="ptucfbranchcodeRowDeleting" msprop:Generator_RowChangingName="ptucfbranchcodeRowChanging" msprop:Generator_RowEvHandlerName="ptucfbranchcodeRowChangeEventHandler" msprop:Generator_RowDeletedName="ptucfbranchcodeRowDeleted" msprop:Generator_UserTableName="ptucfbranchcode" msprop:Generator_RowChangedName="ptucfbranchcodeRowChanged" msprop:Generator_RowEvArgName="ptucfbranchcodeRowChangeEvent" msprop:Generator_RowClassName="ptucfbranchcodeRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="branch_code" msprop:Generator_ColumnVarNameInTable="columnbranch_code" msprop:Generator_ColumnPropNameInRow="branch_code" msprop:Generator_ColumnPropNameInTable="branch_codeColumn" msprop:Generator_UserColumnName="branch_code" type="xs:string" minOccurs="0" />
+              <xs:element name="branch_desc" msprop:Generator_ColumnVarNameInTable="columnbranch_desc" msprop:Generator_ColumnPropNameInRow="branch_desc" msprop:Generator_ColumnPropNameInTable="branch_descColumn" msprop:Generator_UserColumnName="branch_desc" type="xs:string" minOccurs="0" />
+              <xs:element name="add_status" msprop:Generator_ColumnVarNameInTable="columnadd_status" msprop:Generator_ColumnPropNameInRow="add_status" msprop:Generator_ColumnPropNameInTable="add_statusColumn" msprop:Generator_UserColumnName="add_status" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

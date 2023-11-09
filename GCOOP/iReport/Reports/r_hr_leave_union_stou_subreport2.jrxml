@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="r_hr_leave_union_doae_subreport2" language="groovy" pageWidth="165" pageHeight="22" orientation="Landscape" columnWidth="165" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="3d5dd5e6-de63-4bd9-9789-e6263ce04c47">
+	<property name="ireport.zoom" value="2.5937424601000023"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="as_coopid" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="as_period" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     DISTINCT hr.emp_no AS emp_no ,
+(select sum(hrl1.totalday)
+from HRLOGLEAVE hrl1
+where to_char(to_number($P{as_period})-54300) BETWEEN to_char(hrl1.leave_from,'yyyymm') and to_char(hrl1.leave_to,'yyyymm')
+and hrl1.leave_code = '001' and hrl1.emp_no = hr.emp_no) as totalday_01,
+(select sum(hrl2.totalday)
+from HRLOGLEAVE hrl2
+where to_char(to_number($P{as_period})-54300) BETWEEN to_char(hrl2.leave_from,'yyyymm') and to_char(hrl2.leave_to,'yyyymm')
+and hrl2.leave_code = '002' and hrl2.emp_no = hr.emp_no) as totalday_04,
+(select sum(hrl4.totalday)
+from HRLOGLEAVE hrl4
+where to_char(to_number($P{as_period})-54300) BETWEEN to_char(hrl4.leave_from,'yyyymm') and to_char(hrl4.leave_to,'yyyymm')
+and hrl4.leave_code = '006' and hrl4.emp_no = hr.emp_no) as totalday_08,
+(select count(hll.emp_no)
+from hrloglate hll
+where to_char(hll.late_date,'yyyymm') = to_char(to_number($P{as_period})-54300)
+and  hll.emp_no = hr.emp_no) as work_late,
+(select count(hw.emp_no)
+from hrlogworktime hw
+where to_char(hw.work_date,'yyyymm') = to_char(to_number($P{as_period})-54300)
+and  hw.emp_no = hr.emp_no and hw.worktime_code = 'LW') as work_lw
+FROM
+HREMPLOYEE hr,
+mbucfprename mup
+WHERE hr.prename_code = mup.prename_code
+and hr.emp_status = 1
+and hr.coop_id =$P{as_coopid}
+order by hr.emp_no]]>
+	</queryString>
+	<field name="EMP_NO" class="java.lang.String"/>
+	<field name="TOTALDAY_01" class="java.math.BigDecimal"/>
+	<field name="TOTALDAY_04" class="java.math.BigDecimal"/>
+	<field name="TOTALDAY_08" class="java.math.BigDecimal"/>
+	<field name="WORK_LATE" class="java.math.BigDecimal"/>
+	<field name="WORK_LW" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="22">
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="4916a751-e138-4718-bbdc-a9d90fd5b065" x="134" y="0" width="31" height="22"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{WORK_LW}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="333ef71e-dd9e-4727-b570-8295def693b6" x="31" y="0" width="41" height="22"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TOTALDAY_08} == null ? '-' : $F{TOTALDAY_08}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="80662eaa-d629-4ec3-9b5c-38afd3b4cccf" x="103" y="0" width="31" height="22"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{WORK_LATE}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="b2655970-ef01-4f82-b065-a11ef85e6af5" x="0" y="0" width="31" height="22"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TOTALDAY_01} == null ? '-' : $F{TOTALDAY_01}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="528b3e83-c8f2-432f-b827-5c37668a68e4" x="72" y="0" width="31" height="22"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TOTALDAY_04} == null ? '-' : $F{TOTALDAY_04}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

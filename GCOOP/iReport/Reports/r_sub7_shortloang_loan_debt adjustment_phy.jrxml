@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="r_shortloang_loan_memtype_phy" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c2385819-4b74-4d45-88ba-45c165711dcb">
+	<property name="ireport.zoom" value="1.6105100000000139"/>
+	<property name="ireport.x" value="29"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="as_coopid" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="as_recvperiod" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="as_smembgroup" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="as_emembgroup" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select
+'01' as type_name
+,sum(case when loangroup_code = '01' then sl.payout_amt else 0 end ) cc
+,sum(case when loangroup_code = '02' then sl.payout_amt else 0 end ) sa
+,sum(case when loangroup_code = '03' then sl.payout_amt else 0 end ) pc
+,sum(case when loangroup_code = '04' then sl.payout_amt else 0 end ) aa
+,sum(case when lnt.loantype_code in('11','13') then sl.payoutclr_amt else 0 end) ss
+from slslippayout sl
+left join lncontmaster ln on sl.loancontract_no = ln.loancontract_no
+left join lnloantype lnt on ln.loantype_code = lnt.loantype_code
+where sl.coop_id like $P{as_coopid}
+and sl.slip_status > 0
+and sl.sliptype_code in ('LWD')
+and sl.slipclear_no is null
+union
+select
+'02' as type_name
+,sum(case when loangroup_code = '01' then sl.payout_amt else 0 end ) cc
+,sum(case when loangroup_code = '02' then sl.payout_amt else 0 end ) sa
+,sum(case when loangroup_code = '03' then sl.payout_amt else 0 end ) pc
+,sum(case when loangroup_code = '04' then sl.payout_amt else 0 end ) aa
+,sum(case when lnt.loantype_code in('11','13') then sl.payoutclr_amt else 0 end) ss
+from slslippayout sl
+left join lncontmaster ln on sl.loancontract_no = ln.loancontract_no
+left join lnloantype lnt on ln.loantype_code = lnt.loantype_code
+where sl.coop_id like $P{as_coopid}
+and sl.slip_status > 0
+and sl.sliptype_code in ('LWD')
+and sl.slipclear_no is not null]]>
+	</queryString>
+	<field name="TYPE_NAME" class="java.lang.String"/>
+	<field name="CC" class="java.math.BigDecimal"/>
+	<field name="SA" class="java.math.BigDecimal"/>
+	<field name="PC" class="java.math.BigDecimal"/>
+	<field name="AA" class="java.math.BigDecimal"/>
+	<field name="SS" class="java.math.BigDecimal"/>
+	<variable name="sum_sa" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{SA}]]></variableExpression>
+	</variable>
+	<variable name="sum_pc" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{PC}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<summary>
+		<band height="20">
+			<staticText>
+				<reportElement uuid="d94f60a1-9a74-42a5-8abe-12d7a5ac6495" x="0" y="0" width="169" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[รวมทั้งสิ้น]]></text>
+			</staticText>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="446d5203-3e4f-4b9f-b0ff-e90dd009a24f" x="169" y="0" width="100" height="20"/>
+				<box>
+					<bottomPen lineWidth="1.0" lineStyle="Double"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sum_sa}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="a6c1460d-7f29-4ce2-aa1c-19dfc898479b" x="272" y="0" width="100" height="20"/>
+				<box>
+					<bottomPen lineWidth="1.0" lineStyle="Double"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sum_pc}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="8bc89eb1-ded6-4311-b564-282468047120" x="375" y="0" width="100" height="20"/>
+				<box>
+					<pen lineStyle="Double"/>
+					<topPen lineStyle="Double"/>
+					<leftPen lineStyle="Double"/>
+					<bottomPen lineWidth="1.0" lineStyle="Double"/>
+					<rightPen lineStyle="Double"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="TH SarabunPSK" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sum_sa} + $V{sum_pc}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

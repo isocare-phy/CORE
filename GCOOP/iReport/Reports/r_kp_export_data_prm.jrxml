@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="r_kp_export_data_prm" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="aef59cd6-51e4-41c2-93e0-3e1c628330d5">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="as_coopid" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="as_smembgroup" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="as_emembgroup" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="as_recvperiod" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select kt.membgroup_code as COMPANY_CODE, mb.salary_id as EMPLOYEE_CODE,
+		mp.prename_desc||mb.memb_name as EMP_FIRST_NAME, mb.memb_surname as EMP_LAST_NAME,
+		mg.shareitem_code as COLLECTION_TYPE,
+		'20/'||to_char( kt.receipt_date, 'mm/yyyy' ) as COLLECTION_DATE_DMY , kd.item_payment as COLLECTION_AMOUNT
+from kptempreceive kt
+join kptempreceivedet kd on kt.kpslip_no = kd.kpslip_no
+join mbmembmaster mb on kt.member_no = mb.member_no
+join mbucfmembgroup mg on kt.membgroup_code = mg.membgroup_code
+join mbucfprename mp on mb.prename_code = mp.prename_code
+where ( substr( kd.keepitemtype_code , 1, 1 ) = 'S' )
+and ( kt.coop_id = $P{as_coopid} )
+and ( trim(kt.recv_period) = $P{as_recvperiod} )
+and ( kt.membgroup_code between  $P{as_smembgroup} and $P{as_emembgroup} )
+	union all
+select kt.membgroup_code as COMPANY_CODE, mb.salary_id as EMPLOYEE_CODE,
+		mp.prename_desc||mb.memb_name as EMP_FIRST_NAME, mb.memb_surname as EMP_LAST_NAME,
+		mg.loanprin_code as COLLECTION_TYPE,
+		'20/'||to_char( kt.receipt_date, 'mm/yyyy' ) as COLLECTION_DATE_DMY ,  kd.principal_payment as COLLECTION_AMOUNT
+from kptempreceive kt
+join kptempreceivedet kd on kt.kpslip_no = kd.kpslip_no
+join mbmembmaster mb on kt.member_no = mb.member_no
+join mbucfmembgroup mg on kt.membgroup_code = mg.membgroup_code
+join mbucfprename mp on mb.prename_code = mp.prename_code
+where ( substr( kd.keepitemtype_code , 1, 1 ) = 'L' )
+and ( kt.coop_id = $P{as_coopid} )
+and ( trim(kt.recv_period) = $P{as_recvperiod} )
+and ( kt.membgroup_code between  $P{as_smembgroup} and $P{as_emembgroup} )
+	union all
+select kt.membgroup_code as COMPANY_CODE, mb.salary_id as EMPLOYEE_CODE,
+		mp.prename_desc||mb.memb_name as EMP_FIRST_NAME, mb.memb_surname as EMP_LAST_NAME,
+		mg.loanint_code as COLLECTION_TYPE,
+		'20/'||to_char( kt.receipt_date, 'mm/yyyy' ) as COLLECTION_DATE_DMY ,  kd.interest_payment as COLLECTION_AMOUNT
+from kptempreceive kt
+join kptempreceivedet kd on kt.kpslip_no = kd.kpslip_no
+join mbmembmaster mb on kt.member_no = mb.member_no
+join mbucfmembgroup mg on kt.membgroup_code = mg.membgroup_code
+join mbucfprename mp on mb.prename_code = mp.prename_code
+where ( substr( kd.keepitemtype_code , 1, 1 ) = 'L' )
+and ( kt.coop_id = $P{as_coopid} )
+and ( trim(kt.recv_period) = $P{as_recvperiod} )
+and ( kt.membgroup_code between  $P{as_smembgroup} and $P{as_emembgroup} )
+	union all
+select kt.membgroup_code as COMPANY_CODE, mb.salary_id as EMPLOYEE_CODE,
+		mp.prename_desc||mb.memb_name as EMP_FIRST_NAME, mb.memb_surname as EMP_LAST_NAME,
+		mg.deptitem_code as COLLECTION_TYPE,
+		'20/'||to_char( kt.receipt_date, 'mm/yyyy' ) as COLLECTION_DATE_DMY ,  kd.item_payment as COLLECTION_AMOUNT
+from kptempreceive kt
+join kptempreceivedet kd on kt.kpslip_no = kd.kpslip_no
+join mbmembmaster mb on kt.member_no = mb.member_no
+join mbucfmembgroup mg on kt.membgroup_code = mg.membgroup_code
+join mbucfprename mp on mb.prename_code = mp.prename_code
+where ( substr( kd.keepitemtype_code , 1, 1 ) = 'D' )
+and ( kt.coop_id = $P{as_coopid} )
+and ( trim(kt.recv_period) = $P{as_recvperiod} )
+and ( kt.membgroup_code between  $P{as_smembgroup} and $P{as_emembgroup} )
+order by COMPANY_CODE, EMPLOYEE_CODE]]>
+	</queryString>
+	<field name="COMPANY_CODE" class="java.lang.String"/>
+	<field name="EMPLOYEE_CODE" class="java.lang.String"/>
+	<field name="EMP_FIRST_NAME" class="java.lang.String"/>
+	<field name="EMP_LAST_NAME" class="java.lang.String"/>
+	<field name="COLLECTION_TYPE" class="java.lang.String"/>
+	<field name="COLLECTION_DATE_DMY" class="java.lang.String"/>
+	<field name="COLLECTION_AMOUNT" class="java.math.BigDecimal"/>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="de57c682-94a5-4bfd-b114-613c6749b5bb" x="0" y="0" width="87" height="20"/>
+				<textElement>
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<text><![CDATA[COMPANY_CODE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4147ff01-a85e-4178-8ca5-a05718837e9c" x="87" y="0" width="89" height="20"/>
+				<textElement>
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<text><![CDATA[EMPLOYEE_CODE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c3ec6925-bd51-44da-98dc-2c5a53bf33e9" x="176" y="0" width="151" height="20"/>
+				<textElement>
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<text><![CDATA[EMP_FIRST_NAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e2d358c2-f832-4641-9a82-477ec31a8d68" x="327" y="0" width="175" height="20"/>
+				<textElement>
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<text><![CDATA[EMP_LAST_NAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f1d6416c-d5b2-4811-8ed2-e25092d7f3c2" x="502" y="0" width="100" height="20"/>
+				<textElement>
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<text><![CDATA[COLLECTION_TYPE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="aac8fa23-9273-4482-9c9a-02f35bf0d819" x="602" y="0" width="100" height="20"/>
+				<textElement>
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<text><![CDATA[COLLECTION_DATE_DMY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fd58c8f6-52f0-40a8-91c5-42a21b82c764" x="702" y="0" width="100" height="20"/>
+				<textElement>
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<text><![CDATA[COLLECTION_AMOUNT]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement uuid="d9ae3733-aa5c-4574-bea3-c735a017977c" x="0" y="0" width="87" height="20"/>
+				<textElement>
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{COMPANY_CODE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6bb20dee-0932-4844-98cc-31ebc9de2b7e" x="87" y="0" width="89" height="20"/>
+				<textElement>
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EMPLOYEE_CODE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="10ddab14-6b54-4c48-ad9c-ffe3882ded43" x="176" y="0" width="151" height="20"/>
+				<textElement>
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EMP_FIRST_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c8a0d738-60e7-4cb1-b728-ccf527ad1171" x="327" y="0" width="175" height="20"/>
+				<textElement>
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EMP_LAST_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c04a2fe0-fd5d-4cc2-b78f-9d48fcdcfbd9" x="502" y="0" width="100" height="20"/>
+				<textElement>
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{COLLECTION_TYPE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0843db32-21d5-4d84-9476-21b91f63b1f4" x="602" y="0" width="100" height="20"/>
+				<textElement>
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{COLLECTION_DATE_DMY}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="9d12b8c9-e38c-41e1-9aa6-18cf4eab4ed0" x="702" y="0" width="100" height="20"/>
+				<textElement>
+					<font fontName="Angsana New" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{COLLECTION_AMOUNT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
